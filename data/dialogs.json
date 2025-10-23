@@ -1,0 +1,249 @@
+{
+	"street_intro": {
+		"background": "first_dialog",
+		"dialog": [
+			{
+				"id": 1,
+				"characters": [
+					{ "id": "Daniel", "side": "right", "sprite": "daniel_smile", "mode": "full" }
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "Ди, у нас сегодня сразу двойное убийство. Женщина и девушка-подросток. Возможно мать и дочь.",
+					"en": "Di, we’ve got a double homicide tonight. A woman and a teenage girl. Possibly mother and daughter."
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 2,
+				"characters": [
+					{ "id": "Di", "side": "left", "sprite": "di_without_cape", "mode": "full", "height_modifier": 0.95
+					},
+					{ "id": "Daniel", "side": "right", "sprite": "daniel_smile", "mode": "full" }
+				],
+				"speaker": "Di",
+				"text": {
+					"ru": "Добрый вечер, мистер Даниэл. Вы уже допросили свидетеля? Это медсестра мисс Като Мэй.",
+					"en": "Good evening, Mr. Daniel. Have you already questioned the witness? That is nurse Ms. Kato Mei."
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 3,
+				"characters": [
+					{ "id": "Di", "side": "left", "sprite": "di_without_cape", "mode": "zoom", "height_modifier": 0.95 },
+					{ "id": "Daniel", "side": "right", "sprite": "daniel_smile", "mode": "zoom" }
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "Еще нет, давайте начнем?",
+					"en": "Not yet, let’s begin?"
+				},
+				"bubble_mode": "small"
+			}
+		]
+	},
+	"street_witness": {
+		"background": "first_dialog",
+		"dialog": [
+			{
+				"id": 1,
+				"characters": [
+					{ "id": "Daniel", "side": "right", "sprite": "daniel_serious", "mode": "full" }
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "Мисс Мэй, расскажите, как вы нашли машину и женщин?",
+					"en": "Ms. Mei, could you tell us how you found the car and the women?"
+				},
+				"bubble_mode": "medium"
+			},
+			{
+				"id": 2,
+				"characters": [
+					{ "id": "Mei", "side": "left", "sprite": "mai_found_the_car", "mode": "full" }
+				],
+				"speaker": "Narrator",
+				"text": {
+					"ru": "Нажмите на знак диалога, чтобы начать опрос свидетеля.",
+					"en": "Tap the dialogue icon to begin questioning the witness."
+				},
+				"bubble_mode": "small"
+			},
+			{
+				"id": 3,
+				"characters": [
+					{ "id": "Mei", "side": "left", "sprite": "mai_found_the_car", "mode": "zoom" }
+				],
+				"speaker": "Mei",
+				"text": {
+					"ru": "Я вышла на пробежку утром и увидела, что машина стоит и работают дворники. Это было странно, но я подумала, что кто-то вышел ненадолго.",
+					"en": "I went jogging in the morning and saw the car with its wipers running. It seemed odd, but I thought someone had just stepped out for a moment."
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 4,
+				"characters": [
+					{ "id": "Mei", "side": "left", "sprite": "mai_found_the_car", "mode": "zoom" }
+				],
+				"speaker": "Mei",
+				"text": {
+					"ru": "Позже, когда я шла на работу, машина всё ещё стояла там. Это показалось подозрительным.",
+					"en": "Later, on my way to work, the car was still there. That seemed suspicious."
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 5,
+				"characters": [
+					{ "id": "Mei", "side": "left", "sprite": "mai_found_the_car", "mode": "zoom" }
+				],
+				"speaker": "Mei",
+				"text": {
+					"ru": "Я подошла ближе и увидела на заднем сиденье двух женщин. Они откинулись назад, будто спали.",
+					"en": "I came closer and saw two women in the back seat, leaning back as if they were asleep."
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 6,
+				"characters": [
+					{ "id": "Mei", "side": "left", "sprite": "mai_found_the_car", "mode": "zoom" }
+				],
+				"speaker": "Mei",
+				"text": {
+					"ru": "Мне показалось, что им плохо. Я постучала в окно, но они не реагировали. Тогда я вызвала скорую и полицию.",
+					"en": "They looked unwell. I knocked on the window but they didn’t react. Then I called an ambulance and the police."
+				},
+				"bubble_mode": "large"
+			}
+		]
+	},
+
+	"witness_dialogue": [
+	{
+	  "speaker": "Daniel",
+	  "text_ru": "Мисс Мэй, расскажите, как вы нашли машину и женщин?",
+	  "text_en": "Ms. Mei, could you tell us how you found the car and the women?"
+	},
+	{
+	  "speaker": "Narrator",
+	  "text_ru": "Нажмите на знак диалога, чтобы начать опрос свидетеля.",
+	  "text_en": "Tap the dialogue icon to begin questioning the witness."
+	},
+	{
+	  "speaker": "Mei",
+	  "text_ru": "Я вышла на пробежку утром и увидела, что машина стоит и работают дворники. Это было странно, но я подумала, что кто-то вышел ненадолго.",
+	  "text_en": "I went jogging in the morning and saw the car with its wipers running. It seemed odd, but I thought someone had just stepped out for a moment."
+	},
+	{
+	  "speaker": "Mei",
+	  "text_ru": "Через час, когда я шла на работу, машина всё ещё стояла на том же месте с включенными дворниками. Это показалось подозрительным.",
+	  "text_en": "An hour later, on my way to work, I noticed the car was still there with the wipers on. That felt suspicious."
+	},
+	{
+	  "speaker": "Mei",
+	  "text_ru": "Я подошла ближе и увидела на заднем сиденье двух женщин. Они откинулись назад, как будто спали.",
+	  "text_en": "I came closer and saw two women in the back seat, leaning back as if they were asleep."
+	},
+	{
+	  "speaker": "Mei",
+	  "text_ru": "Мне показалось, что им плохо. Я постучала в окно, но они не реагировали. Тогда я вызвала скорую и полицию.",
+	  "text_en": "They looked unwell. I knocked on the window but they didn’t react. Then I called an ambulance and the police."
+	}
+  ],
+
+  "find_clue": [
+	{
+	  "speaker": "Di",
+	  "text_ru": "Вы заметили что-то еще? Возможно, что-то необычное?",
+	  "text_en": "Did you notice anything else? Maybe something unusual?"
+	},
+	{
+	  "speaker": "Mei",
+	  "text_ru": "Да, я заметила, что кожа была красного оттенка. Это сразу бросилось в глаза.",
+	  "text_en": "Yes, I noticed the skin had a reddish tint. It immediately caught my eye.",
+	  "action": "add_clue:red_skin"
+	},
+	{
+	  "speaker": "Narrator",
+	  "text_ru": "Улика добавлена в инвентарь.",
+	  "text_en": "Clue added to inventory."
+	}
+  ],
+
+  "after_interview": [
+	{
+	  "speaker": "Daniel",
+	  "text_ru": "Спасибо, мисс Мэй, вы можете идти.",
+	  "text_en": "Thank you, Ms. Mei. You may go."
+	},
+	{
+	  "speaker": "Narrator",
+	  "text_ru": "Свидетель не заметила ничего особенного.",
+	  "text_en": "The witness didn’t notice anything else remarkable."
+	},
+	{
+	  "speaker": "Daniel",
+	  "text_ru": "Мисс Ди, давайте осмотрим машину. Нужно понять, кому она принадлежит и найти родственников.",
+	  "text_en": "Miss Di, shall we inspect the car? We need to find out who it belongs to and locate her relatives."
+	}
+  ],
+
+  "car_inspection": [
+	{
+	  "speaker": "Narrator",
+	  "text_ru": "Нажмите на значок глаза, чтобы сделать осмотр.",
+	  "text_en": "Tap the eye icon on the car to begin the inspection."
+	},
+	{
+	  "speaker": "Narrator",
+	  "text_ru": "В багажнике вы нашли бутылку воды, мяч для фитнеса и белую каску.",
+	  "text_en": "In the trunk you found a water bottle, a yoga ball, and a white helmet."
+	},
+	{
+	  "speaker": "System",
+	  "text_ru": "Добавить предмет в инвентарь?",
+	  "text_en": "Add item to inventory?",
+	  "action": "prompt:add_item"
+	}
+  ],
+
+  "found_documents": [
+	{
+	  "speaker": "Narrator",
+	  "text_ru": "В бардачке лежали документы на имя Сью Канагавы.",
+	  "text_en": "You found documents in the glove compartment under the name Syu Kanagawa."
+	},
+	{
+	  "speaker": "Daniel",
+	  "text_ru": "Нам нужно связаться с её родными и задать несколько вопросов.",
+	  "text_en": "We need to contact her family and ask a few questions."
+	},
+	{
+	  "speaker": "Daniel",
+	  "text_ru": "Ди, позвони в офис полиции, узнай, есть ли у неё муж или родственники.",
+	  "text_en": "Di, call the station — check if she has a husband or relatives."
+	}
+  ],
+
+  "confirm_family": [
+	{
+	  "speaker": "Mei",
+	  "text_ru": "Да, у неё есть муж. Он работает в госпитале в десяти минутах отсюда.",
+	  "text_en": "Yes, she has a husband. He works at a hospital ten minutes from here."
+	},
+	{
+	  "speaker": "Mei",
+	  "text_ru": "Может, вы поговорите с ним без меня? Мне тяжело даются такие разговоры.",
+	  "text_en": "Maybe you can talk to him without me. These conversations are hard for me."
+	},
+	{
+	  "speaker": "Daniel",
+	  "text_ru": "Тебе пора привыкнуть к такому, Ди. Это часть нашей работы. Поехали к госпиталю к мужу Сью Канагавы.",
+	  "text_en": "You’ll have to get used to it, Di. It’s part of our job. Let’s head to the hospital to meet Syu’s husband.",
+	  "action": "goto_scene:lab_scene"
+	}
+  ]
+}
