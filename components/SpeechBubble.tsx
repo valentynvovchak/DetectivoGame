@@ -16,6 +16,7 @@ export default function SpeechBubble({
          side,
          speaker,
          mode = "medium",
+         charMode
      }: SpeechBubbleProps) {
     // размеры пузыря
     const scale = mode === "small" ? 0.6 : mode === "large" ? 1 : 0.8;
@@ -23,9 +24,9 @@ export default function SpeechBubble({
     // позиционирование
     const bubbleStyle =
         side === "left"
-            ? { left: width * (isTablet ? 0.30 : 0.18), alignItems: "center" }
+            ? { left: width * (isTablet ? 0.30 : charMode === "cut" ? 0.4 : 0.28), alignItems: "center" }
             : side === "right"
-                ? { right: width * (isTablet ? 0.30 : 0.18), alignItems: "center" }
+                ? { right: width * (isTablet ? 0.30 : charMode === "cut" ? 0.4 : 0.28), alignItems: "center" }
                 : { alignItems: "center" };
 
     const textContainerStyle = {
@@ -38,9 +39,24 @@ export default function SpeechBubble({
         justifyContent: "flex-start",
     };
 
+    if (speaker == "Narrator") {
+        return (
+            <View style={[styles.narrator_container]}>
+                <Text style={styles.narratorText}>{text}</Text>
+            </View>
+        )
+    }
 
     return (
-        <View style={[styles.container, bubbleStyle]}>
+        <View style={[
+            styles.container,
+            bubbleStyle,
+            {
+                bottom: charMode === 'cut'
+                    ? height * (isTablet ? 0.68 : (Platform.OS === "web" ? 0.62 : 0.645))
+                    : height * (isTablet ? 0.78 : (Platform.OS === "web" ? 0.72 : 0.745))
+            }
+        ]}>
             <Image
                 source={require("../assets/ui/прямая речь прямоугольник для игры готовый 1.png")}
                 style={[
@@ -60,7 +76,7 @@ export default function SpeechBubble({
 const styles = StyleSheet.create({
     container: {
         position: "absolute",
-        bottom: height * (isTablet ? 0.78 : (Platform.OS === "web" ? 0.72 : 0.745)), // над персонажем
+        // bottom: height * (isTablet ? 0.78 : (Platform.OS === "web" ? 0.72 : 0.745)), // над персонажем
         justifyContent: "center", // выравнивание вниз (а не по центру!)
         alignItems: "center",
         // maxWidth: 300,
@@ -73,7 +89,6 @@ const styles = StyleSheet.create({
         width: width * (isSmallScreen ? 0.55 : 0.60),
         height: height * (isSmallScreen ? 0.2 : 0.2),
         // tintColor: "white",
-
     },
     // textContainer: {
     //     // transform: "translateY(20)",
@@ -91,7 +106,28 @@ const styles = StyleSheet.create({
     },
     text: {
         color: "#222",
-        fontSize: isSmallScreen ? 14 : isTablet ? 20 : 16,
-        lineHeight: isSmallScreen ? 19 : isTablet ? 25 : 22,
+        fontSize: isSmallScreen ? 13 : isTablet ? 20 : 15,
+        lineHeight: isSmallScreen ? 17 : isTablet ? 25 : 20,
     },
+    narrator_container: {
+        backgroundColor: '#FFEE7D',
+        borderStyle: 'solid',
+        borderRadius: 10,
+        borderWidth: 1,
+        borderColor: '#418AFE',
+        paddingVertical: 10,
+        paddingHorizontal: 20,
+        position: "absolute",
+        // bottom: height * (isTablet ? 0.78 : (Platform.OS === "web" ? 0.72 : 0.745)), // над персонажем
+        bottom: height * 0.2,
+        width: width * 0.9,
+        maxWidth: 500,
+        justifyContent: "center",
+        alignItems: "center",
+    },
+    narratorText: {
+        color: "#222",
+        fontSize: isSmallScreen ? 16 : isTablet ? 22 : 17,
+        lineHeight: isSmallScreen ? 21 : isTablet ? 27 : 22,
+    }
 });

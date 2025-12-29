@@ -61,7 +61,7 @@
 			{
 				"id": 2,
 				"characters": [
-					{ "id": "Mei", "side": "left", "sprite": "mai_found_the_car", "mode": "full" }
+					{ "id": "Mei", "side": "left", "sprite": "mai_found_the_car_with_icon", "mode": "full" }
 				],
 				"speaker": "Narrator",
 				"text": {
@@ -77,13 +77,25 @@
 				],
 				"speaker": "Mei",
 				"text": {
-					"ru": "Я вышла на пробежку утром и увидела, что машина стоит и работают дворники. Это было странно, но я подумала, что кто-то вышел ненадолго.",
-					"en": "I went jogging in the morning and saw the car with its wipers running. It seemed odd, but I thought someone had just stepped out for a moment."
+					"ru": "Я вышла на пробежку утром и увидела, что машина стоит и работают дворники.",
+					"en": "I went jogging in the morning and saw the car with its wipers running."
 				},
 				"bubble_mode": "large"
 			},
 			{
 				"id": 4,
+				"characters": [
+					{ "id": "Mei", "side": "left", "sprite": "mai_found_the_car", "mode": "zoom" }
+				],
+				"speaker": "Mei",
+				"text": {
+					"ru": "Это было странно, но я подумала, что кто-то вышел ненадолго.",
+					"en": "It seemed odd, but I thought someone had just stepped out for a moment."
+				},
+				"bubble_mode": "medium"
+			},
+			{
+				"id": 5,
 				"characters": [
 					{ "id": "Mei", "side": "left", "sprite": "mai_found_the_car", "mode": "zoom" }
 				],
@@ -95,7 +107,7 @@
 				"bubble_mode": "large"
 			},
 			{
-				"id": 5,
+				"id": 6,
 				"characters": [
 					{ "id": "Mei", "side": "left", "sprite": "mai_found_the_car", "mode": "zoom" }
 				],
@@ -107,52 +119,101 @@
 				"bubble_mode": "large"
 			},
 			{
-				"id": 6,
+				"id": 7,
 				"characters": [
 					{ "id": "Mei", "side": "left", "sprite": "mai_found_the_car", "mode": "zoom" }
 				],
 				"speaker": "Mei",
 				"text": {
-					"ru": "Мне показалось, что им плохо. Я постучала в окно, но они не реагировали. Тогда я вызвала скорую и полицию.",
-					"en": "They looked unwell. I knocked on the window but they didn’t react. Then I called an ambulance and the police."
+					"ru": "Мне показалось, что им плохо. Я постучала в окно, но они не реагировали.",
+					"en": "They looked unwell. I knocked on the window but they didn’t react."
+				},
+				"bubble_mode": "medium"
+			},
+			{
+				"id": 8,
+				"characters": [
+					{ "id": "Mei", "side": "left", "sprite": "mai_found_the_car", "mode": "zoom" }
+				],
+				"speaker": "Mei",
+				"text": {
+					"ru": "Тогда я вызвала скорую и полицию.",
+					"en": "Then I called an ambulance and the police."
+				},
+				"bubble_mode": "small"
+			},
+			{
+				"id": 9,
+				"characters": [
+					{ "id": "Di", "side": "right", "sprite": "di_interesting", "mode": "zoom" }
+				],
+				"speaker": "Di",
+				"text": {
+					"ru": "Вы заметили что-то еще? Возможно, что-то необычное?",
+					"en": "Did you notice anything else? Maybe something unusual?"
+				},
+				"bubble_mode": "medium"
+			},
+			{
+				"id": 10,
+				"characters": [
+					{ "id": "Mei", "side": "left", "sprite": "mai_found_the_car", "mode": "zoom" }
+				],
+				"speaker": "Mei",
+				"text": {
+					"ru": "Да, я заметила что кожа была  красного оттенка. Это сразу бросилось в глаза.",
+					"en": "Yes, I noticed that the skin had a reddish tone. It immediately caught my eye."
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 11,
+				"characters": [
+					{ "id": "Daniel", "side": "right", "sprite": "daniel_serious", "mode": "zoom" }
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "Спасибо ms Mei, вы можете идти.",
+					"en": "Thanks ms Mei, you can leave."
+				},
+				"bubble_mode": "small"
+			},
+			{
+				"id": 12,
+				"characters": [
+					{ "id": "Daniel", "side": "right", "sprite": "daniel_thinking", "mode": "cut" }
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "Свидетель не заметила ничего особенного..",
+					"en": "The witness didn't notice anything special.."
+				},
+				"bubble_mode": "medium"
+			},
+			{
+				"id": 13,
+				"characters": [
+					{ "id": "Daniel", "side": "right", "sprite": "daniel_thinking", "mode": "cut" }
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "Miss Di, давайте осмотрим машину? Нам нужно понять кому она принадлежит и найти родственников.",
+					"en": "Miss Di, shall we inspect the car? We need to find out who it belongs to and track down any relatives."
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 14,
+				"characters": [],
+				"speaker": "Narrator",
+				"text": {
+					"ru": "- Нажмите на знак глазок авто чтобы сделать осмотр.",
+					"en": "– Tap the car’s eye icon to start the inspection."
 				},
 				"bubble_mode": "large"
 			}
 		]
 	},
-
-	"witness_dialogue": [
-	{
-	  "speaker": "Daniel",
-	  "text_ru": "Мисс Мэй, расскажите, как вы нашли машину и женщин?",
-	  "text_en": "Ms. Mei, could you tell us how you found the car and the women?"
-	},
-	{
-	  "speaker": "Narrator",
-	  "text_ru": "Нажмите на знак диалога, чтобы начать опрос свидетеля.",
-	  "text_en": "Tap the dialogue icon to begin questioning the witness."
-	},
-	{
-	  "speaker": "Mei",
-	  "text_ru": "Я вышла на пробежку утром и увидела, что машина стоит и работают дворники. Это было странно, но я подумала, что кто-то вышел ненадолго.",
-	  "text_en": "I went jogging in the morning and saw the car with its wipers running. It seemed odd, but I thought someone had just stepped out for a moment."
-	},
-	{
-	  "speaker": "Mei",
-	  "text_ru": "Через час, когда я шла на работу, машина всё ещё стояла на том же месте с включенными дворниками. Это показалось подозрительным.",
-	  "text_en": "An hour later, on my way to work, I noticed the car was still there with the wipers on. That felt suspicious."
-	},
-	{
-	  "speaker": "Mei",
-	  "text_ru": "Я подошла ближе и увидела на заднем сиденье двух женщин. Они откинулись назад, как будто спали.",
-	  "text_en": "I came closer and saw two women in the back seat, leaning back as if they were asleep."
-	},
-	{
-	  "speaker": "Mei",
-	  "text_ru": "Мне показалось, что им плохо. Я постучала в окно, но они не реагировали. Тогда я вызвала скорую и полицию.",
-	  "text_en": "They looked unwell. I knocked on the window but they didn’t react. Then I called an ambulance and the police."
-	}
-  ],
 
   "find_clue": [
 	{

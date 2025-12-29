@@ -4,10 +4,14 @@ import { Link } from "expo-router";
 import SettingsModal from "@/components/SettingsModal";
 import {isSmallScreen, isTablet} from "@/styles/global";
 import InfoModal from "@/components/InfoModal";
+import {useGameStore} from "@/store/gameStore";
+import InventoryModal from "@/components/InventoryModal";
 
 export default function MainMenu() {
+    const {hasNewItems} = useGameStore();
     const [openSettings, setOpenSettings] = useState(false);
     const [openInfo, setOpenInfo] = useState(false);
+    const [inventoryVisible, setInventoryVisible] = useState(false);
 
     return (
         <>
@@ -32,8 +36,9 @@ export default function MainMenu() {
 
                 {/* Вторая строка */}
                 <View style={styles.row}>
-                    <TouchableOpacity style={styles.iconWrap}>
+                    <TouchableOpacity onPress={() => setInventoryVisible(true)} style={styles.iconWrap}>
                         <Image source={require("../assets/icons/briefcase.png")} style={styles.icon} />
+                        {hasNewItems && <View style={styles.redDot} />}
                     </TouchableOpacity>
 
                     <TouchableOpacity style={styles.iconWrap}>
@@ -45,6 +50,10 @@ export default function MainMenu() {
             {/* Модалки */}
             <SettingsModal visible={openSettings} onClose={() => setOpenSettings(false)} />
             <InfoModal visible={openInfo} onClose={() => setOpenInfo(false)} />
+            <InventoryModal
+                visible={inventoryVisible}
+                onClose={() => setInventoryVisible(false)}
+            />
         </>
     );
 }
@@ -70,6 +79,7 @@ const styles = StyleSheet.create({
         marginVertical: 6, // Отступ между рядами
     },
     iconWrap: {
+        position: 'relative',
         backgroundColor: "rgba(255,255,255,0.9)",
         padding: 10,
         borderRadius: 12,
@@ -93,5 +103,14 @@ const styles = StyleSheet.create({
         width: isTablet ? 48 : 28,
         height: isTablet ? 48 : 28,
         resizeMode: "contain",
+    },
+    redDot: {
+        position: "absolute",
+        right: -4,
+        top: -4,
+        width: 15,
+        height: 15,
+        borderRadius: 6,
+        backgroundColor: "#FF3B30",
     },
 });

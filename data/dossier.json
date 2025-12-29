@@ -1,0 +1,27 @@
+{
+  "witness_mei": {
+    "ru": {
+      "type": "Свидетель",
+      "name": "Като Мэй",
+      "occupation": "Медсестра городской клиники",
+      "status": "Свидетель — первообнаружившая тела",
+      "appearance": {
+        "sprite": "mai_found_the_car",
+        "mood": "взволнована, но спокойна"
+      },
+      "description": "Вышла на пробежку и заметила желтый автомобиль с работающими дворниками. По пути на работу увидела, что машина всё ещё стоит с включёнными дворниками. Подошла ближе и заметила двух женщин на заднем сиденье. Постучала в окно, реакции не последовало. Немедленно вызвала скорую помощь и полицию."
+    },
+    "en": {
+      "type": "Witness",
+      "name": "Kato Mei",
+      "occupation": "Nurse at the city clinic",
+      "status": "Witness — first to discover the bodies",
+      "appearance": {
+        "sprite": "mai_found_the_car",
+        "mood": "distressed but calm"
+      },
+      "description": "Went jogging in the morning and noticed a yellow car with its wipers running. On her way to work, she saw the car still standing with the wipers on. She approached and saw two women in the back seat. Knocked on the window, but there was no response. Immediately called an ambulance and the police."
+    }
+  }
+
+}
