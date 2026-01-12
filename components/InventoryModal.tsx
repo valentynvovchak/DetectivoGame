@@ -8,32 +8,16 @@ import {
     ScrollView,
     Image,
     StyleSheet,
-    Dimensions, TouchableWithoutFeedback,
+    TouchableWithoutFeedback,
 } from "react-native";
 import { useGameStore } from "@/store/gameStore";
 import factsData from "@/data/facts.json";
 import dossierData from "@/data/dossier.json";
-import {height} from "@/styles/global";
 
 import { RESOURCES } from "@/assets/resources";
-
-// --- ЭКРАН ---
-const { width: SCREEN_WIDTH, height: SCREEN_HEIGHT } = Dimensions.get("window");
-
-// --- ИСХОДНЫЙ РАЗМЕР БЛОКНОТА (подставь реальные пропорции PNG) ---
-// const DESIGN_WIDTH = 1240;
-const DESIGN_WIDTH = 1240;
-const DESIGN_HEIGHT = 1754;
-
-// Масштаб так, чтобы блокнот влез по ширине и по высоте, + небольшой отступ (0.95)
-const SCALE = Math.min(
-    (SCREEN_WIDTH * 0.99) / DESIGN_WIDTH,
-    (SCREEN_HEIGHT * 0.99) / DESIGN_HEIGHT
-);
-
-// Реальные размеры блокнота на этом устройстве
-const NOTEBOOK_WIDTH = DESIGN_WIDTH * SCALE;
-const NOTEBOOK_HEIGHT = DESIGN_HEIGHT * SCALE;
+import {getBackground, getSprite} from "@/tools/utils";
+import SVGImage from "@/components/small/SVGImage";
+import {NOTEBOOK_WIDTH, NOTEBOOK_HEIGHT, SCALE} from "@/tools/constants";
 
 // Коэффициенты (как у тебя, только теперь это доли от блокнота)
 const TABS_TOP_K = 0.184;
@@ -107,6 +91,7 @@ export default function InventoryModal({ visible, onClose }: { visible: boolean;
                                             key={tab.key}
                                             style={[
                                                 styles.tab,
+                                                {paddingBottom: 8 * SCALE, paddingTop: lang == 'ru' ? 0 : 8 * SCALE}, // чуть масштабируем, чтобы на планшете не были микроскопическими
                                                 activeTab === tab.key && styles.activeTab,
                                                 {borderRightWidth: index !== tabs.length-1 ? 10 * SCALE : 0}
                                             ]}
@@ -118,127 +103,13 @@ export default function InventoryModal({ visible, onClose }: { visible: boolean;
                                 </View>
 
                                 {/* Контент */}
-                                {/*<ScrollView style={styles.content}>
-                                    {list.length === 0 && (
-                                        <Text style={styles.emptyText}>
-                                            {lang === "ru" ? "Пока ничего нет..." : "Nothing yet..."}
-                                        </Text>
-                                    )}
-
-                                    {list.map((item: any, idx: number) => (
-                                        <View key={idx} style={styles.entry}>
-                                            <View style={styles.entryTextBlock}>
-                                                <Text style={styles.entryTitle}>
-                                                    {item.name || item.title || `${lang === "ru" ? "Без названия" : "Untitled"}`}
-                                                </Text>
-                                                {item.description && (
-                                                    <Text style={styles.entryDescription}>{item.description}</Text>
-                                                )}
-                                            </View>
-                                        </View>
-                                    ))}
-                                </ScrollView>*/}
                                 <ScrollView style={styles.content}>
                                     {list.length === 0 && (
                                         <Text style={styles.emptyText}>
                                             {lang === "ru" ? "Пока ничего нет..." : "Nothing yet..."}
                                         </Text>
                                     )}
-
-                                    {/*{list.map((item: any, idx: number) => (*/}
-                                    {/*    <View key={idx} style={styles.entryCard}>*/}
-                                    {/*        /!* Верхняя строка: номер + заголовок *!/*/}
-                                    {/*        <View style={styles.entryHeaderRow}>*/}
-                                    {/*            <View style={styles.entryNumberCircle}>*/}
-                                    {/*                <Text style={[*/}
-                                    {/*                    // {*/}
-                                    {/*                    //     fontSize: lang == 'en' ? 52*SCALE : 42*SCALE,*/}
-                                    {/*                    //     fontWeight: lang == 'en' ? 700: 400*/}
-                                    {/*                    // },*/}
-                                    {/*                    styles.entryNumberText,*/}
-                                    {/*                ]}>{idx + 1}</Text>*/}
-                                    {/*            </View>*/}
-                                    {/*            <Text*/}
-                                    {/*                style={styles.entryTitle}*/}
-                                    {/*                numberOfLines={2}*/}
-                                    {/*                ellipsizeMode="tail"*/}
-                                    {/*            >*/}
-                                    {/*                {item.name ||*/}
-                                    {/*                    item.title ||*/}
-                                    {/*                    (lang === "ru" ? "Без названия" : "Untitled")}*/}
-                                    {/*            </Text>*/}
-                                    {/*        </View>*/}
-
-                                    {/*        /!* Нижняя часть: иконка слева + линейки с текстом справа *!/*/}
-                                    {/*        /!*<View style={styles.entryBodyRow}>*!/*/}
-                                    {/*        /!*    <View style={styles.entryIconBox}>*!/*/}
-                                    {/*        /!*        /!* Если появятся иконки, положишь их сюда *!/*!/*/}
-                                    {/*        /!*       {item.icon && (*!/*/}
-                                    {/*        /!*          <Image source={item.icon} style={styles.entryIconImage} />*!/*/}
-                                    {/*        /!*       )}*!/*/}
-                                    {/*        /!*    </View>*!/*/}
-
-                                    {/*        /!*    <View style={styles.entryLinesBlock}>*!/*/}
-                                    {/*        /!*        /!* Линейки фона *!/*!/*/}
-                                    {/*        /!*        {Array.from({ length: LINES_COUNT }).map((_, i) => (*!/*/}
-                                    {/*        /!*            <View key={i} style={styles.entryLine} />*!/*/}
-                                    {/*        /!*        ))}*!/*/}
-
-                                    {/*        /!*        /!* Текст по линеечкам (поверх) *!/*!/*/}
-                                    {/*        /!*        {item.description && (*!/*/}
-                                    {/*        /!*            <Text style={styles.entryDescription}>{item.description}</Text>*!/*/}
-                                    {/*        /!*        )}*!/*/}
-                                    {/*        /!*    </View>*!/*/}
-                                    {/*        /!*</View>*!/*/}
-
-                                    {/*        <View style={styles.entryBody}>*/}
-                                    {/*            /!* Иконка (абсолютно, внутри текстовой области) *!/*/}
-                                    {/*            <View style={styles.entryIconBox}>*/}
-                                    {/*                {item.icon && <Image source={RESOURCES[item.icon]} style={styles.entryIconImage} />}*/}
-                                    {/*            </View>*/}
-
-                                    {/*            /!* Линейки + текст *!/*/}
-                                    {/*            <View style={styles.entryLinesBlock}>*/}
-                                    {/*                /!* Линейки фона *!/*/}
-                                    {/*                {Array.from({ length: LINES_COUNT }).map((_, i) => (*/}
-                                    {/*                    <View*/}
-                                    {/*                        key={i}*/}
-                                    {/*                        style={[*/}
-                                    {/*                            styles.entryLine,*/}
-                                    {/*                            // первые строки короче, чтобы "обходить" иконку*/}
-                                    {/*                            i < 4 ? styles.entryLineShort : styles.entryLineFull,*/}
-                                    {/*                        ]}*/}
-                                    {/*                    />*/}
-                                    {/*                ))}*/}
-
-                                    {/*                /!* Текст поверх *!/*/}
-                                    {/*                /!*{item.description && (*!/*/}
-                                    {/*                /!*    <Text style={styles.entryDescription}>{item.description}</Text>*!/*/}
-                                    {/*                /!*)}*!/*/}
-
-                                    {/*                {item.descriptionTop && (*/}
-                                    {/*                    <>*/}
-                                    {/*                        <Text*/}
-                                    {/*                            style={[styles.entryDescription, styles.entryDescriptionShort]}*/}
-                                    {/*                            // numberOfLines={4}*/}
-                                    {/*                        >*/}
-                                    {/*                            {item.descriptionTop}*/}
-                                    {/*                        </Text>*/}
-
-                                    {/*                        <Text style={[styles.entryDescription, styles.entryDescriptionFull]}>*/}
-                                    {/*                            {item.descriptionBottom}*/}
-                                    {/*                        </Text>*/}
-                                    {/*                    </>*/}
-                                    {/*                )}*/}
-
-
-                                    {/*            </View>*/}
-                                    {/*        </View>*/}
-
-                                    {/*    </View>*/}
-                                    {/*))}*/}
-
-                                    {list.map((item: any, idx: number) => {
+                                    {activeTab === "facts" && list.map((item: any, idx: number) => {
                                         const it = tItem(item, lang as any);
 
                                         return (
@@ -292,6 +163,27 @@ export default function InventoryModal({ visible, onClose }: { visible: boolean;
                                         );
                                     })}
 
+                                    {activeTab === "dossier" && list.map((person: any, idx: number) => (
+                                        <>
+                                            <View key={idx} style={styles.dossierCard}>
+                                                <View style={styles.dossierCardInner}>
+                                                    {/* портрет */}
+                                                    <View style={styles.dossierPortraitWrap}>
+                                                        <SVGImage Image={getSprite(person.appearance.sprite)} style={styles.dossierPortrait}/>
+                                                    </View>
+
+                                                    {/* текст */}
+                                                    <View style={styles.dossierInfo}>
+                                                        <Text style={styles.dossierName}>{person.name}</Text>
+                                                        <Text style={styles.dossierOccupation}>({person.occupation})</Text>
+                                                        <Text style={styles.dossierStatus}>{person.status}</Text>
+                                                    </View>
+                                                </View>
+                                                <Text style={styles.dossierDescription}> {person.description}</Text>
+                                            </View>
+
+                                        </>
+                                    ))}
 
                                 </ScrollView>
                             </ImageBackground>
@@ -337,20 +229,22 @@ const styles = StyleSheet.create({
     tab: {
         flex: 1,
         // paddingTop: 2,
-        fontFamily: "BebasNeue-Regular, sans-serif",
-        paddingVertical: 8 * SCALE, // чуть масштабируем, чтобы на планшете не были микроскопическими
+        fontFamily: "BebasNeue-Regular, Oswald-Regular, sans-serif",
+        // paddingVertical: 8 * SCALE, // чуть масштабируем, чтобы на планшете не были микроскопическими
         // borderRightWidth: 0,
         borderColor: "#000",
         alignItems: "center",
+        // textTransform: "uppercase"
     },
     activeTab: {
         backgroundColor: "rgb(208 154 86)",
     },
     tabText: {
-        fontFamily: "BebasNeue-Regular, sans-serif",
+        fontFamily: "BebasNeue-Regular, Oswald-Regular, sans-serif",
         // fontWeight: "bold",
         color: "#2B1A0C",
         fontSize: 53 * SCALE,
+        // textTransform: "uppercase"
     },
 
     // область текста внутри «страницы»
@@ -398,6 +292,7 @@ const styles = StyleSheet.create({
         textAlign: "center",
         color: "#222",
         fontStyle: "italic",
+        fontSize: 60 * SCALE,
         marginTop: 20 * SCALE,
     },
 
@@ -506,7 +401,7 @@ const styles = StyleSheet.create({
         right: 0,
         bottom: 0,
 
-        fontFamily: "Pacifico-Regular",
+        fontFamily: "Pacifico-Regular, sans-serif",
         fontSize: 50 * SCALE,
         lineHeight: 64 * SCALE,
         color: "#3b2a1b",
@@ -541,11 +436,82 @@ const styles = StyleSheet.create({
     },
 
     entryTextBase: {
-        fontFamily: "Pacifico-Regular",
+        fontFamily: "Pacifico-Regular, sans-serif",
         fontSize: 50 * SCALE,
         lineHeight: 63.2 * SCALE,
         color: "#3b2a1b",
     },
+
+    // Dossier
+    dossierCard: {
+        height: 1050 * SCALE,
+        // flexDirection: "row",
+        backgroundColor: "rgba(240, 208, 153, 0.9)",
+        borderRadius: 25 * SCALE,
+        // borderWidth: 8 * SCALE,
+        // borderColor: "#2b1a0c",
+        marginBottom: 50 * SCALE,
+        overflow: "hidden",
+    },
+
+    dossierCardInner: {
+        flexDirection: "row",
+    },
+
+    dossierPortraitWrap: {
+        width: 300 * SCALE,
+        height: 350 * SCALE,
+        overflow: "hidden",
+        paddingTop: 30 * SCALE,
+        paddingLeft: 30 * SCALE,
+        borderTopLeftRadius: 20 * SCALE,
+        borderBottomLeftRadius: 20 * SCALE,
+    },
+
+    dossierPortrait: {
+        width: "150%",          // чуть увеличиваем, чтобы обрезалось по центру
+        height: "100%",
+        resizeMode: "cover",
+        marginLeft: "-20%",     // сдвигаем, чтобы показать лицо ближе к центру
+    },
+
+    dossierInfo: {
+        flex: 1,
+        padding: 30 * SCALE,
+        paddingBottom: 15 * SCALE,
+        justifyContent: "center",
+    },
+
+    dossierName: {
+        fontFamily: "BebasNeue-Regular",
+        fontSize: 70 * SCALE,
+        color: "#2b1a0c",
+    },
+
+    dossierOccupation: {
+        fontSize: 37 * SCALE,
+        color: "#3b2a1b",
+        marginBottom: 10 * SCALE,
+    },
+
+    dossierStatus: {
+        marginTop: 25 * SCALE,
+        fontSize: 45 * SCALE,
+        color: "#5b3a21",
+        fontStyle: "italic",
+        marginBottom: 20 * SCALE,
+    },
+
+    dossierDescription: {
+        fontFamily: "Pacifico-Regular, sans-serif",
+        fontSize: 50 * SCALE,
+        color: "#3b2a1b",
+        lineHeight: 68 * SCALE,
+        padding: 30 * SCALE,
+        textAlign: 'justify',
+        textDecorationLine: 'underline'
+    },
+
 });
 
 

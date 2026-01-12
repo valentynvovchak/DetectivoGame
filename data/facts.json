@@ -1,11 +1,5 @@
 {
   "red_skin_tone": {
-    "name": "Red skin tone",
-    "icon": "red-skin-tone.png",
-    "importance": "medium",
-    "descriptionTop": "May noticed that the deceased's skin was reddish, a characteristic sign of carbon monoxide poisoning.",
-    "descriptionBottom": "",
-
     "ru": {
       "name": "Красноватый оттенок кожи",
       "icon": "red-skin-tone.png",

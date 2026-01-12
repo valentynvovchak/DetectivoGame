@@ -26,7 +26,7 @@ export default function Index() {
                 resizeMode="cover"
             >
                 <View style={globalStyles.menu}>
-                    <Text style={styles.title}>{lang === "ru" ? "Детектив Ди" : "Detective Di"}</Text>
+                    <Text style={styles.title}>{lang === "ru" ? "Детектив Д" : "Detective D"}</Text>
                     {/*<View style={styles.btn}>*/}
                     {/*    <Link style={styles.btnText} href="street_intro">{lang === "ru" ? "Начать" : "Start"}</Link>*/}
                     {/*</View>*/}
@@ -48,7 +48,7 @@ export default function Index() {
                         <Pressable
                             style={styles.btn}
                             onPress={async () => {
-                                fadeToScene(currentScene); // установка первой сцены
+                                fadeToScene(currentScene); // установка очередной сцены
                             }}
                         >
                             <Text style={styles.btnText}>{lang === "ru" ? "Продолжить" : "Continue"}</Text>

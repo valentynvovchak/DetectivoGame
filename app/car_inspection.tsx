@@ -11,9 +11,10 @@ import SpeechBubble from "@/components/SpeechBubble";
 import SceneFade from "@/components/SceneFade";
 import ClueFlyAnimation from "@/components/animations/ClueFlyAnimation";
 import {RESOURCES} from "@/assets/resources";
+import {NOTEBOOK_WIDTH, NOTEBOOK_HEIGHT, SCALE} from "@/tools/constants";
+import AddModal from "@/components/AddModal";
 
-
-export default function WitnessScene() {
+export default function CarInspectionScene() {
     const { currentScene, currentLine, nextLine, lang, changeScene, addToData, hasItem } = useGameStore();
     const scene = dialogs[currentScene];
     const line = scene?.dialog?.[currentLine];
@@ -25,6 +26,7 @@ export default function WitnessScene() {
     const [background, setBackground] = useState(scene.background || "");
     const [resizeMode, setResizeMode] = useState(line?.resizeMode || "cover");
     const [screenClickBlocked, setScreenClickBlocked] = useState(false);
+    const [bottleAddModal, setBottleAddModal] = useState(false);
 
     const fadeAnim = useRef(new Animated.Value(0)).current;
 
@@ -42,12 +44,19 @@ export default function WitnessScene() {
     }, [line]);
 
     const handleHotspotPress = (hotspot, fadeToScene) => {
-        if (hotspot.type === "inspect") {
+        if (hotspot.type === "two_bottles:add_item") {
             // addToData("evidence", "car_inspected");
-            setClicked(true);
-            fadeToScene("car_inspection");
+            // setClicked(true);
+            setBottleAddModal(true);
+            // fadeToScene("next_scene_name");
             // nextLine();
         }
+    };
+
+    const handleBottlesAdd = () => {
+        addToData("evidence", "two_bottles");
+        // fadeToScene("next_scene_name");
+        // nextLine();
     };
 
     return (
@@ -89,7 +98,7 @@ export default function WitnessScene() {
                             />
                         )}
 
-                        {line.id === 10 && !hasItem("facts", "red_skin_tone") && (
+                        {/*{line.id === 10 && !hasItem("facts", "red_skin_tone") && (
                             <ClueFlyAnimation
                                 text={lang == "ru" ? "Красноватый оттенок кожи" : "Red skin tone"}
                                 start={{ x: width*0.001, y: -height*0.28 }} // позиция бабла (можно вычислить)
@@ -100,7 +109,8 @@ export default function WitnessScene() {
                                     setShowAnim(false);
                                 }}
                             />
-                        )}
+                        )}*/}
+                        {line.id === 2 && setScreenClickBlocked(true)}
 
                         {hotspots.map((spot) => (
                             <TouchableOpacity
@@ -112,14 +122,14 @@ export default function WitnessScene() {
                                     {
                                         left: width * spot.x,
                                         top: height * spot.y,
-                                        width: width * spot.width,
-                                        height: width * spot.height,
+                                        // width: width * spot.width,
+                                        // height: height * spot.height,
                                     },
                                 ]}
                             >
                                 <Image
                                     source={RESOURCES[spot.icon]} // например icon_eye.png
-                                    // style={{ width: "100%", height: "100%", resizeMode: "contain" }}
+                                    style={{ height: height * spot.height, width: width * spot.width, resizeMode: "contain"}}
                                 />
                             </TouchableOpacity>
                         ))}
@@ -128,6 +138,14 @@ export default function WitnessScene() {
 
                         {/* 🔹 Затемнение для плавной смены фона */}
                         <Animated.View style={[styles.overlay, { opacity: fadeAnim }]} />
+
+                        {bottleAddModal && (
+                            <AddModal
+                                toggle={setBottleAddModal}
+                                onAdd={() => handleBottlesAdd()}
+                                position={line?.modal} // берет координаты прямо из JSON
+                            />
+                        )}
                     </ImageBackground>
                 </Pressable>
             )}

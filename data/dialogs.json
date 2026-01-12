@@ -1,9 +1,30 @@
 {
 	"street_intro": {
-		"background": "first_dialog",
+		"background": "street_closeup",
 		"dialog": [
 			{
 				"id": 1,
+				"resizeMode": "contain",
+				"menu": false
+			},
+			{
+				"id": 2,
+				"backgroundChange": "empty_yellow_car_mini_cooper_stay_on_the_road",
+				"resizeMode": "contain",
+				"menu": false
+			},
+			{
+				"id": 3,
+				"backgroundChange": "yellow_car_stays_on_the_road_with_killed_people",
+				"resizeMode": "contain",
+				"menu": false
+			},
+			{
+				"id": 4,
+				"backgroundChange": "first_dialog"
+			},
+			{
+				"id": 5,
 				"characters": [
 					{ "id": "Daniel", "side": "right", "sprite": "daniel_smile", "mode": "full" }
 				],
@@ -15,7 +36,7 @@
 				"bubble_mode": "large"
 			},
 			{
-				"id": 2,
+				"id": 6,
 				"characters": [
 					{ "id": "Di", "side": "left", "sprite": "di_without_cape", "mode": "full", "height_modifier": 0.95
 					},
@@ -29,7 +50,7 @@
 				"bubble_mode": "large"
 			},
 			{
-				"id": 3,
+				"id": 7,
 				"characters": [
 					{ "id": "Di", "side": "left", "sprite": "di_without_cape", "mode": "zoom", "height_modifier": 0.95 },
 					{ "id": "Daniel", "side": "right", "sprite": "daniel_smile", "mode": "zoom" }
@@ -43,6 +64,7 @@
 			}
 		]
 	},
+
 	"street_witness": {
 		"background": "first_dialog",
 		"dialog": [
@@ -210,66 +232,131 @@
 					"ru": "- Нажмите на знак глазок авто чтобы сделать осмотр.",
 					"en": "– Tap the car’s eye icon to start the inspection."
 				},
-				"bubble_mode": "large"
+				"bubble_mode": "large",
+				"hotspots": [
+					{
+						"id": "car_eye",
+						"type": "inspect",
+						"x": 0.37,
+						"y": 0.57,
+						"width": 0.12,
+						"height": 0.12,
+						"icon": "eye.png"
+					}
+				]
 			}
 		]
 	},
 
-  "find_clue": [
-	{
-	  "speaker": "Di",
-	  "text_ru": "Вы заметили что-то еще? Возможно, что-то необычное?",
-	  "text_en": "Did you notice anything else? Maybe something unusual?"
+	"car_inspection": {
+		"background": "inside_a_car",
+		"dialog": [
+			{
+				"id": 1,
+				"speaker": "Narrator",
+				"text": {
+					"ru": "В багажнике вы видите бутылку воды, мяч для фитнеса и белую каску.",
+					"en": "In the trunk you see a water bottle, a yoga ball, and a white helmet."
+				},
+				"hotspots": [
+					{
+						"type": "inspect",
+						"id": "car_eye",
+						"x": 0.43,
+						"y": 0.38,
+						"width": 0.09,
+						"height": 0.0675,
+						"icon": "eye.png"
+					},
+					{
+						"type": "inspect",
+						"id": "car_pointer",
+						"x": 0.48,
+						"y": 0.72,
+						"width": 0.12,
+						"height": 0.12,
+						"icon": "pointer.png"
+					},
+					{
+						"type": "inspect",
+						"id": "car_two_bottles",
+						"x": 0.37,
+						"y": 0.54,
+						"width": 0.29,
+						"height": 0.22,
+						"icon": "two_bottles.png"
+					}
+				]
+			},
+			{
+				"id": 2,
+				"hotspots": [
+					{
+						"type": "inspect",
+						"id": "car_eye",
+						"x": 0.43,
+						"y": 0.38,
+						"width": 0.09,
+						"height": 0.0675,
+						"icon": "eye.png"
+					},
+					{
+						"type": "inspect",
+						"id": "car_pointer",
+						"x": 0.48,
+						"y": 0.72,
+						"width": 0.12,
+						"height": 0.12,
+						"icon": "pointer.png"
+					},
+					{
+						"type": "two_bottles:add_item",
+						"id": "car_two_bottles",
+						"x": 0.37,
+						"y": 0.54,
+						"width": 0.29,
+						"height": 0.22,
+						"icon": "two_bottles.png"
+					}
+				]
+			},
+			{
+				"speaker": "Narrator",
+				"modal": {
+					"x": 0.41,
+					"y": 0.77,
+					"width": 0.62,
+					"height": 0.32
+				},
+				"text": {
+					"ru": "Добавить предмет в инвентарь?",
+					"en": "Add item to inventory?"
+				},
+				"hotspots": [
+					{
+						"type": "inspect",
+						"id": "car_eye",
+						"x": 0.43,
+						"y": 0.38,
+						"width": 0.09,
+						"height": 0.0675,
+						"icon": "eye.png"
+					},
+					{
+						"type": "inspect",
+						"id": "car_two_bottles",
+						"x": 0.37,
+						"y": 0.54,
+						"width": 0.29,
+						"height": 0.22,
+						"icon": "two_bottles.png"
+					}
+				],
+				"action": "prompt:add_item"
+			}
+		]
 	},
-	{
-	  "speaker": "Mei",
-	  "text_ru": "Да, я заметила, что кожа была красного оттенка. Это сразу бросилось в глаза.",
-	  "text_en": "Yes, I noticed the skin had a reddish tint. It immediately caught my eye.",
-	  "action": "add_clue:red_skin"
-	},
-	{
-	  "speaker": "Narrator",
-	  "text_ru": "Улика добавлена в инвентарь.",
-	  "text_en": "Clue added to inventory."
-	}
-  ],
 
-  "after_interview": [
-	{
-	  "speaker": "Daniel",
-	  "text_ru": "Спасибо, мисс Мэй, вы можете идти.",
-	  "text_en": "Thank you, Ms. Mei. You may go."
-	},
-	{
-	  "speaker": "Narrator",
-	  "text_ru": "Свидетель не заметила ничего особенного.",
-	  "text_en": "The witness didn’t notice anything else remarkable."
-	},
-	{
-	  "speaker": "Daniel",
-	  "text_ru": "Мисс Ди, давайте осмотрим машину. Нужно понять, кому она принадлежит и найти родственников.",
-	  "text_en": "Miss Di, shall we inspect the car? We need to find out who it belongs to and locate her relatives."
-	}
-  ],
-
-  "car_inspection": [
-	{
-	  "speaker": "Narrator",
-	  "text_ru": "Нажмите на значок глаза, чтобы сделать осмотр.",
-	  "text_en": "Tap the eye icon on the car to begin the inspection."
-	},
-	{
-	  "speaker": "Narrator",
-	  "text_ru": "В багажнике вы нашли бутылку воды, мяч для фитнеса и белую каску.",
-	  "text_en": "In the trunk you found a water bottle, a yoga ball, and a white helmet."
-	},
-	{
-	  "speaker": "System",
-	  "text_ru": "Добавить предмет в инвентарь?",
-	  "text_en": "Add item to inventory?",
-	  "action": "prompt:add_item"
-	}
-  ],
 
   "found_documents": [
 	{

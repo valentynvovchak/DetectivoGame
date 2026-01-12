@@ -10,7 +10,7 @@ const dataDefault = {
     hypotheses: []
 }
 
-interface GameState {
+export interface GameState {
     currentScene: string;
     currentLine: number;
     lang: "ru" | "en";

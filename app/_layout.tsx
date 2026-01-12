@@ -10,6 +10,7 @@ export default function RootLayout() {
         "BebasNeue-Regular": require("../assets/fonts/BebasNeue-Regular.ttf"),
         "Lobster-Regular": require("../assets/fonts/Lobster-Regular.ttf"),
         "Pacifico-Regular": require("../assets/fonts/Pacifico-Regular.ttf"),
+        "Oswald-Regular": require("../assets/fonts/oswald/static/Oswald-Regular.ttf"),
         // "MyFont-Bold": require("./assets/fonts/MyFont-Bold.ttf"),
         // "MyFont-Italic": require("./assets/fonts/MyFont-Italic.ttf"),
     });

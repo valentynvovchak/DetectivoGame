@@ -1,6 +1,7 @@
 import React from "react";
 import { View, StyleSheet, Dimensions, Platform } from "react-native";
 import {isTablet} from "@/styles/global";
+import {opacity} from "react-native-reanimated/lib/typescript/Colors";
 
 interface CharacterSpriteProps {
     side: "left" | "right" | "center";

@@ -8,12 +8,20 @@ import MaiFoundTheCarWithIcon from "../assets/sprites/mai_found_the_car_with_ico
 
 export const getBackground = (name: string) => {
     switch (name) {
+        case "street_closeup":
+            return require("../assets/backgrounds/street_closeup.jpg");
+        case "empty_yellow_car_mini_cooper_stay_on_the_road":
+            return require("../assets/backgrounds/empty_yellow_car_mini_cooper_stay_on_the_road.jpg");
+        case "yellow_car_stays_on_the_road_with_killed_people":
+            return require("../assets/backgrounds/yellow_car_stays_on_the_road_with_killed_people.jpg");
         case "first_dialog":
             return require("../assets/backgrounds/Фон первый диалог детективов у места преступления 9 (1).jpg");
         case "hospital":
             return require("../assets/backgrounds/Фон больница.jpg");
         case "dialog_about_distance_from_home":
             return require("../assets/backgrounds/Фон диалог детективов о расстоянии до дома 2.jpg");
+        case "inside_a_car":
+            return require("../assets/backgrounds/inside_a_car.jpg");
         default:
             return require("../assets/backgrounds/Фон диалог детективов о расстоянии до дома 2.jpg");
     }

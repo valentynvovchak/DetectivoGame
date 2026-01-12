@@ -1,6 +1,7 @@
 import React from "react";
 import { View, Text, Image, StyleSheet, Dimensions, Platform } from "react-native";
 import {isSmallScreen, isTablet} from "@/styles/global";
+import {GameState} from '@/store/gameStore'
 
 const { width, height } = Dimensions.get("window");
 
@@ -9,6 +10,7 @@ interface SpeechBubbleProps {
     side: "left" | "right" | "center";
     speaker?: string;
     mode?: "small" | "medium" | "large";
+    lang?: GameState['lang'];
 }
 
 export default function SpeechBubble({
@@ -16,7 +18,8 @@ export default function SpeechBubble({
          side,
          speaker,
          mode = "medium",
-         charMode
+         charMode,
+         lang
      }: SpeechBubbleProps) {
     // размеры пузыря
     const scale = mode === "small" ? 0.6 : mode === "large" ? 1 : 0.8;
@@ -67,7 +70,16 @@ export default function SpeechBubble({
             />
             <View style={[textContainerStyle]}>
                 {/*{speaker && <Text style={styles.speaker}>{speaker}</Text>}*/}
-                <Text style={styles.text}>{text}</Text>
+                <Text style={[
+                    styles.text,
+                    {
+                        lineHeight:
+                            isSmallScreen
+                            ? (lang == "ru" ? 15 : 17)
+                            : isTablet ? (lang == "ru" ? 23 : 25) : 20,
+                    }]}>
+                    {text}
+                </Text>
             </View>
         </View>
     );
@@ -110,6 +122,7 @@ const styles = StyleSheet.create({
         lineHeight: isSmallScreen ? 17 : isTablet ? 25 : 20,
     },
     narrator_container: {
+        zIndex: 1,
         backgroundColor: '#FFEE7D',
         borderStyle: 'solid',
         borderRadius: 10,
