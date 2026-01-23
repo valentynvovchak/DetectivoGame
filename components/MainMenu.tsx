@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import { View, TouchableOpacity, Image, StyleSheet } from "react-native";
-import { Link } from "expo-router";
+import {Link, router} from "expo-router";
 import SettingsModal from "@/components/SettingsModal";
 import {isSmallScreen, isTablet} from "@/styles/global";
 import InfoModal from "@/components/InfoModal";
@@ -27,11 +27,11 @@ export default function MainMenu() {
                         <Image source={require("../assets/icons/settings.png")} style={styles.icon} />
                     </TouchableOpacity>
 
-                    <Link href="../app/street_intro" asChild>
-                        <TouchableOpacity style={styles.iconWrap}>
-                            <Image source={require("../assets/icons/map.png")} style={styles.icon} />
-                        </TouchableOpacity>
-                    </Link>
+                    {/*<Link onPress={() => router.push("/map")} asChild>*/}
+                    <TouchableOpacity onPress={() => router.push("/map")} style={styles.iconWrap}>
+                        <Image source={require("../assets/icons/map.png")} style={styles.icon} />
+                    </TouchableOpacity>
+                    {/*</Link>*/}
                 </View>
 
                 {/* Вторая строка */}

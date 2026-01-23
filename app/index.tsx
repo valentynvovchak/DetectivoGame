@@ -6,15 +6,16 @@ import {useGameStore} from "@/store/gameStore";
 import MainMenu from "@/components/MainMenu";
 import {getBackground} from "@/tools/utils";
 import SceneFade from "@/components/SceneFade";
+import {playMusic} from "@/components/audio/audioManager";
+import {MUSIC} from "@/components/audio/musicMap";
 
 export default function Index() {
-    const { currentScene, lang, loadProgress, resetProgress, changeScene } = useGameStore();
+    const { currentScene, lang, loadProgress, resetProgress, changeScene, volume } = useGameStore();
     const router = useRouter();
 
     useEffect(() => {
-        (async () => {
-            await loadProgress();
-        })();
+        loadProgress();
+        playMusic(MUSIC.exploration, volume);
     }, []);
 
     return (
@@ -26,7 +27,7 @@ export default function Index() {
                 resizeMode="cover"
             >
                 <View style={globalStyles.menu}>
-                    <Text style={styles.title}>{lang === "ru" ? "Детектив Д" : "Detective D"}</Text>
+                    <Text style={styles.title}>{lang === "ru" ? "Детектив D." : "Detective D."}</Text>
                     {/*<View style={styles.btn}>*/}
                     {/*    <Link style={styles.btnText} href="street_intro">{lang === "ru" ? "Начать" : "Start"}</Link>*/}
                     {/*</View>*/}
@@ -34,7 +35,7 @@ export default function Index() {
                         style={styles.btn}
                         onPress={async () => {
                             await resetProgress(); // очистка сохранения
-                            fadeToScene("street_intro"); // установка первой сцены
+                            fadeToScene("2_street_intro"); // установка первой сцены
                         }}
                     >
                         <Text style={styles.btnText}>

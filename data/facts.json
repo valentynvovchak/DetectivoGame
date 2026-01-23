@@ -11,8 +11,40 @@
       "name": "Red skin tone",
       "icon": "red-skin-tone.png",
       "importance": "medium",
-      "descriptionTop": "May noticed that the deceased's skin was reddish, a characteristic sign of carbon monoxide poisoning.",
-      "descriptionBottom": ""
+      "descriptionTop": "May noticed that the deceased's skin was reddish, a characteristic sign of carbon monoxide ",
+      "descriptionBottom": "poisoning."
+    }
+  },
+  "mr_kanagawa_surgery": {
+    "ru": {
+      "name": "Канагава был на операции",
+      "icon": "surgery.png",
+      "importance": "high",
+      "descriptionTop": "Мистер Канагава заявил, что в день трагедии находился в больнице и почти всё",
+      "descriptionBottom": " время провёл в операционном блоке."
+    },
+    "en": {
+      "name": "Kanagawa was in surgery",
+      "icon": "surgery.png",
+      "importance": "high",
+      "descriptionTop": "Mr. Kanagawa stated that on the day of the incident he was at the hospital and spent most",
+      "descriptionBottom": " of the time in the operating room."
+    }
+  },
+  "mrs_kanagawa_no_conflicts": {
+    "ru": {
+      "name": "Конфликты миссис Канагава",
+      "icon": "question_conflict.png",
+      "importance": "medium",
+      "descriptionTop": "Муж утверждает что это невозможно, чтобы миссис Канагава имела конфликты с кем-либо ",
+      "descriptionBottom": "незадолго до своей смерти."
+    },
+    "en": {
+      "name": "Conflicts of Mrs. Kanagawa",
+      "icon": "question_conflict.png",
+      "importance": "medium",
+      "descriptionTop": "The husband claims that it is impossible that Mrs. Kanagawa had any conflicts with anyone ",
+      "descriptionBottom": "shortly before her death."
     }
   }
 }

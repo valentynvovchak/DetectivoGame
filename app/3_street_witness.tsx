@@ -4,18 +4,19 @@ import dialogs from "@/data/dialogs.json";
 import { useGameStore } from "@/store/gameStore";
 import {globalStyles, height, width} from "@/styles/global";
 import MainMenu from "@/components/MainMenu";
-import CharacterSprite from "@/components/CharacterSprite";
 import {getBackground, getSprite} from "@/tools/utils";
 import CharacterSpriteNew from "@/components/CharacterSpriteNew";
 import SpeechBubble from "@/components/SpeechBubble";
 import SceneFade from "@/components/SceneFade";
 import ClueFlyAnimation from "@/components/animations/ClueFlyAnimation";
 import {RESOURCES} from "@/assets/resources";
-import {NOTEBOOK_WIDTH, NOTEBOOK_HEIGHT, SCALE} from "@/tools/constants";
-import AddModal from "@/components/AddModal";
+import {MUSIC} from "@/components/audio/musicMap";
+import {playMusic} from "@/components/audio/audioManager";
 
-export default function CarInspectionScene() {
-    const { currentScene, currentLine, nextLine, lang, changeScene, addToData, hasItem } = useGameStore();
+
+export default function WitnessScene() {
+    const { currentScene, currentLine, nextLine, lang, addToData, hasItem, volume,
+        sceneBackground, sceneResizeMode, setSceneBackground } = useGameStore();
     const scene = dialogs[currentScene];
     const line = scene?.dialog?.[currentLine];
     const [showAnim, setShowAnim] = useState(false);
@@ -23,40 +24,47 @@ export default function CarInspectionScene() {
 
     const hotspots = line?.hotspots || [];
 
-    const [background, setBackground] = useState(scene.background || "");
-    const [resizeMode, setResizeMode] = useState(line?.resizeMode || "cover");
+    // const [background, setBackground] = useState(scene.background || "");
+    // const [resizeMode, setResizeMode] = useState(line?.resizeMode || "cover");
     const [screenClickBlocked, setScreenClickBlocked] = useState(false);
-    const [bottleAddModal, setBottleAddModal] = useState(false);
+
+    useEffect(() => {
+        playMusic(MUSIC.crime, volume);
+    }, []);
+
+    useEffect(() => {
+        if (!line?.backgroundNoAnimationChange) return;
+
+        setSceneBackground(
+            line.backgroundNoAnimationChange,
+            line.resizeMode || "cover"
+        );
+    }, [line]);
 
     const fadeAnim = useRef(new Animated.Value(0)).current;
 
     useEffect(() => {
-        if (line?.backgroundChange && line.backgroundChange !== background) {
+        if (line?.backgroundChange && line.backgroundChange !== sceneBackground) {
             Animated.sequence([
                 Animated.timing(fadeAnim, { toValue: 1, duration: 500, useNativeDriver: true }),
                 Animated.delay(200),
             ]).start(() => {
-                setBackground(line.backgroundChange); // смена фона
-                setResizeMode(line?.resizeMode || "cover"); // смена фона
+                setSceneBackground(
+                    line.backgroundChange,
+                    line.resizeMode || "cover"
+                );
                 Animated.timing(fadeAnim, { toValue: 0, duration: 600, useNativeDriver: true }).start();
             });
         }
     }, [line]);
 
     const handleHotspotPress = (hotspot, fadeToScene) => {
-        if (hotspot.type === "two_bottles:add_item") {
+        if (hotspot.type === "inspect") {
             // addToData("evidence", "car_inspected");
-            // setClicked(true);
-            setBottleAddModal(true);
-            // fadeToScene("next_scene_name");
+            setClicked(true);
+            fadeToScene("4_car_inspection");
             // nextLine();
         }
-    };
-
-    const handleBottlesAdd = () => {
-        addToData("evidence", "two_bottles");
-        // fadeToScene("next_scene_name");
-        // nextLine();
     };
 
     return (
@@ -72,9 +80,10 @@ export default function CarInspectionScene() {
                     }
                 }}>
                     <ImageBackground
-                        source={getBackground(background)}
-                        style={[globalStyles.screen]}
-                        resizeMode={resizeMode}
+                        key={sceneBackground}
+                        source={getBackground(sceneBackground || scene.background)}
+                        resizeMode={sceneResizeMode}
+                        style={globalStyles.screen}
                     >
                         {line?.characters && line.characters.map((char) => (
                             <CharacterSpriteNew
@@ -98,7 +107,7 @@ export default function CarInspectionScene() {
                             />
                         )}
 
-                        {/*{line.id === 10 && !hasItem("facts", "red_skin_tone") && (
+                        {line.id === 10 && !hasItem("facts", "red_skin_tone") && (
                             <ClueFlyAnimation
                                 text={lang == "ru" ? "Красноватый оттенок кожи" : "Red skin tone"}
                                 start={{ x: width*0.001, y: -height*0.28 }} // позиция бабла (можно вычислить)
@@ -109,8 +118,7 @@ export default function CarInspectionScene() {
                                     setShowAnim(false);
                                 }}
                             />
-                        )}*/}
-                        {line.id === 2 && setScreenClickBlocked(true)}
+                        )}
 
                         {hotspots.map((spot) => (
                             <TouchableOpacity
@@ -122,14 +130,14 @@ export default function CarInspectionScene() {
                                     {
                                         left: width * spot.x,
                                         top: height * spot.y,
-                                        // width: width * spot.width,
-                                        // height: height * spot.height,
+                                        width: width * spot.width,
+                                        height: width * spot.height,
                                     },
                                 ]}
                             >
                                 <Image
                                     source={RESOURCES[spot.icon]} // например icon_eye.png
-                                    style={{ height: height * spot.height, width: width * spot.width, resizeMode: "contain"}}
+                                    // style={{ width: "100%", height: "100%", resizeMode: "contain" }}
                                 />
                             </TouchableOpacity>
                         ))}
@@ -138,14 +146,6 @@ export default function CarInspectionScene() {
 
                         {/* 🔹 Затемнение для плавной смены фона */}
                         <Animated.View style={[styles.overlay, { opacity: fadeAnim }]} />
-
-                        {bottleAddModal && (
-                            <AddModal
-                                toggle={setBottleAddModal}
-                                onAdd={() => handleBottlesAdd()}
-                                position={line?.modal} // берет координаты прямо из JSON
-                            />
-                        )}
                     </ImageBackground>
                 </Pressable>
             )}
@@ -156,5 +156,15 @@ export default function CarInspectionScene() {
 const styles = StyleSheet.create({
     hotspot: {
         position: "absolute",
+    },
+    overlay: {
+        position: "absolute",
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        backgroundColor: "black",
+        zIndex: 999,
+        pointerEvents: "none",
     },
 });

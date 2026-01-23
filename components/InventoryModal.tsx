@@ -13,14 +13,16 @@ import {
 import { useGameStore } from "@/store/gameStore";
 import factsData from "@/data/facts.json";
 import dossierData from "@/data/dossier.json";
+import evidenceData from "@/data/evidence.json";
 
 import { RESOURCES } from "@/assets/resources";
 import {getBackground, getSprite} from "@/tools/utils";
 import SVGImage from "@/components/small/SVGImage";
 import {NOTEBOOK_WIDTH, NOTEBOOK_HEIGHT, SCALE} from "@/tools/constants";
+import NotebookRow from "@/components/NotebookRow";
 
 // Коэффициенты (как у тебя, только теперь это доли от блокнота)
-const TABS_TOP_K = 0.184;
+const TABS_TOP_K = 0.176;
 const TABS_LEFT_K = 0.132;
 // const CONTENT_TOP_K = 0.23;
 // const CONTENT_TOP_K = 0.275;
@@ -33,6 +35,8 @@ const LINES_COUNT = 12; // можно поменять, если хочешь б
 export default function InventoryModal({ visible, onClose }: { visible: boolean; onClose: () => void }) {
     const { data, lang, clearNewItems } = useGameStore();
     const [activeTab, setActiveTab] = useState<"facts" | "dossier" | "evidence" | "hypotheses">("facts");
+    const [selectedItem, setSelectedItem] = useState<any | null>(null);
+    const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
 
     const tabs = [
         { key: "facts", label: lang === "ru" ? "ФАКТЫ" : "FACTS" },
@@ -52,7 +56,7 @@ export default function InventoryModal({ visible, onClose }: { visible: boolean;
             case "dossier":
                 return (data.dossier || []).map((id: string) => dossierData[id][lang]);
             case "evidence":
-                return data.evidence || [];
+                return (data.evidence || []).map((id: string) => evidenceData[id][lang]);
             case "hypotheses":
                 return data.hypotheses || [];
             default:
@@ -80,7 +84,7 @@ export default function InventoryModal({ visible, onClose }: { visible: boolean;
                 <View style={styles.overlay}>
                     <TouchableWithoutFeedback onPress={onClose}>
                             <ImageBackground
-                                source={require("@/assets/ui/notebook_bg.png")}
+                                source={require("@/assets/ui/notebook_bg (1).png")}
                                 style={styles.notebook}
                                 resizeMode="stretch" // пропорции мы уже зафиксировали через NOTEBOOK_WIDTH/HEIGHT
                             >
@@ -91,101 +95,163 @@ export default function InventoryModal({ visible, onClose }: { visible: boolean;
                                             key={tab.key}
                                             style={[
                                                 styles.tab,
-                                                {paddingBottom: 8 * SCALE, paddingTop: lang == 'ru' ? 0 : 8 * SCALE}, // чуть масштабируем, чтобы на планшете не были микроскопическими
+                                                {
+                                                    paddingBottom: 8 * SCALE,
+                                                    paddingTop: lang == 'ru' ? 0 : 8 * SCALE,
+                                                    fontFamily: lang == 'ru' ? 'Oswald-Regular' : 'BebasNeue-Regular'
+                                                }, // чуть масштабируем, чтобы на планшете не были микроскопическими
                                                 activeTab === tab.key && styles.activeTab,
                                                 {borderRightWidth: index !== tabs.length-1 ? 10 * SCALE : 0}
                                             ]}
-                                            onPress={() => setActiveTab(tab.key as any)}
+                                            onPress={() => {
+                                                setActiveTab(tab.key as any);
+                                                setSelectedIndex(null);
+                                                setSelectedItem(null)
+                                            }}
                                         >
-                                            <Text style={styles.tabText}>{tab.label}</Text>
+                                            <Text
+                                                style={[
+                                                    styles.tabText,
+                                                    {fontFamily: lang == 'ru' ? 'Oswald-Regular' : 'BebasNeue-Regular'}
+                                                ]}
+                                            >{tab.label}</Text>
                                         </TouchableOpacity>
                                     ))}
                                 </View>
 
                                 {/* Контент */}
-                                <ScrollView style={styles.content}>
-                                    {list.length === 0 && (
-                                        <Text style={styles.emptyText}>
-                                            {lang === "ru" ? "Пока ничего нет..." : "Nothing yet..."}
-                                        </Text>
-                                    )}
-                                    {activeTab === "facts" && list.map((item: any, idx: number) => {
-                                        const it = tItem(item, lang as any);
+                                {!selectedIndex && !selectedItem && (
+                                    <ScrollView style={styles.content}>
+                                        {list.length === 0 && (
+                                            <Text style={styles.emptyText}>
+                                                {lang === "ru" ? "Пока ничего нет..." : "Nothing yet..."}
+                                            </Text>
+                                        )}
+                                        {list.map((item: any, idx: number) => {
+                                            const it = tItem(item, lang as any);
 
-                                        return (
-                                            <View key={idx} style={styles.entryCard}>
-                                                {/* Верхняя строка: номер + заголовок */}
-                                                <View style={styles.entryHeaderRow}>
-                                                    <View style={styles.entryNumberCircle}>
-                                                        <Text style={styles.entryNumberText}>{idx + 1}</Text>
+                                            return (
+                                                <NotebookRow
+                                                    key={idx}
+                                                    index={idx}
+                                                    title={it.name}
+                                                    icon={it.icon}
+                                                    onPress={() => {
+                                                        setSelectedItem(it);
+                                                        setSelectedIndex(idx)
+                                                    }}
+                                                />
+                                            );
+                                        })}
+                                    </ScrollView>
+                                )}
+
+
+                                {selectedItem && (
+                                    <ScrollView style={styles.content}>
+                                        {list.length === 0 && (
+                                            <Text style={styles.emptyText}>
+                                                {lang === "ru" ? "Пока ничего нет..." : "Nothing yet..."}
+                                            </Text>
+                                        )}
+                                        {["facts", "evidence"].includes(activeTab) && selectedIndex !== null && (() => {
+                                            const item = list[selectedIndex];
+                                            const it = tItem(item, lang as any);
+
+                                            return (
+                                                <View key={selectedIndex} style={[styles.entryCard, {paddingTop: lang == 'ru' ? 60 * SCALE : 70 * SCALE}]}>
+                                                    <TouchableOpacity onPress={() => {setSelectedItem(null); setSelectedIndex(null)}}>
+                                                        <Text style={{ fontSize: 130 * SCALE, position: 'absolute', left: -39 * SCALE, top: lang == 'ru' ? -130 * SCALE : -145 * SCALE }}>
+                                                            ←
+                                                        </Text>
+                                                    </TouchableOpacity>
+                                                    {/* Верхняя строка: номер + заголовок */}
+                                                    <View style={styles.entryHeaderRow}>
+                                                        <View style={styles.entryNumberCircle}>
+                                                            <Text style={styles.entryNumberText}>{selectedIndex + 1}</Text>
+                                                        </View>
+
+                                                        <Text style={styles.entryTitle} numberOfLines={2} ellipsizeMode="tail">
+                                                            {it.name}
+                                                        </Text>
                                                     </View>
 
-                                                    <Text style={styles.entryTitle} numberOfLines={2} ellipsizeMode="tail">
-                                                        {it.name}
-                                                    </Text>
-                                                </View>
+                                                    <View style={styles.entryBody}>
+                                                        {/* Иконка */}
+                                                        <View style={styles.entryIconBox}>
+                                                            {it.icon ? <Image source={RESOURCES[it.icon]} style={styles.entryIconImage} /> : null}
+                                                        </View>
 
-                                                <View style={styles.entryBody}>
-                                                    {/* Иконка */}
-                                                    <View style={styles.entryIconBox}>
-                                                        {it.icon ? <Image source={RESOURCES[it.icon]} style={styles.entryIconImage} /> : null}
-                                                    </View>
+                                                        {/* Линейки + текст */}
+                                                        <View style={styles.entryLinesBlock}>
+                                                            {Array.from({ length: LINES_COUNT }).map((_, i) => (
+                                                                <View
+                                                                    key={i}
+                                                                    style={[
+                                                                        styles.entryLine,
+                                                                        i < 4 ? styles.entryLineShort : styles.entryLineFull,
+                                                                    ]}
+                                                                />
+                                                            ))}
 
-                                                    {/* Линейки + текст */}
-                                                    <View style={styles.entryLinesBlock}>
-                                                        {Array.from({ length: LINES_COUNT }).map((_, i) => (
-                                                            <View
-                                                                key={i}
-                                                                style={[
-                                                                    styles.entryLine,
-                                                                    i < 4 ? styles.entryLineShort : styles.entryLineFull,
-                                                                ]}
-                                                            />
-                                                        ))}
-
-                                                        {/* Текст */}
-                                                        {!!it.descriptionTop && (
-                                                            <>
-                                                                <Text style={[styles.entryDescription, styles.entryDescriptionShort]}>
-                                                                    {it.descriptionTop}
-                                                                </Text>
-
-                                                                {!!it.descriptionBottom && (
-                                                                    <Text style={[styles.entryDescription, styles.entryDescriptionFull]}>
-                                                                        {it.descriptionBottom}
+                                                            {/* Текст */}
+                                                            {!!it.descriptionTop && (
+                                                                <>
+                                                                    <Text style={[styles.entryDescription, styles.entryDescriptionShort]}>
+                                                                        {it.descriptionTop}
                                                                     </Text>
-                                                                )}
-                                                            </>
-                                                        )}
+
+                                                                    {!!it.descriptionBottom && (
+                                                                        <Text style={[styles.entryDescription, styles.entryDescriptionFull]}>
+                                                                            {it.descriptionBottom}
+                                                                        </Text>
+                                                                    )}
+                                                                </>
+                                                            )}
+                                                        </View>
                                                     </View>
                                                 </View>
-                                            </View>
-                                        );
-                                    })}
+                                            );
+                                        })()}
 
-                                    {activeTab === "dossier" && list.map((person: any, idx: number) => (
-                                        <>
-                                            <View key={idx} style={styles.dossierCard}>
-                                                <View style={styles.dossierCardInner}>
-                                                    {/* портрет */}
-                                                    <View style={styles.dossierPortraitWrap}>
-                                                        <SVGImage Image={getSprite(person.appearance.sprite)} style={styles.dossierPortrait}/>
-                                                    </View>
+                                        {activeTab === "dossier" && selectedIndex !== null && (() => {
+                                            const person = list[selectedIndex];
+                                            if (person)
+                                            return (
+                                            <>
+                                                <TouchableOpacity style={{zIndex: 10}} onPress={() => {setSelectedItem(null); setSelectedIndex(null)}}>
+                                                    <Text style={{ fontSize: 120 * SCALE, position: 'absolute', left: SCALE, top: -50 * SCALE }}>
+                                                        ←
+                                                    </Text>
+                                                </TouchableOpacity>
+                                                <View key={selectedIndex} style={styles.dossierCard}>
 
-                                                    {/* текст */}
-                                                    <View style={styles.dossierInfo}>
-                                                        <Text style={styles.dossierName}>{person.name}</Text>
-                                                        <Text style={styles.dossierOccupation}>({person.occupation})</Text>
-                                                        <Text style={styles.dossierStatus}>{person.status}</Text>
+                                                    <View style={styles.dossierCardInner}>
+                                                        {/* портрет */}
+                                                        <View style={styles.dossierPortraitWrap}>
+                                                            <SVGImage
+                                                                Image={getSprite(person.appearance.sprite)}
+                                                                style={[styles.dossierPortrait, person.appearance.sprite == 'mai_found_the_car' ? {transform: [
+                                                                        { scale: 1.9 * SCALE },
+                                                                        { translateX: 0},
+                                                                        { translateY: 250}
+                                                                    ]} : {}]}
+                                                            />
+                                                        </View>
+
+                                                        {/* текст */}
+                                                        <View style={styles.dossierInfo}>
+                                                            <Text style={styles.dossierName}>{person.name}</Text>
+                                                            <Text style={styles.dossierOccupation}>({person.occupation})</Text>
+                                                            <Text style={styles.dossierStatus}>{person.status}</Text>
+                                                        </View>
                                                     </View>
+                                                    <Text style={styles.dossierDescription}> {person.description}</Text>
                                                 </View>
-                                                <Text style={styles.dossierDescription}> {person.description}</Text>
-                                            </View>
-
-                                        </>
-                                    ))}
-
-                                </ScrollView>
+                                            </>
+                                        )})()}
+                                    </ScrollView>
+                                )}
                             </ImageBackground>
                     </TouchableWithoutFeedback>
                 </View>
@@ -229,7 +295,8 @@ const styles = StyleSheet.create({
     tab: {
         flex: 1,
         // paddingTop: 2,
-        fontFamily: "BebasNeue-Regular, Oswald-Regular, sans-serif",
+        // fontFamily: "BebasNeue-Regular, Oswald-Regular, sans-serif",
+        // fontFamily: "Oswald-Regular",
         // paddingVertical: 8 * SCALE, // чуть масштабируем, чтобы на планшете не были микроскопическими
         // borderRightWidth: 0,
         borderColor: "#000",
@@ -240,7 +307,8 @@ const styles = StyleSheet.create({
         backgroundColor: "rgb(208 154 86)",
     },
     tabText: {
-        fontFamily: "BebasNeue-Regular, Oswald-Regular, sans-serif",
+        // fontFamily: "BebasNeue-Regular, Oswald-Regular, sans-serif",
+        // fontFamily: "Oswald-Regular",
         // fontWeight: "bold",
         color: "#2B1A0C",
         fontSize: 53 * SCALE,
@@ -304,8 +372,8 @@ const styles = StyleSheet.create({
         borderRadius: 20 * SCALE,
         // borderWidth: 12 * SCALE,
         // borderColor: "#2b1a0c",
-        paddingTop: 40 * SCALE,
-        paddingBottom: 20 * SCALE,
+        paddingTop: 60 * SCALE,
+        paddingBottom: 0,
         paddingHorizontal: 40 * SCALE,
         marginBottom: 40 * SCALE,
     },
@@ -401,9 +469,9 @@ const styles = StyleSheet.create({
         right: 0,
         bottom: 0,
 
-        fontFamily: "Pacifico-Regular, sans-serif",
+        fontFamily: "Pacifico-Regular",
         fontSize: 50 * SCALE,
-        lineHeight: 64 * SCALE,
+        lineHeight: 62 * SCALE,
         color: "#3b2a1b",
 
         // чтобы текст первые строки шёл справа от иконки:
@@ -413,7 +481,7 @@ const styles = StyleSheet.create({
         paddingLeft: 260 * SCALE,
     },
     entryDescriptionFull: {
-        top: 250 * SCALE,   // ниже иконки
+        top: 255 * SCALE,   // ниже иконки
         paddingLeft: 0,
         // lineHeight:
     },
@@ -436,7 +504,7 @@ const styles = StyleSheet.create({
     },
 
     entryTextBase: {
-        fontFamily: "Pacifico-Regular, sans-serif",
+        fontFamily: "Pacifico-Regular",
         fontSize: 50 * SCALE,
         lineHeight: 63.2 * SCALE,
         color: "#3b2a1b",
@@ -458,21 +526,38 @@ const styles = StyleSheet.create({
         flexDirection: "row",
     },
 
+    // dossierPortraitWrap: {
+    //     width: 300 * SCALE,
+    //     height: 350 * SCALE,
+    //     overflow: "hidden",
+    //     paddingTop: 30 * SCALE,
+    //     paddingLeft: 30 * SCALE,
+    //     borderTopLeftRadius: 20 * SCALE,
+    //     borderBottomLeftRadius: 20 * SCALE,
+    // },
     dossierPortraitWrap: {
-        width: 300 * SCALE,
+        width: 270 * SCALE,
         height: 350 * SCALE,
-        overflow: "hidden",
-        paddingTop: 30 * SCALE,
-        paddingLeft: 30 * SCALE,
-        borderTopLeftRadius: 20 * SCALE,
-        borderBottomLeftRadius: 20 * SCALE,
+        overflow: "hidden",   // 🔥 важно
+        alignItems: "center",
+        justifyContent: "center",
+        // paddingTop: 30 * SCALE,
+        // paddingLeft: 30 * SCALE,
+        marginLeft: 30 * SCALE
     },
 
+    // dossierPortrait: {
+    //     width: "150%",          // чуть увеличиваем, чтобы обрезалось по центру
+    //     height: "100%",
+    //     resizeMode: "cover",
+    //     marginLeft: "-20%",     // сдвигаем, чтобы показать лицо ближе к центру
+    // },
     dossierPortrait: {
-        width: "150%",          // чуть увеличиваем, чтобы обрезалось по центру
-        height: "100%",
-        resizeMode: "cover",
-        marginLeft: "-20%",     // сдвигаем, чтобы показать лицо ближе к центру
+        transform: [
+            { scale: 1.2 * SCALE },
+            { translateX: 0},
+            { translateY: 250}
+        ],
     },
 
     dossierInfo: {
@@ -484,7 +569,7 @@ const styles = StyleSheet.create({
 
     dossierName: {
         fontFamily: "BebasNeue-Regular",
-        fontSize: 70 * SCALE,
+        fontSize: 60 * SCALE,
         color: "#2b1a0c",
     },
 
@@ -503,11 +588,12 @@ const styles = StyleSheet.create({
     },
 
     dossierDescription: {
-        fontFamily: "Pacifico-Regular, sans-serif",
+        fontFamily: "Pacifico-Regular",
         fontSize: 50 * SCALE,
         color: "#3b2a1b",
         lineHeight: 68 * SCALE,
         padding: 30 * SCALE,
+        paddingTop: 20 * SCALE,
         textAlign: 'justify',
         textDecorationLine: 'underline'
     },

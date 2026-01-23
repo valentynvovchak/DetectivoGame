@@ -22,6 +22,30 @@
       },
       "description": "Went jogging in the morning and noticed a yellow car with its wipers running. On her way to work, she saw the car still standing with the wipers on. She approached and saw two women in the back seat. Knocked on the window, but there was no response. Immediately called an ambulance and the police."
     }
-  }
+  },
 
+  "mr_kanagawa": {
+    "ru": {
+      "type": "Родственник жертв",
+      "name": "Канагава Хироси",
+      "occupation": "Хирург городской клиники",
+      "status": "Муж погибшей, отец ребёнка",
+      "appearance": {
+        "sprite": "mr_kanagava_serious",
+        "mood": "сдержан, эмоционально подавлен"
+      },
+      "description": "Муж миссис Канагава и отец их дочери, которые были найдены мёртвыми в автомобиле. Работает хирургом в городской клинике. По его словам, в день трагедии находился в больнице и практически не покидал операционный блок. Внешне спокоен и собран, однако в разговоре заметна сильная внутренняя напряжённость."
+    },
+    "en": {
+      "type": "Victim’s relative",
+      "name": "Hiroshi Kanagawa",
+      "occupation": "Surgeon at the city hospital",
+      "status": "Husband of the deceased, father of the child",
+      "appearance": {
+        "sprite": "mr_kanagava_serious",
+        "mood": "reserved, emotionally restrained"
+      },
+      "description": "Husband of Mrs. Kanagawa and father of their daughter, both of whom were found dead in a car. He works as a surgeon at the city hospital. According to his statement, he spent most of the day in surgery and rarely left the operating area on the day of the incident. Appears calm and composed, though a strong inner tension can be sensed during conversation."
+    }
+  }
 }

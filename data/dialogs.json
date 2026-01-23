@@ -1,5 +1,5 @@
 {
-	"street_intro": {
+	"2_street_intro": {
 		"background": "street_closeup",
 		"dialog": [
 			{
@@ -65,7 +65,7 @@
 		]
 	},
 
-	"street_witness": {
+	"3_street_witness": {
 		"background": "first_dialog",
 		"dialog": [
 			{
@@ -237,8 +237,8 @@
 					{
 						"id": "car_eye",
 						"type": "inspect",
-						"x": 0.37,
-						"y": 0.57,
+						"x": 0.33,
+						"y": 0.63,
 						"width": 0.12,
 						"height": 0.12,
 						"icon": "eye.png"
@@ -248,7 +248,7 @@
 		]
 	},
 
-	"car_inspection": {
+	"4_car_inspection": {
 		"background": "inside_a_car",
 		"dialog": [
 			{
@@ -260,31 +260,23 @@
 				},
 				"hotspots": [
 					{
-						"type": "inspect",
-						"id": "car_eye",
-						"x": 0.43,
-						"y": 0.38,
-						"width": 0.09,
-						"height": 0.0675,
-						"icon": "eye.png"
-					},
-					{
-						"type": "inspect",
-						"id": "car_pointer",
-						"x": 0.48,
-						"y": 0.72,
-						"width": 0.12,
-						"height": 0.12,
-						"icon": "pointer.png"
-					},
-					{
+						"name": {
+							"en": "Two fitness bottles",
+							"ru": "Две бутылки воды"
+						},
 						"type": "inspect",
 						"id": "car_two_bottles",
 						"x": 0.37,
-						"y": 0.54,
+						"y": 0.63,
 						"width": 0.29,
 						"height": 0.22,
-						"icon": "two_bottles.png"
+						"icon": "two_bottles.png",
+						"modal": {
+							"x": 0.4,
+							"y": 0.75,
+							"width": 0.5,
+							"height": 0.2
+						}
 					}
 				]
 			},
@@ -292,106 +284,301 @@
 				"id": 2,
 				"hotspots": [
 					{
-						"type": "inspect",
-						"id": "car_eye",
-						"x": 0.43,
-						"y": 0.38,
-						"width": 0.09,
-						"height": 0.0675,
-						"icon": "eye.png"
-					},
-					{
-						"type": "inspect",
+						"type": "add_item",
 						"id": "car_pointer",
 						"x": 0.48,
-						"y": 0.72,
+						"y": 0.81,
 						"width": 0.12,
 						"height": 0.12,
 						"icon": "pointer.png"
 					},
 					{
-						"type": "two_bottles:add_item",
+						"name": {
+							"en": "Two fitness bottles",
+							"ru": "Две бутылки воды"
+						},
+						"type": "add_item",
 						"id": "car_two_bottles",
 						"x": 0.37,
-						"y": 0.54,
+						"y": 0.63,
 						"width": 0.29,
 						"height": 0.22,
-						"icon": "two_bottles.png"
+						"icon": "two_bottles.png",
+						"modal": {
+							"x": 0.4,
+							"y": 0.75,
+							"width": 0.5,
+							"height": 0.2
+						}
 					}
-				]
+				],
+				"action": "two_bottles:add_item"
 			},
 			{
-				"speaker": "Narrator",
-				"modal": {
-					"x": 0.41,
-					"y": 0.77,
-					"width": 0.62,
-					"height": 0.32
-				},
-				"text": {
-					"ru": "Добавить предмет в инвентарь?",
-					"en": "Add item to inventory?"
-				},
+				"id": 3,
 				"hotspots": [
 					{
 						"type": "inspect",
 						"id": "car_eye",
 						"x": 0.43,
-						"y": 0.38,
+						"y": 0.48,
 						"width": 0.09,
 						"height": 0.0675,
 						"icon": "eye.png"
-					},
-					{
-						"type": "inspect",
-						"id": "car_two_bottles",
-						"x": 0.37,
-						"y": 0.54,
-						"width": 0.29,
-						"height": 0.22,
-						"icon": "two_bottles.png"
 					}
+				]
+			},
+			{
+				"id": 4,
+				"backgroundNoAnimationChange": "inside_a_car_glove_compartment",
+				"hotspots": [
+					{
+						"type": "open",
+						"id": "car_pointer",
+						"x": 0.43,
+						"y": 0.52,
+						"width": 0.22,
+						"height": 0.22,
+						"icon": "pointer2.png"
+					}
+				]
+			},
+			{
+				"id": 5,
+				"backgroundNoAnimationChange": "first_dialog",
+				"characters": [
+					{ "id": "Daniel", "side": "right", "sprite": "daniel_serious", "mode": "zoom" }
 				],
-				"action": "prompt:add_item"
+				"speaker": "Narrator",
+				"text": {
+					"ru": "Документы на имя Сью Kanagawa. Нам нужно связаться с ее родными  и задать вопросы.",
+					"en": "The documents are in the name of Sue Kanagawa. We need to contact her family and ask questions."
+				},
+				"bubble_mode": "large",
+				"hotspots": [
+					{
+						"type": "inactive",
+						"id": "canagava_documents",
+						"x": 0.05,
+						"y": 0.26,
+						"width": 0.50,
+						"height": 0.6,
+						"icon": "sue_canagava_documents.jpg"
+					}
+				]
+			},
+			{
+				"id": 6,
+				"characters": [
+					{ "id": "Daniel", "side": "right", "sprite": "daniel_serious", "mode": "zoom" }
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "Ди, позвони в офис полиции узнать есть ли у нее муж или родственники?",
+					"en": "Di, call the police office to find out if she has a husband or relatives?"
+				},
+				"bubble_mode": "large",
+				"hotspots": [
+
+				]
+			},
+			{
+				"id": 7
+			},
+			{
+				"id": 8,
+				"characters": [
+					{ "id": "Di", "side": "left", "sprite": "di_interesting", "mode": "zoom" }
+				],
+				"speaker": "Di",
+				"text": {
+					"ru": "Да, у нее есть муж и он работает в госпитале в 10 минутах езды отсюда.",
+					"en": "Yes, she has a husband and he works at a hospital 10 minutes away from here."
+				},
+				"bubble_mode": "medium",
+				"hotspots": [
+
+				]
+			},
+			{
+				"id": 9,
+				"characters": [
+					{ "id": "Di", "side": "left", "sprite": "di_interesting", "mode": "zoom" }
+				],
+				"speaker": "Di",
+				"text": {
+					"ru": "Может вы поговорите с ним без меня? Мне тяжело даются такие разговоры.",
+					"en": "Maybe you could talk to him without me? I have a hard time having these kinds of conversations."
+				},
+				"bubble_mode": "large",
+				"hotspots": [
+
+				]
+			},
+			{
+				"id": 10,
+				"characters": [
+					{ "id": "Daniel", "side": "right", "sprite": "daniel_serious", "mode": "zoom" }
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "Хорошо, но только на этот раз.",
+					"en": "OK, but only this time."
+				},
+				"bubble_mode": "medium",
+				"hotspots": [
+
+				]
+			},
+			{
+				"id": 11,
+				"speaker": "Narrator",
+				"text": {
+					"ru": "На карте открылось новое место. Перейдите в него.",
+					"en": "A new location has opened on the map. Go to it."
+				},
+				"actions": ["unlock_location:5_hospital"]
+			},
+			{
+				"id": 12,
+				"openMap": true
 			}
 		]
 	},
 
-
-  "found_documents": [
-	{
-	  "speaker": "Narrator",
-	  "text_ru": "В бардачке лежали документы на имя Сью Канагавы.",
-	  "text_en": "You found documents in the glove compartment under the name Syu Kanagawa."
-	},
-	{
-	  "speaker": "Daniel",
-	  "text_ru": "Нам нужно связаться с её родными и задать несколько вопросов.",
-	  "text_en": "We need to contact her family and ask a few questions."
-	},
-	{
-	  "speaker": "Daniel",
-	  "text_ru": "Ди, позвони в офис полиции, узнай, есть ли у неё муж или родственники.",
-	  "text_en": "Di, call the station — check if she has a husband or relatives."
+	"5_hospital": {
+		"background": "hospital",
+		"dialog": [
+			{
+				"id": 1,
+				"characters": [
+					{ "id": "Mr. Kanagawa", "side": "left", "sprite": "mr_kanagawa_crying", "mode": "full" }
+				]
+			},
+			{
+				"id": 2,
+				"characters": [
+					{ "id": "Mr. Kanagawa", "side": "left", "sprite": "mr_kanagawa_crying", "mode": "full" },
+					{ "id": "Daniel", "side": "right", "sprite": "daniel_serious", "mode": "full" }
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "Mr. Канагава, примите мои соболезнования в связи с утратой. Но мне нужно задать вам несколько вопросов.",
+					"en": "Mr. Kanagawa sorry for loss. But I need to ask you some questions."
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 3,
+				"characters": [
+					{ "id": "Mr. Kanagawa", "side": "left", "sprite": "mr_kanagawa_crying", "mode": "full" },
+					{ "id": "Daniel", "side": "right", "sprite": "daniel_serious", "mode": "full" }
+				],
+				"speaker": "Mr. Kanagawa",
+				"text": {
+					"ru": "Моё сердце разбито. Но я постараюсь ответить.",
+					"en": "My heart is broken. But I will try to answer."
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 4,
+				"characters": [
+					{ "id": "Daniel", "side": "right", "sprite": "daniel_serious", "mode": "zoom" }
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "Что вы делали сегодня в обед / утром?",
+					"en": "What did you do this afternoon / morning?"
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 5,
+				"characters": [
+					{ "id": "Mr. Kanagawa", "side": "left", "sprite": "mr_kanagava_serious", "mode": "zoom" }
+				],
+				"speaker": "Mr. Kanagawa",
+				"text": {
+					"ru": "Сегодня я все это время был на операции.",
+					"en": "Today I have been on surgery all this time"
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 6,
+				"characters": [
+					{ "id": "Daniel", "side": "right", "sprite": "daniel_thinking", "mode": "cut" }
+				],
+				"speaker": "Narrator",
+				"text": {
+					"ru": "Это практически неопровержимое алиби...",
+					"en": "It's almost an ironclad alibi..."
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 7,
+				"characters": [
+					{ "id": "Daniel", "side": "right", "sprite": "daniel_serious", "mode": "zoom" }
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "Были ли у вашей жены конфликты с кем-то?",
+					"en": "Did Miss Kanagawa have any conflicts with anyone?"
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 8,
+				"characters": [
+					{ "id": "Mr. Kanagawa", "side": "left", "sprite": "mr_kanagava_serious", "mode": "zoom" }
+				],
+				"speaker": "Mr. Kanagawa",
+				"text": {
+					"ru": "Конфликты? Нет. Думаю, это невозможно.",
+					"en": "Conflicts? No. I think it's impossible."
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 9,
+				"characters": [
+					{ "id": "Daniel", "side": "right", "sprite": "daniel_serious", "mode": "zoom" }
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "Да, мы по-прежнему считаем, что это был несчастный случай. Но я всегда рассматриваю все варианты.",
+					"en": "Yes, we still think it was an accident. But I always check all the options."
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 10,
+				"characters": [
+					{ "id": "Daniel", "side": "right", "sprite": "daniel_serious", "mode": "zoom" }
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "Спасибо, mr. Канагава. Я позвоню вам, если мы найдем новую информацию.",
+					"en": "Thank you mr. Kanagawa I will call you if we find new information."
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 11,
+				"characters": [
+					{ "id": "Daniel", "side": "right", "sprite": "daniel_finger_up", "mode": "cut" }
+				],
+				"speaker": "Narrator",
+				"text": {
+					"ru": "Новый персонаж в инвентаре",
+					"en": "New character in inventory"
+				},
+				"bubble_mode": "large"
+			}
+		]
 	}
-  ],
 
-  "confirm_family": [
-	{
-	  "speaker": "Mei",
-	  "text_ru": "Да, у неё есть муж. Он работает в госпитале в десяти минутах отсюда.",
-	  "text_en": "Yes, she has a husband. He works at a hospital ten minutes from here."
-	},
-	{
-	  "speaker": "Mei",
-	  "text_ru": "Может, вы поговорите с ним без меня? Мне тяжело даются такие разговоры.",
-	  "text_en": "Maybe you can talk to him without me. These conversations are hard for me."
-	},
-	{
-	  "speaker": "Daniel",
-	  "text_ru": "Тебе пора привыкнуть к такому, Ди. Это часть нашей работы. Поехали к госпиталю к мужу Сью Канагавы.",
-	  "text_en": "You’ll have to get used to it, Di. It’s part of our job. Let’s head to the hospital to meet Syu’s husband.",
-	  "action": "goto_scene:lab_scene"
-	}
-  ]
+
 }

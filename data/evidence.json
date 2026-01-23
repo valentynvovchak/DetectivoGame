@@ -1,0 +1,18 @@
+{
+  "two_bottles": {
+    "ru": {
+      "name": "Вода для фитнеса",
+      "icon": "two_bottles.png",
+      "importance": "low",
+      "descriptionTop": "В багажнике находились две бутылки воды, на первый взгляд обычные и не примечательные.",
+      "descriptionBottom": " Пока неясно, имеют ли они отношение к происшествию."
+    },
+    "en": {
+      "name": "Fitness bottles",
+      "icon": "two_bottles.png",
+      "importance": "low",
+      "descriptionTop": "Two bottles of water was found in the trunk, seemingly ordinary at first glance. It is unclear ",
+      "descriptionBottom": "whether they are related to the incident."
+    }
+  }
+}

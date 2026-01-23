@@ -23,7 +23,7 @@ export default function CharacterSpriteNew({
     const scale = mode === "zoom" ? 1.1 : mode === "cut" ? 0.8 : 1;
 
     const spriteWidth = width * heightModifier * (mode === "cut" ? 0.87 : (mode !== "zoom" ? 0.54 : 0.59)) * scale;
-    const spriteHeight = height * heightModifier * (mode === "cut" ? 0.83 : 0.8) * scale;
+    const spriteHeight = height * heightModifier * (mode === "cut" ? 0.9 : 0.8) * scale;
 
     // позиция персонажа
     const containerStyle =

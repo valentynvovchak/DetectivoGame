@@ -6,14 +6,14 @@ interface SVGImageProps{
     style: any; // style
 }
 
-const { width, height } = Dimensions.get("window");
+// const { width, height } = Dimensions.get("window");
 
 export default function SVGImage({Image, style}: SVGImageProps) {
     // размер персонажа в зависимости от режима
 
     return (
         <View>
-            <Image style={style}/>
+            <Image style={style} />
         </View>
     );
 }

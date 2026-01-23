@@ -2,6 +2,8 @@ import { create } from "zustand";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import {router} from "expo-router";
 import {Animated} from "react-native";
+import {setMusicVolume} from "@/components/audio/audioManager";
+import dialogs from "@/data/dialogs.json";
 
 const dataDefault = {
     facts: [],
@@ -10,19 +12,46 @@ const dataDefault = {
     hypotheses: []
 }
 
+const mapLocationsDefault = {
+    '5_hospital': {
+        name: {
+            ru: "Городская клиника",
+                en: "City Hospital",
+        },
+        unlocked: false,
+            visited: false,
+            x: 0.67,
+            y: 0.80,
+    },
+    '6_police': {
+        name: {
+            ru: "Полицейский участок",
+                en: "Police Station",
+        },
+        unlocked: false,
+            visited: false,
+            x: 0.4,
+            y: 0.6,
+    },
+}
+
 export interface GameState {
     currentScene: string;
+    previousScene: string | null;
     currentLine: number;
     lang: "ru" | "en";
     volume: number;
     languages: string[];
-
     data: object;
+    sceneBackground: string | null;
+    sceneResizeMode: "cover" | "contain";
 
     setScene: (scene: string) => void;
     fadeAnim: Animated.Value;
     nextLine: () => void;
+    goToLine: (id) => void;
     changeScene: (scene: string) => Promise<void>;
+    goBackFromMap: () => void;
     setLang: (lang: "ru" | "en") => void;
     setVolume: (v: number) => void;
     saveProgress: () => Promise<void>;
@@ -36,23 +65,35 @@ export interface GameState {
     hasNewItems: boolean,
     markNewItems: () => void,
     clearNewItems: () => void,
+
+    mapLocations: object;
+    unlockLocation: (id: string) => void;
+    visitLocation: (id: string) => void;
+    isLocationUnlocked: (id: string) => boolean;
+    isLocationVisited: (id: string) => boolean;
+
+    setSceneBackground: (bg: string, mode?: "cover" | "contain") => void;
 }
 
 export const useGameStore = create<GameState>((set, get) => ({
-    currentScene: "street_intro",
+    currentScene: "2_street_intro",
+    previousScene: null,
     currentLine: 0,
     lang: "en",
     volume: 0.5,
     languages: ["en", "ru"],
     fadeAnim: new Animated.Value(0),
     hasNewItems: false,
-
     data: dataDefault,
+    sceneBackground: null,
+    sceneResizeMode: "cover",
+
+    mapLocations: mapLocationsDefault,
 
     // ✅ сохраняем прогресс ТОЛЬКО при переходе в новую сцену
-    setScene: (scene) => {
+    setScene: async (scene) => {
         set({ currentScene: scene, currentLine: 0 });
-        get().saveProgress(); // сохраняем только сцену и начальную строку
+        await get().saveProgress(); // сохраняем только сцену и начальную строку
     },
 
     /*setScene: (scene) => {
@@ -64,19 +105,56 @@ export const useGameStore = create<GameState>((set, get) => ({
             console.warn("⚠️ Ошибка навигации:", e);
         }
     },*/
-    changeScene: async (scene) => {
+    /*changeScene: async (scene) => {
         set({ currentScene: scene, currentLine: 0 });
-        get().saveProgress();
+        await get().saveProgress();
         try {
             router.push(`/${scene}`);
         } catch (e) {
             console.warn("⚠️ Ошибка навигации:", e);
         }
+    },*/
+
+    /*changeScene: async (scene, line=0) => {
+        const { currentScene } = get();
+        set({
+            previousScene: currentScene,
+            currentScene: scene,
+            currentLine: line,
+        });
+
+        await get().saveProgress();
+        router.push(`/${scene}`);
+    },*/
+    changeScene: async (scene, line = 0) => {
+        const { currentScene } = get();
+        const sceneData = dialogs[scene];
+
+        set({
+            previousScene: currentScene,
+            currentScene: scene,
+            currentLine: line,
+            sceneBackground: sceneData?.background || null,
+            sceneResizeMode: "cover",
+        });
+
+        await get().saveProgress();
+        router.push(`/${scene}`);
+    },
+
+
+    goBackFromMap: () => {
+        const { previousScene } = get();
+        router.push(previousScene ? `/${previousScene}` : '/');
     },
 
     // ❌ при перелистывании диалогов ничего не сохраняем
     nextLine: () => {
         set((s) => ({ currentLine: s.currentLine + 1 }));
+    },
+
+    goToLine: (id) => {
+        set(() => ({ currentLine: id-1 }));
     },
 
     /*changeScene: async (scene) => {
@@ -109,20 +187,21 @@ export const useGameStore = create<GameState>((set, get) => ({
         }).start();
     },*/
 
-    setLang: (lang) => {
+    setLang: async (lang) => {
         set({ lang });
-        get().saveProgress();
+        await get().saveProgress();
     },
 
-    setVolume: (v) => {
+    setVolume: async (v) => {
         set({ volume: v });
-        get().saveProgress();
+        await setMusicVolume(v); // 🔥 МГНОВЕННО влияет на музыку
+        await get().saveProgress();
     },
 
     saveProgress: async () => {
         try {
-            const { currentScene, lang, volume, data } = get();
-            const savingData = { currentScene, currentLine: 0, lang, volume, data }; // line всегда 0
+            const { currentScene, lang, volume, data, mapLocations } = get();
+            const savingData = { currentScene, currentLine: 0, lang, volume, data, mapLocations }; // line всегда 0
             await AsyncStorage.setItem("detective_di_save", JSON.stringify(savingData));
             console.log("✅ Прогресс сохранён:", savingData);
         } catch (e) {
@@ -145,7 +224,7 @@ export const useGameStore = create<GameState>((set, get) => ({
 
     resetProgress: async () => {
         await AsyncStorage.removeItem("detective_di_save");
-        set({ currentScene: "street_intro", currentLine: 0, data: dataDefault });
+        set({ currentScene: "2_street_intro", currentLine: 0, data: dataDefault, mapLocations: mapLocationsDefault });
         console.log("🔁 Прогресс сброшен");
     },
 
@@ -184,5 +263,50 @@ export const useGameStore = create<GameState>((set, get) => ({
     },
     markNewItems: () => set({ hasNewItems: true }),
     clearNewItems: () => set({ hasNewItems: false }),
+
+    unlockLocation: (id) => {
+        const s = get();
+        if (!s.mapLocations[id]) return;
+
+        set({
+            mapLocations: {
+                ...s.mapLocations,
+                [id]: {
+                    ...s.mapLocations[id],
+                    unlocked: true,
+                },
+            },
+        });
+    },
+
+    visitLocation: async (id) => {
+        const s = get();
+        if (!s.mapLocations[id]) return;
+        await set({
+            mapLocations: {
+                ...s.mapLocations,
+                [id]: {
+                    ...s.mapLocations[id],
+                    visited: true,
+                },
+            },
+        });
+        // await get().changeScene(id); // ✅ правильно
+    },
+
+    isLocationUnlocked: (id) => {
+        return !!get().mapLocations[id]?.unlocked;
+    },
+
+    isLocationVisited: (id) => {
+        return !!get().mapLocations[id]?.visited;
+    },
+
+    setSceneBackground: (bg, mode = "cover") => {
+        set({
+            sceneBackground: bg,
+            sceneResizeMode: mode,
+        });
+    },
 
 }));
