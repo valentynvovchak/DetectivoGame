@@ -1,0 +1,18 @@
+{
+  "gas_leak_in_car": {
+    "ru": {
+      "name": "Смерть была вызвана утечкой газа в машине.",
+      "icon": "gas_leak_in_car.png",
+      "importance": "high",
+      "short_description": "Смерть была вызвана утечкой газа в машине.",
+      "description": "Связь между лабораторным заключением и обстоятельствами поездки указывает на то, что жертвы могли отравиться угарным газом прямо в автомобиле. Это делает версию об утечке газа одной из главных гипотез дела."
+    },
+    "en": {
+      "name": "The death was caused by a gas leak in the car.",
+      "icon": "gas_leak_in_car.png",
+      "importance": "high",
+      "short_description": "The death was caused by a gas leak in the car.",
+      "description": "The connection between the laboratory conclusion and the circumstances of the trip suggests that the victims may have been poisoned by carbon monoxide inside the car. This makes the gas leak theory one of the main hypotheses in the case."
+    }
+  }
+}

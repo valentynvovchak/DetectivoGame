@@ -1,14 +1,30 @@
 
 export const RESOURCES: Record<string, any> = {
     "red-skin-tone.png": require("@/assets/resources/red-skin-tone.png"),
+    "red_skin_tone.png": require("@/assets/resources/red_skin_tone.png"),
+    "two_bodies.png": require("@/assets/resources/two_bodies.png"),
     "bottle.png": require("@/assets/resources/bottle.png"),
     "eye.png": require("@/assets/resources/eye.png"),
+    "start_dialog.png": require("@/assets/resources/start_dialog.png"),
     "two_bottles.png": require("@/assets/resources/two_bottles_big.png"),
+    "water_for_fitness.png": require("@/assets/resources/water_for_fitness.png"),
     "pointer.png": require("@/assets/resources/pointer.png"),
     "pointer2.png": require("@/assets/resources/pointer2.png"),
     "sue_canagava_documents.jpg": require("@/assets/resources/sue_canagava_documents.jpg"),
+    "mrs_kanagawa_id.png": require("@/assets/resources/mrs_kanagawa_id.png"),
+    "mrs_kanagawa.png": require("@/assets/resources/mrs_kanagawa.png"),
+    "mrs_kanagawa_daughter.png": require("@/assets/resources/mrs_kanagawa_daughter.png"),
     "map_selector_triangle.png": require("@/assets/resources/map_selector_triangle.png"),
-    "surgery.png": require("@/assets/resources/surgery.png"),
-    "question_conflict.png": require("@/assets/resources/question_conflict.png"),
-
+    "mr_kanagawa.png": require("@/assets/resources/mr_kanagawa.png"),
+    "mr_kanagawa_was_in_surgery.png": require("@/assets/resources/mr_kanagawa_was_in_surgery.png"),
+    "question_conflict.png": require("@/assets/resources/question_conflict.png"), // delete
+    "housekeeper.png": require("@/assets/resources/housekeeper.png"),
+    "laboratory_conclusion.png": require("@/assets/resources/laboratory_conclusion.png"),
+    "estimated_time_of_death.png": require("@/assets/resources/estimated_time_of_death.png"),
+    "mrs_kanagawa_left_home_at_noon.png": require("@/assets/resources/mrs_kanagawa_left_home_at_noon.png"),
+    "mrs_kanagawa_drove_only_1500_feet.png": require("@/assets/resources/mrs_kanagawa_drove_only_1500_feet.png"),
+    "gas_leak_in_car.png": require("@/assets/resources/gas_leak_in_car.png"),
+    "show_report.png": require("@/assets/resources/show_report.png"),
+    "add_to_inventory.png": require("@/assets/resources/add_to_inventory.png"),
+    "report.png": require("@/assets/resources/report.png"),
 };

@@ -1,21 +1,31 @@
 import React from "react";
-import { View, StyleSheet, Dimensions } from "react-native";
+import { View, StyleSheet } from "react-native";
 
-interface SVGImageProps{
-    Image: any; // SVG компонент
-    style: any; // style
+interface SVGImageProps {
+    Image: any;
+    width?: number;
+    height?: number;
+    style?: any;
 }
 
-// const { width, height } = Dimensions.get("window");
-
-export default function SVGImage({Image, style}: SVGImageProps) {
-    // размер персонажа в зависимости от режима
-
+export default function SVGImage({
+         Image,
+         width,
+         height,
+         style,
+     }: SVGImageProps) {
     return (
-        <View>
-            <Image style={style} />
+        <View pointerEvents="none">
+            <Image
+                {...(width ? { width } : {})}
+                {...(height ? { height } : {})}
+                style={style}
+                // preserveAspectRatio="xMidYMid meet"
+            />
         </View>
     );
 }
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+
+});

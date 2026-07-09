@@ -1,34 +1,44 @@
 {
-  "red_skin_tone": {
+  "two_bodies": {
     "ru": {
-      "name": "Красноватый оттенок кожи",
-      "icon": "red-skin-tone.png",
+      "name": "На автобусной остановке в автомобиле были обнаружены два тела.",
+      "icon": "two_bodies.png",
       "importance": "medium",
-      "descriptionTop": "Мэй заметила, что у погибших кожа была красноватой — характерный признак ",
-      "descriptionBottom": "отравления угарным газом."
+      "description": "В припаркованном возле автобусной остановки автомобиле были обнаружены тела мужчины и женщины. Двери машины были закрыты, следов борьбы или попыток выбраться наружу на первый взгляд не обнаружено."
     },
     "en": {
-      "name": "Red skin tone",
-      "icon": "red-skin-tone.png",
+      "name": "Two bodies were discovered in a car at the bus stop",
+      "icon": "two_bodies.png",
       "importance": "medium",
-      "descriptionTop": "May noticed that the deceased's skin was reddish, a characteristic sign of carbon monoxide ",
-      "descriptionBottom": "poisoning."
+      "description": "The bodies of a man and a woman were found inside a car parked near the bus stop. The vehicle was locked, and at first glance there were no signs of a struggle or an attempt to escape."
+    }
+  },
+  "red_skin_tone": {
+    "ru": {
+      "name": "Кожа жертв имела ярко-красный оттенок.",
+      "icon": "red_skin_tone.png",
+      "importance": "medium",
+      "description": "Мисс Мэй обратила внимание на необычный ярко-красный оттенок кожи погибших. Такой признак может указывать на отравление угарным газом, поэтому причина смерти требует отдельной проверки."
+    },
+    "en": {
+      "name": "The victims' skin had a bright red tint",
+      "icon": "red_skin_tone.png",
+      "importance": "medium",
+      "description": "Ms. Mei noticed an unusual bright red tint on the victims' skin. This sign may indicate carbon monoxide poisoning, so the cause of death needs to be examined more carefully."
     }
   },
   "mr_kanagawa_surgery": {
     "ru": {
-      "name": "Канагава был на операции",
-      "icon": "surgery.png",
+      "name": "Мистер Канагава был на операции в момент смерти жены и дочери.",
+      "icon": "mr_kanagawa_was_in_surgery.png",
       "importance": "high",
-      "descriptionTop": "Мистер Канагава заявил, что в день трагедии находился в больнице и почти всё",
-      "descriptionBottom": " время провёл в операционном блоке."
+      "description": "Мистер Канагава заявил, что в день трагедии находился в больнице и почти всё время провёл в операционном блоке."
     },
     "en": {
-      "name": "Kanagawa was in surgery",
-      "icon": "surgery.png",
+      "name": "Mr. Kanagawa was in surgery at the time of the death of his wife and daughter.",
+      "icon": "mr_kanagawa_was_in_surgery.png",
       "importance": "high",
-      "descriptionTop": "Mr. Kanagawa stated that on the day of the incident he was at the hospital and spent most",
-      "descriptionBottom": " of the time in the operating room."
+      "description": "Mr. Kanagawa stated that on the day of the incident he was at the hospital and spent most of the time in the operating room."
     }
   },
   "mrs_kanagawa_no_conflicts": {
@@ -36,15 +46,41 @@
       "name": "Конфликты миссис Канагава",
       "icon": "question_conflict.png",
       "importance": "medium",
-      "descriptionTop": "Муж утверждает что это невозможно, чтобы миссис Канагава имела конфликты с кем-либо ",
-      "descriptionBottom": "незадолго до своей смерти."
+      "description": "Муж утверждает что это невозможно, чтобы миссис Канагава имела конфликты с кем-либо незадолго до своей смерти."
     },
     "en": {
       "name": "Conflicts of Mrs. Kanagawa",
       "icon": "question_conflict.png",
       "importance": "medium",
-      "descriptionTop": "The husband claims that it is impossible that Mrs. Kanagawa had any conflicts with anyone ",
-      "descriptionBottom": "shortly before her death."
+      "description": "The husband claims that it is impossible that Mrs. Kanagawa had any conflicts with anyone shortly before her death."
+    }
+  },
+  "mrs_kanagawa_left_home_at_noon": {
+    "ru": {
+      "name": "Миссис Канагава и её дочь вышли из дома в 12:00.",
+      "icon": "mrs_kanagawa_left_home_at_noon.png",
+      "importance": "high",
+      "description": "По словам домработницы, миссис Канагава и её дочь покинули дом около 12:00. Это помогает восстановить маршрут жертв в день происшествия и сузить временной промежуток между их выходом из дома и предполагаемым временем смерти."
+    },
+    "en": {
+      "name": "Mrs. Kanagawa and her daughter left home at 12:00.",
+      "icon": "mrs_kanagawa_left_home_at_noon.png",
+      "importance": "high",
+      "description": "According to the housekeeper, Mrs. Kanagawa and her daughter left the house around 12:00. This helps reconstruct the victims' movements on the day of the incident and narrow down the time between leaving home and the estimated time of death."
+    }
+  },
+  "mrs_kanagawa_drove_only_1500_feet": {
+    "ru": {
+      "name": "Миссис Канагава и её дочь проехали всего 500 метров от дома.",
+      "icon": "mrs_kanagawa_drove_only_1500_feet.png",
+      "importance": "high",
+      "description": "После выхода из дома миссис Канагава и её дочь успели проехать всего около 1500 футов. Такое короткое расстояние указывает на то, что что-то произошло почти сразу после начала поездки. Это может означать, что опасность уже находилась в машине или была подготовлена заранее."
+    },
+    "en": {
+      "name": "Mrs. Kanagawa and her daughter only managed to drive 1500 feet from home.",
+      "icon": "mrs_kanagawa_drove_only_1500_feet.png",
+      "importance": "high",
+      "description": "After leaving home, Mrs. Kanagawa and her daughter only managed to drive about 1500 feet. Such a short distance suggests that something happened almost immediately after the trip began. This may mean the danger was already inside the car or had been prepared in advance."
     }
   }
 }

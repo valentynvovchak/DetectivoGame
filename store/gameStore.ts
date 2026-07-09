@@ -3,7 +3,6 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import {router} from "expo-router";
 import {Animated} from "react-native";
 import {setMusicVolume} from "@/components/audio/audioManager";
-import dialogs from "@/data/dialogs.json";
 
 const dataDefault = {
     facts: [],
@@ -13,27 +12,119 @@ const dataDefault = {
 }
 
 const mapLocationsDefault = {
-    '5_hospital': {
+    "5_hospital": {
         name: {
             ru: "Городская клиника",
-                en: "City Hospital",
+            en: "City Hospital",
         },
         unlocked: false,
-            visited: false,
-            x: 0.67,
-            y: 0.80,
+        visited: false,
+        // x: 0.68,
+        // y: 0.80,
+        x: 0.55,
+        y: 0.61,
+        icon: "map_hospital.png",
+        targetScene: "5_hospital",
     },
-    '6_police': {
+    "6_laboratory": {
         name: {
             ru: "Полицейский участок",
-                en: "Police Station",
+            en: "Police",
         },
         unlocked: false,
-            visited: false,
-            x: 0.4,
-            y: 0.6,
+        visited: false,
+        x: 0.28,
+        y: 0.77,
+        icon: "map_laboratory.png",
+        // по умолчанию первый визит
+        targetScene: "6_laboratory",
     },
-}
+    "7_kanagawa_house": {
+        name: {
+            ru: "Дом Канагава",
+            en: "Kanagawa House",
+        },
+        unlocked: false,
+        visited: false,
+        x: 0.75,
+        y: 0.3,
+        icon: "map_kanagawa_house.png",
+        targetScene: "7_kanagawa_house",
+    },
+    // "8_kanagawa_house": {
+    //     name: {
+    //         ru: "Дом Канагава",
+    //         en: "Kanagawa House",
+    //     },
+    //     unlocked: false,
+    //     visited: false,
+    //     x: 0.78,
+    //     y: 0.23,
+    //     icon: "map_kanagawa_house.png",
+    // },
+
+};
+
+const getFreshDataDefault = () => ({
+    facts: [],
+    dossier: [],
+    evidence: [],
+    hypotheses: [],
+});
+
+const getMapProgress = (mapLocations: any) => {
+    return Object.fromEntries(
+        Object.entries(mapLocations).map(([id, loc]: any) => [
+            id,
+            {
+                unlocked: !!loc.unlocked,
+                visited: !!loc.visited,
+            },
+        ])
+    );
+};
+
+const mergeMapProgressWithDefaults = (savedMapProgress: any = {}) => {
+    return Object.fromEntries(
+        Object.entries(mapLocationsDefault).map(([id, defaultLocation]: any) => {
+            const savedLocation = savedMapProgress?.[id];
+
+            return [
+                id,
+                {
+                    ...defaultLocation,
+
+                    // берем только состояние прохождения
+                    unlocked:
+                        typeof savedLocation?.unlocked === "boolean"
+                            ? savedLocation.unlocked
+                            : defaultLocation.unlocked,
+
+                    visited:
+                        typeof savedLocation?.visited === "boolean"
+                            ? savedLocation.visited
+                            : defaultLocation.visited,
+                },
+            ];
+        })
+    );
+};
+
+type UiNoticeSource = "tasks" | "briefcase";
+
+type UiNoticeKind =
+    | "new_task"
+    | "task_completed"
+    | "new_fact"
+    | "new_dossier"
+    | "new_evidence"
+    | "new_hypothesis";
+
+type UiNotice = {
+    id: number;
+    source: UiNoticeSource;
+    kind: UiNoticeKind;
+};
 
 export interface GameState {
     currentScene: string;
@@ -45,34 +136,74 @@ export interface GameState {
     data: object;
     sceneBackground: string | null;
     sceneResizeMode: "cover" | "contain";
+    activeTasks: string[];
+    completedTasks: string[];
+    unseenTaskActionsCount: number;
+    uiNotices: UiNotice[];
+    hasSave: boolean;
+    isHydrated: boolean;
+    mapNotification: {
+        id: string;
+        text: {
+            ru: string;
+            en: string;
+        };
+        locationId?: string;
+    } | null;
 
     setScene: (scene: string) => void;
     fadeAnim: Animated.Value;
     nextLine: () => void;
     goToLine: (id) => void;
-    changeScene: (scene: string) => Promise<void>;
+    changeScene: (scene: string, line?: number) => Promise<void>;
     goBackFromMap: () => void;
     setLang: (lang: "ru" | "en") => void;
     setVolume: (v: number) => void;
     saveProgress: () => Promise<void>;
     loadProgress: () => Promise<void>;
     resetProgress: () => Promise<void>;
-
     hasItem: (type: keyof typeof dataDefault, id: string) => boolean
     addToData: (type: string, id: string) => void;
     getItemData: (type: string, id: string) => object;
-
     hasNewItems: boolean,
     markNewItems: () => void,
     clearNewItems: () => void,
-
     mapLocations: object;
     unlockLocation: (id: string) => void;
     visitLocation: (id: string) => void;
+    reopenLocation: (
+        id: string,
+        targetScene?: string
+    ) => void;
     isLocationUnlocked: (id: string) => boolean;
     isLocationVisited: (id: string) => boolean;
-
     setSceneBackground: (bg: string, mode?: "cover" | "contain") => void;
+    addTask: (id: string) => void;
+    completeTask: (id: string) => void;
+    removeTask: (id: string) => void;
+    isTaskActive: (id: string) => boolean;
+    isTaskCompleted: (id: string) => boolean;
+    clearTaskActionsCounter: () => void;
+    pushUiNotice: (notice: {
+        source: UiNoticeSource;
+        kind: UiNoticeKind;
+    }) => void;
+    removeUiNotice: (id: number) => void;
+    checkHasSave: () => Promise<boolean>;
+    setHasSave: (value: boolean) => void;
+    setMapNotification: (
+        notification: {
+            id: string;
+
+            text: {
+                ru: string;
+                en: string;
+            };
+
+            locationId?: string;
+        } | null
+    ) => void;
+    setLocationTarget: (id: string, scene: string) => void;
 }
 
 export const useGameStore = create<GameState>((set, get) => ({
@@ -80,15 +211,21 @@ export const useGameStore = create<GameState>((set, get) => ({
     previousScene: null,
     currentLine: 0,
     lang: "en",
-    volume: 0.5,
+    volume: 0.2,
     languages: ["en", "ru"],
     fadeAnim: new Animated.Value(0),
     hasNewItems: false,
-    data: dataDefault,
+    data: getFreshDataDefault(),
+    mapLocations: mergeMapProgressWithDefaults(),
     sceneBackground: null,
     sceneResizeMode: "cover",
-
-    mapLocations: mapLocationsDefault,
+    activeTasks: [],
+    completedTasks: [],
+    unseenTaskActionsCount: 0,
+    uiNotices: [],
+    hasSave: false,
+    isHydrated: false,
+    mapNotification: null,
 
     // ✅ сохраняем прогресс ТОЛЬКО при переходе в новую сцену
     setScene: async (scene) => {
@@ -96,96 +233,36 @@ export const useGameStore = create<GameState>((set, get) => ({
         await get().saveProgress(); // сохраняем только сцену и начальную строку
     },
 
-    /*setScene: (scene) => {
-        set({ currentScene: scene, currentLine: 0 });
-        get().saveProgress();
-        try {
-            router.push(`/${scene}`); // переход на экран этой сцены
-        } catch (e) {
-            console.warn("⚠️ Ошибка навигации:", e);
-        }
-    },*/
-    /*changeScene: async (scene) => {
-        set({ currentScene: scene, currentLine: 0 });
-        await get().saveProgress();
-        try {
-            router.push(`/${scene}`);
-        } catch (e) {
-            console.warn("⚠️ Ошибка навигации:", e);
-        }
-    },*/
-
-    /*changeScene: async (scene, line=0) => {
-        const { currentScene } = get();
-        set({
-            previousScene: currentScene,
-            currentScene: scene,
-            currentLine: line,
-        });
-
-        await get().saveProgress();
-        router.push(`/${scene}`);
-    },*/
     changeScene: async (scene, line = 0) => {
         const { currentScene } = get();
-        const sceneData = dialogs[scene];
 
         set({
             previousScene: currentScene,
             currentScene: scene,
             currentLine: line,
-            sceneBackground: sceneData?.background || null,
+            sceneBackground: null,
             sceneResizeMode: "cover",
         });
 
-        await get().saveProgress();
-        router.push(`/${scene}`);
+        router.replace(`/${scene}`);
     },
 
 
     goBackFromMap: () => {
         const { previousScene } = get();
-        router.push(previousScene ? `/${previousScene}` : '/');
+        router.replace(previousScene ? `/${previousScene}` : '/');
     },
 
     // ❌ при перелистывании диалогов ничего не сохраняем
     nextLine: () => {
         set((s) => ({ currentLine: s.currentLine + 1 }));
+        // get().saveProgress?.();
     },
 
     goToLine: (id) => {
-        set(() => ({ currentLine: id-1 }));
+        set(() => ({ currentLine: Math.max(id - 1, 0) }));
+        // get().saveProgress?.();
     },
-
-    /*changeScene: async (scene) => {
-        const fadeAnim = get().fadeAnim;
-
-        // 1️⃣ затемнение
-        await new Promise((resolve) => {
-            Animated.timing(fadeAnim, {
-                toValue: 1,
-                duration: 1000,
-                useNativeDriver: false,
-            }).start(() => resolve(true));
-        });
-
-        // 2️⃣ смена сцены
-        set({ currentScene: scene, currentLine: 0 });
-        get().saveProgress();
-
-        try {
-            router.push(`/${scene}`); // переход на экран этой сцены
-        } catch (e) {
-            console.warn("⚠️ Ошибка навигации:", e);
-        }
-
-        // 3️⃣ плавное проявление
-        Animated.timing(fadeAnim, {
-            toValue: 0,
-            duration: 600,
-            useNativeDriver: false,
-        }).start();
-    },*/
 
     setLang: async (lang) => {
         set({ lang });
@@ -194,15 +271,50 @@ export const useGameStore = create<GameState>((set, get) => ({
 
     setVolume: async (v) => {
         set({ volume: v });
-        await setMusicVolume(v); // 🔥 МГНОВЕННО влияет на музыку
+        await setMusicVolume(v);
         await get().saveProgress();
     },
 
     saveProgress: async () => {
         try {
-            const { currentScene, lang, volume, data, mapLocations } = get();
-            const savingData = { currentScene, currentLine: 0, lang, volume, data, mapLocations }; // line всегда 0
-            await AsyncStorage.setItem("detective_di_save", JSON.stringify(savingData));
+            const {
+                currentScene,
+                previousScene,
+                currentLine,
+                lang,
+                volume,
+                data,
+                mapLocations,
+                activeTasks,
+                completedTasks,
+                unseenTaskActionsCount,
+                sceneBackground,
+                sceneResizeMode,
+            } = get();
+
+            const savingData = {
+                currentScene,
+                previousScene,
+                currentLine,
+                lang,
+                volume,
+                data,
+                // важно: сохраняем не всю карту, а только visited/unlocked
+                mapProgress: getMapProgress(mapLocations),
+                activeTasks,
+                completedTasks,
+                unseenTaskActionsCount,
+                sceneBackground,
+                sceneResizeMode,
+            };
+
+            await AsyncStorage.setItem(
+                "detective_di_save",
+                JSON.stringify(savingData)
+            );
+
+            set({ hasSave: true });
+
             console.log("✅ Прогресс сохранён:", savingData);
         } catch (e) {
             console.warn("❌ Ошибка сохранения", e);
@@ -212,19 +324,83 @@ export const useGameStore = create<GameState>((set, get) => ({
     loadProgress: async () => {
         try {
             const loadingData = await AsyncStorage.getItem("detective_di_save");
-            if (loadingData) {
-                const parsed = JSON.parse(loadingData);
-                set({ ...parsed, currentLine: 0 }); // всегда начинаем с начала сцены TODO: возможны баги с айтемами например
-                console.log("🔄 Прогресс загружен:", parsed);
+
+            if (!loadingData) {
+                set({
+                    hasSave: false,
+                    isHydrated: true,
+                });
+
+                return;
             }
+
+            const parsed = JSON.parse(loadingData);
+
+            const loadedScene = parsed.currentScene || "2_street_intro";
+
+            set({
+                currentScene: loadedScene,
+                previousScene: parsed.previousScene ?? null,
+
+                currentLine:
+                    typeof parsed.currentLine === "number"
+                        ? parsed.currentLine
+                        : 0,
+
+                lang: parsed.lang ?? "en",
+                volume: parsed.volume ?? 0.2,
+
+                data: {
+                    ...getFreshDataDefault(),
+                    ...(parsed.data ?? {}),
+                },
+
+                mapLocations: mergeMapProgressWithDefaults(
+                    parsed.mapProgress ?? parsed.mapLocations
+                ),
+
+                activeTasks: parsed.activeTasks ?? [],
+                completedTasks: parsed.completedTasks ?? [],
+                unseenTaskActionsCount: parsed.unseenTaskActionsCount ?? 0,
+
+                sceneBackground: parsed.sceneBackground ?? null,
+                sceneResizeMode: parsed.sceneResizeMode ?? "cover",
+
+                uiNotices: [],
+                hasSave: true,
+                isHydrated: true,
+            });
+
+            console.log("🔄 Прогресс загружен:", parsed);
         } catch (e) {
             console.warn("❌ Ошибка загрузки", e);
+
+            set({
+                hasSave: false,
+                isHydrated: true,
+            });
         }
     },
 
     resetProgress: async () => {
         await AsyncStorage.removeItem("detective_di_save");
-        set({ currentScene: "2_street_intro", currentLine: 0, data: dataDefault, mapLocations: mapLocationsDefault });
+
+        set({
+            currentScene: "2_street_intro",
+            previousScene: null,
+            currentLine: 0,
+            data: getFreshDataDefault(),
+            mapLocations: mergeMapProgressWithDefaults(),
+            activeTasks: [],
+            completedTasks: [],
+            unseenTaskActionsCount: 0,
+            uiNotices: [],
+            sceneBackground: null,
+            sceneResizeMode: "cover",
+            hasSave: false,
+            isHydrated: true,
+        });
+
         console.log("🔁 Прогресс сброшен");
     },
 
@@ -237,17 +413,43 @@ export const useGameStore = create<GameState>((set, get) => ({
     addToData: (type, id) => {
         const s = get();
         const list = s.data[type];
+
+        if (!Array.isArray(list)) {
+            console.warn(`❌ Неизвестный тип data: ${type}`);
+            return;
+        }
+
         if (list.includes(id)) {
             console.log(`⚠️ ${id} уже есть в ${type}`);
             return;
         }
+
         set({
             data: {
                 ...s.data,
-                [type]: [...list, id]
+                [type]: [id, ...list],
             },
-            hasNewItems: true // 🔴 появляется индикатор
+            hasNewItems: true,
         });
+
+        const noticeByType: Record<string, UiNoticeKind> = {
+            facts: "new_fact",
+            dossier: "new_dossier",
+            evidence: "new_evidence",
+            hypotheses: "new_hypothesis",
+        };
+
+        const noticeKind = noticeByType[type];
+
+        if (noticeKind) {
+            get().pushUiNotice({
+                source: "briefcase",
+                kind: noticeKind,
+            });
+        }
+
+        // get().saveProgress?.();
+
         console.log(`✅ Добавлено: ${id} в ${type}`);
     },
 
@@ -266,7 +468,11 @@ export const useGameStore = create<GameState>((set, get) => ({
 
     unlockLocation: (id) => {
         const s = get();
-        if (!s.mapLocations[id]) return;
+
+        if (!s.mapLocations[id]) {
+            console.warn("Unknown location:", id);
+            return;
+        }
 
         set({
             mapLocations: {
@@ -277,12 +483,19 @@ export const useGameStore = create<GameState>((set, get) => ({
                 },
             },
         });
+
+        // get().saveProgress?.();
     },
 
     visitLocation: async (id) => {
         const s = get();
-        if (!s.mapLocations[id]) return;
-        await set({
+
+        if (!s.mapLocations[id]) {
+            console.warn("Unknown location:", id);
+            return;
+        }
+
+        set({
             mapLocations: {
                 ...s.mapLocations,
                 [id]: {
@@ -291,7 +504,41 @@ export const useGameStore = create<GameState>((set, get) => ({
                 },
             },
         });
-        // await get().changeScene(id); // ✅ правильно
+
+        // await get().saveProgress?.();
+    },
+
+    reopenLocation: (id, targetScene) => {
+        const s = get();
+
+        const location = s.mapLocations[id];
+
+        if (!location) {
+            console.warn("Unknown location:", id);
+            return;
+        }
+
+        set({
+            mapLocations: {
+                ...s.mapLocations,
+
+                [id]: {
+                    ...location,
+
+                    unlocked: true,
+                    visited: false,
+
+                    ...(targetScene
+                        ? { targetScene }
+                        : {}),
+                },
+            },
+        });
+
+        console.log("🗺️ Location reopened:", {
+            id,
+            targetScene,
+        });
     },
 
     isLocationUnlocked: (id) => {
@@ -306,6 +553,152 @@ export const useGameStore = create<GameState>((set, get) => ({
         set({
             sceneBackground: bg,
             sceneResizeMode: mode,
+        });
+    },
+
+    addTask: (id) => {
+        const state = get();
+
+        if (
+            state.activeTasks.includes(id) ||
+            state.completedTasks.includes(id)
+        ) {
+            return;
+        }
+
+        set({
+            activeTasks: [...state.activeTasks, id],
+            unseenTaskActionsCount: state.unseenTaskActionsCount + 1,
+        });
+
+        get().pushUiNotice({
+            source: "tasks",
+            kind: "new_task",
+        });
+
+        // get().saveProgress?.();
+    },
+
+    completeTask: (id) => {
+        const state = get();
+
+        if (!state.activeTasks.includes(id)) {
+            return;
+        }
+
+        set({
+            activeTasks: state.activeTasks.filter((taskId) => taskId !== id),
+            completedTasks: state.completedTasks.includes(id)
+                ? state.completedTasks
+                : [...state.completedTasks, id],
+            unseenTaskActionsCount: state.unseenTaskActionsCount + 1,
+        });
+
+        get().pushUiNotice({
+            source: "tasks",
+            kind: "task_completed",
+        });
+
+        // get().saveProgress?.();
+    },
+
+    removeTask: (id) => {
+        const state = get();
+
+        const wasActive = state.activeTasks.includes(id);
+        const wasCompleted = state.completedTasks.includes(id);
+
+        if (!wasActive && !wasCompleted) {
+            return;
+        }
+
+        set({
+            activeTasks: state.activeTasks.filter((taskId) => taskId !== id),
+            completedTasks: state.completedTasks.filter((taskId) => taskId !== id),
+            unseenTaskActionsCount: state.unseenTaskActionsCount + 1,
+        });
+
+        // get().saveProgress?.();
+    },
+
+    clearTaskActionsCounter: () => {
+        set({
+            unseenTaskActionsCount: 0,
+        });
+
+        // get().saveProgress?.();
+    },
+
+    isTaskActive: (id) => {
+        return get().activeTasks.includes(id);
+    },
+
+    isTaskCompleted: (id) => {
+        return get().completedTasks.includes(id);
+    },
+
+    pushUiNotice: (notice) => {
+        const noticeId = Date.now() + Math.random();
+
+        set((state) => ({
+            uiNotices: [
+                ...state.uiNotices,
+                {
+                    id: noticeId,
+                    source: notice.source,
+                    kind: notice.kind,
+                },
+            ],
+        }));
+    },
+
+    removeUiNotice: (id) => {
+        set((state) => ({
+            uiNotices: state.uiNotices.filter((notice) => notice.id !== id),
+        }));
+    },
+
+    checkHasSave: async () => {
+        try {
+            const saved = await AsyncStorage.getItem("detective_di_save");
+            const exists = !!saved;
+
+            set({ hasSave: exists });
+
+            return exists;
+        } catch (e) {
+            console.warn("❌ Ошибка проверки сохранения", e);
+            set({ hasSave: false });
+            return false;
+        }
+    },
+
+    setHasSave: (value) => {
+        set({ hasSave: value });
+    },
+
+    setMapNotification: (notification) => {
+        set({
+            mapNotification: notification,
+        });
+    },
+
+    setLocationTarget: (id, scene) => {
+        const s = get();
+
+        if (!s.mapLocations[id]) {
+            console.warn("Unknown location:", id);
+            return;
+        }
+
+        set({
+            mapLocations: {
+                ...s.mapLocations,
+                [id]: {
+                    ...s.mapLocations[id],
+                    targetScene: scene,
+                },
+            },
         });
     },
 

@@ -1,4 +1,5 @@
 import { Pressable, Text } from 'react-native';
+import AppText from "@/components/Common/AppText";
 
 export const AppButton = ({ title, onPress, disabled = false }) => (
     <Pressable
@@ -11,8 +12,8 @@ export const AppButton = ({ title, onPress, disabled = false }) => (
             borderRadius: 10,
         })}
     >
-        <Text style={{ color: '#fff', textAlign: 'center', fontWeight: '600' }}>
+        <AppText style={{ color: '#fff', textAlign: 'center', fontWeight: '600' }}>
             {title}
-        </Text>
+        </AppText>
     </Pressable>
 );

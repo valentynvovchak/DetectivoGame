@@ -1,104 +1,305 @@
 import React from "react";
-import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
-import { width, height } from "@/styles/global";
-import {isSmallScreen, isTablet} from "@/styles/global";
+import {
+    StyleSheet,
+    TouchableOpacity,
+    View,
+} from "react-native";
+
+import { LinearGradient } from "expo-linear-gradient";
+
+import {
+    width,
+    height,
+    isSmallScreen,
+    isTablet,
+} from "@/styles/global";
+
+import AppText from "@/components/Common/AppText";
 
 interface AddModalProps {
     toggle: (value: boolean) => void;
+
     onAdd?: () => void;
-    text?: string;
-    position?: { x: number; y: number; width?: number; height?: number };
+    onConfirm?: () => void;
+
+    name?: string;
+    question?: string;
+
+    confirmText?: string;
+    cancelText?: string;
+
+    lang?: "ru" | "en";
+
+    position?: {
+        x: number;
+        y: number;
+        width?: number;
+        height?: number;
+    };
 }
 
 export default function AddModal({
-         toggle,
-         onAdd,
-         name,
-         lang,
-         position,
-         // position = { x: 0.4, y: 0.75, width: 0.5, height: 0.2 },
-     }: AddModalProps) {
+                                     toggle,
+                                     onAdd,
+                                     onConfirm,
+
+                                     name,
+                                     question,
+
+                                     confirmText,
+                                     cancelText,
+
+                                     lang = "en",
+
+                                     position = {
+                                         x: 0.2,
+                                         y: 0.35,
+                                         width: 0.6,
+                                         height: 0.22,
+                                     },
+                                 }: AddModalProps) {
+    const modalWidth = width * (position.width ?? 0.6);
+
+    const defaultQuestion =
+        lang === "ru"
+            ? "Добавить предмет в инвентарь?"
+            : "Add item to inventory?";
+
+    const finalQuestion = question || defaultQuestion;
+
+    const finalConfirmText =
+        confirmText || (lang === "ru" ? "Да" : "Yes");
+
+    const finalCancelText =
+        cancelText || (lang === "ru" ? "Нет" : "No");
+
+    const handleConfirm = () => {
+        if (onConfirm) {
+            onConfirm();
+        } else {
+            onAdd?.();
+        }
+
+        toggle(false);
+    };
+
     return (
-        <View
+        <LinearGradient
+            colors={["#CCCCCC", "#CACA99"]}
+            start={{ x: 0, y: 1 }}
+            end={{ x: 0, y: 0 }}
             style={[
-                styles.modal,
+                styles.gradientBorder,
                 {
                     left: width * position.x,
                     top: height * position.y,
-                    width: width * (position.width),
-                    height: height * (position.height),
+                    width: modalWidth,
                 },
             ]}
         >
-            <Text style={styles.itemText}>{name}</Text>
-            <Text style={styles.text}>{lang == 'ru' ? 'Добавить предмет в инвентарь?': 'Add item to inventory?'}</Text>
+            <View style={styles.modal}>
+                {!!name && (
+                    <View style={styles.nameContainer}>
+                        <AppText style={styles.itemText}>
+                            {name}
+                        </AppText>
+                    </View>
+                )}
 
-            <View style={styles.buttons}>
-                <TouchableOpacity
-                    style={[styles.button, styles.yes]}
-                    onPress={() => {
-                        onAdd?.();
-                        toggle(false);
-                    }}
-                >
-                    <Text style={styles.btnText}>{lang == 'ru' ? 'Да': 'Yes'}</Text>
-                </TouchableOpacity>
-                <TouchableOpacity
-                    style={[styles.button, styles.no]}
-                    onPress={() => toggle(false)}
-                >
-                    <Text style={styles.btnText}>{lang == 'ru' ? 'Нет': 'No'}</Text>
-                </TouchableOpacity>
+                <AppText style={styles.questionText}>
+                    {finalQuestion}
+                </AppText>
+
+                <View style={styles.buttons}>
+                    <TouchableOpacity
+                        style={[
+                            styles.button,
+                            styles.confirmButton,
+                        ]}
+                        activeOpacity={0.8}
+                        onPress={handleConfirm}
+                    >
+                        <AppText
+                            style={[
+                                styles.buttonText,
+                                styles.confirmButtonText,
+                            ]}
+                        >
+                            {finalConfirmText}
+                        </AppText>
+                    </TouchableOpacity>
+
+                    <TouchableOpacity
+                        style={[
+                            styles.button,
+                            styles.cancelButton,
+                        ]}
+                        activeOpacity={0.8}
+                        onPress={() => toggle(false)}
+                    >
+                        <AppText
+                            style={[
+                                styles.buttonText,
+                                styles.cancelButtonText,
+                            ]}
+                        >
+                            {finalCancelText}
+                        </AppText>
+                    </TouchableOpacity>
+                </View>
             </View>
-        </View>
+        </LinearGradient>
     );
 }
 
 const styles = StyleSheet.create({
-    modal: {
+    gradientBorder: {
         position: "absolute",
-        backgroundColor: "#FFEE7D",
-        borderColor: "#418AFE",
-        borderWidth: 2,
-        borderRadius: 8,
-        padding: 10,
+
+        borderRadius: 10,
+        padding: 3,
+
+        zIndex: 1000,
+        elevation: 1000,
+
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 4,
+        },
+        shadowOpacity: 0.3,
+        shadowRadius: 6,
+    },
+
+    modal: {
+        width: "100%",
+
+        backgroundColor: "#385253",
+
+        borderRadius: 7,
+
+        paddingHorizontal: isTablet ? 22 : 14,
+        paddingVertical: isTablet ? 18 : 14,
+
         alignItems: "center",
-        justifyContent: "space-around",
-        shadowColor: "#418AFE",
-        shadowOpacity: 0.25,
-        shadowRadius: 4,
-        elevation: 4,
     },
+
+    nameContainer: {
+        alignSelf: "center",
+
+        borderWidth: 1.5,
+        borderColor: "#E9DEC1",
+
+        borderRadius: 4,
+
+        paddingHorizontal: isTablet ? 16 : 10,
+        paddingVertical: isTablet ? 8 : 5,
+
+        marginBottom: isTablet ? 20 : 14,
+    },
+
     itemText: {
-        fontSize: isTablet ? 25 : isSmallScreen ? 16 : 19,
-        fontWeight: "600",
-        color: "#444",
-    },
-    text: {
-        fontSize: isTablet ? 22 : isSmallScreen ? 15 : 19,
-        color: "#222",
+        color: "#F1E8C8",
+
+        fontSize: isTablet
+            ? 25
+            : isSmallScreen
+                ? 15
+                : 19,
+
+        lineHeight: isTablet
+            ? 31
+            : isSmallScreen
+                ? 20
+                : 24,
+
+        fontFamily: "IBMPlexMono-Regular",
+        fontStyle: "italic",
+
         textAlign: "center",
-        marginVertical: 4,
     },
+
+    questionText: {
+        width: "100%",
+
+        color: "#FFFFFF",
+
+        fontSize: isTablet
+            ? 22
+            : isSmallScreen
+                ? 14
+                : 19,
+
+        lineHeight: isTablet
+            ? 28
+            : isSmallScreen
+                ? 19
+                : 24,
+
+        fontFamily: "IBMPlexMono-Bold",
+
+        textAlign: "center",
+
+        marginBottom: isTablet ? 20 : 14,
+
+        flexShrink: 1,
+    },
+
     buttons: {
         flexDirection: "row",
-        gap: isTablet ? 70 : isSmallScreen ? 20 : 50,
+
+        justifyContent: "center",
+        alignItems: "center",
+
+        gap: isTablet ? 32 : 20,
     },
+
     button: {
-        borderRadius: 6,
-        paddingVertical: 5,
-        paddingHorizontal: 15,
+        minWidth: isTablet ? 72 : 52,
+
+        borderWidth: 1.5,
+        borderColor: "#E9DEC1",
+
+        borderRadius: 5,
+
+        paddingVertical: isTablet ? 9 : 6,
+        paddingHorizontal: isTablet ? 18 : 12,
+
+        justifyContent: "center",
+        alignItems: "center",
     },
-    yes: {
-        backgroundColor: "#3a8ef6",
+
+    confirmButton: {
+        backgroundColor: "#F5E9CE",
     },
-    no: {
-        backgroundColor: "#e33",
+
+    cancelButton: {
+        backgroundColor: "#294448",
     },
-    btnText: {
-        fontSize: isTablet ? 22 : isSmallScreen ? 15 : 19,
-        // padding: isTablet ? 7 : isSmallScreen ? 3 : 5,
-        color: "#fff",
-        fontWeight: "600",
+
+    buttonText: {
+        fontSize: isTablet
+            ? 20
+            : isSmallScreen
+                ? 14
+                : 17,
+
+        lineHeight: isTablet
+            ? 25
+            : isSmallScreen
+                ? 18
+                : 21,
+
+        fontFamily: "IBMPlexMono-Regular",
+
+        textAlign: "center",
+    },
+
+    confirmButtonText: {
+        color: "#263A3B",
+    },
+
+    cancelButtonText: {
+        color: "#FFFFFF",
     },
 });

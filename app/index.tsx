@@ -1,22 +1,52 @@
-import React, {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 import {View, Text, StyleSheet, ImageBackground, Pressable} from "react-native";
-import {Link, useRouter} from "expo-router";
 import {globalStyles, isTablet} from "@/styles/global";
 import {useGameStore} from "@/store/gameStore";
 import MainMenu from "@/components/MainMenu";
 import {getBackground} from "@/tools/utils";
 import SceneFade from "@/components/SceneFade";
-import {playMusic} from "@/components/audio/audioManager";
 import {MUSIC} from "@/components/audio/musicMap";
+import {useSceneMusic} from "@/components/audio/useSceneMusic";
+import LoadingScreen from "@/app/loading";
+import {preloadAssetsWithProgress} from "@/tools/preload";
+import {PRELOAD_IMAGES, PRELOAD_SOUNDS} from "@/assets/preloadList";
+import AppText from "@/components/Common/AppText";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export default function Index() {
-    const { currentScene, lang, loadProgress, resetProgress, changeScene, volume } = useGameStore();
-    const router = useRouter();
+    const { lang, loadProgress, resetProgress, hasSave, checkHasSave, } = useGameStore();
+
+    const [ready, setReady] = useState(false);
+    const [progress, setProgress] = useState(0);
+
+    useSceneMusic(ready ? MUSIC.exploration : null as any);
 
     useEffect(() => {
-        loadProgress();
-        playMusic(MUSIC.exploration, volume);
+        (async () => {
+            try {
+                await preloadAssetsWithProgress(
+                    PRELOAD_IMAGES,
+                    PRELOAD_SOUNDS,
+                    setProgress
+                );
+
+                const savedExists = await checkHasSave();
+
+                if (savedExists) {
+                    await loadProgress();
+                }
+            } catch (e) {
+                console.warn("Init error:", e);
+            } finally {
+                setReady(true);
+            }
+        })();
     }, []);
+
+    // пока не готово — показываем лоадер
+    if (!ready) {
+        return <LoadingScreen progress={progress} />;
+    }
 
     return (
         <SceneFade>
@@ -27,32 +57,35 @@ export default function Index() {
                 resizeMode="cover"
             >
                 <View style={globalStyles.menu}>
-                    <Text style={styles.title}>{lang === "ru" ? "Детектив D." : "Detective D."}</Text>
+                    <AppText style={styles.title}>{lang === "ru" ? "Детектив D." : "Detective D."}</AppText>
                     {/*<View style={styles.btn}>*/}
                     {/*    <Link style={styles.btnText} href="street_intro">{lang === "ru" ? "Начать" : "Start"}</Link>*/}
                     {/*</View>*/}
                     <Pressable
                         style={styles.btn}
                         onPress={async () => {
-                            await resetProgress(); // очистка сохранения
-                            fadeToScene("2_street_intro"); // установка первой сцены
+                            await resetProgress();
+                            fadeToScene("2_street_intro");
                         }}
                     >
-                        <Text style={styles.btnText}>
-                            {lang === "ru"
-                                ? (currentScene !== 'street_intro' ? 'Новая игра': "Начать")
-                                : (currentScene !== 'street_intro'? 'New game': "Start")
-                            }
-                        </Text>
+                        <AppText style={styles.btnText}>
+                            {lang === "ru" ? "Новая игра" : "New game"}
+                        </AppText>
                     </Pressable>
-                    {currentScene !== 'street_intro' && (
+                    {hasSave && (
                         <Pressable
                             style={styles.btn}
-                            onPress={async () => {
-                                fadeToScene(currentScene); // установка очередной сцены
+                            onPress={() => {
+                                const scene = useGameStore.getState().currentScene;
+
+                                fadeToScene(scene, {
+                                    keepState: true,
+                                });
                             }}
                         >
-                            <Text style={styles.btnText}>{lang === "ru" ? "Продолжить" : "Continue"}</Text>
+                            <AppText style={styles.btnText}>
+                                {lang === "ru" ? "Продолжить" : "Continue"}
+                            </AppText>
                         </Pressable>
                     )}
                 </View>

@@ -2,17 +2,78 @@
   "two_bottles": {
     "ru": {
       "name": "Вода для фитнеса",
-      "icon": "two_bottles.png",
+      "icon": "water_for_fitness.png",
       "importance": "low",
-      "descriptionTop": "В багажнике находились две бутылки воды, на первый взгляд обычные и не примечательные.",
-      "descriptionBottom": " Пока неясно, имеют ли они отношение к происшествию."
+      "description": "В багажнике находились две бутылки воды, на первый взгляд обычные и не примечательные. Пока неясно, имеют ли они отношение к происшествию.",
     },
     "en": {
-      "name": "Fitness bottles",
-      "icon": "two_bottles.png",
+      "name": "Water for fitness",
+      "icon": "water_for_fitness.png",
       "importance": "low",
-      "descriptionTop": "Two bottles of water was found in the trunk, seemingly ordinary at first glance. It is unclear ",
-      "descriptionBottom": "whether they are related to the incident."
+      "description": "Two bottles of water was found in the trunk, seemingly ordinary at first glance. It is unclear whether they are related to the incident.",
+    }
+  },
+  "mrs_kanagawa_id": {
+    "ru": {
+      "name": "Документы на имя миссис Канагавы",
+      "icon": "mrs_kanagawa_id.png",
+      "importance": "medium",
+      "description": "В машине были найдены документы на имя Сью Канагавы. Это может помочь установить личность одной из погибших и найти её родственников для дальнейшего опроса."
+    },
+    "en": {
+      "name": "ID in the name of Mrs. Kanagawa",
+      "icon": "mrs_kanagawa_id.png",
+      "importance": "medium",
+      "description": "Documents in the name of Sue Kanagawa were found inside the car. This may help identify one of the victims and track down her relatives for further questioning."
+    }
+  },
+  "laboratory_conclusion": {
+    "ru": {
+      "name": "Заключение лаборатории",
+      "icon": "laboratory_conclusion.png",
+      "importance": "high",
+      "short_description": "Заключение лаборатории: жертвы были отравлены большим количеством угарного газа.",
+      "description": "Лабораторный анализ подтвердил, что причиной смерти стало отравление угарным газом. В крови погибших было обнаружено большое количество карбоксигемоглобина — вещества, образующегося при вдыхании угарного газа. Это подтверждает, что женщины умерли не от травм и не от естественных причин, а в результате сильного отравления."
+    },
+    "en": {
+      "name": "Laboratory Conclusion",
+      "icon": "laboratory_conclusion.png",
+      "importance": "high",
+      "short_description": "Laboratory conclusion: the victims were poisoned by large amounts of carbon monoxide.",
+      "description": "The laboratory analysis confirmed that the cause of death was carbon monoxide poisoning. A large amount of carboxyhemoglobin was found in the victims' blood — a substance formed when carbon monoxide is inhaled. This confirms that the women did not die from injuries or natural causes, but as a result of severe poisoning."
+    }
+  },
+  "estimated_time_of_death": {
+    "ru": {
+      "name": "Предполагаемое время смерти",
+      "icon": "estimated_time_of_death.png",
+      "importance": "high",
+      "short_description": "Предполагаемое время смерти: с 13:00 до 13:30.",
+      "description": "Согласно предварительному заключению, смерть обеих жертв наступила в промежутке между 13:00 и 13:30. Это время становится важной точкой для проверки алиби всех подозреваемых, особенно тех, кто мог находиться рядом с автобусной остановкой или иметь доступ к автомобилю в этот период."
+    },
+    "en": {
+      "name": "Estimated Time of Death",
+      "icon": "estimated_time_of_death.png",
+      "importance": "high",
+      "short_description": "Estimated Time of Death: 1:00 PM – 1:30 PM.",
+      "description": "According to the preliminary conclusion, both victims died between 1:00 PM and 1:30 PM. This time window is important for checking the suspects' alibis, especially anyone who could have been near the bus stop or had access to the car during that period."
+    }
+  },
+  "vehicle_inspection_report": {
+    "ru": {
+      "name": "Отчёт технического осмотра автомобиля",
+      "icon": "report.png",
+      "importance": "high",
+      "short_description": "Отчёт технического осмотра: утечек газа внутри салона автомобиля не обнаружено.",
+      "description": "Технический осмотр автомобиля не выявил никаких утечек газа внутри салона. Это ставит под сомнение первоначальную гипотезу о случайной неисправности автомобиля и указывает на то, что источник угарного газа мог быть внешним или намеренно помещённым внутрь машины."
+    },
+    "en": {
+      "name": "Vehicle Inspection Report",
+      "icon": "report.png",
+      "importance": "high",
+      "short_description": "Vehicle inspection report: no gas leaks were detected within the vehicle cabin.",
+      "description": "The vehicle inspection found no gas leaks inside the cabin. This casts doubt on the initial theory of an accidental vehicle malfunction and suggests that the source of carbon monoxide may have been external or deliberately placed inside the car."
     }
   }
 }
+

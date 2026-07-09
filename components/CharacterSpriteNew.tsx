@@ -1,13 +1,12 @@
 import React from "react";
 import { View, StyleSheet, Dimensions, Platform } from "react-native";
-import {isTablet} from "@/styles/global";
-import {opacity} from "react-native-reanimated/lib/typescript/Colors";
+import {isSmallScreen, isTablet} from "@/styles/global";
 
 interface CharacterSpriteProps {
     side: "left" | "right" | "center";
     Sprite: any; // SVG компонент
     isSpeaking?: boolean;
-    mode?: "full" | "zoom" | "cut";
+    mode?: "full"  | "cut"| "zoom" | "zoom2";
 }
 
 const { width, height } = Dimensions.get("window");
@@ -17,21 +16,27 @@ export default function CharacterSpriteNew({
         Sprite,
         isSpeaking = false,
         mode = "full",
-        heightModifier = 1
+        heightModifier = 1,
+        proofResult
     }: CharacterSpriteProps) {
-    // размер персонажа в зависимости от режима
-    const scale = mode === "zoom" ? 1.1 : mode === "cut" ? 0.8 : 1;
 
-    const spriteWidth = width * heightModifier * (mode === "cut" ? 0.87 : (mode !== "zoom" ? 0.54 : 0.59)) * scale;
-    const spriteHeight = height * heightModifier * (mode === "cut" ? 0.9 : 0.8) * scale;
+    if (proofResult && !isSmallScreen && mode === 'zoom') {
+        mode = 'zoom2'
+    }
+
+    // размер персонажа в зависимости от режима
+    const scale = mode === "zoom" ? 1.1 : mode === "cut" ? 0.8 : mode === "zoom2" ? 1.15 : 1;
+
+    const spriteWidth = 1.1 * width * heightModifier * (mode === "cut" ? 0.87 : (mode !== "zoom" ? 0.54 : 0.59)) * scale;
+    const spriteHeight = 1.1 * height * heightModifier * (mode === "cut" ? height > 900 ? 0.85 : 0.9 : height > 900 ? 0.75 : 0.79) * scale;
 
     // позиция персонажа
     const containerStyle =
         side === "left"
             ? { left: width * (mode !== "zoom" ? 0.00 : isTablet ? -0.05 : -0.08) }
             : side === "right"
-                ? { right: width * (mode !== "zoom" ? 0.00 : isTablet ? -0.05 : -0.08) }
-                : { left: width * 0.29 };
+                ? { right: width * (mode !== "zoom" ? 0.00 : isTablet ? -0.05 : -0.08) }  // * 0.4
+                : { left: "50%", transform: [{translateX: "-45%"}] };
 
     return (
         <View style={[
@@ -40,8 +45,8 @@ export default function CharacterSpriteNew({
             {
                 bottom:
                     Platform.OS === "web"
-                        ? height * (mode !== "zoom" ? -0.05 : -0.14)
-                        : height * (mode !== "zoom" ? -0.04 : -0.13),
+                        ? height * (mode !== "zoom" ? mode === "zoom2" ? 6.2 * -0.05 : mode === "zoom3" ? 6.8 * -0.05 : -0.05 : -0.14)
+                        : height * (mode !== "zoom" ? mode === "zoom2" ? 7.4 * -0.04 : mode === "zoom3" ? 7.8 * -0.04 : -0.04 : -0.13),
             },
         ]}>
             <Sprite
@@ -60,5 +65,5 @@ const styles = StyleSheet.create({
     },
     dimmed: {
         opacity: 1,
-    },
+    }
 });

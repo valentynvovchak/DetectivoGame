@@ -2,6 +2,7 @@ import React from "react";
 import { Modal, View, Text, TouchableOpacity, StyleSheet, ScrollView } from "react-native";
 import {isSmallScreen, isTablet} from "@/styles/global";
 import {useGameStore} from "@/store/gameStore";
+import AppText from "@/components/Common/AppText";
 
 interface InfoModalProps {
     visible: boolean;
@@ -14,10 +15,10 @@ export default function InfoModal({ visible, onClose }: InfoModalProps) {
         <Modal visible={visible} transparent animationType="fade">
             <View style={styles.overlay}>
                 <View style={styles.container}>
-                    <Text style={styles.title}>{lang === "ru" ? "Как играть": "How to play"}</Text>
+                    <AppText style={styles.title}>{lang === "ru" ? "Как играть": "How to play"}</AppText>
                     <ScrollView style={styles.scroll}>
                         {lang === "ru" ? (
-                            <Text style={styles.text}>
+                            <AppText style={styles.text}>
                                 🔍 В этой игре вы играете за детектива, расследующего загадочные дела в городе.
                                 {"\n\n"}
                                 🕵️‍♂️ Изучайте сцены, находите улики и стройте гипотезы.
@@ -29,9 +30,9 @@ export default function InfoModal({ visible, onClose }: InfoModalProps) {
                                 ⚙️ Настройки доступны через кнопку шестерёнки в нижней панели.
                                 {"\n\n"}
                                 💾 Игра автоматически сохраняется после каждого важного события.
-                            </Text>
+                            </AppText>
                         ) : (
-                            <Text style={styles.text}>
+                            <AppText style={styles.text}>
                                 🔍 In this game, you play as a detective investigating mysterious cases in the city.
                                 {"\n\n"}
                                 🕵️‍♂️ Explore scenes, find clues, and build hypotheses.
@@ -43,12 +44,12 @@ export default function InfoModal({ visible, onClose }: InfoModalProps) {
                                 ⚙️ Settings are available via the gear icon in the bottom panel.
                                 {"\n\n"}
                                 💾 The game automatically saves after each important event.
-                            </Text>
+                            </AppText>
                         )}
                     </ScrollView>
 
                     <TouchableOpacity onPress={onClose} style={styles.closeBtn}>
-                        <Text style={styles.closeText}>{lang === "ru" ? "Закрыть": "Close"}</Text>
+                        <AppText style={styles.closeText}>{lang === "ru" ? "Закрыть": "Close"}</AppText>
                     </TouchableOpacity>
                 </View>
             </View>

@@ -1,7 +1,8 @@
 import React from "react";
-import { View, Text, TouchableOpacity, Image, StyleSheet } from "react-native";
+import { View, TouchableOpacity, Image, StyleSheet } from "react-native";
 import { RESOURCES } from "@/assets/resources";
 import { SCALE } from "@/tools/constants";
+import AppText from "@/components/Common/AppText";
 
 type Props = {
     index: number;
@@ -10,73 +11,59 @@ type Props = {
     onPress: () => void;
 };
 
-export default function NotebookRow({ index, title, icon, onPress }: Props) {
+export default function NotebookRow({ title, icon, onPress }: Props) {
     return (
-        <TouchableOpacity
-            style={[styles.row, {borderWidth: 3, borderColor: "#51381f", padding: 8, margin: 3,  marginBottom: 0, borderTopWidth: 0, transform: "translateY(5px)"}]}
-            onPress={onPress}
-            activeOpacity={0.8}
-        >
-            {/* номер */}
-            <View style={[styles.numberCircle]}>
-                <Text style={[styles.numberText]}>{index + 1}</Text>
-            </View>
-
-            {/* иконка */}
-            {icon && (
-                <Image
-                    source={RESOURCES[icon]}
-                    style={styles.icon}
-                />
+        <TouchableOpacity style={styles.row} onPress={onPress} activeOpacity={0.85}>
+            {!!icon && (
+                <View style={styles.iconWrap}>
+                    <Image source={RESOURCES[icon]} style={styles.icon} />
+                </View>
             )}
 
-            {/* текст */}
-            <Text style={styles.title} numberOfLines={1}>
+            <AppText style={styles.title} numberOfLines={2}>
                 {title}
-            </Text>
+            </AppText>
         </TouchableOpacity>
     );
 }
 
 const styles = StyleSheet.create({
     row: {
+        minHeight: 112 * SCALE,
         flexDirection: "row",
         alignItems: "center",
-        backgroundColor: "rgba(234, 199, 143, 0.9)",
-        borderRadius: 16 * SCALE,
-        paddingVertical: 22 * SCALE,
-        paddingHorizontal: 26 * SCALE,
-        marginBottom: 22 * SCALE,
+        backgroundColor: "#183035",
+        borderWidth: 3 * SCALE,
+        borderColor: "#D7D3A9",
+        borderRadius: 12 * SCALE,
+        paddingHorizontal: 14 * SCALE,
+        paddingVertical: 12 * SCALE,
+        marginBottom: 16 * SCALE,
     },
 
-    numberCircle: {
-        width: 60 * SCALE,
-        height: 60 * SCALE,
-        borderRadius: 30 * SCALE,
-        borderWidth: 6 * SCALE,
-        borderColor: "#2b1a0c",
+    iconWrap: {
+        width: 64 * SCALE,
+        height: 64 * SCALE,
+        borderRadius: 10 * SCALE,
+        overflow: "hidden",
+        backgroundColor: "#355157",
         justifyContent: "center",
         alignItems: "center",
-        marginRight: 20 * SCALE,
-    },
-
-    numberText: {
-        fontFamily: "BebasNeue-Regular",
-        fontSize: 36 * SCALE,
-        color: "#2b1a0c",
+        marginRight: 14 * SCALE,
+        flexShrink: 0,
     },
 
     icon: {
-        width: 75 * SCALE,
-        height: 75 * SCALE,
-        resizeMode: "contain",
-        marginRight: 20 * SCALE,
+        width: "100%",
+        height: "100%",
+        resizeMode: "cover",
     },
 
     title: {
         flex: 1,
-        fontFamily: "Oswald-Regular",
-        fontSize: 46 * SCALE,
-        color: "#2b1a0c",
+        color: "#F3E8C6",
+        fontSize: 26 * SCALE,
+        lineHeight: 34 * SCALE,
+        fontFamily: "IBMPlexMono-Regular",
     },
 });

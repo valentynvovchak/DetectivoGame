@@ -2,6 +2,7 @@ import { StyleSheet, Dimensions, Platform } from "react-native";
 
 export const { width, height } = Dimensions.get("window");
 export const isSmallScreen = width < 400;
+// export const isTablet = (width > 800) && (height > 950);
 export const isTablet = width > 800;
 
 
@@ -22,7 +23,8 @@ export const globalStyles = StyleSheet.create({
         gap: 20,
     },
     text: {
-        fontFamily: Platform.select({ ios: "Arial", android: "Roboto" }),
+        fontFamily: Platform.select({ ios: "IBMPlexMono-Regular", android: "IBMPlexMono-Regular" }),
+        // fontFamily: Platform.select({ ios: "Arial", android: "Roboto" }),
         // fontFamily: Platform.select({ ios: "BebasNeue-Regular, sans-serif", android: "BebasNeue-Regular, sans-serif" }),
         color: "#fff",
     },

@@ -1,66 +1,166 @@
 {
 	"2_street_intro": {
-		"background": "street_closeup",
+		"background": "based_on_a_true_story",
 		"dialog": [
 			{
 				"id": 1,
-				"resizeMode": "contain",
-				"menu": false
+				"menu": false,
+				"actions": [
+					{
+						"type": "save_checkpoint"
+					}
+				]
 			},
 			{
 				"id": 2,
-				"backgroundChange": "empty_yellow_car_mini_cooper_stay_on_the_road",
-				"resizeMode": "contain",
+				"backgroundChange": "events_and_facts_will_be",
 				"menu": false
 			},
 			{
 				"id": 3,
-				"backgroundChange": "yellow_car_stays_on_the_road_with_killed_people",
+				"backgroundChange": "street_closeup",
 				"resizeMode": "contain",
 				"menu": false
 			},
 			{
 				"id": 4,
-				"backgroundChange": "first_dialog"
+				"backgroundChange": "empty_yellow_car_mini_cooper_stay_on_the_road",
+				"resizeMode": "contain",
+				"menu": false
 			},
 			{
 				"id": 5,
-				"characters": [
-					{ "id": "Daniel", "side": "right", "sprite": "daniel_smile", "mode": "full" }
-				],
-				"speaker": "Daniel",
-				"text": {
-					"ru": "Ди, у нас сегодня сразу двойное убийство. Женщина и девушка-подросток. Возможно мать и дочь.",
-					"en": "Di, we’ve got a double homicide tonight. A woman and a teenage girl. Possibly mother and daughter."
-				},
-				"bubble_mode": "large"
+				"backgroundChange": "yellow_car_stays_on_the_road_with_killed_people",
+				"resizeMode": "contain",
+				"menu": false
 			},
 			{
 				"id": 6,
-				"characters": [
-					{ "id": "Di", "side": "left", "sprite": "di_without_cape", "mode": "full", "height_modifier": 0.95
-					},
-					{ "id": "Daniel", "side": "right", "sprite": "daniel_smile", "mode": "full" }
-				],
-				"speaker": "Di",
-				"text": {
-					"ru": "Добрый вечер, мистер Даниэл. Вы уже допросили свидетеля? Это медсестра мисс Като Мэй.",
-					"en": "Good evening, Mr. Daniel. Have you already questioned the witness? That is nurse Ms. Kato Mei."
-				},
-				"bubble_mode": "large"
+				"backgroundChange": "first_dialog",
+				"menu": false
 			},
 			{
 				"id": 7,
 				"characters": [
-					{ "id": "Di", "side": "left", "sprite": "di_without_cape", "mode": "zoom", "height_modifier": 0.95 },
-					{ "id": "Daniel", "side": "right", "sprite": "daniel_smile", "mode": "zoom" }
+					{ "id": "Daniel", "side": "right", "sprite": "daniel_serious", "mode": "full" }
+				],
+				"speaker": "SidePanel",
+				"text": {
+					"ru": "Познакомьтесь с детективом Дэниелом.\nОн работает в отделе убийств более пятнадцати лет.\n\nОн спокоен, и его трудно обмануть или удивить чем-либо.",
+					"en": "Meet Detective Daniel.\nHe’s been with Homicide for over fifteen years.\n\nHe is calm, and it's hard to fool him or surprise him with anything."
+				},
+				"bubble_mode": "medium"
+			},
+			{
+				"id": 8,
+				"characters": [
+					{ "id": "Di", "side": "right", "sprite": "di_serious", "mode": "full", "height_modifier": 0.95 }
+				],
+				"speaker": "SidePanel",
+				"text": {
+					"ru": "Мисс Ди — новенькая в отделе по расследованию убийств.\n\nНо она очень способная.",
+					"en": "Miss Dee, she's new to the homicide department. \n\nBut she's very capable."
+				},
+				"bubble_mode": "medium"
+			},
+			{
+				"id": 9,
+				"characters": [
+					{ "id": "Daniel", "side": "right", "sprite": "daniel_serious", "mode": "full" }
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "Добрый вечер, мисс Ди",
+					"en": "Good evening, miss Dee."
+				},
+				"bubble_mode": "medium"
+			},
+			{
+				"id": 10,
+				"characters": [
+					{ "id": "Daniel", "side": "right", "sprite": "daniel_serious", "mode": "full" }
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "Ди, полиция обнаружила два тела в машине на автобусной остановке.",
+					"en": "Dee, the police found two bodies in a car at a bus stop."
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 11,
+				"characters": [
+					{ "id": "Daniel", "side": "right", "sprite": "daniel_serious", "mode": "full" }
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "Женщина и девочка-подросток. Возможно, мать и дочь.",
+					"en": "A woman and a teenage girl. Possibly mother and daughter."
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 12,
+				"characters": [
+					{ "id": "Di", "side": "left", "sprite": "di_serious", "mode": "full", "height_modifier": 0.95 }
+				],
+				"speaker": "Di",
+				"text": {
+					"ru": "Добрый вечер, мистер Даниэл.",
+					"en": "Good evening, Mr.Daniel"
+				},
+				"bubble_mode": "medium"
+			},
+			{
+				"id": 13,
+				"characters": [
+					{ "id": "Di", "side": "left", "sprite": "di_serious", "mode": "full", "height_modifier": 0.95
+					}
+				],
+				"speaker": "Di",
+				"text": {
+					"ru": "Вы уже допросили свидетеля?",
+					"en": "Have you questioned the witness yet?"
+				},
+				"bubble_mode": "medium"
+			},
+			{
+				"id": 14,
+				"characters": [
+					{ "id": "Di", "side": "left", "sprite": "di_serious", "mode": "full", "height_modifier": 0.95
+					}
+				],
+				"speaker": "Di",
+				"text": {
+					"ru": "Это медсестра, мисс Като Мей.",
+					"en": "This is nurse, Ms. Kato Mei."
+				},
+				"bubble_mode": "medium"
+			},
+			{
+				"id": 15,
+				"characters": [
+					{ "id": "Daniel", "side": "right", "sprite": "daniel_serious", "mode": "zoom" }
 				],
 				"speaker": "Daniel",
 				"text": {
 					"ru": "Еще нет, давайте начнем?",
 					"en": "Not yet, let’s begin?"
 				},
-				"bubble_mode": "small"
+				"bubble_mode": "medium",
+				"actions": [
+					{
+						"type": "add_task",
+						"id": "talk_to_witness_mei"
+					},
+					{
+						"type": "add_task",
+						"id": "identify_victims"
+					},
+					{
+						"type": "save_checkpoint"
+					}
+				]
 			}
 		]
 	},
@@ -78,7 +178,13 @@
 					"ru": "Мисс Мэй, расскажите, как вы нашли машину и женщин?",
 					"en": "Ms. Mei, could you tell us how you found the car and the women?"
 				},
-				"bubble_mode": "medium"
+				"bubble_mode": "large",
+				"actions": [
+					{
+						"type": "save_checkpoint"
+					}
+				]
+
 			},
 			{
 				"id": 2,
@@ -90,84 +196,165 @@
 					"ru": "Нажмите на знак диалога, чтобы начать опрос свидетеля.",
 					"en": "Tap the dialogue icon to begin questioning the witness."
 				},
-				"bubble_mode": "small"
+				"bubble_mode": "small",
+				"hotspots": [
+					{
+						"id": "start_dialog",
+						"type": "inspect",
+						"x": 0.4,
+						"y": 0.19,
+						"width": 0.22,
+						"height": 0.22,
+						"icon": "start_dialog.png"
+					}
+				]
 			},
 			{
 				"id": 3,
-				"characters": [
-					{ "id": "Mei", "side": "left", "sprite": "mai_found_the_car", "mode": "zoom" }
-				],
-				"speaker": "Mei",
-				"text": {
-					"ru": "Я вышла на пробежку утром и увидела, что машина стоит и работают дворники.",
-					"en": "I went jogging in the morning and saw the car with its wipers running."
-				},
-				"bubble_mode": "large"
+				"backgroundChange": "mei_is_jogging_along_the_street_running_on_the_sidewalk",
+				"menu": false
 			},
 			{
 				"id": 4,
 				"characters": [
-					{ "id": "Mei", "side": "left", "sprite": "mai_found_the_car", "mode": "zoom" }
+					{ "id": "Mei", "side": "left", "sprite": "mai_found_the_car", "mode": "full", "bg": "#D8423E" }
 				],
 				"speaker": "Mei",
 				"text": {
-					"ru": "Это было странно, но я подумала, что кто-то вышел ненадолго.",
-					"en": "It seemed odd, but I thought someone had just stepped out for a moment."
+					"ru": "Сегодня утром я вышла на пробежку и заметила машину, неудобно припаркованную у автобусной остановки, с работающими дворниками.",
+					"en": "I went for a jog this morning and noticed the car parked awkwardly by the bus stop with the wipers still running."
 				},
-				"bubble_mode": "medium"
+				"bubble_mode": "avatar",
+				"menu": false
 			},
 			{
 				"id": 5,
 				"characters": [
-					{ "id": "Mei", "side": "left", "sprite": "mai_found_the_car", "mode": "zoom" }
+					{ "id": "Mei", "side": "left", "sprite": "mai_found_the_car", "mode": "full", "bg": "#D8423E" }
 				],
 				"speaker": "Mei",
 				"text": {
-					"ru": "Позже, когда я шла на работу, машина всё ещё стояла там. Это показалось подозрительным.",
-					"en": "Later, on my way to work, the car was still there. That seemed suspicious."
+					"ru": "Это было странно, но я предположила, что кто-то просто припарковался там на мгновение.",
+					"en": "It was strange, but I figured someone had just parked there for a moment."
 				},
-				"bubble_mode": "large"
+				"bubble_mode": "avatar",
+				"menu": false
 			},
 			{
 				"id": 6,
 				"characters": [
-					{ "id": "Mei", "side": "left", "sprite": "mai_found_the_car", "mode": "zoom" }
+					{ "id": "Mei", "side": "left", "sprite": "mai_found_the_car", "mode": "full", "bg": "#D8423E" }
 				],
 				"speaker": "Mei",
 				"text": {
-					"ru": "Я подошла ближе и увидела на заднем сиденье двух женщин. Они откинулись назад, будто спали.",
-					"en": "I came closer and saw two women in the back seat, leaning back as if they were asleep."
+					"ru": "Было ещё темно, поэтому я никого внутри не заметила.",
+					"en": "It was still dark out then, so I didn't notice anyone inside."
 				},
-				"bubble_mode": "large"
+				"bubble_mode": "avatar",
+				"menu": false
 			},
+
 			{
 				"id": 7,
-				"characters": [
-					{ "id": "Mei", "side": "left", "sprite": "mai_found_the_car", "mode": "zoom" }
-				],
-				"speaker": "Mei",
-				"text": {
-					"ru": "Мне показалось, что им плохо. Я постучала в окно, но они не реагировали.",
-					"en": "They looked unwell. I knocked on the window but they didn’t react."
-				},
-				"bubble_mode": "medium"
+				"backgroundChange": "mei_walks_back_and_looks_at_the_car_with_mild_surprise",
+				"menu": false
 			},
 			{
 				"id": 8,
 				"characters": [
-					{ "id": "Mei", "side": "left", "sprite": "mai_found_the_car", "mode": "zoom" }
+					{ "id": "Mei", "side": "left", "sprite": "mai_found_the_car", "mode": "full", "bg": "#D8423E" }
 				],
 				"speaker": "Mei",
 				"text": {
-					"ru": "Тогда я вызвала скорую и полицию.",
-					"en": "Then I called an ambulance and the police."
+					"ru": "Затем, час спустя, я направлялась на работу и заметила, что машина все еще стоит там с включенными дворниками.",
+					"en": "Then, an hour later, I was heading to work and noticed the car was still there with the wipers on."
 				},
-				"bubble_mode": "small"
+				"bubble_mode": "avatar",
+				"menu": false
 			},
 			{
 				"id": 9,
 				"characters": [
-					{ "id": "Di", "side": "right", "sprite": "di_interesting", "mode": "zoom" }
+					{ "id": "Mei", "side": "left", "sprite": "mai_found_the_car", "mode": "full", "bg": "#D8423E" }
+				],
+				"speaker": "Mei",
+				"text": {
+					"ru": "Это показалось мне подозрительным, поэтому я решил присмотреться повнимательнее.",
+					"en": "That felt suspicious, so I decided to take a closer look."
+				},
+				"bubble_mode": "avatar",
+				"menu": false
+			},
+
+			{
+				"id": 10,
+				"backgroundChange": "mei_see_that_the_woman_is_sleeping_in_the_driver_s_seat",
+				"menu": false
+			},
+			{
+				"id": 11,
+				"characters": [
+					{ "id": "Mei", "side": "left", "sprite": "mai_found_the_car", "mode": "full", "bg": "#D8423E" }
+				],
+				"speaker": "Mei",
+				"text": {
+					"ru": "Я увидела двух женщин на заднем сиденье, откинувшихся назад, словно они спали.",
+					"en": "I saw two women in the back seat, leaning back as if they were asleep"
+				},
+				"bubble_mode": "avatar",
+				"menu": false
+			},
+			{
+				"id": 12,
+				"characters": [
+					{ "id": "Mei", "side": "left", "sprite": "mai_found_the_car", "mode": "full", "bg": "#D8423E" }
+				],
+				"speaker": "Mei",
+				"text": {
+					"ru": "Но, взглянув на них, я поняла, что что-то не так.",
+					"en": "But looking at them, I could tell something was wrong. "
+				},
+				"bubble_mode": "avatar",
+				"menu": false
+			},
+			{
+				"id": 13,
+				"characters": [
+					{ "id": "Mei", "side": "left", "sprite": "mai_found_the_car", "mode": "full", "bg": "#D8423E" }
+				],
+				"speaker": "Mei",
+				"text": {
+					"ru": "Я попыталась постучать, чтобы разбудить их, но ответа не последовало...",
+					"en": "I tried knocking to wake them up, but there was no response..."
+				},
+				"bubble_mode": "avatar",
+				"menu": false
+			},
+
+			{
+				"id": 14,
+				"backgroundChange": "mei_calling_police_with_worried_face",
+				"menu": false
+			},
+			{
+				"id": 15,
+				"characters": [
+					{ "id": "Mei", "side": "left", "sprite": "mai_found_the_car", "mode": "full", "bg": "#D8423E" }
+				],
+				"speaker": "Mei",
+				"text": {
+					"ru": "После этого я вызвала скорую помощь и полицию.",
+					"en": "After that, I called for an ambulance and the police"
+				},
+				"bubble_mode": "avatar",
+				"menu": false
+			},
+
+			{
+				"id": 16,
+				"backgroundChange": "first_dialog",
+				"characters": [
+					{ "id": "Di", "side": "right", "sprite": "di_thinking", "mode": "zoom" }
 				],
 				"speaker": "Di",
 				"text": {
@@ -177,19 +364,31 @@
 				"bubble_mode": "medium"
 			},
 			{
-				"id": 10,
+				"id": 17,
 				"characters": [
 					{ "id": "Mei", "side": "left", "sprite": "mai_found_the_car", "mode": "zoom" }
 				],
 				"speaker": "Mei",
 				"text": {
-					"ru": "Да, я заметила что кожа была  красного оттенка. Это сразу бросилось в глаза.",
-					"en": "Yes, I noticed that the skin had a reddish tone. It immediately caught my eye."
+					"ru": "Да, я заметила что кожа была  красного оттенка.",
+					"en": "Yes, I noticed that the skin had a reddish tone. "
 				},
 				"bubble_mode": "large"
 			},
 			{
-				"id": 11,
+				"id": 18,
+				"characters": [
+					{ "id": "Mei", "side": "left", "sprite": "mai_found_the_car", "mode": "zoom" }
+				],
+				"speaker": "Mei",
+				"text": {
+					"ru": "Это сразу бросилось в глаза.",
+					"en": "It immediately caught my eye."
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 19,
 				"characters": [
 					{ "id": "Daniel", "side": "right", "sprite": "daniel_serious", "mode": "zoom" }
 				],
@@ -198,12 +397,18 @@
 					"ru": "Спасибо ms Mei, вы можете идти.",
 					"en": "Thanks ms Mei, you can leave."
 				},
-				"bubble_mode": "small"
+				"bubble_mode": "medium",
+				"actions": [
+					{
+						"type": "complete_task",
+						"id": "talk_to_witness_mei"
+					}
+				]
 			},
 			{
-				"id": 12,
+				"id": 20,
 				"characters": [
-					{ "id": "Daniel", "side": "right", "sprite": "daniel_thinking", "mode": "cut" }
+					{ "id": "Daniel", "side": "right", "sprite": "daniel_thinking", "mode": "zoom" }
 				],
 				"speaker": "Daniel",
 				"text": {
@@ -213,19 +418,31 @@
 				"bubble_mode": "medium"
 			},
 			{
-				"id": 13,
+				"id": 21,
 				"characters": [
-					{ "id": "Daniel", "side": "right", "sprite": "daniel_thinking", "mode": "cut" }
+					{ "id": "Daniel", "side": "right", "sprite": "daniel_thinking", "mode": "zoom" }
 				],
 				"speaker": "Daniel",
 				"text": {
-					"ru": "Miss Di, давайте осмотрим машину? Нам нужно понять кому она принадлежит и найти родственников.",
-					"en": "Miss Di, shall we inspect the car? We need to find out who it belongs to and track down any relatives."
+					"ru": "Miss Di, давайте осмотрим машину?",
+					"en": "Miss Di, shall we inspect the car?"
 				},
 				"bubble_mode": "large"
 			},
 			{
-				"id": 14,
+				"id": 22,
+				"characters": [
+					{ "id": "Daniel", "side": "right", "sprite": "daniel_thinking", "mode": "zoom" }
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "Нам нужно понять кому она принадлежит и найти родственников.",
+					"en": "We need to find out who it belongs to and track down any relatives."
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 23,
 				"characters": [],
 				"speaker": "Narrator",
 				"text": {
@@ -238,10 +455,15 @@
 						"id": "car_eye",
 						"type": "inspect",
 						"x": 0.33,
-						"y": 0.63,
+						"y": 0.59,
 						"width": 0.12,
 						"height": 0.12,
 						"icon": "eye.png"
+					}
+				],
+				"actions": [
+					{
+						"type": "save_checkpoint"
 					}
 				]
 			}
@@ -267,7 +489,7 @@
 						"type": "inspect",
 						"id": "car_two_bottles",
 						"x": 0.37,
-						"y": 0.63,
+						"y": 0.59,
 						"width": 0.29,
 						"height": 0.22,
 						"icon": "two_bottles.png",
@@ -278,6 +500,11 @@
 							"height": 0.2
 						}
 					}
+				],
+				"actions": [
+					{
+						"type": "save_checkpoint"
+					}
 				]
 			},
 			{
@@ -287,7 +514,7 @@
 						"type": "add_item",
 						"id": "car_pointer",
 						"x": 0.48,
-						"y": 0.81,
+						"y": 0.78,
 						"width": 0.12,
 						"height": 0.12,
 						"icon": "pointer.png"
@@ -300,7 +527,7 @@
 						"type": "add_item",
 						"id": "car_two_bottles",
 						"x": 0.37,
-						"y": 0.63,
+						"y": 0.59,
 						"width": 0.29,
 						"height": 0.22,
 						"icon": "two_bottles.png",
@@ -311,8 +538,7 @@
 							"height": 0.2
 						}
 					}
-				],
-				"action": "two_bottles:add_item"
+				]
 			},
 			{
 				"id": 3,
@@ -347,68 +573,71 @@
 				"id": 5,
 				"backgroundNoAnimationChange": "first_dialog",
 				"characters": [
-					{ "id": "Daniel", "side": "right", "sprite": "daniel_serious", "mode": "zoom" }
+					{ "id": "Daniel", "side": "right", "sprite": "daniel_serious", "mode": "zoom", "bg": "white" }
 				],
-				"speaker": "Narrator",
+				"speaker": "Daniel",
 				"text": {
-					"ru": "Документы на имя Сью Kanagawa. Нам нужно связаться с ее родными  и задать вопросы.",
-					"en": "The documents are in the name of Sue Kanagawa. We need to contact her family and ask questions."
+					"ru": "Найдены документы на имя Сью Канагавы.",
+					"en": "Documents found in the name of Sue Kanagawa"
 				},
-				"bubble_mode": "large",
+				"bubble_mode": "avatar",
 				"hotspots": [
 					{
-						"type": "inactive",
+						"type": "inspect",
 						"id": "canagava_documents",
-						"x": 0.05,
-						"y": 0.26,
-						"width": 0.50,
-						"height": 0.6,
+						"x": 0.13,
+						"y": 0.09,
+						"width": 0.75,
+						"height": 0.62,
 						"icon": "sue_canagava_documents.jpg"
 					}
-				]
+				],
+				"actions": [
+					{
+						"type": "add_item",
+						"category": "evidence",
+						"id": "mrs_kanagawa_id"
+					}
+				],
+				"menu": false
 			},
 			{
 				"id": 6,
+				"characters": [
+					{ "id": "Daniel", "side": "right", "sprite": "daniel_serious", "mode": "zoom", "bg": "white" }
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "Нам нужно связаться с её родственниками и задать несколько вопросов.",
+					"en": "We need to contact her relatives and ask some questions"
+				},
+				"bubble_mode": "avatar",
+				"menu": false
+			},
+			{
+				"id": 7,
 				"characters": [
 					{ "id": "Daniel", "side": "right", "sprite": "daniel_serious", "mode": "zoom" }
 				],
 				"speaker": "Daniel",
 				"text": {
-					"ru": "Ди, позвони в офис полиции узнать есть ли у нее муж или родственники?",
-					"en": "Di, call the police office to find out if she has a husband or relatives?"
+					"ru": "Ди, позвони в полицейский участок.",
+					"en": "Dee, call the police station."
 				},
 				"bubble_mode": "large",
 				"hotspots": [
 
 				]
-			},
-			{
-				"id": 7
 			},
 			{
 				"id": 8,
 				"characters": [
-					{ "id": "Di", "side": "left", "sprite": "di_interesting", "mode": "zoom" }
+					{ "id": "Daniel", "side": "right", "sprite": "daniel_serious", "mode": "zoom" }
 				],
-				"speaker": "Di",
+				"speaker": "Daniel",
 				"text": {
-					"ru": "Да, у нее есть муж и он работает в госпитале в 10 минутах езды отсюда.",
-					"en": "Yes, she has a husband and he works at a hospital 10 minutes away from here."
-				},
-				"bubble_mode": "medium",
-				"hotspots": [
-
-				]
-			},
-			{
-				"id": 9,
-				"characters": [
-					{ "id": "Di", "side": "left", "sprite": "di_interesting", "mode": "zoom" }
-				],
-				"speaker": "Di",
-				"text": {
-					"ru": "Может вы поговорите с ним без меня? Мне тяжело даются такие разговоры.",
-					"en": "Maybe you could talk to him without me? I have a hard time having these kinds of conversations."
+					"ru": "Узнай, есть ли у нее муж или какие-либо другие родственники.",
+					"en": "Find out if she has a husband or any other relatives"
 				},
 				"bubble_mode": "large",
 				"hotspots": [
@@ -416,9 +645,76 @@
 				]
 			},
 			{
+				"id": 9
+			},
+			{
 				"id": 10,
 				"characters": [
-					{ "id": "Daniel", "side": "right", "sprite": "daniel_serious", "mode": "zoom" }
+					{ "id": "Di", "side": "left", "sprite": "di_thinking", "mode": "zoom" }
+				],
+				"speaker": "Di",
+				"text": {
+					"ru": "Да, у неё есть муж.",
+					"en": "Yes, she has a husband."
+				},
+				"bubble_mode": "medium"
+			},
+			{
+				"id": 10,
+				"characters": [
+					{ "id": "Di", "side": "left", "sprite": "di_thinking", "mode": "zoom" }
+				],
+				"speaker": "Di",
+				"text": {
+					"ru": "и он работает в больнице в десяти минутах езды отсюда.",
+					"en": "and he works at a hospital a 10-minute drive from here."
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 10,
+				"characters": [
+					{ "id": "Di", "side": "left", "sprite": "di_thinking", "mode": "zoom" }
+				],
+				"speaker": "Di",
+				"text": {
+					"ru": "Могли бы вы поговорить с ним без меня?",
+					"en": "Could you speak with him without me?"
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 11,
+				"characters": [
+					{ "id": "Di", "side": "left", "sprite": "di_thinking", "mode": "zoom" }
+				],
+				"speaker": "Di",
+				"text": {
+					"ru": "Мне трудно вести подобные разговоры.",
+					"en": "I have a hard time having these kinds of conversations."
+				},
+				"bubble_mode": "large",
+				"actions": [
+					{
+						"type": "complete_task",
+						"id": "identify_victims"
+					},
+					{
+						"type": "add_item",
+						"category": "dossier",
+						"id": "mrs_kanagawa"
+					},
+					{
+						"type": "add_item",
+						"category": "dossier",
+						"id": "mrs_kanagawa_daughter"
+					}
+				]
+			},
+			{
+				"id": 12,
+				"characters": [
+					{ "id": "Daniel", "side": "right", "sprite": "daniel_smile", "mode": "zoom" }
 				],
 				"speaker": "Daniel",
 				"text": {
@@ -426,22 +722,35 @@
 					"en": "OK, but only this time."
 				},
 				"bubble_mode": "medium",
-				"hotspots": [
-
+				"actions": [
+					{
+						"type": "add_task",
+						"id": "speak_with_kanagawa"
+					}
 				]
 			},
 			{
-				"id": 11,
+				"id": 13,
 				"speaker": "Narrator",
 				"text": {
 					"ru": "На карте открылось новое место. Перейдите в него.",
 					"en": "A new location has opened on the map. Go to it."
 				},
-				"actions": ["unlock_location:5_hospital"]
+				"actions": [
+					{
+						"type": "unlock_location",
+						"id": "5_hospital"
+					}
+				]
 			},
 			{
-				"id": 12,
-				"openMap": true
+				"id": 14,
+				"openMap": true,
+				"actions": [
+					{
+						"type": "save_checkpoint"
+					}
+				]
 			}
 		]
 	},
@@ -453,12 +762,27 @@
 				"id": 1,
 				"characters": [
 					{ "id": "Mr. Kanagawa", "side": "left", "sprite": "mr_kanagawa_crying", "mode": "full" }
+				],
+				"hotspots": [
+					{
+						"id": "start_dialog",
+						"type": "inspect",
+						"x": 0.4,
+						"y": 0.19,
+						"width": 0.22,
+						"height": 0.22,
+						"icon": "start_dialog.png"
+					}
+				],
+				"actions": [
+					{
+						"type": "save_checkpoint"
+					}
 				]
 			},
 			{
 				"id": 2,
 				"characters": [
-					{ "id": "Mr. Kanagawa", "side": "left", "sprite": "mr_kanagawa_crying", "mode": "full" },
 					{ "id": "Daniel", "side": "right", "sprite": "daniel_serious", "mode": "full" }
 				],
 				"speaker": "Daniel",
@@ -471,8 +795,7 @@
 			{
 				"id": 3,
 				"characters": [
-					{ "id": "Mr. Kanagawa", "side": "left", "sprite": "mr_kanagawa_crying", "mode": "full" },
-					{ "id": "Daniel", "side": "right", "sprite": "daniel_serious", "mode": "full" }
+					{ "id": "Mr. Kanagawa", "side": "left", "sprite": "mr_kanagawa_crying", "mode": "full" }
 				],
 				"speaker": "Mr. Kanagawa",
 				"text": {
@@ -488,22 +811,29 @@
 				],
 				"speaker": "Daniel",
 				"text": {
-					"ru": "Что вы делали сегодня в обед / утром?",
-					"en": "What did you do this afternoon / morning?"
+					"ru": "Где вы были сегодня утром и до обеда?",
+					"en": "Where were you this morning and before lunch?"
 				},
-				"bubble_mode": "large"
+				"bubble_mode": "medium"
 			},
 			{
 				"id": 5,
 				"characters": [
-					{ "id": "Mr. Kanagawa", "side": "left", "sprite": "mr_kanagava_serious", "mode": "zoom" }
+					{ "id": "Mr. Kanagawa", "side": "left", "sprite": "mr_kanagawa_crying", "mode": "zoom" }
 				],
 				"speaker": "Mr. Kanagawa",
 				"text": {
 					"ru": "Сегодня я все это время был на операции.",
 					"en": "Today I have been on surgery all this time"
 				},
-				"bubble_mode": "large"
+				"bubble_mode": "medium",
+				"actions": [
+					{
+						"type": "add_item",
+						"category": "facts",
+						"id": "mr_kanagawa_surgery"
+					}
+				]
 			},
 			{
 				"id": 6,
@@ -532,41 +862,78 @@
 			{
 				"id": 8,
 				"characters": [
-					{ "id": "Mr. Kanagawa", "side": "left", "sprite": "mr_kanagava_serious", "mode": "zoom" }
+					{ "id": "Mr. Kanagawa", "side": "left", "sprite": "mr_kanagava_thinking", "mode": "zoom" }
 				],
 				"speaker": "Mr. Kanagawa",
 				"text": {
 					"ru": "Конфликты? Нет. Думаю, это невозможно.",
 					"en": "Conflicts? No. I think it's impossible."
 				},
-				"bubble_mode": "large"
+				"bubble_mode": "medium"
 			},
 			{
 				"id": 9,
 				"characters": [
-					{ "id": "Daniel", "side": "right", "sprite": "daniel_serious", "mode": "zoom" }
+					{ "id": "Mr. Kanagawa", "side": "left", "sprite": "mr_kanagava_thinking", "mode": "zoom" }
 				],
-				"speaker": "Daniel",
+				"speaker": "Mr. Kanagawa",
 				"text": {
-					"ru": "Да, мы по-прежнему считаем, что это был несчастный случай. Но я всегда рассматриваю все варианты.",
-					"en": "Yes, we still think it was an accident. But I always check all the options."
+					"ru": "Почему вы спрашиваете? Мне сказали, что они, скорее всего, уснули.",
+					"en": "Why are you asking? I was told they most likely fell asleep"
 				},
 				"bubble_mode": "large"
 			},
 			{
 				"id": 10,
 				"characters": [
+					{ "id": "Mr. Kanagawa", "side": "left", "sprite": "mr_kanagava_thinking", "mode": "zoom" }
+				],
+				"speaker": "Mr. Kanagawa",
+				"text": {
+					"ru": "и отравились выхлопными газами автомобиля.",
+					"en": "and were poisoned by the car's exhaust fumes."
+				},
+				"bubble_mode": "medium"
+			},
+			{
+				"id": 11,
+				"characters": [
+					{ "id": "Daniel", "side": "right", "sprite": "daniel_serious", "mode": "zoom" }
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "Да, мы по-прежнему считаем, что это была трагическая случайность.",
+					"en": "Yes, we still think it was tragic accident."
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 12,
+				"characters": [
+					{ "id": "Daniel", "side": "right", "sprite": "daniel_serious", "mode": "zoom" }
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "Но я всегда проверяю все варианты.",
+					"en": "But I always check all options."
+				},
+				"bubble_mode": "large"
+			},
+
+			{
+				"id": 13,
+				"characters": [
 					{ "id": "Daniel", "side": "right", "sprite": "daniel_serious", "mode": "zoom" }
 				],
 				"speaker": "Daniel",
 				"text": {
 					"ru": "Спасибо, mr. Канагава. Я позвоню вам, если мы найдем новую информацию.",
-					"en": "Thank you mr. Kanagawa I will call you if we find new information."
+					"en": "Thank you Mr.Kanagawa. I will call you if we find new information."
 				},
 				"bubble_mode": "large"
 			},
 			{
-				"id": 11,
+				"id": 14,
 				"characters": [
 					{ "id": "Daniel", "side": "right", "sprite": "daniel_finger_up", "mode": "cut" }
 				],
@@ -575,8 +942,1286 @@
 					"ru": "Новый персонаж в инвентаре",
 					"en": "New character in inventory"
 				},
-				"bubble_mode": "large"
+				"bubble_mode": "large",
+				"actions": [
+					{
+						"type": "add_item",
+						"category": "dossier",
+						"id": "mr_kanagawa"
+					},
+					{
+						"type": "complete_task",
+						"id": "speak_with_kanagawa"
+					},
+					{
+						"type": "add_task",
+						"id": "speak_with_medical_examiner"
+					}
+				]
+			},
+			{
+				"id": 15,
+				"speaker": "Narrator",
+				"text": {
+					"ru": "Детективам следует отправиться в полицейский участок, чтобы поговорить с патологоанатомом.",
+					"en": "Detectives should go to the Police to talk to the pathologist."
+				},
+				"actions": [
+					{
+						"type": "unlock_location",
+						"id": "6_laboratory"
+					}
+				]
+			},
+			{
+				"id": 16,
+				"openMap": true,
+				"actions": [
+					{
+						"type": "save_checkpoint"
+					}
+				]
 			}
+		]
+	},
+
+	"6_laboratory": {
+		"background": "laboratory",
+		"dialog": [
+			{
+				"id": 1,
+				"actions": [
+					{
+						"type": "save_checkpoint"
+					}
+				]
+			},
+			{
+				"id": 2,
+				"backgroundChange": "pathologist_reports",
+				"resizeMode": "contain",
+				"menu": false
+			},
+			{
+				"id": 3,
+				"speaker": "Narrator",
+				"text": {
+					"ru": "Патологоанатом сообщает что у женщины и девушки был красный цвет кожи а то это говорит о том что они отправились угарным газом.",
+					"en": "The pathologist reports that the woman and the girl had red skin, which suggests they were inhaled by carbon monoxide."
+				},
+				"menu": false
+			},
+			{
+				"id": 4,
+				"backgroundChange": "laboratory",
+				"resizeMode": "contain",
+				"menu": false
+			},
+			{
+				"id": 5,
+				"characters": [
+					{ "id": "Laboratory Assistant", "side": "right", "sprite": "roberts", "mode": "full" }
+				],
+				"speaker": "SidePanel",
+				"text": {
+					"ru": "Познакомьтесь с мистером Робертсом.\n\n\u2028 Он опытный судебно-медицинский эксперт.\nВозможно, он выглядит немного устрашающе, но на самом деле он хороший, добрый семьянин.\n\n\u2028 Иногда после работы он любит покататься на своей лодке.",
+					"en": "Meet Mr. Roberts.\n\n\u2028 He is an experienced Medical Examiner.\nHe may looks a little scary, but in reality he's a good, kind family man.\n\n\u2028 He sometimes likes to go for a ride on his boat after work."
+				}
+			},
+			{
+				"id": 6,
+				"characters": [
+					{ "id": "Laboratory Assistant", "side": "left", "sprite": "roberts", "mode": "full" }
+				],
+				"speaker": "Laboratory Assistant",
+				"text": {
+					"ru": "Здравствуйте, детективы. Что привело вас ко мне?",
+					"en": "Hello, detectives. What brings you to me?"
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 7,
+				"characters": [
+					{ "id": "Di", "side": "right", "sprite": "di_thinking", "mode": "full" }
+				],
+				"speaker": "Di",
+				"text": {
+					"ru": "Вы меня пугаете, вы знаете это?",
+					"en": "You gives me the creeps, you know that?"
+				},
+				"bubble_mode": "medium"
+			},
+			{
+				"id": 8,
+				"characters": [
+					{ "id": "Daniel", "side": "left", "sprite": "daniel_smile", "mode": "full" }
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "Мистер Робертс, вы подготовили заключение о вскрытии?",
+					"en": "Mr. Roberts, did you prepare the autopsy report? "
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 9,
+				"characters": [
+					{ "id": "Laboratory Assistant", "side": "left", "sprite": "roberts_yes", "mode": "zoom" }
+				],
+				"speaker": "Laboratory Assistant",
+				"text": {
+					"ru": "Тоже рад тебя видеть, Ди. Да, отчёт готов.",
+					"en": "Good to see you too, Dee. Yes, the report is ready."
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 10,
+				"characters": [
+					{ "id": "Laboratory Assistant", "side": "left", "sprite": "roberts", "mode": "zoom" }
+				],
+				"speaker": "Laboratory Assistant",
+				"text": {
+					"ru": "У женщины и девушки-подростка была красноватая кожа.",
+					"en": "The woman and the teenage girl had reddish skin,"
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 11,
+				"characters": [
+					{ "id": "Laboratory Assistant", "side": "left", "sprite": "roberts", "mode": "full" }
+				],
+				"speaker": "Laboratory Assistant",
+				"text": {
+					"ru": "Это указывает на то, что они отравились угарным газом.",
+					"en": "Which indicates they were poisoned by carbon monoxide."
+				},
+				"bubble_mode": "large",
+				"actions": [
+					{
+						"type": "add_item",
+						"category": "evidence",
+						"id": "laboratory_conclusion"
+					}
+				]
+			},
+			{
+				"id": 12,
+				"characters": [
+					{ "id": "Di", "side": "right", "sprite": "di_serious", "mode": "full" }
+				],
+				"speaker": "Di",
+				"text": {
+					"ru": "Спасибо, Кэп! Мы уже это выяснили от медсестры, которая обнаружила тела.",
+					"en": "Thanks, Cap! We already found that out from the nurse who found the bodies."
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 13,
+				"characters": [
+					{ "id": "Di", "side": "right", "sprite": "di_serious", "mode": "full" }
+				],
+				"speaker": "Di",
+				"text": {
+					"ru": "Может быть, у вас есть что-то новое, чем вы хотели бы с нами поделиться?",
+					"en": "Maybe you’ve got something new to tell us?"
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 14,
+				"characters": [
+					{ "id": "Laboratory Assistant", "side": "left", "sprite": "roberts", "mode": "full" }
+				],
+				"speaker": "Laboratory Assistant",
+				"text": {
+					"ru": "Что вы хотите, чтобы я вам сказал?",
+					"en": "What do you want me to tell you?"
+				},
+				"bubble_mode": "medium"
+			},
+			{
+				"id": 15,
+				"characters": [
+					{ "id": "Laboratory Assistant", "side": "left", "sprite": "roberts", "mode": "full" }
+				],
+				"speaker": "Laboratory Assistant",
+				"text": {
+					"ru": "Предоставьте мне больше доказательств, и тогда я смогу рассказать вам больше.",
+					"en": "Bring me more evidence, and then I’ll be able to tell you more."
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 16,
+				"characters": [
+					{ "id": "Laboratory Assistant", "side": "left", "sprite": "roberts", "mode": "full" }
+				],
+				"speaker": "Laboratory Assistant",
+				"text": {
+					"ru": "И ещё добавлю, что смерть наступила примерно в 13:00–13:30.",
+					"en": "Oh, and I can also add that the time of death was roughly 1:00 PM - 1:30 PM."
+				},
+				"bubble_mode": "large",
+				"actions": [
+					{
+						"type": "add_item",
+						"category": "evidence",
+						"id": "estimated_time_of_death"
+					}
+				]
+			},
+			{
+				"id": 17,
+				"backgroundNoAnimationChange": "police",
+				"characters": [
+					{ "id": "Daniel", "side": "right", "sprite": "daniel_serious", "mode": "zoom" }
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "Он прав. \nУ нас пока ничего нет.",
+					"en": "He is right. \nWe have nothing yet"
+				},
+				"bubble_mode": "medium",
+				"actions": [
+					{
+						"type": "complete_task",
+						"id": "speak_with_medical_examiner"
+					},
+					{
+						"type": "add_task",
+						"id": "talk_to_housekeeper"
+					}
+				]
+			},
+			{
+				"id": 18,
+				"characters": [],
+				"speaker": "Narrator",
+				"text": {
+					"ru": "Давайте попробуем поискать новые доказательства в местах, которые вы ещё не проверяли?",
+					"en": "Lets` try looking for new evidence in places you haven’t checked yet?"
+				},
+				"actions": [
+					{
+						"type": "unlock_location",
+						"id": "7_kanagawa_house"
+					},
+					{
+						"type": "save_checkpoint"
+					}
+				]
+			},
+			{
+				"id": 19,
+				"openMap": true
+			}
+		]
+	},
+
+	"7_kanagawa_house": {
+		"background": "kanagawa_house_outdoor",
+		"dialog": [
+			{
+				"id": 1,
+				"characters": [
+					{ "id": "Di", "side": "right", "sprite": "di_serious", "mode": "full" }
+				],
+				"speaker": "Di",
+				"text": {
+					"ru": "Вот мы и в доме семьи Канагава.",
+					"en": "Here we are at the Kanagawa family home"
+				},
+				"bubble_mode": "medium",
+				"actions": [
+					{
+						"type": "save_checkpoint"
+					}
+				]
+			},
+			{
+				"id": 2,
+				"characters": [
+					{ "id": "Di", "side": "right", "sprite": "di_serious", "mode": "full" }
+				],
+				"speaker": "Di",
+				"text": {
+					"ru": "Какой красивый дом...",
+					"en": "Such a beautiful house..."
+				},
+				"bubble_mode": "small"
+			},
+			{
+				"id": 3,
+				"characters": [
+					{ "id": "Di", "side": "right", "sprite": "di_serious", "mode": "full" }
+				],
+				"speaker": "Di",
+				"text": {
+					"ru": "Трудно поверить, что здесь произошло что-то настолько ужасное.",
+					"en": "Hard to believe something so terrible happened here."
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 4,
+				"characters": [
+					{ "id": "Di", "side": "right", "sprite": "di_serious", "mode": "full" }
+				],
+				"speaker": "Di",
+				"text": {
+					"ru": "Иногда я смотрю на такие дома и думаю...",
+					"en": "Sometimes I look at houses like this and think.."
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 5,
+				"characters": [
+					{ "id": "Di", "side": "right", "sprite": "di_serious", "mode": "full" }
+				],
+				"speaker": "Di",
+				"text": {
+					"ru": "“В таких местах никогда не бывает убийств или трагедий”",
+					"en": "“Places like this never have murders or tragedies”"
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 6,
+				"characters": [
+					{ "id": "Di", "side": "right", "sprite": "di_serious", "mode": "full" }
+				],
+				"speaker": "Di",
+				"text": {
+					"ru": "Но это всего лишь иллюзия.",
+					"en": "But that’s just an illusion."
+				},
+				"bubble_mode": "medium"
+			},
+			{
+				"id": 7,
+				"characters": [
+					{ "id": "Daniel", "side": "left", "sprite": "daniel_serious", "mode": "full" }
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "Смерть постигает всех — богатых и бедных, плохих и хороших.",
+					"en": "Death comes for everyone - the rich and the poor, the bad and the good."
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 8,
+				"characters": [
+					{ "id": "Daniel", "side": "right", "sprite": "daniel_smile", "mode": "full" }
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "В доме должна быть домработница.",
+					"en": "There should be a housekeeper in the house."
+				},
+				"bubble_mode": "medium"
+			},
+			{
+				"id": 9,
+				"characters": [
+					{ "id": "Daniel", "side": "right", "sprite": "daniel_smile", "mode": "full" }
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "Давайте спросим её — может, она что-то видела?",
+					"en": "Let’s ask her — maybe she saw something?"
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 10,
+				"backgroundChange": "kanagawa_house_indoor"
+			},
+			{
+				"id": 11,
+				"characters": [
+					{ "id": "Housekeeper", "side": "left", "sprite": "housekeeper", "mode": "zoom" }
+				],
+				"speaker": "Housekeeper",
+				"text": {
+					"ru": "Здравствуйте, я домработница семьи Канагава.",
+					"en": "Hello, I’m the Kanagawa family’s housekeeper."
+				},
+				"bubble_mode": "medium",
+				"actions": [
+					{
+						"type": "add_item",
+						"category": "dossier",
+						"id": "housekeeper"
+					}
+				]
+			},
+			{
+				"id": 12,
+				"characters": [
+					{ "id": "Housekeeper", "side": "left", "sprite": "housekeeper", "mode": "zoom" }
+				],
+				"speaker": "Housekeeper",
+				"text": {
+					"ru": "Что-то случилось?",
+					"en": "Has something happened?"
+				},
+				"bubble_mode": "small"
+			},
+			{
+				"id": 13,
+				"characters": [
+					{ "id": "Di", "side": "right", "sprite": "di_thinking", "mode": "zoom" }
+				],
+				"speaker": "Di",
+				"text": {
+					"ru": "Я детектив Ди.",
+					"en": "I’m detective Dee."
+				},
+				"bubble_mode": "small"
+			},
+			{
+				"id": 14,
+				"characters": [
+					{ "id": "Di", "side": "right", "sprite": "di_thinking", "mode": "zoom" }
+				],
+				"speaker": "Di",
+				"text": {
+					"ru": "Мы расследуем смерть госпожи Канагавы и ее дочери.",
+					"en": "We’re investigating the deaths of Ms.Kanagawa and her daughter."
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 15,
+				"characters": [
+					{ "id": "Housekeeper", "side": "left", "sprite": "housekeeper_worried", "mode": "zoom" }
+				],
+				"speaker": "Housekeeper",
+				"text": {
+					"ru": "О боже! Какая трагедия! Но как я могу вам доверять?",
+					"en": "Oh my God! What a tragedy! But how can I trust you?"
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 16,
+				"characters": [
+					{ "id": "Housekeeper", "side": "left", "sprite": "housekeeper_worried", "mode": "zoom" }
+				],
+				"speaker": "Housekeeper",
+				"text": {
+					"ru": "В наши дни вокруг так много мошенников.",
+					"en": "There are so many scammers around these days."
+				},
+				"bubble_mode": "medium"
+			},
+			{
+				"id": 17,
+				"characters": [
+					{ "id": "Di", "side": "right", "sprite": "di_serious", "mode": "zoom" }
+				],
+				"speaker": "Di",
+				"text": {
+					"ru": "Вы же понимаете, что мы не можем вам показать?",
+					"en": "You do understand that we can’t show you."
+				},
+				"bubble_mode": "medium"
+			},
+			{
+				"id": 18,
+				"characters": [
+					{ "id": "Housekeeper", "side": "left", "sprite": "housekeeper_worried", "mode": "zoom" }
+				],
+				"speaker": "Housekeeper",
+				"text": {
+					"ru": "Да, я понимаю.",
+					"en": "Yes, I understand"
+				},
+				"bubble_mode": "small"
+			},
+			{
+				"id": 19,
+				"characters": [
+					{ "id": "Housekeeper", "side": "left", "sprite": "housekeeper_worried", "mode": "zoom" }
+				],
+				"speaker": "Housekeeper",
+				"text": {
+					"ru": "Но есть ли у вас какие-либо доказательства того, что вы действительно нашли их машину?",
+					"en": "But do you have any proof that you actually found their car?"
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 20,
+				"characters": [
+					{ "id": "Daniel", "side": "right", "sprite": "daniel_serious", "mode": "zoom" }
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "Ди, что мы можем ей показать?",
+					"en": "Dee, what can we show her "
+				},
+				"bubble_mode": "medium"
+			},
+			{
+				"id": 21,
+				"characters": [
+					{ "id": "Daniel", "side": "right", "sprite": "daniel_serious", "mode": "zoom" }
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "Чтобы доказать, что мы нашли машину госпожи Канагавы?",
+					"en": "To prove that we found Ms. Kanagawa’s car?"
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 22,
+				"characters": [
+					{ "id": "Daniel", "side": "center", "sprite": "daniel_thinking", "mode": "zoom2" }
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "Давайте выберем любое доказательство, что мы нашли машину госпожи Канагавы?",
+					"en": "Let’s pick any piece of evidence that proves we found Ms. Kanagawa’s car?"
+				},
+				"bubble_mode": "zip",
+				"tapToContinue": false,
+				"showProof": {
+					"buttonText": {
+						"ru": "Показать доказательство",
+						"en": "Show proof"
+					},
+					"categories": ["evidence"],
+					"correct": [
+						{
+							"category": "evidence",
+							"id": "mrs_kanagawa_id"
+						},
+						{
+							"category": "evidence",
+							"id": "two_bottles"
+						},
+						{
+							"category": "evidence",
+							"id": "yoga_ball"
+						}
+					],
+					"successLine": 23,
+					"wrongLine": 24
+				}
+			},
+			{
+				"id": 23,
+				"characters": [
+					{
+						"id": "Daniel",
+						"side": "center",
+						"sprite": "daniel_finger_up",
+						"mode": "zoom"
+					}
+				],
+				"proofResult": {
+					"type": "correct",
+					"message": {
+						"ru": "Правильный выбор!",
+						"en": "Right choice!"
+					},
+					"showSelectedItem": true,
+					"continueLine": 25
+				}
+			},
+			{
+				"id": 24,
+				"characters": [
+					{
+						"id": "Daniel",
+						"side": "center",
+						"sprite": "daniel_shocked",
+						"mode": "zoom"
+					}
+				],
+				"bubble_mode": "medium",
+				"proofResult": {
+					"type": "wrong",
+					"message": {
+						"ru": "Неверно! Подумай ещё раз.",
+						"en": "Wrong! Think again."
+					},
+					"showSelectedItem": true,
+					"retryLine": 22
+				}
+			},
+			{
+				"id": 25,
+				"characters": [
+					{ "id": "Housekeeper", "side": "left", "sprite": "housekeeper", "mode": "zoom" }
+				],
+				"speaker": "Housekeeper",
+				"text": {
+					"ru": "Теперь я вам верю!",
+					"en": "Now I believe you!"
+				},
+				"bubble_mode": "medium"
+			},
+			{
+				"id": 26,
+				"characters": [
+					{ "id": "Housekeeper", "side": "right", "sprite": "housekeeper_worried", "mode": "zoom" }
+				],
+				"speaker": "Housekeeper",
+				"text": {
+					"ru": "О Боже… значит, госпожа Канагава и её дочь действительно погибли!",
+					"en": "Oh God… so Mrs. Kanagawa and her daughter really did die!"
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 27,
+				"characters": [
+					{ "id": "Di", "side": "left", "sprite": "di_thinking", "mode": "zoom" }
+				],
+				"speaker": "Di",
+				"text": {
+					"ru": "Мэм, я понимаю, что вы в шоке.",
+					"en": "Ma’am, I understand you’re in shock."
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 28,
+				"characters": [
+					{ "id": "Di", "side": "left", "sprite": "di_thinking", "mode": "zoom" }
+				],
+				"speaker": "Di",
+				"text": {
+					"ru": "Но вы действительно можете нам помочь, если помните.",
+					"en": "But you can really help us if you remember"
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 29,
+				"characters": [
+					{ "id": "Di", "side": "left", "sprite": "di_thinking", "mode": "zoom" }
+				],
+				"speaker": "Di",
+				"text": {
+					"ru": "Произошло ли что-нибудь необычное в семье Канагава за последние несколько дней?",
+					"en": "whether anything unusual happened in the Kanagawa family over the past few days?"
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 30,
+				"characters": [
+					{ "id": "Housekeeper", "side": "left", "sprite": "housekeeper", "mode": "zoom" }
+				],
+				"speaker": "Housekeeper",
+				"text": {
+					"ru": "Я не могу вспомнить ничего подозрительного.",
+					"en": "I can't really think of anything suspicious. "
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 31,
+				"characters": [
+					{ "id": "Housekeeper", "side": "left", "sprite": "housekeeper", "mode": "zoom" }
+				],
+				"speaker": "Housekeeper",
+				"text": {
+					"ru": "Помню, как мисс Канагава и её дочь вышли из дома в 12 часов",
+					"en": "I remember Mrs. Kanagawa and her daughter left the house at 12"
+				},
+				"bubble_mode": "large",
+				"actions": [
+					{
+						"type": "add_item",
+						"category": "facts",
+						"id": "mrs_kanagawa_left_home_at_noon"
+					}
+				]
+			},
+			{
+				"id": 32,
+				"characters": [
+					{ "id": "Housekeeper", "side": "left", "sprite": "housekeeper", "mode": "zoom" }
+				],
+				"speaker": "Housekeeper",
+				"text": {
+					"ru": "а ее муж пошел на работу в больницу около 9:00 утра.",
+					"en": "and her husband went to work at the hospital around 9:00 AM."
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 33,
+				"characters": [
+					{ "id": "Di", "side": "left", "sprite": "di_thinking", "mode": "zoom" }
+				],
+				"speaker": "Di",
+				"text": {
+					"ru": "Что вы сказали?!",
+					"en": "What did you say?!"
+				},
+				"bubble_mode": "medium"
+			},
+			{
+				"id": 34,
+				"characters": [
+					{ "id": "Di", "side": "left", "sprite": "di_thinking", "mode": "zoom" }
+				],
+				"speaker": "Di",
+				"text": {
+					"ru": "Нам нужно бежать — нам нужно срочно кое-что проверить.",
+					"en": "We have to run — we need to go check on something right away."
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 35,
+				"characters": [
+					{ "id": "Di", "side": "left", "sprite": "di_thinking", "mode": "zoom" }
+				],
+				"speaker": "Di",
+				"text": {
+					"ru": "Они уехали в полночь? Спасибо, мисс, это было очень полезно.",
+					"en": "They left at 12 am? Thank you, Miss, that's been extremely helpful. "
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 36,
+				"characters": [
+					{ "id": "Housekeeper", "side": "left", "sprite": "housekeeper", "mode": "zoom" }
+				],
+				"speaker": "Housekeeper",
+				"text": {
+					"ru": "Рада, что смогла помочь! Пока!",
+					"en": "Glad I could help! Bye!"
+				},
+				"bubble_mode": "large",
+				"actions": [
+					{
+						"type": "complete_task",
+						"id": "talk_to_housekeeper"
+					}
+				]
+			},
+			{
+				"id": 37,
+				"backgroundChange": "kanagawa_house_outdoor"
+			},
+			{
+				"id": 38,
+				"characters": [
+					{ "id": "Daniel", "side": "right", "sprite": "daniel_shocked", "mode": "full" }
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "Мисс Ди, что вы делаете?",
+					"en": "Miss Dee, what are you doing? "
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 39,
+				"characters": [
+					{ "id": "Daniel", "side": "right", "sprite": "daniel_shocked", "mode": "full" }
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "Мы только начали разговаривать со свидетелем!",
+					"en": "We just started talking to the witness!"
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 40,
+				"characters": [
+					{ "id": "Di", "side": "right", "sprite": "di_serious", "mode": "full" }
+				],
+				"speaker": "Di",
+				"text": {
+					"ru": "Подождите минутку, мистер Дэниел, позвольте мне объяснить.",
+					"en": "Just a minute, Mr. Daniel, Let me explain."
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 41,
+				"characters": [
+					{ "id": "Di", "side": "right", "sprite": "di_serious", "mode": "zoom" }
+				],
+				"speaker": "Di",
+				"text": {
+					"ru": "Вы помните время смерти?",
+					"en": "Do you remember the time of death?"
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 42,
+				"characters": [
+					{ "id": "Di", "side": "right", "sprite": "di_serious", "mode": "zoom" }
+				],
+				"speaker": "Di",
+				"text": {
+					"ru": "Наш судебно-медицинский эксперт, мистер Робертс, дал нам...? Примерно в 13:00.",
+					"en": "Our medical examiner, mr.Roberts, gave us? Around 1 PM. "
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 43,
+				"characters": [
+					{ "id": "Di", "side": "right", "sprite": "di_serious", "mode": "zoom" }
+				],
+				"speaker": "Di",
+				"text": {
+					"ru": "Но домработница сказала...",
+					"en": "But the housekeeper said.."
+				},
+				"bubble_mode": "medium"
+			},
+			{
+				"id": 44,
+				"characters": [
+					{ "id": "Di", "side": "right", "sprite": "di_serious", "mode": "zoom" }
+				],
+				"speaker": "Di",
+				"text": {
+					"ru": "Мисс Канагава и её дочь уехали в 12:00.",
+					"en": "Mrs. Kanagawa and her daughter left at 12:00"
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 44,
+				"characters": [
+					{ "id": "Daniel", "side": "left", "sprite": "daniel_thinking", "mode": "zoom" }
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "Это определенно подозрительно.",
+					"en": "That's definitely suspicious."
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 45,
+				"characters": [
+					{ "id": "Daniel", "side": "left", "sprite": "daniel_thinking", "mode": "zoom" }
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "Итак, они ушли, а через час уже были без сознания?",
+					"en": "So, they left, and an hour later, they were already unconscious?"
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 46,
+				"backgroundChange": "default",
+				"characters": [
+					{ "id": "Di", "side": "left", "sprite": "di_serious", "mode": "zoom" }
+				],
+				"speaker": "Di",
+				"text": {
+					"ru": "Послушайте, мы прошли всего около 500 метров",
+					"en": "Look, we've only walked about 1500 feet"
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 47,
+				"characters": [
+					{ "id": "Di", "side": "left", "sprite": "di_serious", "mode": "zoom" }
+				],
+				"speaker": "Di",
+				"text": {
+					"ru": "и вот мы на месте, где был найден автомобиль.",
+					"en": "and here we are at the spot where the car was found."
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 48,
+				"characters": [
+					{ "id": "Di", "side": "left", "sprite": "di_serious", "mode": "zoom" }
+				],
+				"speaker": "Di",
+				"text": {
+					"ru": "Это говорит о том, что в автомобиле произошла серьезная утечка газа.",
+					"en": "This suggests there must have been a severe gas leak in the car."
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 49,
+				"characters": [
+					{ "id": "Di", "side": "left", "sprite": "di_serious", "mode": "zoom" }
+				],
+				"speaker": "Di",
+				"text": {
+					"ru": "Они проехали буквально пару минут, а потом остановились прямо здесь.",
+					"en": "They only drove for literally a couple of minutes and then stopped right here."
+				},
+				"bubble_mode": "large",
+				"actions": [
+					{
+						"type": "add_item",
+						"category": "facts",
+						"id": "mrs_kanagawa_drove_only_1500_feet"
+					}
+				]
+			},
+			{
+				"id": 50,
+				"characters": [
+					{ "id": "Di", "side": "left", "sprite": "di_serious", "mode": "zoom" }
+				],
+				"speaker": "Di",
+				"text": {
+					"ru": "Помогите мне доказать, что автомобиль необходимо отправить на техосмотр",
+					"en": "Help me prove that the car needs to be sent for inspection"
+				},
+				"bubble_mode": "dark"
+			},
+			{
+				"id": 51,
+				"characters": [
+					{"id": "Di", "side": "left", "sprite": "di_serious", "mode": "zoom"}
+				],
+				"speaker": "Di",
+				"text": {
+					"ru": "Соедините два факта или улики, которые доказывают, что в машине могла быть утечка газа.",
+					"en": "Connect two pieces of evidence or facts that prove there could have been a gas leak in the car."
+				},
+				"bubble_mode": "dark"
+			},
+			{
+				"id": 52,
+				"characters": [
+					{"id": "Di", "side": "left", "sprite": "di_serious", "mode": "zoom"}
+				],
+				"tapToContinue": false,
+				"makeLogic": {
+					"buttonText": {
+						"ru": "Собрать логику!",
+						"en": "Make logic!"
+					},
+					"title": {
+						"ru": "make logic",
+						"en": "make logic"
+					},
+					"description": {
+						"ru": "Соедините два факта или улики, которые доказывают, что в машине могла быть утечка газа.",
+						"en": "Connect two pieces of evidence or facts that prove there could have been a gas leak in the car."
+					},
+					"items": [
+						{
+							"category": "evidence",
+							"id": "laboratory_conclusion"
+						},
+						{
+							"category": "facts",
+							"id": "mr_kanagawa_surgery"
+						},
+						{
+							"category": "evidence",
+							"id": "estimated_time_of_death"
+						},
+						{
+							"category": "facts",
+							"id": "mrs_kanagawa_left_home_at_noon"
+						}
+					],
+					"correctPairs": [
+						[
+							{
+								"category": "evidence",
+								"id": "laboratory_conclusion"
+							},
+							{
+								"category": "evidence",
+								"id": "estimated_time_of_death"
+							}
+						],
+						[
+							{
+								"category": "evidence",
+								"id": "laboratory_conclusion"
+							},
+							{
+								"category": "facts",
+								"id": "mrs_kanagawa_left_home_at_noon"
+							}
+						]
+					],
+					"successLine": 53,
+					"wrongLine": 54
+				}
+			},
+			{
+				"id": 53,
+				"characters": [
+					{"id": "Di", "side": "center", "sprite": "di_ok", "mode": "zoom3"}
+				],
+				"logicResult": {
+					"type": "correct",
+					"message": {
+						"ru": "Новая гипотеза!",
+						"en": "new hypothesis!"
+					},
+					"showHypothesis": true,
+					"hypothesisId": "gas_leak_in_car",
+					"continueLine": 55
+				},
+				"actions": [
+					{
+						"type": "add_item",
+						"category": "hypotheses",
+						"id": "gas_leak_in_car"
+					}
+				]
+			},
+			{
+				"id": 54,
+				"characters": [
+					{"id": "Di", "side": "center", "sprite": "di_shocked", "mode": "zoom2"}
+				],
+				"logicResult": {
+					"type": "wrong",
+					"message": {
+						"ru": "Неверно! Подумай ещё раз.",
+						"en": "Wrong! Think again."
+					},
+					"retryLine": 51
+				}
+			},
+			{
+				"id": 55,
+				"characters": [
+					{"id": "Daniel", "side": "left", "sprite": "daniel_serious", "mode": "zoom"}
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "Давайте отправим машину на техосмотр.",
+					"en": "Let’s send the car  for inspection."
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 56,
+				"characters": [
+					{ "id": "Daniel", "side": "left", "sprite": "daniel_smile", "mode": "zoom" }
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "Если окажется, что это дефект...",
+					"en": "If it turns out to be a defect.."
+				},
+				"bubble_mode": "medium"
+			},
+			{
+				"id": 57,
+				"characters": [
+					{ "id": "Daniel", "side": "left", "sprite": "daniel_smile", "mode": "zoom" }
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "В таком случае это классифицируется как несчастный случай, и мы можем быстро закрыть дело.",
+					"en": "then it’s classified as an accident and we can close the case quickly."
+				},
+				"bubble_mode": "large",
+				"actions": [
+					{
+						"type": "add_task",
+						"id": "send_car_to_inspection"
+					}
+				]
+			},
+			{
+				"id": 58,
+				"characters": [
+					{ "id": "Di", "side": "left", "sprite": "di_serious", "mode": "zoom" }
+				],
+				"speaker": "Di",
+				"text": {
+					"ru": "А что, если в машине нет никаких дефектов?",
+					"en": "And what if there aren’t any defects in the car?"
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 59,
+				"characters": [
+					{ "id": "Daniel", "side": "left", "sprite": "daniel_serious", "mode": "zoom" }
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "Тогда, боюсь, дело обернется гораздо сложнее.",
+					"en": "Then I’m afraid it’ll turn into a much more complicated case."
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 60,
+				"characters": [],
+				"speaker": "Narrator2",
+				"text": {
+					"ru": "Нажмите на значок «глаза», чтобы отправить автомобиль на осмотр.",
+					"en": "Tap the “eye” icon to send the car for inspection."
+				},
+				"bubble_mode": "large",
+				"hotspots": [
+					{
+						"id": "kanagawa_car",
+						"type": "inspect",
+						"x": 0.45,
+						"y": 0.75,
+						"width": 0.12,
+						"height": 0.12,
+						"icon": "eye.png",
+						"name": {
+							"ru": "Машина миссис Канагавы",
+							"en": "Mrs. Kanagawa's car"
+						},
+						"modal": {
+							"x": 0.16,
+							"y": 0.34,
+							"width": 0.68
+						}
+					},
+					{
+						"id": "car_pointer",
+						"type": "open",
+						"x": 0.47,
+						"y": 0.82,
+						"width": 0.18,
+						"height": 0.18,
+						"icon": "pointer.png"
+					}
+				]
+			}
+		]
+	},
+
+	"8_report_is_ready": {
+		"background": "police",
+		"dialog": [
+			{
+				"id": 1,
+				"characters": [
+					{ "id": "Daniel", "side": "right", "sprite": "daniel_smile", "mode": "full" }
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "Мисс Ди, вы готовы ознакомиться с отчетом?",
+					"en": "Miss Dee, are you ready to take a look at the report?"
+				},
+				"bubble_mode": "medium",
+				"actions": [
+					{
+						"type": "save_checkpoint"
+					}
+				]
+			},
+			{
+				"id": 2,
+				"characters": [
+					{ "id": "Di", "side": "right", "sprite": "di_serious", "mode": "full" }
+				],
+				"speaker": "Di",
+				"text": {
+					"ru": "Да, мистер Дэниел. Всё указывает на то, что это всего лишь простой дефект автомобиля.",
+					"en": "Yes, Mr. Daniel. Everything points to it being just a simple defect in the car."
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 3,
+				"characters": [
+					{ "id": "Di", "side": "right", "sprite": "di_serious", "mode": "full" }
+				],
+				"speaker": "Di",
+				"text": {
+					"ru": "Надеюсь, мы сможем закрыть это дело в ближайшее время.",
+					"en": "I hope we can close this case soon."
+				},
+				"bubble_mode": "large",
+				"hotspots": [
+					{
+						"id": "show_report",
+						"type": "inspect",
+						"x": 0.3,
+						"y": 0.56,
+						"width": 0.45,
+						"height": 0.25,
+						"icon": "show_report.png"
+					}
+				]
+			},
+			{
+				"id": 4,
+				"characters": [
+					{ "id": "Daniel", "side": "right", "sprite": "daniel_thinking", "mode": "full" }
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "Хм. Я подумал об этом, но надеялся, что ошибаюсь.",
+					"en": "Hmm. I thought about it, but I hoped I was wrong."
+				},
+				"bubble_mode": "avatar",
+				"actions": [
+					{
+						"type": "complete_task",
+						"id": "send_car_to_inspection"
+					}
+				],
+				"tapToContinue": false,
+				"hotspots": [
+					{
+						"id": "report",
+						"type": "inactive",
+						"x": 0.08,
+						"y": 0.07,
+						"width": 0.85,
+						"height": 0.72,
+						"icon": "report.png"
+					},
+					{
+						"id": "add_to_inventory",
+						"type": "inspect",
+						"x": 0.2,
+						"y": 0.58,
+						"width": 0.6,
+						"height": 0.4,
+						"icon": "add_to_inventory.png"
+					}
+				]
+			},
+			{
+				"id": 6,
+				"characters": [
+					{ "id": "Daniel", "side": "right", "sprite": "daniel_thinking", "mode": "zoom" }
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "Вы понимаете, что это значит?",
+					"en": "Do you know what that means?"
+				},
+				"bubble_mode": "medium"
+			}
+
 		]
 	}
 

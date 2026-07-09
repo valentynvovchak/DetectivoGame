@@ -5,8 +5,8 @@ import { useGameStore } from "@/store/gameStore";
 import {isTablet} from "@/styles/global";
 import {router} from "expo-router";
 import { usePathname } from 'expo-router';
-import {Hr} from "@/components/small/hr";
-import {AppButton} from "@/components/small/AppButton";
+import AppText from "@/components/Common/AppText";
+import {SCALE} from "@/tools/constants";
 
 export default function SettingsModal({ visible, onClose }) {
     const { volume, setVolume, lang, setLang } = useGameStore();
@@ -16,15 +16,15 @@ export default function SettingsModal({ visible, onClose }) {
         <Modal visible={visible} transparent animationType="fade">
             <View style={styles.overlay}>
                 <View style={styles.panel}>
-                    <Text style={styles.title}>{lang === "ru" ? "Настройки" : "Settings"}</Text>
+                    <AppText style={styles.title}>{lang === "ru" ? "Настройки" : "Settings"}</AppText>
 
                     <View style={styles.view}>
-                        <Text style={styles.optionTitle}>{lang === "ru" ? "Громкость" : "Volume"}</Text>
+                        <AppText style={styles.optionTitle}>{lang === "ru" ? "Громкость" : "Volume"}</AppText>
                         <Slider value={volume} onValueChange={setVolume} minimumValue={0} maximumValue={1} />
                     </View>
 
                     <View style={styles.view}>
-                        <Text style={styles.optionTitle}>Language</Text>
+                        <AppText style={styles.optionTitle}>Language</AppText>
                         {/*<AppButton title={lang === "ru" ? "Русский" : "English"} onPress={() => setLang(lang === "ru" ? "en" : "ru")} />*/}
                         <View style={styles.langRow}>
                             <Pressable
@@ -34,7 +34,7 @@ export default function SettingsModal({ visible, onClose }) {
                                     lang === 'ru' && styles.langChipActive
                                 ]}
                             >
-                                <Text style={styles.langText}>RU</Text>
+                                <AppText style={styles.langText}>RU</AppText>
                             </Pressable>
 
                             <Pressable
@@ -44,21 +44,21 @@ export default function SettingsModal({ visible, onClose }) {
                                     lang === 'en' && styles.langChipActive
                                 ]}
                             >
-                                <Text style={styles.langText}>EN</Text>
+                                <AppText style={styles.langText}>EN</AppText>
                             </Pressable>
                         </View>
                     </View>
 
                     {pathname !== '/' && (
                         <View style={styles.view}>
-                            <TouchableOpacity onPress={() => {onClose(); router.push('/');}}>
-                                <Text style={styles.option}>Выйти из игры</Text>
+                            <TouchableOpacity onPress={() => {onClose(); router.replace('/');}}>
+                                <AppText style={styles.option}>{lang === "ru" ? "Выйти из игры" : "Exit the game"}</AppText>
                             </TouchableOpacity>
                         </View>
                     )}
 
                     <TouchableOpacity onPress={onClose} style={styles.close}>
-                        <Text style={styles.closeText}>{lang === "ru" ? "Закрыть" : "Close"}</Text>
+                        <AppText style={styles.closeText}>{lang === "ru" ? "Закрыть" : "Close"}</AppText>
                     </TouchableOpacity>
                 </View>
             </View>
@@ -118,6 +118,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#333',
     },
     langText: {
+        fontSize: 33 * SCALE,
         color: '#fff',
         fontWeight: '600',
     }

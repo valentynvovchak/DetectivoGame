@@ -7,8 +7,10 @@
       "status": "Свидетель — первообнаружившая тела",
       "appearance": {
         "sprite": "mai_found_the_car",
+        "bg": "red",
         "mood": "взволнована, но спокойна"
       },
+      "short_description":  "Медсестра, мисс Мэй, первой обнаружила тела и вызвала полицию.",
       "description": "Вышла на пробежку и заметила желтый автомобиль с работающими дворниками. По пути на работу увидела, что машина всё ещё стоит с включёнными дворниками. Подошла ближе и заметила двух женщин на заднем сиденье. Постучала в окно, реакции не последовало. Немедленно вызвала скорую помощь и полицию."
     },
     "en": {
@@ -18,34 +20,123 @@
       "status": "Witness — first to discover the bodies",
       "appearance": {
         "sprite": "mai_found_the_car",
+        "bg": "red",
         "mood": "distressed but calm"
       },
+      "short_description":  "Ms. Mei, the nurse, was the first to discover the bodies and call the police",
       "description": "Went jogging in the morning and noticed a yellow car with its wipers running. On her way to work, she saw the car still standing with the wipers on. She approached and saw two women in the back seat. Knocked on the window, but there was no response. Immediately called an ambulance and the police."
     }
   },
-
-  "mr_kanagawa": {
+  "mrs_kanagawa": {
     "ru": {
-      "type": "Родственник жертв",
-      "name": "Канагава Хироси",
-      "occupation": "Хирург городской клиники",
-      "status": "Муж погибшей, отец ребёнка",
+      "type": "Жертва",
+      "name": "Сью Канагава",
+      "occupation": "Бывший врач",
+      "status": "Жертва — мать двоих детей",
+      "icon": "mrs_kanagawa.png",
       "appearance": {
-        "sprite": "mr_kanagava_serious",
-        "mood": "сдержан, эмоционально подавлен"
+        "bg": "gray",
+        "mood": "спокойная, сдержанная"
       },
-      "description": "Муж миссис Канагава и отец их дочери, которые были найдены мёртвыми в автомобиле. Работает хирургом в городской клинике. По его словам, в день трагедии находился в больнице и практически не покидал операционный блок. Внешне спокоен и собран, однако в разговоре заметна сильная внутренняя напряжённость."
+      "short_description": "Миссис Канагава — жертва. Мать двоих детей, бывший врач.",
+      "description": "Сью Канагава была найдена мёртвой на заднем сиденье автомобиля возле автобусной остановки. По найденным документам удалось установить её личность. Она была матерью двоих детей и раньше работала врачом. Сейчас детективам необходимо выяснить, были ли у неё конфликты, проблемы в семье или другие причины, которые могли привести к трагедии."
     },
     "en": {
-      "type": "Victim’s relative",
-      "name": "Hiroshi Kanagawa",
-      "occupation": "Surgeon at the city hospital",
-      "status": "Husband of the deceased, father of the child",
+      "type": "Victim",
+      "name": "Sue Kanagawa",
+      "occupation": "Former doctor",
+      "status": "Victim — mother of two children",
+      "icon": "mrs_kanagawa.png",
       "appearance": {
-        "sprite": "mr_kanagava_serious",
-        "mood": "reserved, emotionally restrained"
+        "bg": "gray",
+        "mood": "calm, reserved"
       },
-      "description": "Husband of Mrs. Kanagawa and father of their daughter, both of whom were found dead in a car. He works as a surgeon at the city hospital. According to his statement, he spent most of the day in surgery and rarely left the operating area on the day of the incident. Appears calm and composed, though a strong inner tension can be sensed during conversation."
+      "short_description": "Mrs. Kanagawa - victim. Mother of 2 children, former doctor.",
+      "description": "Sue Kanagawa was found dead in the back seat of the car near the bus stop. Her identity was established through documents found at the scene. She was the mother of two children and had previously worked as a doctor. The detectives now need to find out whether she had conflicts, family problems, or any other circumstances that could have led to the tragedy."
+    }
+  },
+  "mrs_kanagawa_daughter": {
+    "ru": {
+      "type": "Жертва",
+      "name": "Дочь миссис Канагавы",
+      "occupation": "Ученица старшей школы",
+      "status": "Жертва — 16 лет",
+      "icon": "mrs_kanagawa_daughter.png",
+      "appearance": {
+        "bg": "gray",
+        "mood": "тихая, юная"
+      },
+      "short_description": "Дочь миссис Канагавы — жертва. 16-летняя школьница.",
+      "description": "Дочь миссис Канагавы была найдена мёртвой рядом с матерью в автомобиле. Ей было всего шестнадцать лет. Пока неясно, была ли она целью преступника или оказалась в машине случайно. Этот вопрос может стать важным для понимания настоящего замысла убийцы."
+    },
+    "en": {
+      "type": "Victim",
+      "name": "Mrs. Kanagawa's daughter",
+      "occupation": "High school student",
+      "status": "Victim — 16 years old",
+      "icon": "mrs_kanagawa_daughter.png",
+      "appearance": {
+        "bg": "gray",
+        "mood": "quiet, young"
+      },
+      "short_description": "Mrs. Kanagawa's daughter - victim. 16 years old student.",
+      "description": "Mrs. Kanagawa's daughter was found dead beside her mother inside the car. She was only sixteen years old. It is still unclear whether she was also an intended target or ended up in the car by accident. This question may become important for understanding the killer's real plan."
+    }
+  },
+  "mr_kanagawa": {
+    "ru": {
+      "type": "Связанное лицо",
+      "name": "Мистер Канагава",
+      "occupation": "Хирург в городской клинике",
+      "status": "Муж и отец погибших",
+      "icon": "mr_kanagawa.png",
+      "appearance": {
+        "bg": "red",
+        "mood": "сдержанный, собранный"
+      },
+      "short_description": "Мистер Канагава — муж и отец погибших, хирург в городской клинике.",
+      "description": "Мистер Канагава — муж Сью Канагавы и отец погибшей девушки. Работает хирургом в городской клинике. На момент происшествия, по предварительным данным, он находился в больнице и проводил операцию, что может служить алиби. Однако его показания, график операции и подтверждения со стороны персонала всё ещё требуют проверки.\n\n-----\n*Дополнительных данных пока нет*"
+    },
+    "en": {
+      "type": "Person of interest",
+      "name": "Mr. Kanagawa",
+      "occupation": "Surgeon at the city hospital",
+      "status": "Husband and father of the victims",
+      "icon": "mr_kanagawa.png",
+      "appearance": {
+        "bg": "red",
+        "mood": "reserved, composed"
+      },
+      "short_description": "Mr. Kanagawa is the husband and father of the victims, a surgeon at the hospital.",
+      "description": "Mr. Kanagawa is Sue Kanagawa's husband and the father of the deceased girl. He works as a surgeon at the city hospital. At the time of the incident, according to preliminary information, he was at the hospital performing surgery, which may serve as an alibi. However, his statement, the surgery schedule, and confirmation from the hospital staff still need to be checked.\n\n-----\n*No further data at this time*"
+    }
+  },
+  "housekeeper": {
+    "ru": {
+      "type": "Свидетель",
+      "name": "Домработница",
+      "occupation": "Домработница семьи Канагава",
+      "status": "Свидетель — давно работает в доме Канагавы",
+      "icon": "housekeeper.png",
+      "appearance": {
+        "bg": "red",
+        "mood": "доброжелательная, немного обеспокоенная"
+      },
+      "short_description": "Домработница: долгое время работала в семье Канагава.",
+      "description": "Домработница много лет работала в доме семьи Канагава и хорошо знала их повседневную жизнь. Она могла видеть отношения между членами семьи, замечать конфликты, странные привычки или изменения в поведении. Её показания могут помочь понять, что происходило в доме до смерти миссис Канагавы и её дочери."
+    },
+    "en": {
+      "type": "Witness",
+      "name": "Housekeeper",
+      "occupation": "Housekeeper for the Kanagawa family",
+      "status": "Witness — longtime employee of the Kanagawa household",
+      "icon": "housekeeper.png",
+      "appearance": {
+        "bg": "red",
+        "mood": "kind, slightly worried"
+      },
+      "short_description": "Housekeeper: she has worked for the Kanagawa family for a long time.",
+      "description": "The housekeeper has worked in the Kanagawa household for many years and knows the family's everyday life well. She may have seen relationships between family members, noticed conflicts, unusual habits, or changes in behavior. Her testimony could help clarify what was happening in the house before the deaths of Mrs. Kanagawa and her daughter."
     }
   }
 }

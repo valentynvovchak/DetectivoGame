@@ -1,266 +1,44 @@
-import React, {useEffect, useRef, useState} from "react";
-import {StyleSheet, Animated, ImageBackground, Pressable, TouchableOpacity, Image, View, Text} from "react-native";
-import dialogs from "@/data/dialogs.json";
+import React, { useEffect } from "react";
+import DialogScene from "@/components/scene/DialogScene";
+import { useSceneMusic } from "@/components/audio/useSceneMusic";
+import { MUSIC } from "@/components/audio/musicMap";
 import { useGameStore } from "@/store/gameStore";
-import {globalStyles, height, width} from "@/styles/global";
-import MainMenu from "@/components/MainMenu";
-import {getBackground, getSprite} from "@/tools/utils";
-import CharacterSpriteNew from "@/components/CharacterSpriteNew";
-import SpeechBubble from "@/components/SpeechBubble";
-import SceneFade from "@/components/SceneFade";
-import {RESOURCES} from "@/assets/resources";
-import AddModal from "@/components/AddModal";
-import {SCALE} from "@/tools/constants";
-import {playMusic} from "@/components/audio/audioManager";
-import {MUSIC} from "@/components/audio/musicMap";
 import ClueFlyAnimation from "@/components/animations/ClueFlyAnimation";
+import { height, width } from "@/styles/global";
 import {router} from "expo-router";
 
-export default function CarInspectionScene() {
-    const { currentScene, currentLine, nextLine, lang, addToData, hasItem, volume,
-        sceneBackground, sceneResizeMode, setSceneBackground } = useGameStore();
+export default function HospitalScene() {
+    useSceneMusic(MUSIC.exploration);
+
+    const { lang, addToData, hasItem, currentScene, currentLine, nextLine } = useGameStore();
+    const dialogs = require("@/data/dialogs.json");
     const scene = dialogs[currentScene];
     const line = scene?.dialog?.[currentLine];
-    const [showAnim, setShowAnim] = useState(false);
-    const [clicked, setClicked] = useState(false);
-
-    const hotspots = line?.hotspots || [];
-
-    // const [background, setBackground] = useState(scene.background || "");
-    // const [resizeMode, setResizeMode] = useState(line?.resizeMode || "cover");
-    const [screenClickBlocked, setScreenClickBlocked] = useState(false);
 
     useEffect(() => {
-        playMusic(MUSIC.exploration, volume);
-    }, []);
-
-    useEffect(() => {
-        if (!line?.backgroundNoAnimationChange) return;
-
-        setSceneBackground(
-            line.backgroundNoAnimationChange,
-            line.resizeMode || "cover"
-        );
-    }, [line]);
-
-    const [bottleAddModal, setBottleAddModal] = useState(false);
-
-    const fadeAnim = useRef(new Animated.Value(0)).current;
-
-    useEffect(() => {
-        if (line?.backgroundChange && line.backgroundChange !== sceneBackground) {
-            Animated.sequence([
-                Animated.timing(fadeAnim, { toValue: 1, duration: 500, useNativeDriver: true }),
-                Animated.delay(200),
-            ]).start(() => {
-                setSceneBackground(
-                    line.backgroundChange,
-                    line.resizeMode || "cover"
-                );
-                Animated.timing(fadeAnim, { toValue: 0, duration: 600, useNativeDriver: true }).start();
-            });
-        }
-    }, [line]);
-
-
-    useEffect(() => {
-        if (line?.id === 11) {
-            if (!hasItem("dossier", "mr_kanagawa")) {
-                addToData("dossier", "mr_kanagawa");
-            }
-        }
-    }, [line?.id]);
-
-    const handleHotspotPress = (hotspot, fadeToScene) => {
-        // if (line?.id === 1 && hotspot.type === "inspect") {
-        //     nextLine();
-        // } else if (hotspot.type === "add_item") {
-        //     setBottleAddModal(true);
-        //     // addToData("evidence", "car_inspected");
-        //     // setClicked(true);
-        //     // fadeToScene("next_scene_name");
-        //     // nextLine();
-        // } else if (hotspot.type === "inspect") {
-        //     if (hotspot.id == 'car_eye') {
-        //         goToLine(4);
-        //     }
-        // } else if (hotspot.type == "open") {
-        //     if (hotspot.id == 'car_pointer') {
-        //         nextLine();
-        //     }
-        // }
-    };
-
-    const handleBottlesAdd = () => {
-        addToData("evidence", "two_bottles");
-        // fadeToScene("next_scene_name");
-        nextLine();
-    };
+        if (line?.openMap) router.replace("/map");
+    }, [line?.openMap]);
 
     return (
-        <SceneFade>
-            {(fadeToScene) => (
-                <Pressable style={{ flex: 1 }} onPress={() => {
-                    if (currentLine >= scene.dialog.length - 1) {
-                        // fadeToScene("next_scene_name"); // 🎬 плавный переход
-                    } else {
-                        if (!screenClickBlocked) {
-                            nextLine();
-                        }
-                    }
-                }}>
-                    <ImageBackground
-                        key={sceneBackground}
-                        source={getBackground(sceneBackground || scene.background)}
-                        resizeMode={sceneResizeMode}
-                        style={globalStyles.screen}
-                    >
-                        {line?.characters && line.characters.map((char) => (
-                            <CharacterSpriteNew
-                                key={char.id}
-                                mode={char.mode}
-                                side={char.side}
-                                Sprite={getSprite(char.sprite)}
-                                isSpeaking={char.id === line.speaker}
-                                heightModifier={char?.height_modifier}
-                            />
-                        ))}
-
-                        {line?.speaker && line.speaker && (
-                            <SpeechBubble
-                                side={line?.characters && line.characters.find((c) => c.id === line.speaker)?.side || "center"}
-                                speaker={line.speaker}
-                                text={lang === "ru" ? line.text.ru : line.text.en}
-                                mode={line?.bubble_mode || "medium"}
-                                charMode={line?.characters && line.characters.find((c) => c.id === line.speaker)?.mode}
-                                lang={lang}
-                            />
-                        )}
-
-                        {line.id === 5 && !hasItem("facts", "mr_kanagawa_surgery") && (
-                            <ClueFlyAnimation
-                                text={lang == "ru" ? "mr. Канагава был на операции" : "mr. Kanagawa was on surgery"}
-                                start={{ x: width*0.001, y: -height*0.28 }} // позиция бабла (можно вычислить)
-                                end={{ x: width/4.5, y: height }}  // позиция иконки инвентаря
-                                onFinish={() => {
-                                    addToData("facts", "mr_kanagawa_surgery");
-                                    setShowAnim(false);
-                                }}
-                            />
-                        )}
-
-                        {line.id === 8 && !hasItem("facts", "mrs_kanagawa_no_conflicts") && (
-                            <ClueFlyAnimation
-                                text={lang == "ru" ? "mrs. Kanagawa не конфликтировала ни с кем" : "mrs. Kanagawa had no conflicts with anyone"}
-                                start={{ x: width*0.001, y: -height*0.28 }} // позиция бабла (можно вычислить)
-                                end={{ x: width/4.5, y: height }}  // позиция иконки инвентаря
-                                onFinish={() => {
-                                    addToData("facts", "mrs_kanagawa_no_conflicts");
-                                    setShowAnim(false);
-                                }}
-                            />
-                        )}
-
-                        {/*{line.id === 11 && !hasItem("dossier", "mr_kanagawa") && addToData("dossier", "mr_kanagawa")}*/}
-
-                        {hotspots.map((spot) => (
-                            <TouchableOpacity
-                                key={spot.id}
-                                onPress={() => handleHotspotPress(spot, fadeToScene)}
-                                disabled={clicked}
-                                style={[
-                                    styles.hotspot,
-                                    {
-                                        left: width * spot.x,
-                                        top: height * spot.y,
-                                        // width: width * spot.width,
-                                        // height: height * spot.height,
-                                    },
-                                ]}
-                            >
-                                {spot?.icon &&
-                                    <Image
-                                        source={RESOURCES[spot.icon]} // например icon_eye.png
-                                        style={{ height: height * spot.height, width: width * spot.width, resizeMode: "contain"}}
-                                    />
-                                }
-
-                                {spot?.breadcrumb && (
-                                    <View style={styles.breadcrumbWrap}>
-                                        <Text style={styles.breadcrumbText}>
-                                            {spot.breadcrumb}
-                                        </Text>
-                                    </View>
-                                )}
-                            </TouchableOpacity>
-                        ))}
-
-                        {line?.menu !== false && <MainMenu />}
-
-                        {/* 🔹 Затемнение для плавной смены фона */}
-                        <Animated.View style={[styles.overlay, { opacity: fadeAnim }]} />
-
-                        {bottleAddModal && (
-                            <AddModal
-                                lang={lang}
-                                name={line?.hotspots.find(h => h.id === "car_two_bottles")?.name?.[lang]}
-                                toggle={setBottleAddModal}
-                                onAdd={() => handleBottlesAdd()}
-                                position={line?.hotspots.find(h => h.id === "car_two_bottles")?.modal} // берет координаты прямо из JSON
-                                // position={{ x: 0.4, y: 0.75, width: 0.5, height: 0.2 }} // берет координаты прямо из JSON
-                            />
-                        )}
-                    </ImageBackground>
-                </Pressable>
+        <DialogScene
+            showHotspots={false}
+            renderOverlays={({ line }) => (
+                <>
+                    {line?.id === 5 && !hasItem("facts", "mr_kanagawa_surgery") && (
+                        <ClueFlyAnimation
+                            text={lang === "ru" ?
+                                "mr. Канагава был на операции" :
+                                "mr. Kanagawa was on surgery"}
+                            start={{ x: width * 0.001, y: -height * 0.28 }}
+                            end={{ x: width / 4.5, y: height }}
+                            onFinish={() => {}}  // addToData("facts", "mr_kanagawa_surgery")
+                        />
+                    )}
+                </>
             )}
-        </SceneFade>
+            onHotspotPress={(spot, { fadeToScene }) => {
+                if (spot.id == "start_dialog" && spot.type === "inspect") return nextLine();
+            }}
+        />
     );
 }
-
-const styles = StyleSheet.create({
-    hotspot: {
-        position: "absolute",
-    },
-
-    // Animation
-    overlay: {
-        position: "absolute",
-        top: 0,
-        left: 0,
-        right: 0,
-        bottom: 0,
-        backgroundColor: "black",
-        zIndex: 999,
-        pointerEvents: "none",
-    },
-
-    // BreadCrumb
-    breadcrumbWrap: {
-        position: "absolute",       // если нужно поверх сцены
-        top: 40 * SCALE,            // можно менять
-        left: 20 * SCALE,
-
-        backgroundColor: "#EA0F12", // красный как на скрине
-        paddingHorizontal: 24 * SCALE,
-        paddingVertical: 10 * SCALE,
-
-        borderRadius: 999,          // 🔥 капсула
-        alignSelf: "flex-start",
-
-        // Android тень
-        elevation: 6,
-
-        // iOS / Web тень
-        shadowColor: "#000",
-        shadowOffset: { width: 0, height: 3 },
-        shadowOpacity: 0.25,
-        shadowRadius: 4,
-    },
-    breadcrumbText: {
-        color: "#fff",
-        fontFamily: "BebasNeue-Regular", // или любой твой заголовочный
-        fontSize: 56 * SCALE,
-        letterSpacing: 1,
-    },
-
-});

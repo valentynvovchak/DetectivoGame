@@ -102,6 +102,7 @@ const styles = StyleSheet.create({
 import React, { useEffect, useRef } from "react";
 import { Animated, Text, StyleSheet } from "react-native";
 import { isSmallScreen, isTablet } from "@/styles/global";
+import AppText from "@/components/Common/AppText";
 
 interface Props {
     text: string;
@@ -174,7 +175,7 @@ export default function ClueFlyAnimation({ text, start, end, onFinish }: Props) 
                 },
             ]}
         >
-            <Text style={styles.text}>{text}</Text>
+            <AppText style={styles.text}>{text}</AppText>
         </Animated.View>
     );
 }
