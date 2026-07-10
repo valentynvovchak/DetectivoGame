@@ -14,7 +14,6 @@ export const tasksData: Record<string, TaskItem> = {
             en: "Talk to the witness who found the victims - Miss Mei.",
         },
     },
-
     identify_victims: {
         id: "identify_victims",
         title: {
@@ -22,7 +21,6 @@ export const tasksData: Record<string, TaskItem> = {
             en: "Identify the victims.",
         },
     },
-
     speak_with_kanagawa: {
         id: "speak_with_kanagawa",
         title: {
@@ -30,7 +28,6 @@ export const tasksData: Record<string, TaskItem> = {
             en: "Speak with the husband and father of the victims — Mr. Kanagawa.",
         },
     },
-
     speak_with_medical_examiner: {
         id: "speak_with_medical_examiner",
         title: {
@@ -38,7 +35,6 @@ export const tasksData: Record<string, TaskItem> = {
             en: "Speak with the Medical Examiner at the police station.",
         },
     },
-
     talk_to_lawyer: {
         id: "talk_to_lawyer",
         title: {
@@ -46,7 +42,6 @@ export const tasksData: Record<string, TaskItem> = {
             en: "Talk to Mr. Kanagawa's lawyer.",
         },
     },
-
     search_kanagawa_house: {
         id: "search_kanagawa_house",
         title: {
@@ -54,7 +49,6 @@ export const tasksData: Record<string, TaskItem> = {
             en: "Search Mr. Kanagawa's house.",
         },
     },
-
     talk_to_housekeeper: {
         id: "talk_to_housekeeper",
         title: {
@@ -62,7 +56,6 @@ export const tasksData: Record<string, TaskItem> = {
             en: "Speak with the Kanagawa family housekeeper.",
         },
     },
-
     check_car_again: {
         id: "check_car_again",
         title: {
@@ -70,12 +63,39 @@ export const tasksData: Record<string, TaskItem> = {
             en: "Check car again - find objects that can poison with carbon monoxide.",
         },
     },
-
     send_car_to_inspection: {
         id: "send_car_to_inspection",
         title: {
             ru: "Отправить машину на проверку утечки газа. Уточните, было ли отравление случайным.",
             en: "Send a car to inspection for gas leak. Confirm if the poisoning was accidental",
+        },
+    },
+    motive_for_the_murder: {
+        id: "motive_for_the_murder",
+        title: {
+            ru: "Выяснить, у кого мог быть мотив для убийства?",
+            en: "Find out who could have had a motive for the murder?",
+        },
+    },
+    maybe_a_suicide: {
+        id: "maybe_a_suicide",
+        title: {
+            ru: "Выясните, могло ли это быть самоубийство?",
+            en: "Find out could it have been suicide?",
+        },
+    },
+    talk_to_mr_kanagawa_again: {
+        id: "talk_to_mr_kanagawa_again",
+        title: {
+            ru: "Поговорить с мистером Канагавой еще раз.",
+            en: "Talk to Mr. Kanagawa again",
+        },
+    },
+    talk_to_mrs_kanagawa_sister: {
+        id: "talk_to_mrs_kanagawa_sister",
+        title: {
+            ru: "Поговорить с сестрой миссис Канагавы",
+            en: "Talk to Mrs. Kanagawa`s sister",
         },
     }
 };

@@ -28,6 +28,7 @@ import AppText from "@/components/Common/AppText";
 import ShowProofModal from "@/components/ShowProofModal";
 import MakeLogicModal from "@/components/MakeLogicModal";
 import hypothesesData from "@/data/hypotheses.json";
+import LogicChoiceModal from "@/components/LogicChoiceModal";
 
 type HotspotCtx = {
     line: any;
@@ -95,6 +96,7 @@ export default function DialogScene({
 
     const [logicVisible, setLogicVisible] = useState(false);
     const [selectedLogicItems, setSelectedLogicItems] = useState<any[]>([]);
+    const [logicChoiceVisible, setLogicChoiceVisible] = useState(false);
 
     useEffect(() => {
         if (!scene?.background) return;
@@ -105,10 +107,24 @@ export default function DialogScene({
         setSceneBackground(scene.background, scene?.resizeMode || "cover");
     }, [currentScene, scene?.background, sceneBackground]);
 
+    const hypothesisId =
+        line?.logicResult?.hypothesisId ||
+        line?.choiceResult?.hypothesisId;
+
     const currentHypothesis =
-        line?.logicResult?.hypothesisId
-            ? (hypothesesData as any)[line.logicResult.hypothesisId]?.[lang]
+        hypothesisId
+            ? (hypothesesData as any)[hypothesisId]?.[lang]
             : null;
+
+    const shouldShowHypothesis =
+        (
+            line?.logicResult?.type === "correct" &&
+            line?.logicResult?.showHypothesis
+        ) ||
+        (
+            line?.choiceResult?.type === "correct" &&
+            line?.choiceResult?.showHypothesis
+        );
 
     const goToDialogId = (targetId: number | string) => {
         if (!scene?.dialog) return;
@@ -264,12 +280,41 @@ export default function DialogScene({
                             return;
                         }
 
+                        // LOGIC CHOICE — wrong
+                        if (
+                            line?.choiceResult?.type === "wrong" &&
+                            line?.choiceResult?.retryLine
+                        ) {
+                            goToDialogId(
+                                line.choiceResult.retryLine
+                            );
+
+                            return;
+                        }
+
+                        // LOGIC CHOICE — correct
+                        if (
+                            line?.choiceResult?.type === "correct" &&
+                            line?.choiceResult?.continueLine
+                        ) {
+                            goToDialogId(
+                                line.choiceResult.continueLine
+                            );
+
+                            return;
+                        }
+
                         const hasShowProof = !!line?.showProof;
                         const hasMakeLogic = !!line?.makeLogic;
+                        const hasLogicChoice = !!line?.logicChoice;
                         const tapToContinue = line?.tapToContinue !== false;
 
                         const canAdvanceByDefault =
-                            tapToContinue && hotspots.length === 0 && !hasShowProof && !hasMakeLogic;
+                            tapToContinue &&
+                            hotspots.length === 0 &&
+                            !hasShowProof &&
+                            !hasMakeLogic &&
+                            !hasLogicChoice;
 
                         const isLast = currentLine >= scene.dialog.length - 1;
                         const ok = canAdvance ? canAdvance(line) : canAdvanceByDefault;
@@ -312,71 +357,108 @@ export default function DialogScene({
                                 mode={line?.bubble_mode || "medium"}
                                 charMode={line?.characters?.find((c: any) => c.id === line.speaker)?.mode}
                                 lang={lang}
+                                // SVG
                                 avatarSprite={line?.characters?.[0]?.sprite}
+                                // PNG
+                                avatarImage={line?.characters?.[0]?.image}
                                 avatarBg={line?.characters?.[0]?.bg}
                             />
                         )}
 
-                        {line?.logicResult?.type === "correct" &&
-                            line?.logicResult?.showHypothesis &&
-                            currentHypothesis && (
+                        {line?.logicChoice && (
+                            <View
+                                pointerEvents="box-none"
+                                style={styles.logicChoiceButtonWrap}
+                            >
+                                <TouchableOpacity
+                                    activeOpacity={0.85}
+                                    style={styles.logicChoiceButton}
+                                    onPress={() => setLogicChoiceVisible(true)}
+                                >
+                                    <AppText style={styles.logicChoiceButtonText}>
+                                        {line.logicChoice.buttonText?.[lang] ||
+                                            line.logicChoice.buttonText?.en ||
+                                            (lang === "ru"
+                                                ? "Выбрать"
+                                                : "Choose")}
+                                    </AppText>
+                                </TouchableOpacity>
+                            </View>
+                        )}
+
+                        {line?.choiceResult?.type === "wrong" && (
+                            <View
+                                pointerEvents="none"
+                                style={styles.choiceResultBadgeWrap}
+                            >
+                                <View style={styles.choiceResultBadgeWrong}>
+                                    <AppText style={styles.choiceResultText}>
+                                        {line.choiceResult.message?.[lang] ||
+                                            line.choiceResult.message?.en ||
+                                            ""}
+                                    </AppText>
+                                </View>
+                            </View>
+                        )}
+
+                        {shouldShowHypothesis && currentHypothesis && (
+                            <View
+                                pointerEvents="none"
+                                style={[
+                                    styles.hypothesisResultWrap,
+                                    {
+                                        top: isTabletScreen
+                                            ? screenHeight * 0.075
+                                            : screenHeight * 0.08,
+                                    },
+                                ]}
+                            >
                                 <View
-                                    pointerEvents="none"
                                     style={[
-                                        styles.hypothesisResultWrap,
+                                        styles.hypothesisResultCard,
                                         {
-                                            top: isTabletScreen
-                                                ? screenHeight * 0.075
-                                                : screenHeight * 0.08,
+                                            width: isTabletScreen
+                                                ? Math.min(screenWidth * 0.57, 520)
+                                                : Math.min(screenWidth * 0.67, 390),
                                         },
                                     ]}
                                 >
-                                    <View
-                                        style={[
-                                            styles.hypothesisResultCard,
-                                            {
-                                                width: isTabletScreen
-                                                    ? Math.min(screenWidth * 0.57, 520)
-                                                    : Math.min(screenWidth * 0.67, 390),
-                                            },
-                                        ]}
-                                    >
-                                        {!!currentHypothesis.icon &&
-                                            !!RESOURCES[currentHypothesis.icon] && (
-                                                <Image
-                                                    source={RESOURCES[currentHypothesis.icon]}
-                                                    style={[
-                                                        styles.hypothesisResultImage,
-                                                        {
-                                                            width: isTabletScreen
-                                                                ? Math.min(screenWidth * 0.42, 340)
-                                                                : Math.min(screenWidth * 0.58, 300),
-
-                                                            height: isTabletScreen
-                                                                ? Math.min(screenHeight * 0.21, 360)
-                                                                : Math.min(screenHeight * 0.27, 350),
-                                                        },
-                                                    ]}
-                                                />
-                                            )}
-
-                                        <View style={styles.hypothesisResultDescription}>
-                                            <AppText
+                                    {!!currentHypothesis.icon &&
+                                        !!RESOURCES[currentHypothesis.icon] && (
+                                            <Image
+                                                source={RESOURCES[currentHypothesis.icon]}
                                                 style={[
-                                                    styles.hypothesisResultDescriptionText,
+                                                    styles.hypothesisResultImage,
                                                     {
-                                                        fontSize: isTabletScreen ? 16 : 14,
-                                                        lineHeight: isTabletScreen ? 21 : 19,
+                                                        width: isTabletScreen
+                                                            ? Math.min(screenWidth * 0.42, 340)
+                                                            : Math.min(screenWidth * 0.58, 300),
+
+                                                        height: isTabletScreen
+                                                            ? Math.min(screenHeight * 0.21, 360)
+                                                            : Math.min(screenHeight * 0.27, 350),
                                                     },
                                                 ]}
-                                            >
-                                                {currentHypothesis.short_description ||
-                                                    currentHypothesis.name}
-                                            </AppText>
-                                        </View>
+                                            />
+                                        )}
+
+                                    <View style={styles.hypothesisResultDescription}>
+                                        <AppText
+                                            style={[
+                                                styles.hypothesisResultDescriptionText,
+                                                {
+                                                    fontSize: isTabletScreen ? 16 : 14,
+                                                    lineHeight: isTabletScreen ? 21 : 19,
+                                                },
+                                            ]}
+                                        >
+                                            {currentHypothesis.short_description ||
+                                                currentHypothesis.name}
+                                        </AppText>
                                     </View>
                                 </View>
-                            )}
+                            </View>
+                        )}
 
                         {line?.makeLogic && (
                             <View pointerEvents="box-none" style={styles.logicButtonWrap}>
@@ -511,6 +593,27 @@ export default function DialogScene({
 
                         {/* overlays */}
                         {renderOverlays?.({ line, fadeToScene })}
+
+                        {line?.logicChoice && (
+                            <LogicChoiceModal
+                                visible={logicChoiceVisible}
+                                choice={line.logicChoice}
+                                onClose={() => setLogicChoiceVisible(false)}
+                                onResult={({ option, correct }) => {
+                                    setLogicChoiceVisible(false);
+
+                                    console.log("🧠 LOGIC CHOICE:", {
+                                        optionId: option.id,
+                                        correct,
+                                        resultLine: option.resultLine,
+                                    });
+
+                                    if (option.resultLine) {
+                                        goToDialogId(option.resultLine);
+                                    }
+                                }}
+                            />
+                        )}
 
                         {line?.showProof && (
                             <ShowProofModal
@@ -904,5 +1007,82 @@ const styles = StyleSheet.create({
         textAlign: "center",
 
         fontFamily: "IBMPlexMono-Regular",
+    },
+    logicChoiceButtonWrap: {
+        position: "absolute",
+
+        left: 0,
+        right: 0,
+
+        bottom: height * 0.17,
+
+        alignItems: "center",
+
+        zIndex: 130,
+        elevation: 130,
+    },
+
+    logicChoiceButton: {
+        minWidth: width * 0.34,
+
+        backgroundColor: "rgba(41, 79, 75, 0.95)",
+
+        borderWidth: 2,
+        borderColor: "#E9DEC1",
+
+        borderRadius: 6,
+
+        paddingVertical: 10,
+        paddingHorizontal: 18,
+
+        alignItems: "center",
+        justifyContent: "center",
+    },
+
+    logicChoiceButtonText: {
+        color: "#FFFFFF",
+
+        fontSize: 14,
+
+        fontFamily: "IBMPlexMono-Regular",
+    },
+    choiceResultBadgeWrap: {
+        position: "absolute",
+
+        left: 0,
+        right: 0,
+
+        bottom: height * 0.18,
+
+        alignItems: "center",
+
+        zIndex: 140,
+        elevation: 140,
+    },
+
+    choiceResultBadgeWrong: {
+        minWidth: width * 0.48,
+        maxWidth: width * 0.82,
+
+        backgroundColor: "#EA2118",
+
+        borderRadius: 5,
+
+        paddingHorizontal: 18,
+        paddingVertical: 12,
+
+        alignItems: "center",
+        justifyContent: "center",
+    },
+
+    choiceResultText: {
+        color: "#FFFFFF",
+
+        fontSize: 15,
+        lineHeight: 19,
+
+        textAlign: "center",
+
+        fontFamily: "IBMPlexMono-Bold",
     },
 });

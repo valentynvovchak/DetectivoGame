@@ -27,4 +27,12 @@ export const RESOURCES: Record<string, any> = {
     "show_report.png": require("@/assets/resources/show_report.png"),
     "add_to_inventory.png": require("@/assets/resources/add_to_inventory.png"),
     "report.png": require("@/assets/resources/report.png"),
+    "gas_released_deliberately.png": require("@/assets/resources/gas_released_deliberately.png"),
+    "mrs_kanagawa_depression.png": require("@/assets/resources/mrs_kanagawa_depression.png"),
+    "mrs_ichika.png": require("@/assets/resources/mrs_ichika.png"),
+    "mrs_kanagawa_recovered_from_depression.png": require("@/assets/resources/mrs_kanagawa_recovered_from_depression.png"),
+    "mr_kanagawa_affair_with_assistant.png": require("@/assets/resources/mr_kanagawa_affair_with_assistant.png"),
+    "mrs_kanagawa_wanted_divorce.png": require("@/assets/resources/mrs_kanagawa_wanted_divorce.png"),
+    "mrs_kanagawa_sister_angry.png": require("@/assets/resources/mrs_kanagawa_sister_angry.png"),
+    "mr_kanagawa_abusive_husband.png": require("@/assets/resources/mr_kanagawa_abusive_husband.png"),
 };

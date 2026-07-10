@@ -158,12 +158,13 @@ export default function WorldMap() {
 
                         const isSelected = selectedLocationId === id;
 
-                        const iconSource =
-                            loc.icon && (ICONS as any)[loc.icon]
-                                ? (ICONS as any)[loc.icon]
-                                : loc.visited
-                                    ? require("../assets/icons/map_marker_gray.png")
-                                    : require("../assets/icons/map_marker_red.png");
+                        const hasCustomIcon = !!loc.icon && !!(ICONS as any)[loc.icon];
+
+                        const iconSource = hasCustomIcon
+                            ? (ICONS as any)[loc.icon]
+                            : loc.visited
+                                ? ICONS["map_marker_gray.png"]
+                                : ICONS["map_marker_red.png"];
 
                         return (
                             <View
@@ -181,14 +182,23 @@ export default function WorldMap() {
                                     onPress={() => !loc.visited ? setSelectedLocationId(id): null}
                                     style={styles.locationButton}
                                 >
-                                    <Image
-                                        source={iconSource}
-                                        style={[
-                                            styles.locationIcon,
-                                            loc.visited && styles.locationIconVisited,
-                                            isSelected && styles.locationIconSelected,
-                                        ]}
-                                    />
+                                    <View style={styles.locationIconWrap}>
+                                        <Image
+                                            source={iconSource}
+                                            style={[
+                                                styles.locationIcon,
+                                                loc.visited && styles.locationIconVisited,
+                                                isSelected && styles.locationIconSelected,
+                                            ]}
+                                        />
+
+                                        {hasCustomIcon && (
+                                            <Image
+                                                source={ICONS["red_triangle.png"]}
+                                                style={styles.locationTriangle}
+                                            />
+                                        )}
+                                    </View>
                                 </TouchableOpacity>
 
                                 {isSelected && (
@@ -434,5 +444,25 @@ const styles = StyleSheet.create({
         lineHeight: 19,
 
         fontFamily: "IBMPlexMono-Regular",
+    },
+    locationIconWrap: {
+        position: "relative",
+        alignItems: "center",
+        justifyContent: "center",
+        overflow: "visible",
+    },
+
+    locationTriangle: {
+        position: "absolute",
+
+        bottom: -14,
+
+        width: 22,
+        height: 16,
+
+        resizeMode: "contain",
+
+        zIndex: 20,
+        elevation: 20,
     },
 });

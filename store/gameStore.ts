@@ -51,17 +51,18 @@ const mapLocationsDefault = {
         icon: "map_kanagawa_house.png",
         targetScene: "7_kanagawa_house",
     },
-    // "8_kanagawa_house": {
-    //     name: {
-    //         ru: "Дом Канагава",
-    //         en: "Kanagawa House",
-    //     },
-    //     unlocked: false,
-    //     visited: false,
-    //     x: 0.78,
-    //     y: 0.23,
-    //     icon: "map_kanagawa_house.png",
-    // },
+    "9_mrs_kanagawa_sister": {
+        name: {
+            ru: "Сестра миссис Канагавы",
+            en: "Mrs. Kanagawa Sister",
+        },
+        unlocked: false,
+        visited: false,
+        x: 0.78,
+        y: 0.21,
+        icon: "map_mrs_kanagawa_sister.png",
+        targetScene: "9_mrs_kanagawa_sister",
+    },
 
 };
 

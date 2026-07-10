@@ -17,6 +17,10 @@ import Roberts from "../assets/sprites/Roberts/roberts_serious.svg";
 import RobertsYes from "../assets/sprites/Roberts/roberts_yes.svg";
 import Housekeeper from "../assets/sprites/Housekeeper/housekeeper.svg";
 import HousekeeperWorried from "../assets/sprites/Housekeeper/housekeeper_worried.svg";
+import MrsKanagawaSister from "../assets/sprites/MrsKanagawaSister/mrs_kanagawa_sister.svg";
+import MrsKanagawaSisterSad from "../assets/sprites/MrsKanagawaSister/mrs_kanagawa_sister_sad.svg";
+import MrsKanagawaSisterAngry from "../assets/sprites/MrsKanagawaSister/mrs_kanagawa_sister_angry.svg";
+import MrsKanagawaSisterFingerUp from "../assets/sprites/MrsKanagawaSister/mrs_kanagawa_sister_finger_up.svg";
 
 export const BACKGROUNDS: Record<string, any> = {
     inventory_bg: require("../assets/backgrounds/inventory_bg.jpg"),
@@ -40,6 +44,16 @@ export const BACKGROUNDS: Record<string, any> = {
     police: require("../assets/backgrounds/police.jpg"),
     kanagawa_house_outdoor: require("../assets/backgrounds/kanagawa_house_outdoor.jpg"),
     kanagawa_house_indoor: require("../assets/backgrounds/kanagawa_house_indoor.jpg"),
+    interrogation_room: require("../assets/backgrounds/interrogation_room.jpg"),
+    mrs_kanagawa_sister_kitchen: require("../assets/backgrounds/mrs_kanagawa_sister_kitchen.jpg"),
+    mr_kanagawa_complained_about_husband: require("../assets/backgrounds/mr_kanagawa_complained_about_husband.jpg"),
+    in_public_loving_husband: require("../assets/backgrounds/in_public_loving_husband.jpg"),
+    at_home_like_a_tyrant: require("../assets/backgrounds/at_home_like_a_tyrant.jpg"),
+    scolded_her_constantly: require("../assets/backgrounds/scolded_her_constantly.jpg"),
+    cheated_on_her: require("../assets/backgrounds/cheated_on_her.jpg"),
+    she_reacted_calmly: require("../assets/backgrounds/she_reacted_calmly.jpg"),
+    self_development_courses: require("../assets/backgrounds/self_development_courses.jpg"),
+    file_for_divorce: require("../assets/backgrounds/file_for_divorce.jpg"),
 
 };
 
@@ -87,6 +101,14 @@ export const getSprite = (name: string) => {
             return Housekeeper;
         case "housekeeper_worried":
             return HousekeeperWorried;
+        case "mrs_kanagawa_sister":
+            return MrsKanagawaSister;
+        case "mrs_kanagawa_sister_sad":
+            return MrsKanagawaSisterSad;
+        case "mrs_kanagawa_sister_angry":
+            return MrsKanagawaSisterAngry;
+        case "mrs_kanagawa_sister_finger_up":
+            return MrsKanagawaSisterFingerUp;
         default:
             return DanielSmile;
     }

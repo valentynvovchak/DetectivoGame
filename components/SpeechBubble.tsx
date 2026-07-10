@@ -31,10 +31,11 @@ interface SpeechBubbleProps {
     text: string;
     side: "left" | "right" | "center";
     speaker?: string;
-    mode?: "small" | "medium" | "large" | "avatar" | "zip" | "dark";
+    mode?: "small" | "medium" | "large" | "avatar" | "zip" | "dark" | "explanation";
     lang?: GameState["lang"];
     charMode?: string;
     avatarSprite?: string;
+    avatarImage?: string;
     avatarBg?: string;
 }
 
@@ -45,6 +46,7 @@ export default function SpeechBubble({
          mode = "medium",
          charMode,
          avatarSprite,
+         avatarImage,
          avatarBg
     }: SpeechBubbleProps) {
 
@@ -150,12 +152,65 @@ export default function SpeechBubble({
         );
     }
 
+    if (mode === "explanation") {
+        const isLongExplanation = text.length > 100;
+
+        return (
+            <View
+                pointerEvents="none"
+                style={[
+                    styles.explanationBubbleRoot,
+                    {
+                        top: isLongExplanation
+                            ? height * 0.24
+                            : height * 0.29,
+                    },
+                ]}
+            >
+                <LinearGradient
+                    colors={["#666666", "#41B159"]}
+                    start={{ x: 0, y: 0 }}
+                    end={{ x: 1, y: 0 }}
+                    style={styles.explanationGradient}
+                >
+                    <View style={styles.explanationBubble}>
+                        <AppText style={styles.explanationBubbleText}>
+                            {text}
+                        </AppText>
+                    </View>
+                </LinearGradient>
+            </View>
+        );
+    }
+
     if (mode === "avatar") {
+        const pngSource =
+            avatarImage
+                ? (RESOURCES as Record<string, ImageSourcePropType>)[avatarImage]
+                : null;
+
         return (
             <View style={styles.avatarDialogRoot}>
-                <View style={[styles.avatarBox, {backgroundColor: avatarBg || "#D8423E"}]}>
-                    {avatarSprite ? (
-                        <View style={styles.avatarSpriteWrap} pointerEvents="none">
+                <View
+                    style={[
+                        styles.avatarBox,
+                        {
+                            backgroundColor: avatarBg || "#D8423E",
+                        },
+                    ]}
+                >
+                    {/* ✅ Сначала пробуем PNG */}
+                    {pngSource ? (
+                        <Image
+                            source={pngSource}
+                            style={styles.avatarPng}
+                        />
+                    ) : avatarSprite ? (
+                        /* ✅ Если PNG нет — используем SVG */
+                        <View
+                            style={styles.avatarSpriteWrap}
+                            pointerEvents="none"
+                        >
                             <SVGImage
                                 Image={getSprite(avatarSprite)}
                                 style={styles.avatarSprite}
@@ -190,7 +245,7 @@ export default function SpeechBubble({
                 left:
                     1.42 *
                     width *
-                    (isTablet ? 0.3 : charMode === "cut" ? 0.4 : 0.28),
+                    (isTablet ? 0.3 : charMode === "cut" ? 0.3 : 0.28),
                 alignItems: "center" as const,
             }
             : side === "right"
@@ -198,7 +253,7 @@ export default function SpeechBubble({
                     right:
                         1.42 *
                         width *
-                        (isTablet ? 0.3 : charMode === "cut" ? 0.4 : 0.28),
+                        (isTablet ? 0.3 : charMode === "cut" ? 0.3 : 0.28),
                     alignItems: "center" as const,
                 }
                 : {
@@ -443,46 +498,6 @@ const styles = StyleSheet.create({
         transform: [{ translateY: 183 * SCALE }, { translateX: 2 * SCALE }], //, { translateY: 2000 * SCALE }
     },
 
-    // darkBubbleRoot: {
-    //     position: "absolute",
-    //     top: height * 0.17,
-    //
-    //     zIndex: 120,
-    //     elevation: 120,
-    // },
-
-    // darkBubbleImage: {
-    //     minHeight: height * 0.105,
-    //
-    //     paddingLeft: width * 0.035,
-    //     paddingRight: width * 0.035,
-    //     paddingTop: height * 0.018,
-    //
-    //     // важно: место под хвостик картинки
-    //     paddingBottom: height * 0.055,
-    //
-    //     justifyContent: "center",
-    // },
-
-    // darkBubbleImageStyle: {
-    //     // width: "100%",
-    //     // height: "100%",
-    // },
-
-    // darkBubbleText: {
-    //     color: "#F7EFE4",
-    //
-    //     fontFamily: "IBMPlexMono-Regular",
-    //
-    //     fontSize: isSmallScreen ? 12 : isTablet ? 20 : 14,
-    //     lineHeight: isSmallScreen ? 16 : isTablet ? 26 : 19,
-    //
-    //     textAlign: "left",
-    //
-    //     flexShrink: 1,
-    //     flexWrap: "wrap",
-    // },
-
     darkBubbleRoot: {
         position: "absolute",
         top: height * 0.17,
@@ -516,5 +531,81 @@ const styles = StyleSheet.create({
 
         flexShrink: 1,
         flexWrap: "wrap",
+    },
+
+    explanationBubbleRoot: {
+        position: "absolute",
+
+        left: 0,
+        right: 0,
+
+        alignItems: "center",
+
+        zIndex: 125,
+        elevation: 125,
+    },
+
+    explanationGradient: {
+        width: isTablet
+            ? Math.min(width * 0.82, 620)
+            : Math.min(width * 0.88, 460),
+
+        padding: isTablet ? 3 : 2,
+
+        borderRadius: isTablet ? 17 : 14,
+
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 2,
+        },
+        shadowOpacity: 0.16,
+        shadowRadius: 3,
+
+        elevation: 5,
+    },
+
+    explanationBubble: {
+        width: "100%",
+
+        backgroundColor: "rgba(244, 244, 240, 0.97)",
+
+        borderRadius: isTablet ? 14 : 11,
+
+        paddingHorizontal: isTablet ? 22 : 14,
+        paddingVertical: isTablet ? 16 : 11,
+
+        minHeight: isTablet ? 70 : 46,
+
+        justifyContent: "center",
+    },
+
+    explanationBubbleText: {
+        width: "100%",
+
+        color: "#424242",
+
+        fontFamily: "IBMPlexMono-Regular",
+
+        fontSize: isTablet
+            ? 17
+            : isSmallScreen
+                ? 11
+                : 14,
+
+        lineHeight: isTablet
+            ? 23
+            : isSmallScreen
+                ? 15
+                : 19,
+
+        textAlign: "left",
+
+        flexShrink: 1,
+    },
+    avatarPng: {
+        width: "100%",
+        height: "100%",
+        resizeMode: "cover",
     },
 });

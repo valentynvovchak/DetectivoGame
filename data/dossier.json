@@ -138,5 +138,33 @@
       "short_description": "Housekeeper: she has worked for the Kanagawa family for a long time.",
       "description": "The housekeeper has worked in the Kanagawa household for many years and knows the family's everyday life well. She may have seen relationships between family members, noticed conflicts, unusual habits, or changes in behavior. Her testimony could help clarify what was happening in the house before the deaths of Mrs. Kanagawa and her daughter."
     }
+  },
+  "mrs_ichika": {
+    "ru": {
+      "type": "Свидетель",
+      "name": "Миссис Ичика",
+      "occupation": "Сестра миссис Канагавы",
+      "status": "Близкая родственница одной из жертв",
+      "icon": "mrs_ichika.png",
+      "appearance": {
+        "bg": "white",
+        "mood": "сдержанная, хорошо осведомлённая"
+      },
+      "short_description": "Миссис Ичика — сестра миссис Канагавы. Они были близки, и она хорошо знает отношения внутри семьи Канагавы.",
+      "description": "Миссис Ичика — сестра погибшей миссис Канагавы. Сёстры поддерживали близкие отношения и регулярно общались, поэтому Итика хорошо осведомлена о личной жизни сестры, её эмоциональном состоянии и отношениях между членами семьи Канагавы. Её показания могут помочь выяснить, существовали ли в семье скрытые конфликты, проблемы или обстоятельства, о которых другие свидетели предпочли умолчать."
+    },
+    "en": {
+      "type": "Witness",
+      "name": "Mrs. Ichika",
+      "occupation": "Mrs. Kanagawa's sister",
+      "status": "Close relative of one of the victims",
+      "icon": "mrs_ichika.png",
+      "appearance": {
+        "bg": "white",
+        "mood": "reserved, well-informed"
+      },
+      "short_description": "Mrs. Ichika is Mrs. Kanagawa's sister. They were close, and she knows a great deal about the relationships within the Kanagawa family.",
+      "description": "Mrs. Ichika is the sister of the deceased Mrs. Kanagawa. The sisters had a close relationship and communicated regularly, so Ichika is well informed about her sister's personal life, emotional state, and relationships within the Kanagawa family. Her testimony may help reveal hidden conflicts, personal problems, or circumstances that other witnesses may have chosen not to disclose."
+    }
   }
 }

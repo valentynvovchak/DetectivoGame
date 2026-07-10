@@ -1,11 +1,12 @@
-import React from "react";
+import React, {useEffect} from "react";
 
 import DialogScene from "@/components/scene/DialogScene";
 import { useSceneMusic } from "@/components/audio/useSceneMusic";
 import { MUSIC } from "@/components/audio/musicMap";
 import { useGameStore } from "@/store/gameStore";
+import {router} from "expo-router";
 
-export default function KanagawaHouseScene() {
+export default function ReportIsReadyScene() {
     useSceneMusic(MUSIC.crime);
 
     const {
@@ -18,6 +19,10 @@ export default function KanagawaHouseScene() {
     const dialogs = require("@/data/dialogs.json");
     const scene = dialogs[currentScene];
     const line = scene?.dialog?.[currentLine];
+
+    useEffect(() => {
+        if (line?.openMap) router.replace("/map");
+    }, [line?.openMap]);
 
 
     return (
@@ -37,8 +42,8 @@ export default function KanagawaHouseScene() {
                         nextLine();
                         return;
                     }
+                    if (spot.id == "start_dialog") return nextLine();
                 }
-
             }}
         />
     );

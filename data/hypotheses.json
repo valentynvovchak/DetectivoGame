@@ -14,5 +14,21 @@
       "short_description": "The death was caused by a gas leak in the car.",
       "description": "The connection between the laboratory conclusion and the circumstances of the trip suggests that the victims may have been poisoned by carbon monoxide inside the car. This makes the gas leak theory one of the main hypotheses in the case."
     }
+  },
+  "gas_released_deliberately": {
+    "ru": {
+      "name": "Кто-то намеренно запустил газ в машину.",
+      "icon": "gas_released_deliberately.png",
+      "importance": "high",
+      "short_description": "Кто-то намеренно запустил газ в машину.",
+      "description": "Технический осмотр не выявил никаких неисправностей или утечек газа в автомобиле. Это позволяет предположить, что угарный газ не появился в салоне случайно, а был намеренно введён внутрь кем-то, кто хотел убить находившихся в машине людей."
+    },
+    "en": {
+      "name": "Someone deliberately released gas into the car.",
+      "icon": "gas_released_deliberately.png",
+      "importance": "high",
+      "short_description": "Someone deliberately released gas into the car.",
+      "description": "The vehicle inspection found no defects or gas leaks. This suggests that the carbon monoxide did not enter the cabin accidentally but was deliberately introduced by someone who intended to kill the people inside."
+    }
   }
 }

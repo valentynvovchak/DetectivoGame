@@ -82,5 +82,75 @@
       "importance": "high",
       "description": "After leaving home, Mrs. Kanagawa and her daughter only managed to drive about 1500 feet. Such a short distance suggests that something happened almost immediately after the trip began. This may mean the danger was already inside the car or had been prepared in advance."
     }
+  },
+  "mrs_kanagawa_depression": {
+    "ru": {
+      "name": "Миссис Канагава страдала депрессией.",
+      "icon": "mrs_kanagawa_depression.png",
+      "importance": "high",
+      "description": "Выяснилось, что миссис Канагава страдала депрессией. Эта информация может иметь значение для расследования, однако сама по себе не объясняет обстоятельства смерти её дочери и не доказывает версию о самоубийстве."
+    },
+    "en": {
+      "name": "Mrs. Kanagawa suffered from depression.",
+      "icon": "mrs_kanagawa_depression.png",
+      "importance": "high",
+      "description": "It was discovered that Mrs. Kanagawa suffered from depression. This information may be relevant to the investigation, but by itself it does not explain the circumstances of her daughter's death or prove the suicide theory."
+    }
+  },
+  "mrs_kanagawa_recovered_from_depression": {
+    "ru": {
+      "name": "Миссис Канагава избавилась от депрессии около года назад.",
+      "icon": "mrs_kanagawa_recovered_from_depression.png",
+      "importance": "high",
+      "description": "По словам её сестры, миссис Канагава страдала депрессией, но около года назад её состояние значительно улучшилось. Она смогла вернуться к обычной жизни, и в последнее время близкие не замечали признаков серьёзного ухудшения её эмоционального состояния."
+    },
+    "en": {
+      "name": "Mrs. Kanagawa recovered from depression about a year ago.",
+      "icon": "mrs_kanagawa_recovered_from_depression.png",
+      "importance": "high",
+      "description": "According to her sister, Mrs. Kanagawa had suffered from depression, but her condition improved significantly about a year ago. She was able to return to her normal life, and recently her family had noticed no signs of a serious decline in her emotional state."
+    }
+  },
+  "mr_kanagawa_abusive_husband": {
+    "ru": {
+      "name": "Миссис Канагава жаловалась на жестокое обращение со стороны мужа.",
+      "icon": "mr_kanagawa_abusive_husband.png",
+      "importance": "high",
+      "description": "По словам сестры, миссис Канагава рассказывала, что муж обращался с ней жестоко. Эта информация ставит под сомнение его слова о благополучных отношениях в семье и может указывать на серьёзный скрытый конфликт между супругами."
+    },
+    "en": {
+      "name": "Mrs. Kanagawa complained that her husband was abusive.",
+      "icon": "mr_kanagawa_abusive_husband.png",
+      "importance": "high",
+      "description": "According to her sister, Mrs. Kanagawa had complained that her husband treated her abusively. This casts doubt on his claims of a happy family relationship and may point to a serious hidden conflict between the spouses."
+    }
+  },
+  "mr_kanagawa_affair_with_assistant": {
+    "ru": {
+      "name": "Мистер Канагава изменял жене со своей ассистенткой.",
+      "icon": "mr_kanagawa_affair_with_assistant.png",
+      "importance": "high",
+      "description": "По словам сестры миссис Канагавы, у мистера Канагавы был роман с его ассистенткой. Это раскрывает ещё один серьёзный конфликт внутри семьи и может быть связано как с ухудшением отношений между супругами, так и с возможным мотивом преступления."
+    },
+    "en": {
+      "name": "Mr. Kanagawa was having an affair with his assistant.",
+      "icon": "mr_kanagawa_affair_with_assistant.png",
+      "importance": "high",
+      "description": "According to Mrs. Kanagawa's sister, Mr. Kanagawa was having an affair with his assistant. This reveals another serious conflict within the family and may be connected both to the deterioration of the couple's relationship and to a possible motive for the crime."
+    }
+  },
+  "mrs_kanagawa_wanted_divorce": {
+    "ru": {
+      "name": "Миссис Канагава хотела подать на развод.",
+      "icon": "mrs_kanagawa_wanted_divorce.png",
+      "importance": "high",
+      "description": "По словам её сестры, миссис Канагава намеревалась развестись с мужем. На фоне жестокого обращения и его романа с ассистенткой это указывает на серьёзный семейный конфликт и может иметь важное значение для установления возможного мотива преступления."
+    },
+    "en": {
+      "name": "Mrs. Kanagawa wanted to file for divorce.",
+      "icon": "mrs_kanagawa_wanted_divorce.png",
+      "importance": "high",
+      "description": "According to her sister, Mrs. Kanagawa intended to divorce her husband. Given his abusive behavior and affair with his assistant, this points to a serious family conflict and may be important in establishing a possible motive for the crime."
+    }
   }
 }

@@ -2173,7 +2173,7 @@
 			{
 				"id": 4,
 				"characters": [
-					{ "id": "Daniel", "side": "right", "sprite": "daniel_thinking", "mode": "full" }
+					{ "id": "Daniel", "side": "right", "sprite": "daniel_thinking", "mode": "full", "bg": "white"}
 				],
 				"speaker": "Daniel",
 				"text": {
@@ -2210,20 +2210,1510 @@
 				]
 			},
 			{
+				"id": 5,
+				"characters": [
+					{ "id": "Daniel", "side": "right", "sprite": "daniel_shocked", "mode": "full" }
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "Черт возьми! В отчете указано, что в машине нет никаких дефектов.",
+					"en": "Damn it! The report shows there are no defects in the car."
+				},
+				"bubble_mode": "medium"
+			},
+			{
 				"id": 6,
+				"characters": [
+					{
+						"id": "Daniel",
+						"side": "right",
+						"sprite": "daniel_thinking",
+						"mode": "zoom"
+					}
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "Вы понимаете, что это означает?",
+					"en": "Do you know what that means?"
+				},
+				"bubble_mode": "medium",
+				"tapToContinue": false,
+				"logicChoice": {
+					"buttonText": {
+						"ru": "Выбрать",
+						"en": "Choose"
+					},
+					"title": {
+						"ru": "Собрать логику",
+						"en": "Make logic"
+					},
+					"description": {
+						"ru": "Жертвы были отравлены угарным газом, но при осмотре автомобиля не было обнаружено утечек. Что это может означать?",
+						"en": "The victims were poisoned by carbon monoxide, but no gas leaks were found during the vehicle inspection. What could this mean?"
+					},
+					"confirmText": {
+						"ru": "Подтвердить выбор?",
+						"en": "Confirm choice?"
+					},
+					"options": [
+						{
+							"id": "poisoned_at_home",
+							"text": {
+								"ru": "Они отравились газом дома, а в машине остались только его следы.",
+								"en": "They were poisoned by gas at home, and only traces remained in the car."
+							},
+							"correct": false,
+							"resultLine": 8
+						},
+						{
+							"id": "gas_released_deliberately",
+							"text": {
+								"ru": "Кто-то намеренно запустил газ в машину.",
+								"en": "Someone deliberately released gas into the car."
+							},
+							"correct": true,
+							"resultLine": 7
+						},
+						{
+							"id": "suicide",
+							"text": {
+								"ru": "Они сами решили запустить газ в машину.",
+								"en": "They decided to release gas into the car themselves."
+							},
+							"correct": false,
+							"resultLine": 9
+						}
+					]
+				}
+			},
+			{
+				"id": 7,
+				"characters": [
+					{
+						"id": "Di",
+						"side": "center",
+						"sprite": "di_ok",
+						"mode": "zoom2"
+					}
+				],
+				"speaker": "Di",
+				"text": {
+					"ru": "Верно. Если автомобиль исправен и утечек нет, значит угарный газ мог быть намеренно помещён внутрь.",
+					"en": "Right. If there are no defects or gas leaks in the car, the carbon monoxide may have been deliberately introduced into the vehicle."
+				},
+				"bubble_mode": "dark",
+				"choiceResult": {
+					"type": "correct",
+					"message": {
+						"ru": "Новая гипотеза!",
+						"en": "new hypothesis!"
+					},
+					"showHypothesis": true,
+					"hypothesisId": "gas_released_deliberately",
+					"continueLine": 10
+				},
+				"actions": [
+					{
+						"type": "add_item",
+						"category": "hypotheses",
+						"id": "gas_released_deliberately"
+					}
+				]
+			},
+			{
+				"id": 8,
+				"characters": [
+					{
+						"id": "Di",
+						"side": "center",
+						"sprite": "di_shocked",
+						"mode": "zoom2"
+					}
+				],
+				"speaker": "Di",
+				"text": {
+					"ru": "Угарный газ не имеет такой долгий цикл действия.",
+					"en": "Carbon monoxide does not have such a long lifespan."
+				},
+				"bubble_mode": "explanation",
+				"choiceResult": {
+					"type": "wrong",
+					"message": {
+						"ru": "Неверно! Попробуй ещё раз.",
+						"en": "Wrong! Try again."
+					},
+					"retryLine": 6
+				}
+			},
+			{
+				"id": 9,
+				"characters": [
+					{
+						"id": "Di",
+						"side": "center",
+						"sprite": "di_shocked",
+						"mode": "zoom2"
+					}
+				],
+				"speaker": "Di",
+				"text": {
+					"ru": "Во-первых, вряд ли мама и дочь стали бы делать такое вместе.\n\nВо-вторых машина стояла на видном месте у дороги, а не где-то в тихом месте.",
+					"en": "Firstly, it's unlikely that a mother and daughter would do such a thing together.\n\nSecondly, the car was parked in a prominent spot along the road, not somewhere quiet."
+				},
+				"bubble_mode": "explanation",
+				"choiceResult": {
+					"type": "wrong",
+					"message": {
+						"ru": "Неверно! Попробуй ещё раз.",
+						"en": "Wrong! Try again."
+					},
+					"retryLine": 6
+				}
+			},
+			{
+				"id": 10,
+				"characters": [
+					{
+						"id": "Di",
+						"side": "left",
+						"sprite": "di_thinking",
+						"mode": "zoom"
+					}
+				],
+				"speaker": "Di",
+				"text": {
+					"ru": "Если в автомобиле нет дефектов...",
+					"en": "If there are no defects in the car..."
+				},
+				"bubble_mode": "medium"
+			},
+			{
+				"id": 11,
+				"characters": [
+					{
+						"id": "Di",
+						"side": "left",
+						"sprite": "di_thinking",
+						"mode": "zoom"
+					}
+				],
+				"speaker": "Di",
+				"text": {
+					"ru": "значит ли это, что кто-то намеренно вызвал утечку угарного газа?",
+					"en": "does that mean someone deliberately caused the carbon monoxide leak?"
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 12,
+				"characters": [
+					{"id": "Daniel", "side": "right", "sprite": "daniel_shocked", "mode": "zoom"}
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "Да. А это значит, что мы имеем не просто несчастный случай. У нас ДВОЙНОЕ УБИЙСТВО!",
+					"en": "Yes. And that means we don't just have an accident. We have a DOUBLE MURDER!"
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 13,
+				"characters": [
+					{
+						"id": "Di",
+						"side": "left",
+						"sprite": "di_shocked",
+						"mode": "zoom"
+					}
+				],
+				"speaker": "Di",
+				"text": {
+					"ru": "О боже! Я даже не подумала об этом!",
+					"en": "Oh my God! I didn't even think about that!"
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 14,
+				"characters": [
+					{"id": "Daniel", "side": "right", "sprite": "daniel_thinking", "mode": "zoom"}
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "Итак... теперь нам нужно выяснить, у кого мог быть мотив для такого убийства?",
+					"en": "Alright... now we need to figure out who would have a motive for such a murder?"
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 15,
+				"characters": [
+					{"id": "Daniel", "side": "right", "sprite": "daniel_thinking", "mode": "zoom"}
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "Давайте поговорим с господином Канагавой — выясним, были ли у его жены какие-либо конфликты с кем-либо.",
+					"en": "Let’s talk to Mr. Kanagawa — find out if his wife had any conflicts with anyone."
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 16,
+				"characters": [
+					{"id": "Daniel", "side": "right", "sprite": "daniel_thinking", "mode": "zoom"}
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "А может быть, она впала в депрессию и решила покончить с собой?",
+					"en": "Or perhaps she was depressed and decided to take her own life?"
+				},
+				"bubble_mode": "large",
+				"actions": [
+					{
+						"type": "add_task",
+						"id": "motive_for_the_murder"
+					},
+					{
+						"type": "add_task",
+						"id": "maybe_a_suicide"
+					},
+					{
+						"type": "add_task",
+						"id": "talk_to_mr_kanagawa_again"
+					}
+				]
+			},
+			{
+				"id": 17,
+				"characters": [
+					{
+						"id": "Di",
+						"side": "left",
+						"sprite": "di_thinking",
+						"mode": "zoom"
+					}
+				],
+				"speaker": "Di",
+				"text": {
+					"ru": "Это возможно. Но в машине была и её дочь.",
+					"en": "That’s possible. But her daughter was in the car too."
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 18,
+				"characters": [
+					{
+						"id": "Di",
+						"side": "left",
+						"sprite": "di_thinking",
+						"mode": "zoom"
+					}
+				],
+				"speaker": "Di",
+				"text": {
+					"ru": "Маловероятно, что она стала бы так поступать со своим собственным ребёнком.",
+					"en": "It’s unlikely she would do something like that to her own child."
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 19,
+				"characters": [
+					{"id": "Daniel", "side": "right", "sprite": "daniel_serious", "mode": "zoom"}
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "Она могла сделать это случайно.",
+					"en": "She could’ve done it by accident."
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 20,
+				"characters": [
+					{"id": "Daniel", "side": "right", "sprite": "daniel_serious", "mode": "zoom"}
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "Представим, что она планировала отравиться угарным газом.",
+					"en": "Let’s imagine she planned to poison herself with carbon monoxide."
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 21,
+				"characters": [
+					{"id": "Daniel", "side": "right", "sprite": "daniel_serious", "mode": "zoom"}
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "Возможно, она поставила в машину баллон и просто забыла о нём.",
+					"en": "She might’ve put a cylinder in the car and just forgotten about it."
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 22,
+				"characters": [
+					{"id": "Daniel", "side": "right", "sprite": "daniel_serious", "mode": "zoom"}
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "Если бы он открылся случайно, они могли бы потерять сознание в течение нескольких минут.",
+					"en": "If it opened by accident, they could’ve lost consciousness within minutes."
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 23,
+				"characters": [
+					{
+						"id": "Di",
+						"side": "left",
+						"sprite": "di_serious",
+						"mode": "zoom"
+					}
+				],
+				"speaker": "Di",
+				"text": {
+					"ru": "Тогда нам нужно выяснить мотив. И до сих пор неясно, как газ попал в машину?",
+					"en": "Then we need to find a motive. And it’s still unclear how the gas got into the car?"
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 23,
+				"characters": [
+					{
+						"id": "Di",
+						"side": "left",
+						"sprite": "di_serious",
+						"mode": "zoom"
+					}
+				],
+				"speaker": "Di",
+				"text": {
+					"ru": "На месте обнаружения тел не было ни газового баллона, ни чего-либо, что могло бы содержать газ.",
+					"en": "There was no gas cylinder or anything that could contain gas at the scene where we found the bodies."
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 24,
+				"characters": [
+					{"id": "Daniel", "side": "right", "sprite": "daniel_serious", "mode": "zoom"}
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "Давайте пригласим господина Канагаву обратно на допрос в качестве свидетеля.",
+					"en": "Let's invite Mr. Kanagawa back for questioning as a witness."
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 25,
+				"characters": [
+					{"id": "Daniel", "side": "right", "sprite": "daniel_serious", "mode": "zoom"}
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "Он ближайший родственник, поэтому начнём с него, а затем поговорим с другими.",
+					"en": "He's the closest family member, so let's start with him and then talk to other."
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 26,
+				"backgroundChange": "interrogation_room",
+				"characters": [
+					{"id": "Mr. Kanagawa", "side": "left", "sprite": "mr_kanagava_serious", "mode": "full"}
+				],
+				"hotspots": [
+					{
+						"id": "start_dialog",
+						"type": "inspect",
+						"x": 0.43,
+						"y": 0.17,
+						"width": 0.30,
+						"height": 0.30,
+						"icon": "start_dialog.png"
+					}
+				]
+			},
+			{
+				"id": 27,
+				"characters": [
+					{
+						"id": "Di",
+						"side": "right",
+						"sprite": "di_serious",
+						"mode": "full"
+					}
+				],
+				"speaker": "Di",
+				"text": {
+					"ru": "Мистер Канагава, спасибо, что пришли. В ходе расследования появились новые подробности.",
+					"en": "Mr. Kanagawa, thank you for coming in. New details have come up in the investigation."
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 28,
+				"characters": [
+					{"id": "Mr. Kanagawa", "side": "left", "sprite": "mr_kanagava_serious", "mode": "full"}
+				],
+				"speaker": "Mr. Kanagawa",
+				"text": {
+					"ru": "Всегда готов помочь, детектив",
+					"en": "Always ready to help, detective."
+				},
+				"bubble_mode": "medium"
+			},
+			{
+				"id": 29,
+				"characters": [
+					{
+						"id": "Di",
+						"side": "right",
+						"sprite": "di_serious",
+						"mode": "full"
+					}
+				],
+				"speaker": "Di",
+				"text": {
+					"ru": "У нас есть веские основания полагать, что это не было случайностью.",
+					"en": "We have strong reason to believe this wasn’t an accident."
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 30,
+				"characters": [
+					{
+						"id": "Di",
+						"side": "right",
+						"sprite": "di_serious",
+						"mode": "full"
+					}
+				],
+				"speaker": "Di",
+				"text": {
+					"ru": "И что вашу жену и дочь, возможно, отравили намеренно.",
+					"en": "And that your wife and daughter may have been poisoned intentionally."
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 31,
+				"characters": [
+					{"id": "Mr. Kanagawa", "side": "left", "sprite": "mr_kanagava_serious", "mode": "full"}
+				],
+				"speaker": "Mr. Kanagawa",
+				"text": {
+					"ru": "О боже! Я думал, это из-за какой-то поломки в машине.",
+					"en": "Oh my god! I thought it was because of some kind of breakdown in the car."
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 32,
+				"characters": [
+					{"id": "Mr. Kanagawa", "side": "left", "sprite": "mr_kanagava_serious", "mode": "full"}
+				],
+				"speaker": "Mr. Kanagawa",
+				"text": {
+					"ru": "Кто мог так с ними поступить?",
+					"en": "Who could do this to them?"
+				},
+				"bubble_mode": "medium"
+			},
+			{
+				"id": 33,
+				"characters": [
+					{
+						"id": "Di",
+						"side": "right",
+						"sprite": "di_thinking",
+						"mode": "zoom"
+					}
+				],
+				"speaker": "Di",
+				"text": {
+					"ru": "Это и есть то что мы хотим знать.",
+					"en": "That's what we want to know."
+				},
+				"bubble_mode": "medium"
+			},
+			{
+				"id": 34,
+				"characters": [
+					{
+						"id": "Di",
+						"side": "right",
+						"sprite": "di_thinking",
+						"mode": "zoom"
+					}
+				],
+				"speaker": "Di",
+				"text": {
+					"ru": "Были ли у вашей жены какие-либо конфликты с кем-либо?",
+					"en": "Did your wife have any conflicts with anyone?"
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 35,
+				"characters": [
+					{"id": "Mr. Kanagawa", "side": "left", "sprite": "mr_kanagava_serious", "mode": "full"}
+				],
+				"speaker": "Mr. Kanagawa",
+				"text": {
+					"ru": "Нет, она не говорила ни о каких конфликтах.",
+					"en": "No, she didn't talk about any conflicts."
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 36,
+				"characters": [
+					{"id": "Mr. Kanagawa", "side": "left", "sprite": "mr_kanagava_serious", "mode": "full"}
+				],
+				"speaker": "Mr. Kanagawa",
+				"text": {
+					"ru": "Я ничего подобного не заметил.",
+					"en": "I didn't notice anything like that."
+				},
+				"bubble_mode": "medium"
+			},
+			{
+				"id": 37,
+				"characters": [
+					{
+						"id": "Di",
+						"side": "right",
+						"sprite": "di_serious",
+						"mode": "full"
+					}
+				],
+				"speaker": "Di",
+				"text": {
+					"ru": "Возможно, вы заметили изменения в её поведении?",
+					"en": "Maybe you noticed a change in her behavior?"
+				},
+				"bubble_mode": "medium"
+			},
+			{
+				"id": 38,
+				"characters": [
+					{
+						"id": "Di",
+						"side": "right",
+						"sprite": "di_serious",
+						"mode": "full"
+					}
+				],
+				"speaker": "Di",
+				"text": {
+					"ru": "Возможно, она сама могла стать причиной утечки газа... если вы понимаете, о чём я.",
+					"en": "Perhaps she could have caused the gas leak herself... if you know what I mean."
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 39,
+				"characters": [
+					{"id": "Mr. Kanagawa", "side": "left", "sprite": "mr_kanagava_serious", "mode": "full"}
+				],
+				"speaker": "Mr. Kanagawa",
+				"text": {
+					"ru": "На самом деле...",
+					"en": "Actually..."
+				},
+				"bubble_mode": "small"
+			},
+			{
+				"id": 40,
+				"characters": [
+					{"id": "Mr. Kanagawa", "side": "left", "sprite": "mr_kanagava_serious", "mode": "full"}
+				],
+				"speaker": "Mr. Kanagawa",
+				"text": {
+					"ru": "Последние несколько лет она страдала от депрессии. А вчера… я прочитала её дневник.",
+					"en": "She’d been depressed for the past few years. And yesterday… I read her diary."
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 41,
+				"characters": [
+					{
+						"id": "Di",
+						"side": "right",
+						"sprite": "di_serious",
+						"mode": "zoom"
+					}
+				],
+				"speaker": "Di",
+				"text": {
+					"ru": "Что вы прочитали в дневнике?",
+					"en": "What did you read in the diary?"
+				},
+				"bubble_mode": "medium"
+			},
+			{
+				"id": 42,
+				"characters": [
+					{"id": "Mr. Kanagawa", "side": "left", "sprite": "mr_kanagawa_crying", "mode": "full"}
+				],
+				"speaker": "Mr. Kanagawa",
+				"text": {
+					"ru": "Она написала, что чувствует себя плохой женой и плохой матерью.",
+					"en": "She wrote that she felt like a bad wife and a bad mother."
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 43,
+				"characters": [
+					{"id": "Mr. Kanagawa", "side": "left", "sprite": "mr_kanagawa_crying", "mode": "full"}
+				],
+				"speaker": "Mr. Kanagawa",
+				"text": {
+					"ru": "Получается, она причинила себе вред из-за депрессии?",
+					"en": "So it turns out she harmed herself because of depression?"
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 44,
+				"characters": [
+					{
+						"id": "Di",
+						"side": "right",
+						"sprite": "di_serious",
+						"mode": "full"
+					}
+				],
+				"speaker": "Di",
+				"text": {
+					"ru": "Да... к сожалению, причиной могла быть депрессия.",
+					"en": "Yes... unfortunately, depression could have been the reason."
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 45,
+				"characters": [
+					{
+						"id": "Di",
+						"side": "right",
+						"sprite": "di_serious",
+						"mode": "full"
+					}
+				],
+				"speaker": "Di",
+				"text": {
+					"ru": "Господин Канагава, вы заметили что-нибудь еще?",
+					"en": "Mr. Kanagawa, did you notice anything else?"
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 46,
+				"characters": [
+					{"id": "Mr. Kanagawa", "side": "left", "sprite": "mr_kanagava_serious", "mode": "full"}
+				],
+				"speaker": "Mr. Kanagawa",
+				"text": {
+					"ru": "Нет, я больше ничего не заметил.",
+					"en": "No, I didn’t notice anything else."
+				},
+				"bubble_mode": "medium"
+			},
+			{
+				"id": 47,
+				"characters": [
+					{
+						"id": "Di",
+						"side": "right",
+						"sprite": "di_serious",
+						"mode": "full"
+					}
+				],
+				"speaker": "Di",
+				"text": {
+					"ru": "Спасибо, господин Канагава. Мы сообщим вам о любых изменениях в ходе расследования.",
+					"en": "Thank you, Mr. Kanagawa. We’ll inform you if there are any changes in the investigation."
+				},
+				"bubble_mode": "large",
+				"actions": [
+					{
+						"type": "complete_task",
+						"id": "talk_to_mr_kanagawa_again"
+					}
+				]
+			},
+			{
+				"id": 48,
+				"backgroundChange": "police",
+				"characters": [
+					{
+						"id": "Daniel",
+						"side": "right",
+						"sprite": "daniel_smile",
+						"mode": "full"
+					}
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "Отличная работа, мисс Ди. Мне удалось связаться с сестрой миссис Канагавы.",
+					"en": "Good work, Miss Dee. I managed to get in touch with Mrs. Kanagawa’s sister."
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 49,
+				"backgroundChange": "police",
+				"characters": [
+					{
+						"id": "Daniel",
+						"side": "right",
+						"sprite": "daniel_smile",
+						"mode": "full"
+					}
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "Я постараюсь узнать больше об отношениях между супругами.",
+					"en": "I’ll try to find out more about the relationship between the spouses."
+				},
+				"bubble_mode": "large",
+				"actions": [
+					{
+						"type": "add_task",
+						"id": "talk_to_mrs_kanagawa_sister"
+					}
+				]
+			},
+			{
+				"id": 50,
+				"characters": [
+					{
+						"id": "Di",
+						"side": "left",
+						"sprite": "di_serious",
+						"mode": "full"
+					}
+				],
+				"speaker": "Di",
+				"text": {
+					"ru": "Хорошо. Надеюсь, мы узнаем что-нибудь полезное.",
+					"en": "Good. I hope we’ll find out something useful."
+				},
+				"bubble_mode": "large",
+				"actions": [
+					{
+						"type": "save_checkpoint"
+					},
+					{
+						"type": "unlock_location",
+						"id": "9_mrs_kanagawa_sister"
+					}
+				]
+			},
+			{
+				"id": 51,
+				"openMap": true
+			}
+		]
+	},
+
+	"9_mrs_kanagawa_sister": {
+		"background": "mrs_kanagawa_sister_kitchen",
+		"dialog": [
+			{
+				"id": 1,
+				"characters": [
+					{ "id": "Mrs. Kanagawa sister", "side": "left", "sprite": "mrs_kanagawa_sister", "mode": "zoom" }
+				],
+				"speaker": "Mrs. Kanagawa sister",
+				"text": {
+					"ru": "Доброе утро, детектив!",
+					"en": "Good morning, detective!"
+				},
+				"bubble_mode": "medium",
+				"actions": [
+					{
+						"type": "save_checkpoint"
+					}
+				]
+			},
+			{
+				"id": 2,
+				"characters": [
+					{ "id": "Daniel", "side": "right", "sprite": "daniel_serious", "mode": "zoom" }
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "Благодарю вас за уделенное время, миссис Ичика.",
+					"en": "Thank you for taking  time to speak with me, Mrs. Ichika"
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 3,
+				"characters": [
+					{ "id": "Daniel", "side": "right", "sprite": "daniel_serious", "mode": "zoom" }
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "Мы установили причину смерти вашей сестры и ее дочери.",
+					"en": "We’ve determined the cause of death of your sister and her daughter."
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 4,
+				"characters": [
+					{ "id": "Daniel", "side": "right", "sprite": "daniel_serious", "mode": "zoom" }
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "В машину каким-то образом попал угарный газ.",
+					"en": "It was carbon monoxide that somehow got into the car."
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 5,
+				"characters": [
+					{ "id": "Daniel", "side": "right", "sprite": "daniel_serious", "mode": "zoom" }
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "Честно говоря, на данный момент мы склоняемся к теории...",
+					"en": "To be honest with you, at this point we’re leaning toward the theory... "
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 6,
+				"characters": [
+					{ "id": "Daniel", "side": "right", "sprite": "daniel_serious", "mode": "zoom" }
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "что госпожа Канагава страдала от депрессии и, возможно, покончила жизнь самоубийством таким образом.",
+					"en": "that Mrs. Kanagawa was suffering from depression and may have taken her own life this way."
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 7,
+				"characters": [
+					{ "id": "Mrs. Kanagawa sister", "side": "left", "sprite": "mrs_kanagawa_sister_sad", "mode": "zoom" }
+				],
+				"speaker": "Mrs. Kanagawa sister",
+				"text": {
+					"ru": "Как это возможно?",
+					"en": "How is that possible?"
+				},
+				"bubble_mode": "medium"
+			},
+			{
+				"id": 8,
+				"characters": [
+					{ "id": "Mrs. Kanagawa sister", "side": "left", "sprite": "mrs_kanagawa_sister_sad", "mode": "zoom" }
+				],
+				"speaker": "Mrs. Kanagawa sister",
+				"text": {
+					"ru": "Откуда вы знали, что это не случайная протечка?",
+					"en": "How did you know it wasn't an accidental leak?"
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 9,
+				"characters": [
+					{ "id": "Daniel", "side": "center", "sprite": "daniel_thinking", "mode": "zoom2" }
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "Какое одно доказательство или факт подтверждают, что утечка угарного газа НЕ была случайной?",
+					"en": "What 1 piece of evidence or fact  prove that the carbon monoxide leak was NOT accidental?"
+				},
+				"bubble_mode": "zip",
+				"tapToContinue": false,
+				"showProof": {
+					"buttonText": {
+						"ru": "Показать доказательство",
+						"en": "Show proof"
+					},
+					"categories": ["facts", "evidence"],
+					"correct": [
+						{
+							"category": "evidence",
+							"id": "vehicle_inspection_report"
+						}
+					],
+					"successLine": 10,
+					"wrongLine": 11
+				}
+			},
+			{
+				"id": 10,
+				"characters": [
+					{
+						"id": "Daniel",
+						"side": "center",
+						"sprite": "daniel_finger_up",
+						"mode": "zoom"
+					}
+				],
+				"proofResult": {
+					"type": "correct",
+					"message": {
+						"ru": "Правильный выбор!",
+						"en": "Right choice!"
+					},
+					"showSelectedItem": true,
+					"continueLine": 12
+				}
+			},
+			{
+				"id": 11,
+				"characters": [
+					{
+						"id": "Daniel",
+						"side": "center",
+						"sprite": "daniel_shocked",
+						"mode": "zoom"
+					}
+				],
+				"bubble_mode": "medium",
+				"proofResult": {
+					"type": "wrong",
+					"message": {
+						"ru": "Неверно! Подумай ещё раз.",
+						"en": "Wrong! Think again."
+					},
+					"showSelectedItem": true,
+					"retryLine": 9
+				}
+			},
+			{
+				"id": 12,
+				"characters": [
+					{ "id": "Daniel", "side": "right", "sprite": "daniel_serious", "mode": "zoom" }
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "Мы уже проверили машину и не обнаружили никаких неисправностей.",
+					"en": "We've already checked the car and found no faults."
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 13,
+				"characters": [
+					{ "id": "Daniel", "side": "right", "sprite": "daniel_serious", "mode": "zoom" }
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "К сожалению, это означает, что кто-то намеренно вызвал утечку газа в автомобиле.",
+					"en": "Unfortunately, this means someone intentionally caused a gas leak in the car."
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 14,
+				"characters": [
+					{ "id": "Mrs. Kanagawa sister", "side": "left", "sprite": "mrs_kanagawa_sister", "mode": "zoom" }
+				],
+				"speaker": "Mrs. Kanagawa sister",
+				"text": {
+					"ru": "Кто вам рассказал о депрессии, мистер Канагава?",
+					"en": "Who told you about depression, Mr. Kanagawa?"
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 15,
+				"characters": [
+					{ "id": "Mrs. Kanagawa sister", "side": "left", "sprite": "mrs_kanagawa_sister", "mode": "zoom" }
+				],
+				"speaker": "Mrs. Kanagawa sister",
+				"text": {
+					"ru": "Он, вероятно, забыл упомянуть, что это было больше года назад.",
+					"en": "He probably forgot to mention that it was more than a year ago."
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 16,
+				"characters": [
+					{ "id": "Mrs. Kanagawa sister", "side": "left", "sprite": "mrs_kanagawa_sister", "mode": "zoom" }
+				],
+				"speaker": "Mrs. Kanagawa sister",
+				"text": {
+					"ru": "И недавно моя сестра избавилась от депрессии",
+					"en": "And recently my sister has gotten rid of her depression"
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 17,
+				"characters": [
+					{ "id": "Mrs. Kanagawa sister", "side": "left", "sprite": "mrs_kanagawa_sister", "mode": "zoom" }
+				],
+				"speaker": "Mrs. Kanagawa sister",
+				"text": {
+					"ru": "Поэтому у неё не было причин так поступать с собой.",
+					"en": "so she had no reason to do this to herself."
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 17,
+				"characters": [
+					{ "id": "Mrs. Kanagawa sister", "side": "left", "sprite": "mrs_kanagawa_sister", "mode": "zoom" }
+				],
+				"actions": [
+					{
+						"type": "complete_task",
+						"id": "maybe_a_suicide"
+					}
+				]
+			},
+			{
+				"id": 18,
 				"characters": [
 					{ "id": "Daniel", "side": "right", "sprite": "daniel_thinking", "mode": "zoom" }
 				],
 				"speaker": "Daniel",
 				"text": {
-					"ru": "Вы понимаете, что это значит?",
-					"en": "Do you know what that means?"
+					"ru": "Хм, это немного меняет ситуацию.",
+					"en": "Hmm, that changes things a bit."
+				},
+				"bubble_mode": "medium",
+				"actions": [
+					{
+						"type": "add_item",
+						"category": "facts",
+						"id": "mrs_kanagawa_recovered_from_depression"
+					}
+				]
+			},
+			{
+				"id": 19,
+				"characters": [
+					{ "id": "Daniel", "side": "right", "sprite": "daniel_thinking", "mode": "zoom" }
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "Что вы можете рассказать об отношениях в семье вашей сестры?",
+					"en": "What can you tell us about the relationships in your sister's family?"
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 20,
+				"characters": [
+					{ "id": "Daniel", "side": "right", "sprite": "daniel_thinking", "mode": "zoom" }
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "Возможно, у неё был конфликт с кем-то?",
+					"en": "May be she had a conflict with someone?"
 				},
 				"bubble_mode": "medium"
+			},
+			{
+				"id": 21,
+				"characters": [
+					{ "id": "Mrs. Kanagawa sister", "side": "left", "sprite": "mrs_kanagawa_sister_angry", "mode": "zoom" }
+				],
+				"speaker": "Mrs. Kanagawa sister",
+				"text": {
+					"ru": "У неё не было конфликтов с незнакомцами!",
+					"en": "She had no conflicts with strangers!"
+				},
+				"bubble_mode": "medium"
+			},
+			{
+				"id": 22,
+				"backgroundChange": "mr_kanagawa_complained_about_husband",
+				"menu": false
+			},
+			{
+				"id": 23,
+				"characters": [
+					{ "id": "Mrs. Kanagawa sister", "side": "left", "sprite": "mrs_kanagawa_sister", "mode": "full", "bg": "white" }
+				],
+				"speaker": "Mrs. Kanagawa sister",
+				"text": {
+					"ru": "Но она часто жаловалась на своего мужа.",
+					"en": "But she often complained about her husband"
+				},
+				"bubble_mode": "avatar",
+				"menu": false
+			},
+			{
+				"id": 24,
+				"backgroundChange": "in_public_loving_husband",
+				"menu": false
+			},
+			{
+				"id": 25,
+				"characters": [
+					{ "id": "Mrs. Kanagawa sister", "side": "left", "sprite": "mrs_kanagawa_sister", "mode": "full", "bg": "white" }
+				],
+				"speaker": "Mrs. Kanagawa sister",
+				"text": {
+					"ru": "На публике он добрый и любящий муж.",
+					"en": "In public he is a kind and loving husband,"
+				},
+				"bubble_mode": "avatar",
+				"menu": false
+			},
+			{
+				"id": 26,
+				"backgroundChange": "at_home_like_a_tyrant",
+				"menu": false
+			},
+			{
+				"id": 27,
+				"characters": [
+					{ "id": "Mrs. Kanagawa sister", "side": "left", "sprite": "mrs_kanagawa_sister", "mode": "full", "bg": "white" }
+				],
+				"speaker": "Mrs. Kanagawa sister",
+				"text": {
+					"ru": "но дома он вел себя как тиран и абьюзер.",
+					"en": "but at home he behaved like a tyrant and abuser."
+				},
+				"bubble_mode": "avatar",
+				"menu": false
+			},
+			{
+				"id": 28,
+				"backgroundNoAnimationChange": "mrs_kanagawa_sister_kitchen",
+				"characters": [
+					{ "id": "Daniel", "side": "right", "sprite": "daniel_thinking", "mode": "zoom" }
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "Можете рассказать подробнее?",
+					"en": "Can you tell us more?"
+				},
+				"bubble_mode": "medium",
+				"actions": [
+					{
+						"type": "add_item",
+						"category": "facts",
+						"id": "mr_kanagawa_abusive_husband"
+					}
+				]
+			},
+			{
+				"id": 29,
+				"backgroundChange": "scolded_her_constantly",
+				"menu": false
+			},
+			{
+				"id": 30,
+				"characters": [
+					{ "id": "Mrs. Kanagawa sister", "side": "left", "image": "mrs_kanagawa_sister_angry.png", "mode": "full", "bg": "white" }
+				],
+				"speaker": "Mrs. Kanagawa sister",
+				"text": {
+					"ru": "Он постоянно её ругал",
+					"en": "He scolded her constantly"
+				},
+				"bubble_mode": "avatar",
+				"menu": false
+			},
+			{
+				"id": 31,
+				"characters": [
+					{ "id": "Mrs. Kanagawa sister", "side": "left", "image": "mrs_kanagawa_sister_angry.png", "mode": "full", "bg": "white" }
+				],
+				"speaker": "Mrs. Kanagawa sister",
+				"text": {
+					"ru": "сказал, что она плохая мать и что она плохо воспитывает детей.",
+					"en": "saying that she was a bad mother and that she was raising children poorly."
+				},
+				"bubble_mode": "avatar",
+				"menu": false
+			},
+			{
+				"id": 32,
+				"backgroundChange": "cheated_on_her",
+				"menu": false
+			},
+			{
+				"id": 33,
+				"characters": [
+					{ "id": "Mrs. Kanagawa sister", "side": "left", "image": "mrs_kanagawa_sister_angry.png", "mode": "full", "bg": "white" }
+				],
+				"speaker": "Mrs. Kanagawa sister",
+				"text": {
+					"ru": "Хуже всего то, что он изменил ей со своей помощницей!",
+					"en": "The worst thing is that he cheated on her with his assistant!"
+				},
+				"bubble_mode": "avatar",
+				"menu": false
+			},
+			{
+				"id": 34,
+				"backgroundChange": "mrs_kanagawa_sister_kitchen",
+				"characters": [
+					{ "id": "Mrs. Kanagawa sister", "side": "left", "sprite": "mrs_kanagawa_sister_angry", "mode": "zoom" }
+				],
+				"speaker": "Mrs. Kanagawa sister",
+				"text": {
+					"ru": "Какой же он лицемер.",
+					"en": "He's such a hypocrite."
+				},
+				"bubble_mode": "medium"
+			},
+			{
+				"id": 35,
+				"characters": [
+					{ "id": "Daniel", "side": "right", "sprite": "daniel_serious", "mode": "zoom" }
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "И как она реагировала?",
+					"en": "And how did she react?"
+				},
+				"bubble_mode": "medium"
+			},
+			{
+				"id": 36,
+				"characters": [
+					{ "id": "Daniel", "side": "right", "sprite": "daniel_serious", "mode": "zoom" }
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "Значит, твоя сестра знала о любовнице?",
+					"en": "So your sister knew about the mistress?"
+				},
+				"bubble_mode": "medium",
+				"actions": [
+					{
+						"type": "add_item",
+						"category": "facts",
+						"id": "mr_kanagawa_affair_with_assistant"
+					}
+				]
+			},
+			{
+				"id": 37,
+				"backgroundChange": "she_reacted_calmly",
+				"menu": false
+			},
+			{
+				"id": 38,
+				"characters": [
+					{ "id": "Mrs. Kanagawa sister", "side": "left", "sprite": "mrs_kanagawa_sister", "mode": "full", "bg": "white" }
+				],
+				"speaker": "Mrs. Kanagawa sister",
+				"text": {
+					"ru": "В целом, она отреагировала спокойно.",
+					"en": "Overall, she reacted calmly."
+				},
+				"bubble_mode": "avatar",
+				"menu": false
+			},
+			{
+				"id": 39,
+				"characters": [
+					{ "id": "Mrs. Kanagawa sister", "side": "left", "sprite": "mrs_kanagawa_sister", "mode": "full", "bg": "white" }
+				],
+				"speaker": "Mrs. Kanagawa sister",
+				"text": {
+					"ru": "Потому что она давно это подозревала.",
+					"en": "Because she had suspected this for a long time."
+				},
+				"bubble_mode": "avatar",
+				"menu": false
+			},
+			{
+				"id": 40,
+				"backgroundChange": "self_development_courses",
+				"menu": false
+			},
+			{
+				"id": 41,
+				"characters": [
+					{ "id": "Mrs. Kanagawa sister", "side": "left", "sprite": "mrs_kanagawa_sister", "mode": "full", "bg": "white" }
+				],
+				"speaker": "Mrs. Kanagawa sister",
+				"text": {
+					"ru": "Но затем она записалась на курсы саморазвития",
+					"en": "but then she signed up for self-development courses"
+				},
+				"bubble_mode": "avatar",
+				"menu": false
+			},
+			{
+				"id": 42,
+				"backgroundChange": "file_for_divorce",
+				"menu": false
+			},
+			{
+				"id": 43,
+				"characters": [
+					{ "id": "Mrs. Kanagawa sister", "side": "left", "sprite": "mrs_kanagawa_sister", "mode": "full", "bg": "white" }
+				],
+				"speaker": "Mrs. Kanagawa sister",
+				"text": {
+					"ru": "И она поняла, что пора двигаться дальше, поэтому решила подать на развод.",
+					"en": "and she realized it was time to move on, so she decided to file for divorce."
+				},
+				"bubble_mode": "avatar",
+				"menu": false
+			},
+			{
+				"id": 44,
+				"backgroundChange": "mrs_kanagawa_sister_kitchen",
+				"characters": [
+					{ "id": "Mrs. Kanagawa sister", "side": "left", "sprite": "mrs_kanagawa_sister", "mode": "zoom" }
+				],
+				"speaker": "Mrs. Kanagawa sister",
+				"text": {
+					"ru": "Мистер Канагава сначала согласился на развод.",
+					"en": "Mr. Kanagawa agreed for divorce at first.."
+				},
+				"bubble_mode": "large",
+				"actions": [
+					{
+						"type": "add_item",
+						"category": "facts",
+						"id": "mrs_kanagawa_wanted_divorce"
+					}
+				]
+			},
+			{
+				"id": 45,
+				"characters": [
+					{ "id": "Mrs. Kanagawa sister", "side": "left", "sprite": "mrs_kanagawa_sister_finger_up", "mode": "cut" }
+				],
+				"speaker": "Mrs. Kanagawa sister",
+				"text": {
+					"ru": "но по какой-то причине позже он передумал.",
+					"en": "but for some reason he later changed his mind"
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 46,
+				"characters": [
+					{ "id": "Daniel", "side": "right", "sprite": "daniel_thinking", "mode": "zoom" }
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "Возможно, ему не понравился ответ адвоката.",
+					"en": "Perhaps he didn't like the lawyer's answer.."
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 47,
+				"characters": [
+					{ "id": "Daniel", "side": "right", "sprite": "daniel_serious", "mode": "zoom" }
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "У вас есть адрес этого адвоката?",
+					"en": "Do you have the address of this lawyer?"
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 48,
+				"characters": [
+					{ "id": "Daniel", "side": "right", "sprite": "daniel_serious", "mode": "zoom" }
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "Нам нужно с ним поговорить.",
+					"en": "We need to talk to him."
+				},
+				"bubble_mode": "medium"
+			},
+			{
+				"id": 49,
+				"characters": [
+					{ "id": "Mrs. Kanagawa sister", "side": "left", "sprite": "mrs_kanagawa_sister", "mode": "zoom" }
+				],
+				"speaker": "Mrs. Kanagawa sister",
+				"text": {
+					"ru": "Да, конечно.",
+					"en": "Yes, sure."
+				},
+				"bubble_mode": "small"
+			},
+			{
+				"id": 50,
+				"characters": [
+					{ "id": "Mrs. Kanagawa sister", "side": "left", "sprite": "mrs_kanagawa_sister_sad", "mode": "zoom" }
+				],
+				"speaker": "Mrs. Kanagawa sister",
+				"text": {
+					"ru": "Надеюсь, вам удастся найти убийцу.",
+					"en": "I hope you manage to find the killer."
+				},
+				"bubble_mode": "medium"
+			},
+			{
+				"id": 51,
+				"characters": [
+					{ "id": "Daniel", "side": "right", "sprite": "daniel_serious", "mode": "zoom" }
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "Не волнуйтесь, мы сделаем все, что в наших силах.",
+					"en": "Don't worry, we'll do everything we can."
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 52,
+				"characters": [
+					{ "id": "Daniel", "side": "right", "sprite": "daniel_serious", "mode": "zoom" }
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "Спасибо, вы нам очень помогли.",
+					"en": "Thank you, you helped us a lot"
+				},
+				"bubble_mode": "medium"
+			},
+			{
+				"id": 52,
+				"characters": [
+					{ "id": "Daniel", "side": "center", "sprite": "daniel_finger_up", "mode": "cut" }
+				],
+				"speaker": "Narrator",
+				"text": {
+					"ru": "Новый персонаж!",
+					"en": "New character!"
+				},
+				"bubble_mode": "medium",
+				"actions": [
+					{
+						"type": "add_item",
+						"category": "dossier",
+						"id": "mrs_ichika"
+					},
+					{
+						"type": "complete_task",
+						"id": "talk_to_mrs_kanagawa_sister"
+					}
+				]
 			}
-
 		]
 	}
-
-
 }
