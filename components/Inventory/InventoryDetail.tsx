@@ -6,6 +6,7 @@ import AppText from "@/components/Common/AppText";
 import SVGImage from "@/components/small/SVGImage";
 import { getSprite } from "@/tools/utils";
 import {isSmallScreen, isTablet} from "@/styles/global";
+import MixedIcon from "@/components/Common/MixedIcon";
 
 const K = SCALE * 3;
 
@@ -57,7 +58,7 @@ export default function InventoryDetail({
 
                     <View style={styles.findingRow}>
                         <View style={styles.findingLeft}>
-                            <View style={[styles.bigImageBox, {backgroundColor: item?.appearance?.bg || 'null'}]}>
+                            {/*<View style={[styles.bigImageBox, {backgroundColor: item?.appearance?.bg || 'null'}]}>
                                 {isDossier && item.appearance?.sprite ? (
                                     <SVGImage Image={getSprite(item.appearance.sprite)} width={115 * 3 * SCALE} height={265 * 3 * SCALE} style={styles.portrait} />
                                 ) : item.icon ? (
@@ -69,11 +70,34 @@ export default function InventoryDetail({
                                 <View style={styles.badge}>
                                     <AppText style={styles.badgeText}>{index + 1}</AppText>
                                 </View>
+                            </View>*/}
+                            <View style={[styles.bigImageBox, { backgroundColor: item?.appearance?.bg || "transparent" }]}>
+                                {isDossier && item.appearance?.sprite ? (
+                                    <SVGImage
+                                        Image={getSprite(item.appearance.sprite)}
+                                        width={115 * 3 * SCALE}
+                                        height={265 * 3 * SCALE}
+                                        style={styles.portrait}
+                                    />
+                                ) : item.icon ? (
+                                    <MixedIcon
+                                        icon={item.icon}
+                                        width={78 * K}
+                                        height={78 * K}
+                                        resizeMode="cover"
+                                    />
+                                ) : (
+                                    <View style={styles.imagePlaceholder} />
+                                )}
+
+                                <View style={styles.badge}>
+                                    <AppText style={styles.badgeText}>{index + 1}</AppText>
+                                </View>
                             </View>
 
-                            <AppText style={styles.itemNameLeft} numberOfLines={6}>
-                                {item.name}
-                            </AppText>
+                            {/*<AppText style={styles.itemNameLeft} numberOfLines={6}>*/}
+                            {/*    {item.name}*/}
+                            {/*</AppText>*/}
                         </View>
 
                         <ScrollView
@@ -109,12 +133,6 @@ const styles = StyleSheet.create({
         color: "#F4E8BD",
         fontSize: 12 * K,
         fontFamily: "IBMPlexMono-Regular",
-    },
-
-    mainImage: {
-        width: "100%",
-        height: "100%",
-        resizeMode: "cover",
     },
 
     imagePlaceholder: {

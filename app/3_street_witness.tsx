@@ -18,31 +18,31 @@ export default function WitnessScene() {
     return (
         <DialogScene
             hotspotsDisabled={clicked}
-            renderOverlays={({ line }) => (
-                <>
-                    {line?.id === 17 && !hasItem("facts", "red_skin_tone") && (
-                        <ClueFlyAnimation
-                            text={lang === "ru" ? "Красноватый оттенок кожи" : "Red skin tone"}
-                            start={{ x: width * 0.001, y: -height * 0.28 }}
-                            end={{ x: width / 4.5, y: height }}
-                            onFinish={() => {
-                                addToData("facts", "red_skin_tone");
-                            }}
-                        />
-                    )}
-
-                    {line?.id === 19 && !hasItem("dossier", "witness_mei") && (
-                        <ClueFlyAnimation
-                            text={lang === "ru" ? "Свидетель Мей" : "Witness Mei"}
-                            start={{ x: width * 0.001, y: -height * 0.28 }}
-                            end={{ x: width / 4.5, y: height }}
-                            onFinish={() => {
-                                addToData("dossier", "witness_mei");
-                            }}
-                        />
-                    )}
-                </>
-            )}
+            // renderOverlays={({ line }) => (
+            //     <>
+            //         {line?.id === 18 && !hasItem("facts", "red_skin_tone") && (
+            //             <ClueFlyAnimation
+            //                 text={lang === "ru" ? "Красноватый оттенок кожи" : "Red skin tone"}
+            //                 start={{ x: width * 0.001, y: -height * 0.28 }}
+            //                 end={{ x: width / 4.5, y: height }}
+            //                 onFinish={() => {
+            //                     addToData("facts", "red_skin_tone");
+            //                 }}
+            //             />
+            //         )}
+            //
+            //         {line?.id === 20 && !hasItem("dossier", "witness_mei") && (
+            //             <ClueFlyAnimation
+            //                 text={lang === "ru" ? "Свидетель Мей" : "Witness Mei"}
+            //                 start={{ x: width * 0.001, y: -height * 0.28 }}
+            //                 end={{ x: width / 4.5, y: height }}
+            //                 onFinish={() => {
+            //                     addToData("dossier", "witness_mei");
+            //                 }}
+            //             />
+            //         )}
+            //     </>
+            // )}
             onHotspotPress={(spot, { fadeToScene }) => {
                 if (line?.id === 2 && spot.type === "inspect") return nextLine();
 

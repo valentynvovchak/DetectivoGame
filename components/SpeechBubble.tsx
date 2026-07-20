@@ -52,6 +52,14 @@ export default function SpeechBubble({
 
     const [darkTextHeight, setDarkTextHeight] = useState(0);
 
+    if (!isSmallScreen) {
+        if (mode === "large") {
+            mode = "medium"
+        } else if (mode === "medium") {
+            mode = "small"
+        }
+    }
+
     if (speaker === "Narrator" || speaker === "Narrator2" ) {
         return (
             <LinearGradient
@@ -85,6 +93,51 @@ export default function SpeechBubble({
                     <AppText style={styles.sidePanelText}>{text}</AppText>
                 </View>
             </LinearGradient>
+        );
+    }
+
+    if (mode === "zip") {
+        const promptWidth = isTablet
+            ? Math.min(width * 0.62, 560)
+            : Math.min(width * 0.78, 420);
+
+        const horizontalPosition =
+            side === "left"
+                ? {
+                    left: width * 0.05,
+                }
+                : side === "right"
+                    ? {
+                        right: width * 0.05,
+                    }
+                    : {
+                        left: (width - promptWidth) / 2,
+                    };
+
+        return (
+            <View
+                pointerEvents="none"
+                style={[
+                    styles.promptBubbleRoot,
+                    horizontalPosition,
+                    {
+                        width: promptWidth,
+                    },
+                ]}
+            >
+                <LinearGradient
+                    colors={["#CCCCCC", "#CACA99"]}
+                    start={{ x: 0, y: 0 }}
+                    end={{ x: 0, y: 1 }}
+                    style={styles.promptBubbleBorder}
+                >
+                    <View style={styles.promptBubble}>
+                        <AppText style={styles.promptBubbleText}>
+                            {text}
+                        </AppText>
+                    </View>
+                </LinearGradient>
+            </View>
         );
     }
 
@@ -243,17 +296,17 @@ export default function SpeechBubble({
         side === "left"
             ? {
                 left:
-                    1.42 *
+                    1.52 *
                     width *
-                    (isTablet ? 0.3 : charMode === "cut" ? 0.3 : 0.28),
+                    (isTablet ? 0.3 : charMode === "cut" ? 0.28 : 0.28),
                 alignItems: "center" as const,
             }
             : side === "right"
                 ? {
                     right:
-                        1.42 *
+                        1.52 *
                         width *
-                        (isTablet ? 0.3 : charMode === "cut" ? 0.3 : 0.28),
+                        (isTablet ? 0.3 : charMode === "cut" ? 0.28 : 0.28),
                     alignItems: "center" as const,
                 }
                 : {
@@ -264,7 +317,7 @@ export default function SpeechBubble({
         marginBottom: mode === 'zip' ? 0 : mode === 'dark' ? 25 : 10,
         maxWidth: mode === "small" ? 210 : mode === "medium" ? 300 : 375,
         paddingLeft: isTablet ? 25 : 20,
-        paddingRight: 15,
+        paddingRight: 10,
         paddingVertical: 5,
         width:
             width *
@@ -282,10 +335,10 @@ export default function SpeechBubble({
                         charMode === "cut" ?
                             height *
                             (isTablet
-                                ? 0.62
+                                ? 0.72
                                 : Platform.OS === "web"
-                                    ? 0.62
-                                    : 0.645) :
+                                    ? 0.72
+                                    : 0.745) :
                         mode === "zip" ?
                             height *
                             (isTablet
@@ -293,12 +346,20 @@ export default function SpeechBubble({
                                 : Platform.OS === "web"
                                     ? 0.68
                                     : 0.705) :
+                        charMode === "zoom" ?
                             height *
                             (isTablet
-                                ? 0.72
+                                ? 0.78
                                 : Platform.OS === "web"
-                                    ? 0.72
-                                    : 0.745),
+                                    ? 0.78
+                                    : 0.805) :
+                            height *
+                            (isTablet
+                                ? 0.76
+                                : Platform.OS === "web"
+                                    ? 0.76
+                                    : 0.785),
+
                 },
             ]}
         >
@@ -331,9 +392,9 @@ export default function SpeechBubble({
                                 ?  mode === "zip" ? 20 : 17
                                 : isTablet
                                     ? mode === "zip" ? 37 : 30
-                                    : mode === "zip" ? 25 : 20,
+                                    : mode === "zip" ? 25 : 16,
                             paddingBottom: mode === "zip" ? 40 * SCALE : 0,
-                            fontSize: isSmallScreen ? 13 : isTablet ? mode === "zip" ? 26 : 24 : 15,
+                            fontSize: isSmallScreen ? 13 : isTablet ? mode === "zip" ? 26 : 24 : 13,
                             color: "#222",
                         },
                     ]}
@@ -432,7 +493,7 @@ const styles = StyleSheet.create({
         width: AVATAR_SIZE,
         height: AVATAR_SIZE,
 
-        borderRadius: 28,
+        borderRadius: 16,
         // backgroundColor: "#D8423E",
         // borderWidth: 2,
         // borderColor: "#D8423E",
@@ -462,8 +523,8 @@ const styles = StyleSheet.create({
         width: AVATAR_BUBBLE_WIDTH,
         height: AVATAR_BUBBLE_HEIGHT,
 
-        paddingLeft: width * 0.065,
-        paddingRight: width * 0.03,
+        paddingLeft: width * 0.075,
+        paddingRight: width * 0.032,
         paddingTop: height * 0.012,
         paddingBottom: height * 0.025,
 
@@ -481,8 +542,8 @@ const styles = StyleSheet.create({
     avatarBubbleText: {
         color: "#1F2430",
 
-        fontSize: width * 0.03,
-        lineHeight: width * 0.043,
+        fontSize: width * 0.031,
+        lineHeight: width * 0.04,
 
         fontFamily: "IBMPlexMono-Regular",
     },
@@ -607,5 +668,73 @@ const styles = StyleSheet.create({
         width: "100%",
         height: "100%",
         resizeMode: "cover",
+    },
+
+    promptBubbleRoot: {
+        position: "absolute",
+
+        top: isTablet
+            ? height * 0.205
+            : height * 0.22,
+
+        zIndex: 120,
+        elevation: 120,
+    },
+
+    promptBubbleBorder: {
+        width: "100%",
+
+        padding: isTablet ? 3 : 2,
+
+        borderRadius: isTablet ? 8 : 6,
+
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 3,
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 5,
+
+        elevation: 6,
+    },
+
+    promptBubble: {
+        width: "100%",
+
+        minHeight: isTablet ? 90 : 68,
+
+        backgroundColor: "rgba(48, 76, 74, 0.97)",
+
+        borderRadius: isTablet ? 6 : 4,
+
+        paddingHorizontal: isTablet ? 22 : 15,
+        paddingVertical: isTablet ? 16 : 12,
+
+        justifyContent: "center",
+    },
+
+    promptBubbleText: {
+        width: "100%",
+
+        color: "#F7EFE4",
+
+        fontFamily: "IBMPlexMono-Regular",
+
+        fontSize: isTablet
+            ? 18
+            : isSmallScreen
+                ? 12
+                : 15,
+
+        lineHeight: isTablet
+            ? 24
+            : isSmallScreen
+                ? 17
+                : 21,
+
+        textAlign: "left",
+
+        flexShrink: 1,
     },
 });

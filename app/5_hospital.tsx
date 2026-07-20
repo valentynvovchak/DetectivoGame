@@ -22,20 +22,20 @@ export default function HospitalScene() {
     return (
         <DialogScene
             showHotspots={false}
-            renderOverlays={({ line }) => (
-                <>
-                    {line?.id === 5 && !hasItem("facts", "mr_kanagawa_surgery") && (
-                        <ClueFlyAnimation
-                            text={lang === "ru" ?
-                                "mr. Канагава был на операции" :
-                                "mr. Kanagawa was on surgery"}
-                            start={{ x: width * 0.001, y: -height * 0.28 }}
-                            end={{ x: width / 4.5, y: height }}
-                            onFinish={() => {}}  // addToData("facts", "mr_kanagawa_surgery")
-                        />
-                    )}
-                </>
-            )}
+            // renderOverlays={({ line }) => (
+            //     <>
+            //         {line?.id === 5 && !hasItem("facts", "mr_kanagawa_surgery") && (
+            //             <ClueFlyAnimation
+            //                 text={lang === "ru" ?
+            //                     "mr. Канагава был на операции" :
+            //                     "mr. Kanagawa was on surgery"}
+            //                 start={{ x: width * 0.001, y: -height * 0.28 }}
+            //                 end={{ x: width / 4.5, y: height }}
+            //                 onFinish={() => {}}  // addToData("facts", "mr_kanagawa_surgery")
+            //             />
+            //         )}
+            //     </>
+            // )}
             onHotspotPress={(spot, { fadeToScene }) => {
                 if (spot.id == "start_dialog" && spot.type === "inspect") return nextLine();
             }}

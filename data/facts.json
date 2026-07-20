@@ -2,13 +2,13 @@
   "two_bodies": {
     "ru": {
       "name": "На автобусной остановке в автомобиле были обнаружены два тела.",
-      "icon": "two_bodies.png",
+      "icon": "two_bodies.svg",
       "importance": "medium",
       "description": "В припаркованном возле автобусной остановки автомобиле были обнаружены тела мужчины и женщины. Двери машины были закрыты, следов борьбы или попыток выбраться наружу на первый взгляд не обнаружено."
     },
     "en": {
       "name": "Two bodies were discovered in a car at the bus stop",
-      "icon": "two_bodies.png",
+      "icon": "two_bodies.svg",
       "importance": "medium",
       "description": "The bodies of a man and a woman were found inside a car parked near the bus stop. The vehicle was locked, and at first glance there were no signs of a struggle or an attempt to escape."
     }
@@ -16,13 +16,13 @@
   "red_skin_tone": {
     "ru": {
       "name": "Кожа жертв имела ярко-красный оттенок.",
-      "icon": "red_skin_tone.png",
+      "icon": "red_skin_tone.svg",
       "importance": "medium",
       "description": "Мисс Мэй обратила внимание на необычный ярко-красный оттенок кожи погибших. Такой признак может указывать на отравление угарным газом, поэтому причина смерти требует отдельной проверки."
     },
     "en": {
       "name": "The victims' skin had a bright red tint",
-      "icon": "red_skin_tone.png",
+      "icon": "red_skin_tone.svg",
       "importance": "medium",
       "description": "Ms. Mei noticed an unusual bright red tint on the victims' skin. This sign may indicate carbon monoxide poisoning, so the cause of death needs to be examined more carefully."
     }
@@ -30,13 +30,13 @@
   "mr_kanagawa_surgery": {
     "ru": {
       "name": "Мистер Канагава был на операции в момент смерти жены и дочери.",
-      "icon": "mr_kanagawa_was_in_surgery.png",
+      "icon": "mr_kanagawa_was_in_surgery.svg",
       "importance": "high",
       "description": "Мистер Канагава заявил, что в день трагедии находился в больнице и почти всё время провёл в операционном блоке."
     },
     "en": {
       "name": "Mr. Kanagawa was in surgery at the time of the death of his wife and daughter.",
-      "icon": "mr_kanagawa_was_in_surgery.png",
+      "icon": "mr_kanagawa_was_in_surgery.svg",
       "importance": "high",
       "description": "Mr. Kanagawa stated that on the day of the incident he was at the hospital and spent most of the time in the operating room."
     }
@@ -58,13 +58,13 @@
   "mrs_kanagawa_left_home_at_noon": {
     "ru": {
       "name": "Миссис Канагава и её дочь вышли из дома в 12:00.",
-      "icon": "mrs_kanagawa_left_home_at_noon.png",
+      "icon": "mrs_kanagawa_left_home_at_noon.svg",
       "importance": "high",
       "description": "По словам домработницы, миссис Канагава и её дочь покинули дом около 12:00. Это помогает восстановить маршрут жертв в день происшествия и сузить временной промежуток между их выходом из дома и предполагаемым временем смерти."
     },
     "en": {
       "name": "Mrs. Kanagawa and her daughter left home at 12:00.",
-      "icon": "mrs_kanagawa_left_home_at_noon.png",
+      "icon": "mrs_kanagawa_left_home_at_noon.svg",
       "importance": "high",
       "description": "According to the housekeeper, Mrs. Kanagawa and her daughter left the house around 12:00. This helps reconstruct the victims' movements on the day of the incident and narrow down the time between leaving home and the estimated time of death."
     }
@@ -72,13 +72,13 @@
   "mrs_kanagawa_drove_only_1500_feet": {
     "ru": {
       "name": "Миссис Канагава и её дочь проехали всего 500 метров от дома.",
-      "icon": "mrs_kanagawa_drove_only_1500_feet.png",
+      "icon": "mrs_kanagawa_drove_only_1500_feet.svg",
       "importance": "high",
       "description": "После выхода из дома миссис Канагава и её дочь успели проехать всего около 1500 футов. Такое короткое расстояние указывает на то, что что-то произошло почти сразу после начала поездки. Это может означать, что опасность уже находилась в машине или была подготовлена заранее."
     },
     "en": {
       "name": "Mrs. Kanagawa and her daughter only managed to drive 1500 feet from home.",
-      "icon": "mrs_kanagawa_drove_only_1500_feet.png",
+      "icon": "mrs_kanagawa_drove_only_1500_feet.svg",
       "importance": "high",
       "description": "After leaving home, Mrs. Kanagawa and her daughter only managed to drive about 1500 feet. Such a short distance suggests that something happened almost immediately after the trip began. This may mean the danger was already inside the car or had been prepared in advance."
     }
@@ -100,13 +100,13 @@
   "mrs_kanagawa_recovered_from_depression": {
     "ru": {
       "name": "Миссис Канагава избавилась от депрессии около года назад.",
-      "icon": "mrs_kanagawa_recovered_from_depression.png",
+      "icon": "mrs_kanagawa_recovered_from_depression.svg",
       "importance": "high",
       "description": "По словам её сестры, миссис Канагава страдала депрессией, но около года назад её состояние значительно улучшилось. Она смогла вернуться к обычной жизни, и в последнее время близкие не замечали признаков серьёзного ухудшения её эмоционального состояния."
     },
     "en": {
       "name": "Mrs. Kanagawa recovered from depression about a year ago.",
-      "icon": "mrs_kanagawa_recovered_from_depression.png",
+      "icon": "mrs_kanagawa_recovered_from_depression.svg",
       "importance": "high",
       "description": "According to her sister, Mrs. Kanagawa had suffered from depression, but her condition improved significantly about a year ago. She was able to return to her normal life, and recently her family had noticed no signs of a serious decline in her emotional state."
     }
@@ -128,13 +128,13 @@
   "mr_kanagawa_affair_with_assistant": {
     "ru": {
       "name": "Мистер Канагава изменял жене со своей ассистенткой.",
-      "icon": "mr_kanagawa_affair_with_assistant.png",
+      "icon": "mr_kanagawa_affair_with_assistant.svg",
       "importance": "high",
       "description": "По словам сестры миссис Канагавы, у мистера Канагавы был роман с его ассистенткой. Это раскрывает ещё один серьёзный конфликт внутри семьи и может быть связано как с ухудшением отношений между супругами, так и с возможным мотивом преступления."
     },
     "en": {
       "name": "Mr. Kanagawa was having an affair with his assistant.",
-      "icon": "mr_kanagawa_affair_with_assistant.png",
+      "icon": "mr_kanagawa_affair_with_assistant.svg",
       "importance": "high",
       "description": "According to Mrs. Kanagawa's sister, Mr. Kanagawa was having an affair with his assistant. This reveals another serious conflict within the family and may be connected both to the deterioration of the couple's relationship and to a possible motive for the crime."
     }
@@ -142,13 +142,13 @@
   "mrs_kanagawa_wanted_divorce": {
     "ru": {
       "name": "Миссис Канагава хотела подать на развод.",
-      "icon": "mrs_kanagawa_wanted_divorce.png",
+      "icon": "mrs_kanagawa_wanted_divorce.svg",
       "importance": "high",
       "description": "По словам её сестры, миссис Канагава намеревалась развестись с мужем. На фоне жестокого обращения и его романа с ассистенткой это указывает на серьёзный семейный конфликт и может иметь важное значение для установления возможного мотива преступления."
     },
     "en": {
       "name": "Mrs. Kanagawa wanted to file for divorce.",
-      "icon": "mrs_kanagawa_wanted_divorce.png",
+      "icon": "mrs_kanagawa_wanted_divorce.svg",
       "importance": "high",
       "description": "According to her sister, Mrs. Kanagawa intended to divorce her husband. Given his abusive behavior and affair with his assistant, this points to a serious family conflict and may be important in establishing a possible motive for the crime."
     }

@@ -6,6 +6,7 @@ import AppText from "@/components/Common/AppText";
 import {LinearGradient} from "expo-linear-gradient";
 import SVGImage from "@/components/small/SVGImage";
 import {getSprite} from "@/tools/utils";
+import MixedIcon from "@/components/Common/MixedIcon";
 
 type Props = {
     index: number;
@@ -43,9 +44,19 @@ export default function InventoryRow({
             onPress={onPress}
             activeOpacity={0.85}
         >
-            {!!icon && (
+            {/*{!!icon && (
                 <View style={styles.iconWrap}>
                     <Image source={RESOURCES[icon]} style={styles.icon} />
+                </View>
+            )}*/}
+            {!!icon && (
+                <View style={styles.iconWrap}>
+                    <MixedIcon
+                        icon={icon}
+                        width={158 * SCALE}
+                        height={158 * SCALE}
+                        resizeMode="cover"
+                    />
                 </View>
             )}
             {!!sprite && (

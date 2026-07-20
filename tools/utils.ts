@@ -1,11 +1,11 @@
 import DanielSmile from "../assets/sprites/Daniel/daniel_smile_2.svg";
-import DanielSerious from "../assets/sprites/Daniel/daniel_serious_2.svg";
+import DanielSerious from "../assets/sprites/Daniel/daniel_serious_3.svg";
 import DanielThinking from "../assets/sprites/Daniel/daniel_thinking_2.svg";
-import DanielFingerUp from "../assets/sprites/Daniel/daniel_finger_up_2.svg";
-import DanielShocked from "../assets/sprites/Daniel/daniel_shocked_2.svg";
-import DiSerious from "../assets/sprites/Di/di_serious_2.svg";
+import DanielFingerUp from "../assets/sprites/Daniel/daniel_finger_up_3.svg";
+import DanielShocked from "../assets/sprites/Daniel/daniel_shocked_3.svg";
+import DiSerious from "../assets/sprites/Di/di_serious_3.svg";
 import DiThinking from "../assets/sprites/Di/di_thinking_2.svg";
-import DiShocked from "../assets/sprites/Di/di_shocked_2.svg";
+import DiShocked from "../assets/sprites/Di/di_shocked_3.svg";
 import DiOk from "../assets/sprites/Di/di_ok_2.svg";
 import MaiFoundTheCar from "../assets/sprites/Mai/WitnessMei.svg";
 import MaiFoundTheCarWithIcon from "../assets/sprites/Mai/WitnessMei.svg";
@@ -17,9 +17,9 @@ import Roberts from "../assets/sprites/Roberts/roberts_serious.svg";
 import RobertsYes from "../assets/sprites/Roberts/roberts_yes.svg";
 import Housekeeper from "../assets/sprites/Housekeeper/housekeeper.svg";
 import HousekeeperWorried from "../assets/sprites/Housekeeper/housekeeper_worried.svg";
-import MrsKanagawaSister from "../assets/sprites/MrsKanagawaSister/mrs_kanagawa_sister.svg";
+import MrsKanagawaSister from "../assets/sprites/MrsKanagawaSister/mrs_kanagawa_sister_2.svg";
 import MrsKanagawaSisterSad from "../assets/sprites/MrsKanagawaSister/mrs_kanagawa_sister_sad.svg";
-import MrsKanagawaSisterAngry from "../assets/sprites/MrsKanagawaSister/mrs_kanagawa_sister_angry.svg";
+import MrsKanagawaSisterAngry from "../assets/sprites/MrsKanagawaSister/mrs_kanagawa_sister_angry_2.svg";
 import MrsKanagawaSisterFingerUp from "../assets/sprites/MrsKanagawaSister/mrs_kanagawa_sister_finger_up.svg";
 
 export const BACKGROUNDS: Record<string, any> = {
@@ -29,7 +29,7 @@ export const BACKGROUNDS: Record<string, any> = {
     street_closeup: require("../assets/backgrounds/street_closeup.jpg"),
     empty_yellow_car_mini_cooper_stay_on_the_road: require("../assets/backgrounds/empty_yellow_car_mini_cooper_stay_on_the_road.jpg"),
     yellow_car_stays_on_the_road_with_killed_people: require("../assets/backgrounds/yellow_car_stays_on_the_road_with_killed_people.jpg"),
-    first_dialog: require("../assets/backgrounds/Фон первый диалог детективов у места преступления 9.jpg"),
+    first_dialog: require("../assets/backgrounds/Фон_первый_у_места_преступления_подходит.jpg"),
     mei_is_jogging_along_the_street_running_on_the_sidewalk: require("../assets/backgrounds/mei_is_jogging_along_the_street_running_on_the_sidewalk..jpg"),
     mei_walks_back_and_looks_at_the_car_with_mild_surprise: require("../assets/backgrounds/mei_walks_back_and_looks_at_the_car_with_mild_surprise.jpg"),
     mei_see_that_the_woman_is_sleeping_in_the_driver_s_seat: require("../assets/backgrounds/mei_see_that_the_woman_is_sleeping_in_the_driver_s_seat.jpg"),
@@ -38,14 +38,14 @@ export const BACKGROUNDS: Record<string, any> = {
     dialog_about_distance_from_home: require("../assets/backgrounds/Фон диалог детективов о расстоянии до дома 2.jpg"),
     inside_a_car: require("../assets/backgrounds/inside_a_car.jpg"),
     inside_a_car_glove_compartment: require("../assets/backgrounds/Default_Professional_graphic_design_2D_illustration_ghibli_sty.jpg"),
-    kanagava_kim_city_map: require("../assets/backgrounds/Фон карта города дело Kanagawa Kim готовый 2.jpg"),
+    kanagava_kim_city_map: require("../assets/backgrounds/Карта лучше разрешение подходит.jpg"),
     pathologist_reports: require("../assets/backgrounds/Фон патологоанатом сообщает.jpg"),
     laboratory: require("../assets/backgrounds/Фон лаборатория.jpg"),
     police: require("../assets/backgrounds/police.jpg"),
-    kanagawa_house_outdoor: require("../assets/backgrounds/kanagawa_house_outdoor.jpg"),
-    kanagawa_house_indoor: require("../assets/backgrounds/kanagawa_house_indoor.jpg"),
+    kanagawa_house_outdoor: require("../assets/backgrounds/Фон_снаружи_дома_Канагавы_подходит.jpg"),
+    kanagawa_house_indoor: require("../assets/backgrounds/Фон дом Канагавы подходит.jpg"),
     interrogation_room: require("../assets/backgrounds/interrogation_room.jpg"),
-    mrs_kanagawa_sister_kitchen: require("../assets/backgrounds/mrs_kanagawa_sister_kitchen.jpg"),
+    mrs_kanagawa_sister_kitchen: require("../assets/backgrounds/Фон_сестры_Канагавы_жены_подходит.jpg"),
     mr_kanagawa_complained_about_husband: require("../assets/backgrounds/mr_kanagawa_complained_about_husband.jpg"),
     in_public_loving_husband: require("../assets/backgrounds/in_public_loving_husband.jpg"),
     at_home_like_a_tyrant: require("../assets/backgrounds/at_home_like_a_tyrant.jpg"),
@@ -54,6 +54,10 @@ export const BACKGROUNDS: Record<string, any> = {
     she_reacted_calmly: require("../assets/backgrounds/she_reacted_calmly.jpg"),
     self_development_courses: require("../assets/backgrounds/self_development_courses.jpg"),
     file_for_divorce: require("../assets/backgrounds/file_for_divorce.jpg"),
+    feel_as_a_detective: require("../assets/backgrounds/feel_as_a_detective.jpg"),
+    conduct_searches: require("../assets/backgrounds/conduct_searches.jpg"),
+    choose_what_to_do_next: require("../assets/backgrounds/choose_what_to_do_next.jpg"),
+    choose_the_correct_suspect: require("../assets/backgrounds/choose_the_correct_suspect.jpg"),
 
 };
 

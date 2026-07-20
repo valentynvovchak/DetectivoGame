@@ -10,13 +10,13 @@ import {
 
 import { useGameStore } from "@/store/gameStore";
 import AppText from "@/components/Common/AppText";
-import { RESOURCES } from "@/assets/resources";
 
 import factsData from "@/data/facts.json";
 import dossierData from "@/data/dossier.json";
 import evidenceData from "@/data/evidence.json";
 import hypothesesData from "@/data/hypotheses.json";
 import {SCALE} from "@/tools/constants";
+import MixedIcon from "@/components/Common/MixedIcon";
 
 type Category = "facts" | "dossier" | "evidence" | "hypotheses";
 
@@ -211,11 +211,21 @@ export default function ShowProofModal({
                                 style={styles.card}
                                 onPress={() => handleSelect(item)}
                             >
-                                {!!item.icon && !!(RESOURCES as any)[item.icon] && (
+                                {/*{!!item.icon && !!(RESOURCES as any)[item.icon] && (
                                     <Image
                                         source={(RESOURCES as any)[item.icon]}
                                         style={styles.icon}
                                     />
+                                )}*/}
+                                {!!item.icon && (
+                                    <View style={styles.itemIconWrap}>
+                                        <MixedIcon
+                                            icon={item.icon}
+                                            width={182 * SCALE}
+                                            height={182 * SCALE}
+                                            resizeMode="cover"
+                                        />
+                                    </View>
                                 )}
 
                                 <View style={styles.cardTextWrap}>
@@ -383,5 +393,23 @@ const styles = StyleSheet.create({
         fontSize: 10 * 3 * SCALE,
         lineHeight: 14 * 3 * SCALE,
         fontFamily: "IBMPlexMono-Regular",
+    },
+    itemIconWrap: {
+        width: 182 * SCALE,
+        height: 182 * SCALE,
+
+        borderRadius: 8 * SCALE,
+
+        overflow: "hidden",
+
+        marginRight: 18 * SCALE,
+
+        backgroundColor: "#203436",
+    },
+
+    itemIcon: {
+        width: "100%",
+        height: "100%",
+        resizeMode: "cover",
     },
 });

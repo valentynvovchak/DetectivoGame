@@ -24,8 +24,6 @@ export const RESOURCES: Record<string, any> = {
     "mrs_kanagawa_left_home_at_noon.png": require("@/assets/resources/mrs_kanagawa_left_home_at_noon.png"),
     "mrs_kanagawa_drove_only_1500_feet.png": require("@/assets/resources/mrs_kanagawa_drove_only_1500_feet.png"),
     "gas_leak_in_car.png": require("@/assets/resources/gas_leak_in_car.png"),
-    "show_report.png": require("@/assets/resources/show_report.png"),
-    "add_to_inventory.png": require("@/assets/resources/add_to_inventory.png"),
     "report.png": require("@/assets/resources/report.png"),
     "gas_released_deliberately.png": require("@/assets/resources/gas_released_deliberately.png"),
     "mrs_kanagawa_depression.png": require("@/assets/resources/mrs_kanagawa_depression.png"),
@@ -35,4 +33,8 @@ export const RESOURCES: Record<string, any> = {
     "mrs_kanagawa_wanted_divorce.png": require("@/assets/resources/mrs_kanagawa_wanted_divorce.png"),
     "mrs_kanagawa_sister_angry.png": require("@/assets/resources/mrs_kanagawa_sister_angry.png"),
     "mr_kanagawa_abusive_husband.png": require("@/assets/resources/mr_kanagawa_abusive_husband.png"),
+    "mei.png": require("@/assets/resources/mei.png"),
+    "daniel_serious.png": require("@/assets/resources/daniel_serious.png"),
+    "daniel_thinking.png": require("@/assets/resources/daniel_thinking.png"),
+    "mrs_kanagawa_sister.png": require("@/assets/resources/mrs_kanagawa_sister.png"),
 };

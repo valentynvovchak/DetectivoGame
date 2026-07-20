@@ -150,7 +150,7 @@ export default function InventoryModal({
                             ))}
                         </View>
 
-                        {tabDescriptions[activeTab] && (
+                        {selectedIndex === null || !selectedItem ? tabDescriptions[activeTab] && (
                             <LinearGradient
                                 colors={["#CCCCCC", "#CACA99"]}
                                 start={{ x: 0, y: 0 }}
@@ -163,7 +163,7 @@ export default function InventoryModal({
                                     </AppText>
                                 </View>
                             </LinearGradient>
-                        )}
+                        ) : null}
 
                         <View style={styles.mobileBody}>
                             {selectedIndex === null || !selectedItem ? (

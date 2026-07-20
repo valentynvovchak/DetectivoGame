@@ -455,7 +455,7 @@ const styles = StyleSheet.create({
     locationTriangle: {
         position: "absolute",
 
-        bottom: -14,
+        bottom: -18,
 
         width: 22,
         height: 16,

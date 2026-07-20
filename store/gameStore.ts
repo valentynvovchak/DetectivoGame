@@ -21,8 +21,8 @@ const mapLocationsDefault = {
         visited: false,
         // x: 0.68,
         // y: 0.80,
-        x: 0.55,
-        y: 0.61,
+        x: 0.54,
+        y: 0.55,
         icon: "map_hospital.png",
         targetScene: "5_hospital",
     },
@@ -33,8 +33,8 @@ const mapLocationsDefault = {
         },
         unlocked: false,
         visited: false,
-        x: 0.28,
-        y: 0.77,
+        x: 0.27,
+        y: 0.71,
         icon: "map_laboratory.png",
         // по умолчанию первый визит
         targetScene: "6_laboratory",
@@ -46,8 +46,8 @@ const mapLocationsDefault = {
         },
         unlocked: false,
         visited: false,
-        x: 0.75,
-        y: 0.3,
+        x: 0.74,
+        y: 0.24,
         icon: "map_kanagawa_house.png",
         targetScene: "7_kanagawa_house",
     },
@@ -58,8 +58,8 @@ const mapLocationsDefault = {
         },
         unlocked: false,
         visited: false,
-        x: 0.78,
-        y: 0.21,
+        x: 0.77,
+        y: 0.15,
         icon: "map_mrs_kanagawa_sister.png",
         targetScene: "9_mrs_kanagawa_sister",
     },
@@ -111,6 +111,36 @@ const mergeMapProgressWithDefaults = (savedMapProgress: any = {}) => {
     );
 };
 
+const MAX_DIALOG_HISTORY = 80;
+
+const pushDialogHistory = (state: GameState): DialogHistoryEntry[] => {
+    const currentEntry: DialogHistoryEntry = {
+        scene: state.currentScene,
+        line: state.currentLine,
+        sceneBackground: state.sceneBackground,
+        sceneResizeMode: state.sceneResizeMode,
+    };
+
+    const history = state.dialogHistory || [];
+    const lastEntry = history[history.length - 1];
+
+    const isSameEntry =
+        lastEntry &&
+        lastEntry.scene === currentEntry.scene &&
+        lastEntry.line === currentEntry.line &&
+        lastEntry.sceneBackground === currentEntry.sceneBackground &&
+        lastEntry.sceneResizeMode === currentEntry.sceneResizeMode;
+
+    if (isSameEntry) {
+        return history;
+    }
+
+    return [
+        ...history,
+        currentEntry,
+    ].slice(-MAX_DIALOG_HISTORY);
+};
+
 type UiNoticeSource = "tasks" | "briefcase";
 
 type UiNoticeKind =
@@ -125,6 +155,13 @@ type UiNotice = {
     id: number;
     source: UiNoticeSource;
     kind: UiNoticeKind;
+};
+
+type DialogHistoryEntry = {
+    scene: string;
+    line: number;
+    sceneBackground: string | null;
+    sceneResizeMode: "cover" | "contain";
 };
 
 export interface GameState {
@@ -151,6 +188,8 @@ export interface GameState {
         };
         locationId?: string;
     } | null;
+    dialogHistory: DialogHistoryEntry[];
+    hp: number;
 
     setScene: (scene: string) => void;
     fadeAnim: Animated.Value;
@@ -205,6 +244,9 @@ export interface GameState {
         } | null
     ) => void;
     setLocationTarget: (id: string, scene: string) => void;
+    goBackDialog: () => void;
+    clearDialogHistory: () => void;
+    loseHp: (amount?: number) => void;
 }
 
 export const useGameStore = create<GameState>((set, get) => ({
@@ -227,6 +269,8 @@ export const useGameStore = create<GameState>((set, get) => ({
     hasSave: false,
     isHydrated: false,
     mapNotification: null,
+    dialogHistory: [],
+    hp: 3,
 
     // ✅ сохраняем прогресс ТОЛЬКО при переходе в новую сцену
     setScene: async (scene) => {
@@ -238,6 +282,7 @@ export const useGameStore = create<GameState>((set, get) => ({
         const { currentScene } = get();
 
         set({
+            dialogHistory: [],
             previousScene: currentScene,
             currentScene: scene,
             currentLine: line,
@@ -256,13 +301,17 @@ export const useGameStore = create<GameState>((set, get) => ({
 
     // ❌ при перелистывании диалогов ничего не сохраняем
     nextLine: () => {
-        set((s) => ({ currentLine: s.currentLine + 1 }));
-        // get().saveProgress?.();
+        set((state) => ({
+            dialogHistory: pushDialogHistory(state),
+            currentLine: state.currentLine + 1,
+        }));
     },
 
-    goToLine: (id) => {
-        set(() => ({ currentLine: Math.max(id - 1, 0) }));
-        // get().saveProgress?.();
+    goToLine: (lineId: number) => {
+        set((state) => ({
+            dialogHistory: pushDialogHistory(state),
+            currentLine: Math.max(0, lineId - 1),
+        }));
     },
 
     setLang: async (lang) => {
@@ -278,6 +327,11 @@ export const useGameStore = create<GameState>((set, get) => ({
 
     saveProgress: async () => {
         try {
+            // Сразу запрещаем возврат назад
+            set({
+                dialogHistory: [],
+            });
+
             const {
                 currentScene,
                 previousScene,
@@ -291,6 +345,7 @@ export const useGameStore = create<GameState>((set, get) => ({
                 unseenTaskActionsCount,
                 sceneBackground,
                 sceneResizeMode,
+                hp,
             } = get();
 
             const savingData = {
@@ -299,12 +354,15 @@ export const useGameStore = create<GameState>((set, get) => ({
                 currentLine,
                 lang,
                 volume,
+                hp,
                 data,
-                // важно: сохраняем не всю карту, а только visited/unlocked
+
                 mapProgress: getMapProgress(mapLocations),
+
                 activeTasks,
                 completedTasks,
                 unseenTaskActionsCount,
+
                 sceneBackground,
                 sceneResizeMode,
             };
@@ -314,7 +372,9 @@ export const useGameStore = create<GameState>((set, get) => ({
                 JSON.stringify(savingData)
             );
 
-            set({ hasSave: true });
+            set({
+                hasSave: true,
+            });
 
             console.log("✅ Прогресс сохранён:", savingData);
         } catch (e) {
@@ -325,7 +385,6 @@ export const useGameStore = create<GameState>((set, get) => ({
     loadProgress: async () => {
         try {
             const loadingData = await AsyncStorage.getItem("detective_di_save");
-
             if (!loadingData) {
                 set({
                     hasSave: false,
@@ -334,39 +393,35 @@ export const useGameStore = create<GameState>((set, get) => ({
 
                 return;
             }
-
             const parsed = JSON.parse(loadingData);
-
             const loadedScene = parsed.currentScene || "2_street_intro";
 
             set({
+                hp:
+                    typeof parsed.hp === "number"
+                        ? parsed.hp
+                        : 3,
+                dialogHistory: [],
                 currentScene: loadedScene,
                 previousScene: parsed.previousScene ?? null,
-
                 currentLine:
                     typeof parsed.currentLine === "number"
                         ? parsed.currentLine
                         : 0,
-
                 lang: parsed.lang ?? "en",
                 volume: parsed.volume ?? 0.2,
-
                 data: {
                     ...getFreshDataDefault(),
                     ...(parsed.data ?? {}),
                 },
-
                 mapLocations: mergeMapProgressWithDefaults(
                     parsed.mapProgress ?? parsed.mapLocations
                 ),
-
                 activeTasks: parsed.activeTasks ?? [],
                 completedTasks: parsed.completedTasks ?? [],
                 unseenTaskActionsCount: parsed.unseenTaskActionsCount ?? 0,
-
                 sceneBackground: parsed.sceneBackground ?? null,
                 sceneResizeMode: parsed.sceneResizeMode ?? "cover",
-
                 uiNotices: [],
                 hasSave: true,
                 isHydrated: true,
@@ -387,6 +442,8 @@ export const useGameStore = create<GameState>((set, get) => ({
         await AsyncStorage.removeItem("detective_di_save");
 
         set({
+            hp: 3,
+            dialogHistory: [],
             currentScene: "2_street_intro",
             previousScene: null,
             currentLine: 0,
@@ -701,6 +758,45 @@ export const useGameStore = create<GameState>((set, get) => ({
                 },
             },
         });
+    },
+
+    goBackDialog: () => {
+        const state = get();
+        const history = state.dialogHistory || [];
+
+        if (history.length === 0) {
+            console.log("⚠️ Dialog history is empty");
+            return;
+        }
+
+        const previousEntry = history[history.length - 1];
+
+        console.log("⬅️ Returning to dialog:", previousEntry);
+
+        set({
+            currentScene: previousEntry.scene,
+            currentLine: previousEntry.line,
+
+            sceneBackground:
+                previousEntry.sceneBackground ?? null,
+
+            sceneResizeMode:
+                previousEntry.sceneResizeMode ?? "cover",
+
+            dialogHistory: history.slice(0, -1),
+        });
+    },
+
+    clearDialogHistory: () => {
+        set({
+            dialogHistory: [],
+        });
+    },
+
+    loseHp: (amount = 1) => {
+        set((state) => ({
+            hp: Math.max(0, state.hp - amount),
+        }));
     },
 
 }));

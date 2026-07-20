@@ -31,18 +31,29 @@ export default function ReportIsReadyScene() {
                 fadeToScene("8_report_is_ready");
             }}
             onHotspotPress={(spot, { line }) => {
-                // Остальная логика сцены
+                if (
+                    spot.type === "button" &&
+                    spot.id === "show_report"
+                ) {
+                    nextLine();
+                    return;
+                }
+
+                if (spot.id === "add_to_inventory") {
+                    addToData(
+                        "evidence",
+                        "vehicle_inspection_report"
+                    );
+
+                    nextLine();
+                    return;
+                }
+
                 if (spot.type === "inspect") {
-                    if (spot.id === "show_report") {
+                    if (spot.id === "start_dialog") {
                         nextLine();
                         return;
                     }
-                    if (spot.id === "add_to_inventory") {
-                        addToData("evidence", "vehicle_inspection_report");
-                        nextLine();
-                        return;
-                    }
-                    if (spot.id == "start_dialog") return nextLine();
                 }
             }}
         />

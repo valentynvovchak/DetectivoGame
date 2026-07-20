@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import {View, TouchableOpacity, Image, StyleSheet, Pressable} from "react-native";
-import {Link, router} from "expo-router";
+import {router} from "expo-router";
 import SettingsModal from "@/components/SettingsModal";
 import {isSmallScreen, isTablet} from "@/styles/global";
 import InfoModal from "@/components/InfoModal";
@@ -8,16 +8,17 @@ import {useGameStore} from "@/store/gameStore";
 import InventoryModal from "@/components/Inventory/InventoryModal";
 import TasksModal from "@/components/Tasks/TasksModal";
 import AppText from "@/components/Common/AppText";
-import {SCALE as scale} from "@/tools/constants";
 import IconFlyoutNotice from "@/components/Common/IconFlyoutNotice";
-import {RESOURCES} from "@/assets/resources";
-import SVGImage from "@/components/small/SVGImage";
-import {getSprite} from "@/tools/utils";
 import {LinearGradient} from "expo-linear-gradient";
 
-const SCALE = scale * 3;
 
-export default function MainMenu() {
+type MainMenuProps = {
+    mainScreen?: boolean;
+};
+
+export default function MainMenu({
+    mainScreen = false,
+}: MainMenuProps) {
     const {hasNewItems, unseenTaskActionsCount, clearTaskActionsCounter, hasSave, saveProgress} = useGameStore();
     const [openSettings, setOpenSettings] = useState(false);
     const [openInfo, setOpenInfo] = useState(false);
@@ -36,103 +37,214 @@ export default function MainMenu() {
                 <Image source={require("../assets/icons/info.png")} style={styles.iconSmall} />
             </TouchableOpacity>
 
-            <Pressable
-                style={styles.checkpointButton}
-                onPress={async () => {
-                    await saveProgress();
-                }}
-            >
-                <AppText>
-                    {hasSave ? "overwrite checkpoint" : "save checkpoint"}
-                </AppText>
-            </Pressable>
+            {!mainScreen && (
+                <Pressable
+                    style={styles.checkpointButton}
+                    onPress={async () => {
+                        await saveProgress();
+                    }}
+                >
+                    <AppText>
+                        {hasSave
+                            ? "overwrite"
+                            : "save"}
+                    </AppText>
+                </Pressable>
+            )}
             {/* Нижняя панель */}
-            <View style={styles.bottomMenu}>
-                {/* Первая строка */}
+            {/*<View style={styles.bottomMenu}>*/}
+            {/*    /!* Первая строка *!/*/}
+            {/*    <View style={styles.row}>*/}
+            {/*        <LinearGradient*/}
+            {/*            colors={["#767680", "#CACA99"]}*/}
+            {/*            start={{ x: 0, y: 0 }}*/}
+            {/*            end={{ x: 0, y: 1 }} // сверху вниз*/}
+            {/*            style={{*/}
+            {/*                borderRadius: 7,*/}
+            {/*                padding: 3, // ← толщина рамки*/}
+            {/*            }}*/}
+            {/*        >*/}
+            {/*            <TouchableOpacity onPress={() => setOpenSettings(true)} style={styles.iconWrap}>*/}
+            {/*                <Image source={require("../assets/icons/settings2.png")} style={styles.icon} />*/}
+            {/*            </TouchableOpacity>*/}
+            {/*        </LinearGradient>*/}
+
+
+            {/*        /!*<Link onPress={() => router.push("/map")} asChild>*!/*/}
+            {/*        <LinearGradient*/}
+            {/*            colors={["#767680", "#CACA99"]}*/}
+            {/*            start={{ x: 0, y: 0 }}*/}
+            {/*            end={{ x: 0, y: 1 }} // сверху вниз*/}
+            {/*            style={{*/}
+            {/*                borderRadius: 7,*/}
+            {/*                padding: 3, // ← толщина рамки*/}
+            {/*            }}*/}
+            {/*        >*/}
+            {/*            <TouchableOpacity onPress={() => router.replace("/map")} style={styles.iconWrap}>*/}
+            {/*                <Image source={require("../assets/icons/map.png")} style={styles.icon} />*/}
+            {/*            </TouchableOpacity>*/}
+            {/*        </LinearGradient>*/}
+            {/*        /!*</Link>*!/*/}
+            {/*    </View>*/}
+
+            {/*    /!* Вторая строка *!/*/}
+            {/*    <View style={styles.row}>*/}
+            {/*        <View style={styles.menuButtonWrapper}>*/}
+            {/*            <IconFlyoutNotice source="briefcase" />*/}
+
+            {/*            <LinearGradient*/}
+            {/*                colors={["#767680", "#CACA99"]}*/}
+            {/*                start={{ x: 0, y: 0 }}*/}
+            {/*                end={{ x: 0, y: 1 }}*/}
+            {/*                style={styles.iconBorder}*/}
+            {/*            >*/}
+            {/*                <TouchableOpacity*/}
+            {/*                    onPress={() => setInventoryVisible(true)}*/}
+            {/*                    style={styles.iconWrap}*/}
+            {/*                >*/}
+            {/*                    <Image*/}
+            {/*                        source={require("../assets/icons/briefcase2.png")}*/}
+            {/*                        style={styles.icon}*/}
+            {/*                    />*/}
+            {/*                </TouchableOpacity>*/}
+            {/*            </LinearGradient>*/}
+
+            {/*            {hasNewItems && <View pointerEvents="none" style={styles.redDot} />}*/}
+            {/*        </View>*/}
+
+            {/*        <View style={styles.menuButtonWrapper}>*/}
+            {/*            <IconFlyoutNotice source="tasks" />*/}
+
+            {/*            <LinearGradient*/}
+            {/*                colors={["#767680", "#CACA99"]}*/}
+            {/*                start={{ x: 0, y: 0 }}*/}
+            {/*                end={{ x: 0, y: 1 }}*/}
+            {/*                style={styles.iconBorder}*/}
+            {/*            >*/}
+            {/*                <TouchableOpacity onPress={openTasks} style={styles.iconWrap}>*/}
+            {/*                    <Image*/}
+            {/*                        source={require("../assets/icons/to-do-list2.png")}*/}
+            {/*                        style={styles.icon}*/}
+            {/*                    />*/}
+            {/*                </TouchableOpacity>*/}
+            {/*            </LinearGradient>*/}
+
+            {/*            {unseenTaskActionsCount > 0 && (*/}
+            {/*                <View pointerEvents="none" style={styles.taskBadge}>*/}
+            {/*                    <AppText style={styles.taskBadgeText}>*/}
+            {/*                        {unseenTaskActionsCount > 99 ? "99+" : unseenTaskActionsCount}*/}
+            {/*                    </AppText>*/}
+            {/*                </View>*/}
+            {/*            )}*/}
+            {/*        </View>*/}
+            {/*    </View>*/}
+            {/*</View>*/}
+            <View
+                style={[
+                    styles.bottomMenu,
+                    mainScreen && styles.bottomMenuMain,
+                ]}
+            >
+                {/* Настройки доступны везде */}
                 <View style={styles.row}>
                     <LinearGradient
                         colors={["#767680", "#CACA99"]}
                         start={{ x: 0, y: 0 }}
-                        end={{ x: 0, y: 1 }} // сверху вниз
-                        style={{
-                            borderRadius: 7,
-                            padding: 3, // ← толщина рамки
-                        }}
+                        end={{ x: 0, y: 1 }}
+                        style={styles.iconGradient}
                     >
-                        <TouchableOpacity onPress={() => setOpenSettings(true)} style={styles.iconWrap}>
-                            <Image source={require("../assets/icons/settings2.png")} style={styles.icon} />
+                        <TouchableOpacity
+                            onPress={() => setOpenSettings(true)}
+                            style={styles.iconWrap}
+                        >
+                            <Image
+                                source={require("../assets/icons/settings2.png")}
+                                style={styles.icon}
+                            />
                         </TouchableOpacity>
                     </LinearGradient>
 
-
-                    {/*<Link onPress={() => router.push("/map")} asChild>*/}
-                    <LinearGradient
-                        colors={["#767680", "#CACA99"]}
-                        start={{ x: 0, y: 0 }}
-                        end={{ x: 0, y: 1 }} // сверху вниз
-                        style={{
-                            borderRadius: 7,
-                            padding: 3, // ← толщина рамки
-                        }}
-                    >
-                        <TouchableOpacity onPress={() => router.replace("/map")} style={styles.iconWrap}>
-                            <Image source={require("../assets/icons/map.png")} style={styles.icon} />
-                        </TouchableOpacity>
-                    </LinearGradient>
-                    {/*</Link>*/}
-                </View>
-
-                {/* Вторая строка */}
-                <View style={styles.row}>
-                    <View style={styles.menuButtonWrapper}>
-                        <IconFlyoutNotice source="briefcase" />
-
+                    {/* Карта только во время игры */}
+                    {!mainScreen && (
                         <LinearGradient
                             colors={["#767680", "#CACA99"]}
                             start={{ x: 0, y: 0 }}
                             end={{ x: 0, y: 1 }}
-                            style={styles.iconBorder}
+                            style={styles.iconGradient}
                         >
                             <TouchableOpacity
-                                onPress={() => setInventoryVisible(true)}
+                                onPress={() => router.push("/map")}
                                 style={styles.iconWrap}
                             >
                                 <Image
-                                    source={require("../assets/icons/briefcase2.png")}
+                                    source={require("../assets/icons/map.png")}
                                     style={styles.icon}
                                 />
                             </TouchableOpacity>
                         </LinearGradient>
-
-                        {hasNewItems && <View pointerEvents="none" style={styles.redDot} />}
-                    </View>
-
-                    <View style={styles.menuButtonWrapper}>
-                        <IconFlyoutNotice source="tasks" />
-
-                        <LinearGradient
-                            colors={["#767680", "#CACA99"]}
-                            start={{ x: 0, y: 0 }}
-                            end={{ x: 0, y: 1 }}
-                            style={styles.iconBorder}
-                        >
-                            <TouchableOpacity onPress={openTasks} style={styles.iconWrap}>
-                                <Image
-                                    source={require("../assets/icons/to-do-list2.png")}
-                                    style={styles.icon}
-                                />
-                            </TouchableOpacity>
-                        </LinearGradient>
-
-                        {unseenTaskActionsCount > 0 && (
-                            <View pointerEvents="none" style={styles.taskBadge}>
-                                <AppText style={styles.taskBadgeText}>
-                                    {unseenTaskActionsCount > 99 ? "99+" : unseenTaskActionsCount}
-                                </AppText>
-                            </View>
-                        )}
-                    </View>
+                    )}
                 </View>
+
+                {/* Кейс и задачи только во время игры */}
+                {!mainScreen && (
+                    <View style={styles.row}>
+                        <View style={styles.menuButtonWrapper}>
+                            <IconFlyoutNotice source="briefcase" />
+
+                            <LinearGradient
+                                colors={["#767680", "#CACA99"]}
+                                start={{ x: 0, y: 0 }}
+                                end={{ x: 0, y: 1 }}
+                                style={styles.iconGradient}
+                            >
+                                <TouchableOpacity
+                                    onPress={() => setInventoryVisible(true)}
+                                    style={styles.iconWrap}
+                                >
+                                    <Image
+                                        source={require("../assets/icons/briefcase2.png")}
+                                        style={styles.icon}
+                                    />
+
+                                    {hasNewItems && (
+                                        <View style={styles.redDot} />
+                                    )}
+                                </TouchableOpacity>
+                            </LinearGradient>
+                        </View>
+
+                        <View style={styles.menuButtonWrapper}>
+                            <IconFlyoutNotice source="tasks" />
+
+                            <LinearGradient
+                                colors={["#767680", "#CACA99"]}
+                                start={{ x: 0, y: 0 }}
+                                end={{ x: 0, y: 1 }}
+                                style={styles.iconGradient}
+                            >
+                                <TouchableOpacity
+                                    onPress={openTasks}
+                                    style={styles.iconWrap}
+                                >
+                                    <Image
+                                        source={require("../assets/icons/to-do-list2.png")}
+                                        style={styles.icon}
+                                    />
+
+                                    {unseenTaskActionsCount > 0 && (
+                                        <View style={styles.taskBadge}>
+                                            <AppText style={styles.taskBadgeText}>
+                                                {unseenTaskActionsCount > 99
+                                                    ? "99+"
+                                                    : unseenTaskActionsCount}
+                                            </AppText>
+                                        </View>
+                                    )}
+                                </TouchableOpacity>
+                            </LinearGradient>
+                        </View>
+                    </View>
+                )}
             </View>
 
             {/* Модалки */}
@@ -184,7 +296,7 @@ const styles = StyleSheet.create({
     },
     infoButton: {
         position: "absolute",
-        top: 30,
+        top: 45,
         right: 30,
         backgroundColor: "rgba(255,255,255,0.9)",
         borderRadius: 8,
@@ -194,12 +306,12 @@ const styles = StyleSheet.create({
     },
     checkpointButton: {
         position: "absolute",
-        top: 30,
+        top: 45,
         left: 30,
-        backgroundColor: "rgba(255,255,255,0.9)",
+        backgroundColor: "rgba(255,255,255,0.93)",
         borderRadius: 8,
         paddingVertical: isTablet ? 12 : 8,
-        paddingHorizontal: isTablet ? 10 : 6,
+        paddingHorizontal: isTablet ? 20 : 12,
         zIndex: 10,
     },
     iconSmall: {
@@ -306,5 +418,14 @@ const styles = StyleSheet.create({
         lineHeight: isSmallScreen ? 12 : isTablet ? 15 : 13,
         textAlign: "center",
         fontFamily: "IBMPlexMono-Regular",
+    },
+    iconGradient: {
+        borderRadius: 7,
+        padding: 3,
+    },
+
+    bottomMenuMain: {
+        justifyContent: "flex-start",
+        paddingHorizontal: 40,
     },
 });

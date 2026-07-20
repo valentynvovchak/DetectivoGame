@@ -9,38 +9,51 @@
 					{
 						"type": "save_checkpoint"
 					}
-				]
+				],
+				"allowBack": false
 			},
 			{
 				"id": 2,
 				"backgroundChange": "events_and_facts_will_be",
-				"menu": false
+				"menu": false,
+				"allowBack": false
 			},
 			{
 				"id": 3,
-				"backgroundChange": "street_closeup",
+				"backgroundChange": "feel_as_a_detective",
 				"resizeMode": "contain",
-				"menu": false
+				"menu": false,
+				"allowBack": false
 			},
 			{
 				"id": 4,
-				"backgroundChange": "empty_yellow_car_mini_cooper_stay_on_the_road",
+				"backgroundChange": "conduct_searches",
 				"resizeMode": "contain",
-				"menu": false
+				"menu": false,
+				"allowBack": false
 			},
 			{
 				"id": 5,
-				"backgroundChange": "yellow_car_stays_on_the_road_with_killed_people",
+				"backgroundChange": "choose_what_to_do_next",
 				"resizeMode": "contain",
-				"menu": false
+				"menu": false,
+				"allowBack": false
 			},
 			{
 				"id": 6,
-				"backgroundChange": "first_dialog",
-				"menu": false
+				"backgroundChange": "choose_the_correct_suspect",
+				"resizeMode": "contain",
+				"menu": false,
+				"allowBack": false
 			},
 			{
 				"id": 7,
+				"backgroundChange": "first_dialog",
+				"menu": false,
+				"allowBack": false
+			},
+			{
+				"id": 8,
 				"characters": [
 					{ "id": "Daniel", "side": "right", "sprite": "daniel_serious", "mode": "full" }
 				],
@@ -49,10 +62,11 @@
 					"ru": "Познакомьтесь с детективом Дэниелом.\nОн работает в отделе убийств более пятнадцати лет.\n\nОн спокоен, и его трудно обмануть или удивить чем-либо.",
 					"en": "Meet Detective Daniel.\nHe’s been with Homicide for over fifteen years.\n\nHe is calm, and it's hard to fool him or surprise him with anything."
 				},
-				"bubble_mode": "medium"
+				"bubble_mode": "medium",
+				"allowBack": false
 			},
 			{
-				"id": 8,
+				"id": 9,
 				"characters": [
 					{ "id": "Di", "side": "right", "sprite": "di_serious", "mode": "full", "height_modifier": 0.95 }
 				],
@@ -64,57 +78,64 @@
 				"bubble_mode": "medium"
 			},
 			{
-				"id": 9,
+				"id": 10,
 				"characters": [
-					{ "id": "Daniel", "side": "right", "sprite": "daniel_serious", "mode": "full" }
+					{ "id": "Daniel", "side": "right", "sprite": "daniel_serious", "mode": "zoom" }
 				],
 				"speaker": "Daniel",
 				"text": {
 					"ru": "Добрый вечер, мисс Ди",
 					"en": "Good evening, miss Dee."
 				},
-				"bubble_mode": "medium"
+				"bubble_mode": "small"
 			},
 			{
-				"id": 10,
+				"id": 11,
 				"characters": [
-					{ "id": "Daniel", "side": "right", "sprite": "daniel_serious", "mode": "full" }
+					{ "id": "Daniel", "side": "right", "sprite": "daniel_serious", "mode": "zoom" }
 				],
 				"speaker": "Daniel",
 				"text": {
 					"ru": "Ди, полиция обнаружила два тела в машине на автобусной остановке.",
 					"en": "Dee, the police found two bodies in a car at a bus stop."
 				},
-				"bubble_mode": "large"
-			},
-			{
-				"id": 11,
-				"characters": [
-					{ "id": "Daniel", "side": "right", "sprite": "daniel_serious", "mode": "full" }
-				],
-				"speaker": "Daniel",
-				"text": {
-					"ru": "Женщина и девочка-подросток. Возможно, мать и дочь.",
-					"en": "A woman and a teenage girl. Possibly mother and daughter."
-				},
-				"bubble_mode": "large"
+				"bubble_mode": "large",
+				"actions": [
+					{
+						"type": "add_item",
+						"category": "facts",
+						"id": "two_bodies"
+					}
+				]
 			},
 			{
 				"id": 12,
 				"characters": [
-					{ "id": "Di", "side": "left", "sprite": "di_serious", "mode": "full", "height_modifier": 0.95 }
+					{ "id": "Daniel", "side": "right", "sprite": "daniel_serious", "mode": "zoom" }
 				],
-				"speaker": "Di",
+				"speaker": "Daniel",
 				"text": {
-					"ru": "Добрый вечер, мистер Даниэл.",
-					"en": "Good evening, Mr.Daniel"
+					"ru": "Женщина и девочка подросток. Возможно, мать и дочь.",
+					"en": "A woman and a teenage girl. Possibly mother and daughter."
 				},
 				"bubble_mode": "medium"
 			},
 			{
 				"id": 13,
 				"characters": [
-					{ "id": "Di", "side": "left", "sprite": "di_serious", "mode": "full", "height_modifier": 0.95
+					{ "id": "Di", "side": "left", "sprite": "di_serious", "mode": "zoom" }
+				],
+				"speaker": "Di",
+				"text": {
+					"ru": "Добрый вечер, мистер Даниэл.",
+					"en": "Good evening, Mr. Daniel"
+				},
+				"bubble_mode": "small"
+			},
+			{
+				"id": 14,
+				"characters": [
+					{ "id": "Di", "side": "left", "sprite": "di_serious", "mode": "zoom"
 					}
 				],
 				"speaker": "Di",
@@ -125,9 +146,9 @@
 				"bubble_mode": "medium"
 			},
 			{
-				"id": 14,
+				"id": 15,
 				"characters": [
-					{ "id": "Di", "side": "left", "sprite": "di_serious", "mode": "full", "height_modifier": 0.95
+					{ "id": "Di", "side": "left", "sprite": "di_serious", "mode": "zoom"
 					}
 				],
 				"speaker": "Di",
@@ -138,7 +159,7 @@
 				"bubble_mode": "medium"
 			},
 			{
-				"id": 15,
+				"id": 16,
 				"characters": [
 					{ "id": "Daniel", "side": "right", "sprite": "daniel_serious", "mode": "zoom" }
 				],
@@ -171,7 +192,7 @@
 			{
 				"id": 1,
 				"characters": [
-					{ "id": "Daniel", "side": "right", "sprite": "daniel_serious", "mode": "full" }
+					{ "id": "Daniel", "side": "right", "sprite": "daniel_serious", "mode": "zoom" }
 				],
 				"speaker": "Daniel",
 				"text": {
@@ -189,7 +210,7 @@
 			{
 				"id": 2,
 				"characters": [
-					{ "id": "Mei", "side": "left", "sprite": "mai_found_the_car_with_icon", "mode": "full" }
+					{ "id": "Mei", "side": "left", "sprite": "mai_found_the_car_with_icon", "mode": "zoom" }
 				],
 				"speaker": "Narrator",
 				"text": {
@@ -217,12 +238,12 @@
 			{
 				"id": 4,
 				"characters": [
-					{ "id": "Mei", "side": "left", "sprite": "mai_found_the_car", "mode": "full", "bg": "#D8423E" }
+					{ "id": "Mei", "side": "left", "image": "mei.png", "sprite": "mai_found_the_car", "mode": "full", "bg": "#D8423E" }
 				],
 				"speaker": "Mei",
-				"text": {
-					"ru": "Сегодня утром я вышла на пробежку и заметила машину, неудобно припаркованную у автобусной остановки, с работающими дворниками.",
-					"en": "I went for a jog this morning and noticed the car parked awkwardly by the bus stop with the wipers still running."
+				"text_pages": {
+					"ru": ["Сегодня утром я вышла на пробежку и заметила машину,", "неудобно припаркованную у автобусной остановки, с работающими дворниками."],
+					"en": ["I went for a jog this morning and noticed the car parked awkwardly", "by the bus stop with the wipers still running."]
 				},
 				"bubble_mode": "avatar",
 				"menu": false
@@ -230,7 +251,7 @@
 			{
 				"id": 5,
 				"characters": [
-					{ "id": "Mei", "side": "left", "sprite": "mai_found_the_car", "mode": "full", "bg": "#D8423E" }
+					{ "id": "Mei", "side": "left", "image": "mei.png", "sprite": "mai_found_the_car", "mode": "full", "bg": "#D8423E" }
 				],
 				"speaker": "Mei",
 				"text": {
@@ -243,7 +264,7 @@
 			{
 				"id": 6,
 				"characters": [
-					{ "id": "Mei", "side": "left", "sprite": "mai_found_the_car", "mode": "full", "bg": "#D8423E" }
+					{ "id": "Mei", "side": "left", "image": "mei.png", "sprite": "mai_found_the_car", "mode": "full", "bg": "#D8423E" }
 				],
 				"speaker": "Mei",
 				"text": {
@@ -262,12 +283,12 @@
 			{
 				"id": 8,
 				"characters": [
-					{ "id": "Mei", "side": "left", "sprite": "mai_found_the_car", "mode": "full", "bg": "#D8423E" }
+					{ "id": "Mei", "side": "left", "image": "mei.png", "sprite": "mai_found_the_car", "mode": "full", "bg": "#D8423E" }
 				],
 				"speaker": "Mei",
-				"text": {
-					"ru": "Затем, час спустя, я направлялась на работу и заметила, что машина все еще стоит там с включенными дворниками.",
-					"en": "Then, an hour later, I was heading to work and noticed the car was still there with the wipers on."
+				"text_pages": {
+					"ru": ["Затем, час спустя, я направлялась на работу и заметила,", "что машина все еще стоит там с включенными дворниками."],
+					"en": ["Then, an hour later, I was heading to work and noticed the car was still there with the wipers on."]
 				},
 				"bubble_mode": "avatar",
 				"menu": false
@@ -275,11 +296,11 @@
 			{
 				"id": 9,
 				"characters": [
-					{ "id": "Mei", "side": "left", "sprite": "mai_found_the_car", "mode": "full", "bg": "#D8423E" }
+					{ "id": "Mei", "side": "left", "image": "mei.png", "sprite": "mai_found_the_car", "mode": "full", "bg": "#D8423E" }
 				],
 				"speaker": "Mei",
 				"text": {
-					"ru": "Это показалось мне подозрительным, поэтому я решил присмотреться повнимательнее.",
+					"ru": "Это показалось мне подозрительным, поэтому я решила присмотреться повнимательнее.",
 					"en": "That felt suspicious, so I decided to take a closer look."
 				},
 				"bubble_mode": "avatar",
@@ -294,12 +315,12 @@
 			{
 				"id": 11,
 				"characters": [
-					{ "id": "Mei", "side": "left", "sprite": "mai_found_the_car", "mode": "full", "bg": "#D8423E" }
+					{ "id": "Mei", "side": "left", "image": "mei.png", "sprite": "mai_found_the_car", "mode": "full", "bg": "#D8423E" }
 				],
 				"speaker": "Mei",
 				"text": {
 					"ru": "Я увидела двух женщин на заднем сиденье, откинувшихся назад, словно они спали.",
-					"en": "I saw two women in the back seat, leaning back as if they were asleep"
+					"en": "I saw two women in the back seat, leaning back as if they were asleep."
 				},
 				"bubble_mode": "avatar",
 				"menu": false
@@ -307,7 +328,7 @@
 			{
 				"id": 12,
 				"characters": [
-					{ "id": "Mei", "side": "left", "sprite": "mai_found_the_car", "mode": "full", "bg": "#D8423E" }
+					{ "id": "Mei", "side": "left", "image": "mei.png", "sprite": "mai_found_the_car", "mode": "full", "bg": "#D8423E" }
 				],
 				"speaker": "Mei",
 				"text": {
@@ -320,7 +341,7 @@
 			{
 				"id": 13,
 				"characters": [
-					{ "id": "Mei", "side": "left", "sprite": "mai_found_the_car", "mode": "full", "bg": "#D8423E" }
+					{ "id": "Mei", "side": "left", "image": "mei.png", "sprite": "mai_found_the_car", "mode": "full", "bg": "#D8423E" }
 				],
 				"speaker": "Mei",
 				"text": {
@@ -339,20 +360,22 @@
 			{
 				"id": 15,
 				"characters": [
-					{ "id": "Mei", "side": "left", "sprite": "mai_found_the_car", "mode": "full", "bg": "#D8423E" }
+					{ "id": "Mei", "side": "left", "image": "mei.png", "sprite": "mai_found_the_car", "mode": "full", "bg": "#D8423E" }
 				],
 				"speaker": "Mei",
 				"text": {
 					"ru": "После этого я вызвала скорую помощь и полицию.",
-					"en": "After that, I called for an ambulance and the police"
+					"en": "After that, I called for an ambulance and the police."
 				},
 				"bubble_mode": "avatar",
 				"menu": false
 			},
-
 			{
 				"id": 16,
-				"backgroundChange": "first_dialog",
+				"backgroundChange": "first_dialog"
+			},
+			{
+				"id": 17,
 				"characters": [
 					{ "id": "Di", "side": "right", "sprite": "di_thinking", "mode": "zoom" }
 				],
@@ -364,7 +387,7 @@
 				"bubble_mode": "medium"
 			},
 			{
-				"id": 17,
+				"id": 18,
 				"characters": [
 					{ "id": "Mei", "side": "left", "sprite": "mai_found_the_car", "mode": "zoom" }
 				],
@@ -373,10 +396,17 @@
 					"ru": "Да, я заметила что кожа была  красного оттенка.",
 					"en": "Yes, I noticed that the skin had a reddish tone. "
 				},
-				"bubble_mode": "large"
+				"bubble_mode": "medium",
+				"actions": [
+					{
+						"type": "add_item",
+						"category": "facts",
+						"id": "red_skin_tone"
+					}
+				]
 			},
 			{
-				"id": 18,
+				"id": 19,
 				"characters": [
 					{ "id": "Mei", "side": "left", "sprite": "mai_found_the_car", "mode": "zoom" }
 				],
@@ -385,10 +415,10 @@
 					"ru": "Это сразу бросилось в глаза.",
 					"en": "It immediately caught my eye."
 				},
-				"bubble_mode": "large"
+				"bubble_mode": "medium"
 			},
 			{
-				"id": 19,
+				"id": 20,
 				"characters": [
 					{ "id": "Daniel", "side": "right", "sprite": "daniel_serious", "mode": "zoom" }
 				],
@@ -402,11 +432,16 @@
 					{
 						"type": "complete_task",
 						"id": "talk_to_witness_mei"
+					},
+					{
+						"type": "add_item",
+						"category": "dossier",
+						"id": "witness_mei"
 					}
 				]
 			},
 			{
-				"id": 20,
+				"id": 21,
 				"characters": [
 					{ "id": "Daniel", "side": "right", "sprite": "daniel_thinking", "mode": "zoom" }
 				],
@@ -418,7 +453,7 @@
 				"bubble_mode": "medium"
 			},
 			{
-				"id": 21,
+				"id": 22,
 				"characters": [
 					{ "id": "Daniel", "side": "right", "sprite": "daniel_thinking", "mode": "zoom" }
 				],
@@ -427,10 +462,10 @@
 					"ru": "Miss Di, давайте осмотрим машину?",
 					"en": "Miss Di, shall we inspect the car?"
 				},
-				"bubble_mode": "large"
+				"bubble_mode": "medium"
 			},
 			{
-				"id": 22,
+				"id": 23,
 				"characters": [
 					{ "id": "Daniel", "side": "right", "sprite": "daniel_thinking", "mode": "zoom" }
 				],
@@ -442,7 +477,7 @@
 				"bubble_mode": "large"
 			},
 			{
-				"id": 23,
+				"id": 24,
 				"characters": [],
 				"speaker": "Narrator",
 				"text": {
@@ -454,8 +489,8 @@
 					{
 						"id": "car_eye",
 						"type": "inspect",
-						"x": 0.33,
-						"y": 0.59,
+						"x": 0.38,
+						"y": 0.665,
 						"width": 0.12,
 						"height": 0.12,
 						"icon": "eye.png"
@@ -573,7 +608,7 @@
 				"id": 5,
 				"backgroundNoAnimationChange": "first_dialog",
 				"characters": [
-					{ "id": "Daniel", "side": "right", "sprite": "daniel_serious", "mode": "zoom", "bg": "white" }
+					{ "id": "Daniel", "side": "right", "image":  "daniel_serious.png", "sprite": "daniel_serious", "mode": "zoom", "bg": "white" }
 				],
 				"speaker": "Daniel",
 				"text": {
@@ -604,7 +639,7 @@
 			{
 				"id": 6,
 				"characters": [
-					{ "id": "Daniel", "side": "right", "sprite": "daniel_serious", "mode": "zoom", "bg": "white" }
+					{ "id": "Daniel", "side": "right", "image":  "daniel_serious.png", "sprite": "daniel_serious", "mode": "zoom", "bg": "white" }
 				],
 				"speaker": "Daniel",
 				"text": {
@@ -624,7 +659,7 @@
 					"ru": "Ди, позвони в полицейский участок.",
 					"en": "Dee, call the police station."
 				},
-				"bubble_mode": "large",
+				"bubble_mode": "medium",
 				"hotspots": [
 
 				]
@@ -657,10 +692,10 @@
 					"ru": "Да, у неё есть муж.",
 					"en": "Yes, she has a husband."
 				},
-				"bubble_mode": "medium"
+				"bubble_mode": "small"
 			},
 			{
-				"id": 10,
+				"id": 11,
 				"characters": [
 					{ "id": "Di", "side": "left", "sprite": "di_thinking", "mode": "zoom" }
 				],
@@ -672,7 +707,7 @@
 				"bubble_mode": "large"
 			},
 			{
-				"id": 10,
+				"id": 12,
 				"characters": [
 					{ "id": "Di", "side": "left", "sprite": "di_thinking", "mode": "zoom" }
 				],
@@ -681,10 +716,10 @@
 					"ru": "Могли бы вы поговорить с ним без меня?",
 					"en": "Could you speak with him without me?"
 				},
-				"bubble_mode": "large"
+				"bubble_mode": "medium"
 			},
 			{
-				"id": 11,
+				"id": 13,
 				"characters": [
 					{ "id": "Di", "side": "left", "sprite": "di_thinking", "mode": "zoom" }
 				],
@@ -693,7 +728,7 @@
 					"ru": "Мне трудно вести подобные разговоры.",
 					"en": "I have a hard time having these kinds of conversations."
 				},
-				"bubble_mode": "large",
+				"bubble_mode": "medium",
 				"actions": [
 					{
 						"type": "complete_task",
@@ -712,7 +747,7 @@
 				]
 			},
 			{
-				"id": 12,
+				"id": 14,
 				"characters": [
 					{ "id": "Daniel", "side": "right", "sprite": "daniel_smile", "mode": "zoom" }
 				],
@@ -730,7 +765,7 @@
 				]
 			},
 			{
-				"id": 13,
+				"id": 15,
 				"speaker": "Narrator",
 				"text": {
 					"ru": "На карте открылось новое место. Перейдите в него.",
@@ -744,7 +779,7 @@
 				]
 			},
 			{
-				"id": 14,
+				"id": 16,
 				"openMap": true,
 				"actions": [
 					{
@@ -761,14 +796,14 @@
 			{
 				"id": 1,
 				"characters": [
-					{ "id": "Mr. Kanagawa", "side": "left", "sprite": "mr_kanagawa_crying", "mode": "full" }
+					{ "id": "Mr. Kanagawa", "side": "left", "sprite": "mr_kanagawa_crying", "mode": "zoom" }
 				],
 				"hotspots": [
 					{
 						"id": "start_dialog",
 						"type": "inspect",
-						"x": 0.4,
-						"y": 0.19,
+						"x": 0.48,
+						"y": 0.17,
 						"width": 0.22,
 						"height": 0.22,
 						"icon": "start_dialog.png"
@@ -783,7 +818,7 @@
 			{
 				"id": 2,
 				"characters": [
-					{ "id": "Daniel", "side": "right", "sprite": "daniel_serious", "mode": "full" }
+					{ "id": "Daniel", "side": "right", "sprite": "daniel_serious", "mode": "zoom" }
 				],
 				"speaker": "Daniel",
 				"text": {
@@ -795,7 +830,7 @@
 			{
 				"id": 3,
 				"characters": [
-					{ "id": "Mr. Kanagawa", "side": "left", "sprite": "mr_kanagawa_crying", "mode": "full" }
+					{ "id": "Mr. Kanagawa", "side": "left", "sprite": "mr_kanagawa_crying", "mode": "zoom" }
 				],
 				"speaker": "Mr. Kanagawa",
 				"text": {
@@ -838,7 +873,7 @@
 			{
 				"id": 6,
 				"characters": [
-					{ "id": "Daniel", "side": "right", "sprite": "daniel_thinking", "mode": "cut" }
+					{ "id": "Daniel", "side": "center", "sprite": "daniel_thinking", "mode": "zoom" }
 				],
 				"speaker": "Narrator",
 				"text": {
@@ -857,12 +892,12 @@
 					"ru": "Были ли у вашей жены конфликты с кем-то?",
 					"en": "Did Miss Kanagawa have any conflicts with anyone?"
 				},
-				"bubble_mode": "large"
+				"bubble_mode": "medium"
 			},
 			{
 				"id": 8,
 				"characters": [
-					{ "id": "Mr. Kanagawa", "side": "left", "sprite": "mr_kanagava_thinking", "mode": "zoom" }
+					{ "id": "Mr. Kanagawa", "side": "left", "sprite": "mr_kanagava_thinking", "mode": "cut", "height_modifier": 1.06 }
 				],
 				"speaker": "Mr. Kanagawa",
 				"text": {
@@ -874,7 +909,7 @@
 			{
 				"id": 9,
 				"characters": [
-					{ "id": "Mr. Kanagawa", "side": "left", "sprite": "mr_kanagava_thinking", "mode": "zoom" }
+					{ "id": "Mr. Kanagawa", "side": "left", "sprite": "mr_kanagava_thinking", "mode": "cut", "height_modifier": 1.06 }
 				],
 				"speaker": "Mr. Kanagawa",
 				"text": {
@@ -886,7 +921,7 @@
 			{
 				"id": 10,
 				"characters": [
-					{ "id": "Mr. Kanagawa", "side": "left", "sprite": "mr_kanagava_thinking", "mode": "zoom" }
+					{ "id": "Mr. Kanagawa", "side": "left", "sprite": "mr_kanagava_thinking", "mode": "cut", "height_modifier": 1.06 }
 				],
 				"speaker": "Mr. Kanagawa",
 				"text": {
@@ -917,7 +952,7 @@
 					"ru": "Но я всегда проверяю все варианты.",
 					"en": "But I always check all options."
 				},
-				"bubble_mode": "large"
+				"bubble_mode": "small"
 			},
 
 			{
@@ -935,7 +970,8 @@
 			{
 				"id": 14,
 				"characters": [
-					{ "id": "Daniel", "side": "right", "sprite": "daniel_finger_up", "mode": "cut" }
+					{ "id": "Daniel", "side": "center", "sprite": "daniel_finger_up", "mode": "cut", "height_modifier": 1.1
+					}
 				],
 				"speaker": "Narrator",
 				"text": {
@@ -994,56 +1030,37 @@
 					{
 						"type": "save_checkpoint"
 					}
-				]
+				],
+				"allowBack": false
 			},
 			{
 				"id": 2,
-				"backgroundChange": "pathologist_reports",
-				"resizeMode": "contain",
-				"menu": false
-			},
-			{
-				"id": 3,
-				"speaker": "Narrator",
-				"text": {
-					"ru": "Патологоанатом сообщает что у женщины и девушки был красный цвет кожи а то это говорит о том что они отправились угарным газом.",
-					"en": "The pathologist reports that the woman and the girl had red skin, which suggests they were inhaled by carbon monoxide."
-				},
-				"menu": false
-			},
-			{
-				"id": 4,
-				"backgroundChange": "laboratory",
-				"resizeMode": "contain",
-				"menu": false
-			},
-			{
-				"id": 5,
 				"characters": [
 					{ "id": "Laboratory Assistant", "side": "right", "sprite": "roberts", "mode": "full" }
 				],
 				"speaker": "SidePanel",
 				"text": {
-					"ru": "Познакомьтесь с мистером Робертсом.\n\n\u2028 Он опытный судебно-медицинский эксперт.\nВозможно, он выглядит немного устрашающе, но на самом деле он хороший, добрый семьянин.\n\n\u2028 Иногда после работы он любит покататься на своей лодке.",
-					"en": "Meet Mr. Roberts.\n\n\u2028 He is an experienced Medical Examiner.\nHe may looks a little scary, but in reality he's a good, kind family man.\n\n\u2028 He sometimes likes to go for a ride on his boat after work."
-				}
+					"ru": "Познакомьтесь с мистером Робертсом.\n\nОн опытный судебно-медицинский эксперт.\nВозможно, он выглядит немного устрашающе, но на самом деле он хороший, добрый семьянин.\n\nИногда после работы он любит покататься на своей лодке.",
+					"en": "Meet Mr. Roberts.\n\nHe is an experienced Medical Examiner.\nHe may looks a little scary, but in reality he's a good, kind family man.\n\nHe sometimes likes to go for a ride on his boat after work."
+				},
+				"allowBack": false
 			},
 			{
-				"id": 6,
+				"id": 3,
 				"characters": [
-					{ "id": "Laboratory Assistant", "side": "left", "sprite": "roberts", "mode": "full" }
+					{ "id": "Laboratory Assistant", "side": "left", "sprite": "roberts", "mode": "zoom" }
 				],
 				"speaker": "Laboratory Assistant",
 				"text": {
 					"ru": "Здравствуйте, детективы. Что привело вас ко мне?",
 					"en": "Hello, detectives. What brings you to me?"
 				},
-				"bubble_mode": "large"
+				"bubble_mode": "medium"
 			},
 			{
-				"id": 7,
+				"id": 4,
 				"characters": [
-					{ "id": "Di", "side": "right", "sprite": "di_thinking", "mode": "full" }
+					{ "id": "Di", "side": "right", "sprite": "di_thinking", "mode": "zoom" }
 				],
 				"speaker": "Di",
 				"text": {
@@ -1053,9 +1070,9 @@
 				"bubble_mode": "medium"
 			},
 			{
-				"id": 8,
+				"id": 5,
 				"characters": [
-					{ "id": "Daniel", "side": "left", "sprite": "daniel_smile", "mode": "full" }
+					{ "id": "Daniel", "side": "left", "sprite": "daniel_smile", "mode": "zoom" }
 				],
 				"speaker": "Daniel",
 				"text": {
@@ -1065,33 +1082,33 @@
 				"bubble_mode": "large"
 			},
 			{
-				"id": 9,
+				"id": 6,
 				"characters": [
-					{ "id": "Laboratory Assistant", "side": "left", "sprite": "roberts_yes", "mode": "zoom" }
+					{ "id": "Laboratory Assistant", "side": "left", "sprite": "roberts_yes", "mode": "cut" }
 				],
 				"speaker": "Laboratory Assistant",
 				"text": {
 					"ru": "Тоже рад тебя видеть, Ди. Да, отчёт готов.",
 					"en": "Good to see you too, Dee. Yes, the report is ready."
 				},
-				"bubble_mode": "large"
+				"bubble_mode": "medium"
 			},
 			{
-				"id": 10,
+				"id": 7,
 				"characters": [
 					{ "id": "Laboratory Assistant", "side": "left", "sprite": "roberts", "mode": "zoom" }
 				],
 				"speaker": "Laboratory Assistant",
 				"text": {
-					"ru": "У женщины и девушки-подростка была красноватая кожа.",
+					"ru": "У женщины и девушки подростка была красноватая кожа.",
 					"en": "The woman and the teenage girl had reddish skin,"
 				},
 				"bubble_mode": "large"
 			},
 			{
-				"id": 11,
+				"id": 8,
 				"characters": [
-					{ "id": "Laboratory Assistant", "side": "left", "sprite": "roberts", "mode": "full" }
+					{ "id": "Laboratory Assistant", "side": "left", "sprite": "roberts", "mode": "zoom" }
 				],
 				"speaker": "Laboratory Assistant",
 				"text": {
@@ -1108,9 +1125,9 @@
 				]
 			},
 			{
-				"id": 12,
+				"id": 9,
 				"characters": [
-					{ "id": "Di", "side": "right", "sprite": "di_serious", "mode": "full" }
+					{ "id": "Di", "side": "right", "sprite": "di_serious", "mode": "zoom" }
 				],
 				"speaker": "Di",
 				"text": {
@@ -1120,21 +1137,21 @@
 				"bubble_mode": "large"
 			},
 			{
-				"id": 13,
+				"id": 10,
 				"characters": [
-					{ "id": "Di", "side": "right", "sprite": "di_serious", "mode": "full" }
+					{ "id": "Di", "side": "right", "sprite": "di_serious", "mode": "zoom" }
 				],
 				"speaker": "Di",
-				"text": {
-					"ru": "Может быть, у вас есть что-то новое, чем вы хотели бы с нами поделиться?",
-					"en": "Maybe you’ve got something new to tell us?"
+				"text_pages": {
+					"ru": ["Может быть, у вас есть что-то новое,", "чем вы хотели бы с нами поделиться?"],
+					"en": ["Maybe you’ve got something new to tell us?"]
 				},
-				"bubble_mode": "large"
+				"bubble_mode": "medium"
 			},
 			{
-				"id": 14,
+				"id": 11,
 				"characters": [
-					{ "id": "Laboratory Assistant", "side": "left", "sprite": "roberts", "mode": "full" }
+					{ "id": "Laboratory Assistant", "side": "left", "sprite": "roberts", "mode": "zoom" }
 				],
 				"speaker": "Laboratory Assistant",
 				"text": {
@@ -1144,26 +1161,26 @@
 				"bubble_mode": "medium"
 			},
 			{
-				"id": 15,
+				"id": 12,
 				"characters": [
-					{ "id": "Laboratory Assistant", "side": "left", "sprite": "roberts", "mode": "full" }
+					{ "id": "Laboratory Assistant", "side": "left", "sprite": "roberts", "mode": "zoom" }
 				],
 				"speaker": "Laboratory Assistant",
-				"text": {
-					"ru": "Предоставьте мне больше доказательств, и тогда я смогу рассказать вам больше.",
-					"en": "Bring me more evidence, and then I’ll be able to tell you more."
+				"text_pages": {
+					"ru": ["Предоставьте мне больше доказательств,", "и тогда я смогу рассказать вам больше."],
+					"en": ["Bring me more evidence,", "and then I’ll be able to tell you more."]
 				},
-				"bubble_mode": "large"
+				"bubble_mode": "medium"
 			},
 			{
-				"id": 16,
+				"id": 13,
 				"characters": [
-					{ "id": "Laboratory Assistant", "side": "left", "sprite": "roberts", "mode": "full" }
+					{ "id": "Laboratory Assistant", "side": "left", "sprite": "roberts", "mode": "zoom" }
 				],
 				"speaker": "Laboratory Assistant",
-				"text": {
-					"ru": "И ещё добавлю, что смерть наступила примерно в 13:00–13:30.",
-					"en": "Oh, and I can also add that the time of death was roughly 1:00 PM - 1:30 PM."
+				"text_pages": {
+					"ru": ["И ещё добавлю, что смерть наступила примерно в 13:00–13:30."],
+					"en": ["Oh, and I can also add that the time of death was roughly", "1:00 PM - 1:30 PM."]
 				},
 				"bubble_mode": "large",
 				"actions": [
@@ -1175,15 +1192,15 @@
 				]
 			},
 			{
-				"id": 17,
+				"id": 14,
 				"backgroundNoAnimationChange": "police",
 				"characters": [
 					{ "id": "Daniel", "side": "right", "sprite": "daniel_serious", "mode": "zoom" }
 				],
 				"speaker": "Daniel",
 				"text": {
-					"ru": "Он прав. \nУ нас пока ничего нет.",
-					"en": "He is right. \nWe have nothing yet"
+					"ru": "Он прав. У нас пока ничего нет.",
+					"en": "He is right. We have nothing yet"
 				},
 				"bubble_mode": "medium",
 				"actions": [
@@ -1198,7 +1215,7 @@
 				]
 			},
 			{
-				"id": 18,
+				"id": 15,
 				"characters": [],
 				"speaker": "Narrator",
 				"text": {
@@ -1216,7 +1233,7 @@
 				]
 			},
 			{
-				"id": 19,
+				"id": 16,
 				"openMap": true
 			}
 		]
@@ -1228,7 +1245,7 @@
 			{
 				"id": 1,
 				"characters": [
-					{ "id": "Di", "side": "right", "sprite": "di_serious", "mode": "full" }
+					{ "id": "Di", "side": "right", "sprite": "di_serious", "mode": "zoom" }
 				],
 				"speaker": "Di",
 				"text": {
@@ -1245,7 +1262,7 @@
 			{
 				"id": 2,
 				"characters": [
-					{ "id": "Di", "side": "right", "sprite": "di_serious", "mode": "full" }
+					{ "id": "Di", "side": "right", "sprite": "di_serious", "mode": "zoom" }
 				],
 				"speaker": "Di",
 				"text": {
@@ -1257,7 +1274,7 @@
 			{
 				"id": 3,
 				"characters": [
-					{ "id": "Di", "side": "right", "sprite": "di_serious", "mode": "full" }
+					{ "id": "Di", "side": "right", "sprite": "di_serious", "mode": "zoom" }
 				],
 				"speaker": "Di",
 				"text": {
@@ -1269,19 +1286,19 @@
 			{
 				"id": 4,
 				"characters": [
-					{ "id": "Di", "side": "right", "sprite": "di_serious", "mode": "full" }
+					{ "id": "Di", "side": "right", "sprite": "di_serious", "mode": "zoom" }
 				],
 				"speaker": "Di",
 				"text": {
 					"ru": "Иногда я смотрю на такие дома и думаю...",
 					"en": "Sometimes I look at houses like this and think.."
 				},
-				"bubble_mode": "large"
+				"bubble_mode": "medium"
 			},
 			{
 				"id": 5,
 				"characters": [
-					{ "id": "Di", "side": "right", "sprite": "di_serious", "mode": "full" }
+					{ "id": "Di", "side": "right", "sprite": "di_serious", "mode": "zoom" }
 				],
 				"speaker": "Di",
 				"text": {
@@ -1293,7 +1310,7 @@
 			{
 				"id": 6,
 				"characters": [
-					{ "id": "Di", "side": "right", "sprite": "di_serious", "mode": "full" }
+					{ "id": "Di", "side": "right", "sprite": "di_serious", "mode": "zoom" }
 				],
 				"speaker": "Di",
 				"text": {
@@ -1305,7 +1322,7 @@
 			{
 				"id": 7,
 				"characters": [
-					{ "id": "Daniel", "side": "left", "sprite": "daniel_serious", "mode": "full" }
+					{ "id": "Daniel", "side": "left", "sprite": "daniel_serious", "mode": "zoom" }
 				],
 				"speaker": "Daniel",
 				"text": {
@@ -1317,7 +1334,7 @@
 			{
 				"id": 8,
 				"characters": [
-					{ "id": "Daniel", "side": "right", "sprite": "daniel_smile", "mode": "full" }
+					{ "id": "Daniel", "side": "right", "sprite": "daniel_smile", "mode": "zoom" }
 				],
 				"speaker": "Daniel",
 				"text": {
@@ -1329,14 +1346,14 @@
 			{
 				"id": 9,
 				"characters": [
-					{ "id": "Daniel", "side": "right", "sprite": "daniel_smile", "mode": "full" }
+					{ "id": "Daniel", "side": "right", "sprite": "daniel_smile", "mode": "zoom" }
 				],
 				"speaker": "Daniel",
 				"text": {
 					"ru": "Давайте спросим её — может, она что-то видела?",
 					"en": "Let’s ask her — maybe she saw something?"
 				},
-				"bubble_mode": "large"
+				"bubble_mode": "medium"
 			},
 			{
 				"id": 10,
@@ -1345,7 +1362,7 @@
 			{
 				"id": 11,
 				"characters": [
-					{ "id": "Housekeeper", "side": "left", "sprite": "housekeeper", "mode": "zoom" }
+					{ "id": "Housekeeper", "side": "left", "sprite": "housekeeper", "mode": "cut" }
 				],
 				"speaker": "Housekeeper",
 				"text": {
@@ -1364,7 +1381,7 @@
 			{
 				"id": 12,
 				"characters": [
-					{ "id": "Housekeeper", "side": "left", "sprite": "housekeeper", "mode": "zoom" }
+					{ "id": "Housekeeper", "side": "left", "sprite": "housekeeper", "mode": "cut" }
 				],
 				"speaker": "Housekeeper",
 				"text": {
@@ -1400,7 +1417,7 @@
 			{
 				"id": 15,
 				"characters": [
-					{ "id": "Housekeeper", "side": "left", "sprite": "housekeeper_worried", "mode": "zoom" }
+					{ "id": "Housekeeper", "side": "left", "sprite": "housekeeper_worried", "mode": "cut" }
 				],
 				"speaker": "Housekeeper",
 				"text": {
@@ -1412,7 +1429,7 @@
 			{
 				"id": 16,
 				"characters": [
-					{ "id": "Housekeeper", "side": "left", "sprite": "housekeeper_worried", "mode": "zoom" }
+					{ "id": "Housekeeper", "side": "left", "sprite": "housekeeper_worried", "mode": "cut" }
 				],
 				"speaker": "Housekeeper",
 				"text": {
@@ -1428,15 +1445,15 @@
 				],
 				"speaker": "Di",
 				"text": {
-					"ru": "Вы же понимаете, что мы не можем вам показать?",
-					"en": "You do understand that we can’t show you."
+					"ru": "Вы же понимаете, что мы не можем вам показать любые материалы расследования, верно?",
+					"en": "You do understand that we can’t show you any investigative materials, right?"
 				},
-				"bubble_mode": "medium"
+				"bubble_mode": "large"
 			},
 			{
 				"id": 18,
 				"characters": [
-					{ "id": "Housekeeper", "side": "left", "sprite": "housekeeper_worried", "mode": "zoom" }
+					{ "id": "Housekeeper", "side": "left", "sprite": "housekeeper_worried", "mode": "cut" }
 				],
 				"speaker": "Housekeeper",
 				"text": {
@@ -1448,11 +1465,11 @@
 			{
 				"id": 19,
 				"characters": [
-					{ "id": "Housekeeper", "side": "left", "sprite": "housekeeper_worried", "mode": "zoom" }
+					{ "id": "Housekeeper", "side": "left", "sprite": "housekeeper_worried", "mode": "cut" }
 				],
 				"speaker": "Housekeeper",
 				"text": {
-					"ru": "Но есть ли у вас какие-либо доказательства того, что вы действительно нашли их машину?",
+					"ru": "Но есть ли у вас какие- либо доказательства того, что вы действительно нашли их машину?",
 					"en": "But do you have any proof that you actually found their car?"
 				},
 				"bubble_mode": "large"
@@ -1479,7 +1496,7 @@
 					"ru": "Чтобы доказать, что мы нашли машину госпожи Канагавы?",
 					"en": "To prove that we found Ms. Kanagawa’s car?"
 				},
-				"bubble_mode": "large"
+				"bubble_mode": "medium"
 			},
 			{
 				"id": 22,
@@ -1515,7 +1532,13 @@
 					],
 					"successLine": 23,
 					"wrongLine": 24
-				}
+				},
+				"actions": [
+					{
+						"type": "save_checkpoint"
+					}
+				],
+				"allowBack": false
 			},
 			{
 				"id": 23,
@@ -1524,7 +1547,7 @@
 						"id": "Daniel",
 						"side": "center",
 						"sprite": "daniel_finger_up",
-						"mode": "zoom"
+						"mode": "cut"
 					}
 				],
 				"proofResult": {
@@ -1535,7 +1558,13 @@
 					},
 					"showSelectedItem": true,
 					"continueLine": 25
-				}
+				},
+				"actions": [
+					{
+						"type": "save_checkpoint"
+					}
+				],
+				"allowBack": false
 			},
 			{
 				"id": 24,
@@ -1544,7 +1573,7 @@
 						"id": "Daniel",
 						"side": "center",
 						"sprite": "daniel_shocked",
-						"mode": "zoom"
+						"mode": "cut"
 					}
 				],
 				"bubble_mode": "medium",
@@ -1556,12 +1585,18 @@
 					},
 					"showSelectedItem": true,
 					"retryLine": 22
-				}
+				},
+				"actions": [
+					{
+						"type": "save_checkpoint"
+					}
+				],
+				"allowBack": false
 			},
 			{
 				"id": 25,
 				"characters": [
-					{ "id": "Housekeeper", "side": "left", "sprite": "housekeeper", "mode": "zoom" }
+					{ "id": "Housekeeper", "side": "left", "sprite": "housekeeper", "mode": "cut" }
 				],
 				"speaker": "Housekeeper",
 				"text": {
@@ -1573,7 +1608,7 @@
 			{
 				"id": 26,
 				"characters": [
-					{ "id": "Housekeeper", "side": "right", "sprite": "housekeeper_worried", "mode": "zoom" }
+					{ "id": "Housekeeper", "side": "right", "sprite": "housekeeper_worried", "mode": "cut" }
 				],
 				"speaker": "Housekeeper",
 				"text": {
@@ -1592,7 +1627,7 @@
 					"ru": "Мэм, я понимаю, что вы в шоке.",
 					"en": "Ma’am, I understand you’re in shock."
 				},
-				"bubble_mode": "large"
+				"bubble_mode": "medium"
 			},
 			{
 				"id": 28,
@@ -1621,19 +1656,19 @@
 			{
 				"id": 30,
 				"characters": [
-					{ "id": "Housekeeper", "side": "left", "sprite": "housekeeper", "mode": "zoom" }
+					{ "id": "Housekeeper", "side": "left", "sprite": "housekeeper", "mode": "cut" }
 				],
 				"speaker": "Housekeeper",
 				"text": {
 					"ru": "Я не могу вспомнить ничего подозрительного.",
 					"en": "I can't really think of anything suspicious. "
 				},
-				"bubble_mode": "large"
+				"bubble_mode": "medium"
 			},
 			{
 				"id": 31,
 				"characters": [
-					{ "id": "Housekeeper", "side": "left", "sprite": "housekeeper", "mode": "zoom" }
+					{ "id": "Housekeeper", "side": "left", "sprite": "housekeeper", "mode": "cut" }
 				],
 				"speaker": "Housekeeper",
 				"text": {
@@ -1652,7 +1687,7 @@
 			{
 				"id": 32,
 				"characters": [
-					{ "id": "Housekeeper", "side": "left", "sprite": "housekeeper", "mode": "zoom" }
+					{ "id": "Housekeeper", "side": "left", "sprite": "housekeeper", "mode": "cut" }
 				],
 				"speaker": "Housekeeper",
 				"text": {
@@ -1671,7 +1706,7 @@
 					"ru": "Что вы сказали?!",
 					"en": "What did you say?!"
 				},
-				"bubble_mode": "medium"
+				"bubble_mode": "small"
 			},
 			{
 				"id": 34,
@@ -1700,14 +1735,14 @@
 			{
 				"id": 36,
 				"characters": [
-					{ "id": "Housekeeper", "side": "left", "sprite": "housekeeper", "mode": "zoom" }
+					{ "id": "Housekeeper", "side": "left", "sprite": "housekeeper", "mode": "cut" }
 				],
 				"speaker": "Housekeeper",
 				"text": {
 					"ru": "Рада, что смогла помочь! Пока!",
 					"en": "Glad I could help! Bye!"
 				},
-				"bubble_mode": "large",
+				"bubble_mode": "medium",
 				"actions": [
 					{
 						"type": "complete_task",
@@ -1722,31 +1757,31 @@
 			{
 				"id": 38,
 				"characters": [
-					{ "id": "Daniel", "side": "right", "sprite": "daniel_shocked", "mode": "full" }
+					{ "id": "Daniel", "side": "right", "sprite": "daniel_shocked", "mode": "cut" }
 				],
 				"speaker": "Daniel",
 				"text": {
 					"ru": "Мисс Ди, что вы делаете?",
 					"en": "Miss Dee, what are you doing? "
 				},
-				"bubble_mode": "large"
+				"bubble_mode": "medium"
 			},
 			{
 				"id": 39,
 				"characters": [
-					{ "id": "Daniel", "side": "right", "sprite": "daniel_shocked", "mode": "full" }
+					{ "id": "Daniel", "side": "right", "sprite": "daniel_shocked", "mode": "cut" }
 				],
 				"speaker": "Daniel",
 				"text": {
 					"ru": "Мы только начали разговаривать со свидетелем!",
 					"en": "We just started talking to the witness!"
 				},
-				"bubble_mode": "large"
+				"bubble_mode": "medium"
 			},
 			{
 				"id": 40,
 				"characters": [
-					{ "id": "Di", "side": "right", "sprite": "di_serious", "mode": "full" }
+					{ "id": "Di", "side": "right", "sprite": "di_serious", "mode": "zoom" }
 				],
 				"speaker": "Di",
 				"text": {
@@ -1765,7 +1800,7 @@
 					"ru": "Вы помните время смерти?",
 					"en": "Do you remember the time of death?"
 				},
-				"bubble_mode": "large"
+				"bubble_mode": "medium"
 			},
 			{
 				"id": 42,
@@ -1773,9 +1808,9 @@
 					{ "id": "Di", "side": "right", "sprite": "di_serious", "mode": "zoom" }
 				],
 				"speaker": "Di",
-				"text": {
-					"ru": "Наш судебно-медицинский эксперт, мистер Робертс, дал нам...? Примерно в 13:00.",
-					"en": "Our medical examiner, mr.Roberts, gave us? Around 1 PM. "
+				"text_pages": {
+					"ru": ["Которое наш судебно- медицинский эксперт,", "мистер Робертс, дал нам...? Примерно в 13:00."],
+					"en": ["Our medical examiner, mr.Roberts, gave us? Around 1 PM."]
 				},
 				"bubble_mode": "large"
 			},
@@ -1801,10 +1836,10 @@
 					"ru": "Мисс Канагава и её дочь уехали в 12:00.",
 					"en": "Mrs. Kanagawa and her daughter left at 12:00"
 				},
-				"bubble_mode": "large"
+				"bubble_mode": "medium"
 			},
 			{
-				"id": 44,
+				"id": 45,
 				"characters": [
 					{ "id": "Daniel", "side": "left", "sprite": "daniel_thinking", "mode": "zoom" }
 				],
@@ -1813,10 +1848,10 @@
 					"ru": "Это определенно подозрительно.",
 					"en": "That's definitely suspicious."
 				},
-				"bubble_mode": "large"
+				"bubble_mode": "medium"
 			},
 			{
-				"id": 45,
+				"id": 46,
 				"characters": [
 					{ "id": "Daniel", "side": "left", "sprite": "daniel_thinking", "mode": "zoom" }
 				],
@@ -1828,8 +1863,11 @@
 				"bubble_mode": "large"
 			},
 			{
-				"id": 46,
-				"backgroundChange": "default",
+				"id": 47,
+				"backgroundChange": "default"
+			},
+			{
+				"id": 48,
 				"characters": [
 					{ "id": "Di", "side": "left", "sprite": "di_serious", "mode": "zoom" }
 				],
@@ -1838,10 +1876,10 @@
 					"ru": "Послушайте, мы прошли всего около 500 метров",
 					"en": "Look, we've only walked about 1500 feet"
 				},
-				"bubble_mode": "large"
+				"bubble_mode": "medium"
 			},
 			{
-				"id": 47,
+				"id": 49,
 				"characters": [
 					{ "id": "Di", "side": "left", "sprite": "di_serious", "mode": "zoom" }
 				],
@@ -1850,10 +1888,10 @@
 					"ru": "и вот мы на месте, где был найден автомобиль.",
 					"en": "and here we are at the spot where the car was found."
 				},
-				"bubble_mode": "large"
+				"bubble_mode": "medium"
 			},
 			{
-				"id": 48,
+				"id": 50,
 				"characters": [
 					{ "id": "Di", "side": "left", "sprite": "di_serious", "mode": "zoom" }
 				],
@@ -1865,7 +1903,7 @@
 				"bubble_mode": "large"
 			},
 			{
-				"id": 49,
+				"id": 51,
 				"characters": [
 					{ "id": "Di", "side": "left", "sprite": "di_serious", "mode": "zoom" }
 				],
@@ -1884,7 +1922,7 @@
 				]
 			},
 			{
-				"id": 50,
+				"id": 52,
 				"characters": [
 					{ "id": "Di", "side": "left", "sprite": "di_serious", "mode": "zoom" }
 				],
@@ -1896,7 +1934,7 @@
 				"bubble_mode": "dark"
 			},
 			{
-				"id": 51,
+				"id": 53,
 				"characters": [
 					{"id": "Di", "side": "left", "sprite": "di_serious", "mode": "zoom"}
 				],
@@ -1908,7 +1946,7 @@
 				"bubble_mode": "dark"
 			},
 			{
-				"id": 52,
+				"id": 54,
 				"characters": [
 					{"id": "Di", "side": "left", "sprite": "di_serious", "mode": "zoom"}
 				],
@@ -1966,14 +2004,20 @@
 							}
 						]
 					],
-					"successLine": 53,
-					"wrongLine": 54
-				}
+					"successLine": 55,
+					"wrongLine": 56
+				},
+				"actions": [
+					{
+						"type": "save_checkpoint"
+					}
+				],
+				"allowBack": false
 			},
 			{
-				"id": 53,
+				"id": 55,
 				"characters": [
-					{"id": "Di", "side": "center", "sprite": "di_ok", "mode": "zoom3"}
+					{"id": "Di", "side": "center", "sprite": "di_ok", "mode": "zoom2"}
 				],
 				"logicResult": {
 					"type": "correct",
@@ -1983,20 +2027,24 @@
 					},
 					"showHypothesis": true,
 					"hypothesisId": "gas_leak_in_car",
-					"continueLine": 55
+					"continueLine": 57
 				},
 				"actions": [
 					{
 						"type": "add_item",
 						"category": "hypotheses",
 						"id": "gas_leak_in_car"
+					},
+					{
+						"type": "save_checkpoint"
 					}
-				]
+				],
+				"allowBack": false
 			},
 			{
-				"id": 54,
+				"id": 56,
 				"characters": [
-					{"id": "Di", "side": "center", "sprite": "di_shocked", "mode": "zoom2"}
+					{"id": "Di", "side": "center", "sprite": "di_shocked", "mode": "zoom2", "height_modifier":  1.1}
 				],
 				"logicResult": {
 					"type": "wrong",
@@ -2004,11 +2052,17 @@
 						"ru": "Неверно! Подумай ещё раз.",
 						"en": "Wrong! Think again."
 					},
-					"retryLine": 51
-				}
+					"retryLine": 54
+				},
+				"actions": [
+					{
+						"type": "save_checkpoint"
+					}
+				],
+				"allowBack": false
 			},
 			{
-				"id": 55,
+				"id": 57,
 				"characters": [
 					{"id": "Daniel", "side": "left", "sprite": "daniel_serious", "mode": "zoom"}
 				],
@@ -2020,7 +2074,7 @@
 				"bubble_mode": "large"
 			},
 			{
-				"id": 56,
+				"id": 58,
 				"characters": [
 					{ "id": "Daniel", "side": "left", "sprite": "daniel_smile", "mode": "zoom" }
 				],
@@ -2032,14 +2086,14 @@
 				"bubble_mode": "medium"
 			},
 			{
-				"id": 57,
+				"id": 59,
 				"characters": [
 					{ "id": "Daniel", "side": "left", "sprite": "daniel_smile", "mode": "zoom" }
 				],
 				"speaker": "Daniel",
-				"text": {
-					"ru": "В таком случае это классифицируется как несчастный случай, и мы можем быстро закрыть дело.",
-					"en": "then it’s classified as an accident and we can close the case quickly."
+				"text_pages": {
+					"ru": ["В таком случае это классифицируется как несчастный случай,", "и мы можем быстро закрыть дело."],
+					"en": ["then it’s classified as an accident", "and we can close the case quickly."]
 				},
 				"bubble_mode": "large",
 				"actions": [
@@ -2050,7 +2104,7 @@
 				]
 			},
 			{
-				"id": 58,
+				"id": 60,
 				"characters": [
 					{ "id": "Di", "side": "left", "sprite": "di_serious", "mode": "zoom" }
 				],
@@ -2059,10 +2113,10 @@
 					"ru": "А что, если в машине нет никаких дефектов?",
 					"en": "And what if there aren’t any defects in the car?"
 				},
-				"bubble_mode": "large"
+				"bubble_mode": "medium"
 			},
 			{
-				"id": 59,
+				"id": 61,
 				"characters": [
 					{ "id": "Daniel", "side": "left", "sprite": "daniel_serious", "mode": "zoom" }
 				],
@@ -2071,10 +2125,10 @@
 					"ru": "Тогда, боюсь, дело обернется гораздо сложнее.",
 					"en": "Then I’m afraid it’ll turn into a much more complicated case."
 				},
-				"bubble_mode": "large"
+				"bubble_mode": "medium"
 			},
 			{
-				"id": 60,
+				"id": 62,
 				"characters": [],
 				"speaker": "Narrator2",
 				"text": {
@@ -2088,8 +2142,8 @@
 						"type": "inspect",
 						"x": 0.45,
 						"y": 0.75,
-						"width": 0.12,
-						"height": 0.12,
+						"width": 0.09,
+						"height": 0.09,
 						"icon": "eye.png",
 						"name": {
 							"ru": "Машина миссис Канагавы",
@@ -2106,8 +2160,8 @@
 						"type": "open",
 						"x": 0.47,
 						"y": 0.82,
-						"width": 0.18,
-						"height": 0.18,
+						"width": 0.14,
+						"height": 0.14,
 						"icon": "pointer.png"
 					}
 				]
@@ -2121,7 +2175,7 @@
 			{
 				"id": 1,
 				"characters": [
-					{ "id": "Daniel", "side": "right", "sprite": "daniel_smile", "mode": "full" }
+					{ "id": "Daniel", "side": "right", "sprite": "daniel_smile", "mode": "zoom" }
 				],
 				"speaker": "Daniel",
 				"text": {
@@ -2138,7 +2192,7 @@
 			{
 				"id": 2,
 				"characters": [
-					{ "id": "Di", "side": "right", "sprite": "di_serious", "mode": "full" }
+					{ "id": "Di", "side": "left", "sprite": "di_serious", "mode": "zoom" }
 				],
 				"speaker": "Di",
 				"text": {
@@ -2150,30 +2204,38 @@
 			{
 				"id": 3,
 				"characters": [
-					{ "id": "Di", "side": "right", "sprite": "di_serious", "mode": "full" }
+					{
+						"id": "Di",
+						"side": "left",
+						"sprite": "di_serious",
+						"mode": "zoom"
+					}
 				],
 				"speaker": "Di",
 				"text": {
 					"ru": "Надеюсь, мы сможем закрыть это дело в ближайшее время.",
 					"en": "I hope we can close this case soon."
 				},
-				"bubble_mode": "large",
+				"bubble_mode": "medium",
 				"hotspots": [
 					{
 						"id": "show_report",
-						"type": "inspect",
+						"type": "button",
 						"x": 0.3,
-						"y": 0.56,
+						"y": 0.66,
 						"width": 0.45,
-						"height": 0.25,
-						"icon": "show_report.png"
+						"height": 0.055,
+						"text": {
+							"ru": "Показать отчёт",
+							"en": "Show report"
+						}
 					}
 				]
 			},
 			{
 				"id": 4,
 				"characters": [
-					{ "id": "Daniel", "side": "right", "sprite": "daniel_thinking", "mode": "full", "bg": "white"}
+					{ "id": "Daniel", "side": "right", "image": "daniel_thinking.png", "sprite": "daniel_thinking", "mode": "zoom", "bg": "white"}
 				],
 				"speaker": "Daniel",
 				"text": {
@@ -2187,37 +2249,41 @@
 						"id": "send_car_to_inspection"
 					}
 				],
+				"menu": false,
 				"tapToContinue": false,
 				"hotspots": [
 					{
 						"id": "report",
 						"type": "inactive",
-						"x": 0.08,
-						"y": 0.07,
-						"width": 0.85,
-						"height": 0.72,
+						"x": 0.12,
+						"y": 0.02,
+						"width": 0.75,
+						"height": 0.62,
 						"icon": "report.png"
 					},
 					{
 						"id": "add_to_inventory",
-						"type": "inspect",
-						"x": 0.2,
-						"y": 0.58,
-						"width": 0.6,
-						"height": 0.4,
-						"icon": "add_to_inventory.png"
+						"type": "button",
+						"x": 0.24,
+						"y": 0.68,
+						"width": 0.5,
+						"height": 0.074,
+						"text": {
+							"ru": "добавить в инвентарь",
+							"en": "add to inventory"
+						}
 					}
 				]
 			},
 			{
 				"id": 5,
 				"characters": [
-					{ "id": "Daniel", "side": "right", "sprite": "daniel_shocked", "mode": "full" }
+					{ "id": "Daniel", "side": "right", "sprite": "daniel_shocked", "mode": "cut" }
 				],
 				"speaker": "Daniel",
-				"text": {
-					"ru": "Черт возьми! В отчете указано, что в машине нет никаких дефектов.",
-					"en": "Damn it! The report shows there are no defects in the car."
+				"text_pages": {
+					"ru": ["Черт возьми! В отчете указано,", "что в машине нет никаких дефектов."],
+					"en": ["Damn it! The report shows there are no defects in the car."]
 				},
 				"bubble_mode": "medium"
 			},
@@ -2263,6 +2329,7 @@
 								"en": "They were poisoned by gas at home, and only traces remained in the car."
 							},
 							"correct": false,
+							"hpPenalty": 1,
 							"resultLine": 8
 						},
 						{
@@ -2281,10 +2348,17 @@
 								"en": "They decided to release gas into the car themselves."
 							},
 							"correct": false,
+							"hpPenalty": 1,
 							"resultLine": 9
 						}
 					]
-				}
+				},
+				"actions": [
+					{
+						"type": "save_checkpoint"
+					}
+				],
+				"allowBack": false
 			},
 			{
 				"id": 7,
@@ -2302,7 +2376,7 @@
 					"en": "Right. If there are no defects or gas leaks in the car, the carbon monoxide may have been deliberately introduced into the vehicle."
 				},
 				"bubble_mode": "dark",
-				"choiceResult": {
+				"logicResult": {
 					"type": "correct",
 					"message": {
 						"ru": "Новая гипотеза!",
@@ -2317,8 +2391,12 @@
 						"type": "add_item",
 						"category": "hypotheses",
 						"id": "gas_released_deliberately"
+					},
+					{
+						"type": "save_checkpoint"
 					}
-				]
+				],
+				"allowBack": false
 			},
 			{
 				"id": 8,
@@ -2343,7 +2421,13 @@
 						"en": "Wrong! Try again."
 					},
 					"retryLine": 6
-				}
+				},
+				"actions": [
+					{
+						"type": "save_checkpoint"
+					}
+				],
+				"allowBack": false
 			},
 			{
 				"id": 9,
@@ -2368,7 +2452,13 @@
 						"en": "Wrong! Try again."
 					},
 					"retryLine": 6
-				}
+				},
+				"actions": [
+					{
+						"type": "save_checkpoint"
+					}
+				],
+				"allowBack": false
 			},
 			{
 				"id": 10,
@@ -2407,7 +2497,7 @@
 			{
 				"id": 12,
 				"characters": [
-					{"id": "Daniel", "side": "right", "sprite": "daniel_shocked", "mode": "zoom"}
+					{"id": "Daniel", "side": "right", "sprite": "daniel_shocked", "mode": "cut"}
 				],
 				"speaker": "Daniel",
 				"text": {
@@ -2431,7 +2521,7 @@
 					"ru": "О боже! Я даже не подумала об этом!",
 					"en": "Oh my God! I didn't even think about that!"
 				},
-				"bubble_mode": "large"
+				"bubble_mode": "medium"
 			},
 			{
 				"id": 14,
@@ -2511,11 +2601,11 @@
 					}
 				],
 				"speaker": "Di",
-				"text": {
-					"ru": "Маловероятно, что она стала бы так поступать со своим собственным ребёнком.",
-					"en": "It’s unlikely she would do something like that to her own child."
+				"text_pages": {
+					"ru": ["Маловероятно, что она стала бы так", "поступать со своим собственным ребёнком."],
+					"en": ["It’s unlikely she would do something", "like that to her own child."]
 				},
-				"bubble_mode": "large"
+				"bubble_mode": "medium"
 			},
 			{
 				"id": 19,
@@ -2527,7 +2617,7 @@
 					"ru": "Она могла сделать это случайно.",
 					"en": "She could’ve done it by accident."
 				},
-				"bubble_mode": "large"
+				"bubble_mode": "medium"
 			},
 			{
 				"id": 20,
@@ -2583,7 +2673,7 @@
 				"bubble_mode": "large"
 			},
 			{
-				"id": 23,
+				"id": 24,
 				"characters": [
 					{
 						"id": "Di",
@@ -2600,7 +2690,7 @@
 				"bubble_mode": "large"
 			},
 			{
-				"id": 24,
+				"id": 25,
 				"characters": [
 					{"id": "Daniel", "side": "right", "sprite": "daniel_serious", "mode": "zoom"}
 				],
@@ -2612,7 +2702,7 @@
 				"bubble_mode": "large"
 			},
 			{
-				"id": 25,
+				"id": 26,
 				"characters": [
 					{"id": "Daniel", "side": "right", "sprite": "daniel_serious", "mode": "zoom"}
 				],
@@ -2624,10 +2714,13 @@
 				"bubble_mode": "large"
 			},
 			{
-				"id": 26,
-				"backgroundChange": "interrogation_room",
+				"id": 27,
+				"backgroundChange": "interrogation_room"
+			},
+			{
+				"id": 28,
 				"characters": [
-					{"id": "Mr. Kanagawa", "side": "left", "sprite": "mr_kanagava_serious", "mode": "full"}
+					{"id": "Mr. Kanagawa", "side": "left", "sprite": "mr_kanagava_serious", "mode": "zoom", "height_modifier": 0.96}
 				],
 				"hotspots": [
 					{
@@ -2642,13 +2735,13 @@
 				]
 			},
 			{
-				"id": 27,
+				"id": 29,
 				"characters": [
 					{
 						"id": "Di",
 						"side": "right",
 						"sprite": "di_serious",
-						"mode": "full"
+						"mode": "zoom"
 					}
 				],
 				"speaker": "Di",
@@ -2659,9 +2752,9 @@
 				"bubble_mode": "large"
 			},
 			{
-				"id": 28,
+				"id": 30,
 				"characters": [
-					{"id": "Mr. Kanagawa", "side": "left", "sprite": "mr_kanagava_serious", "mode": "full"}
+					{"id": "Mr. Kanagawa", "side": "left", "sprite": "mr_kanagava_serious", "mode": "zoom", "height_modifier": 0.96}
 				],
 				"speaker": "Mr. Kanagawa",
 				"text": {
@@ -2671,13 +2764,13 @@
 				"bubble_mode": "medium"
 			},
 			{
-				"id": 29,
+				"id": 31,
 				"characters": [
 					{
 						"id": "Di",
 						"side": "right",
 						"sprite": "di_serious",
-						"mode": "full"
+						"mode": "zoom"
 					}
 				],
 				"speaker": "Di",
@@ -2688,13 +2781,13 @@
 				"bubble_mode": "large"
 			},
 			{
-				"id": 30,
+				"id": 32,
 				"characters": [
 					{
 						"id": "Di",
 						"side": "right",
 						"sprite": "di_serious",
-						"mode": "full"
+						"mode": "zoom"
 					}
 				],
 				"speaker": "Di",
@@ -2705,9 +2798,9 @@
 				"bubble_mode": "large"
 			},
 			{
-				"id": 31,
+				"id": 33,
 				"characters": [
-					{"id": "Mr. Kanagawa", "side": "left", "sprite": "mr_kanagava_serious", "mode": "full"}
+					{"id": "Mr. Kanagawa", "side": "left", "sprite": "mr_kanagava_serious", "mode": "zoom", "height_modifier": 0.96}
 				],
 				"speaker": "Mr. Kanagawa",
 				"text": {
@@ -2717,9 +2810,9 @@
 				"bubble_mode": "large"
 			},
 			{
-				"id": 32,
+				"id": 34,
 				"characters": [
-					{"id": "Mr. Kanagawa", "side": "left", "sprite": "mr_kanagava_serious", "mode": "full"}
+					{"id": "Mr. Kanagawa", "side": "left", "sprite": "mr_kanagava_serious", "mode": "zoom", "height_modifier": 0.96}
 				],
 				"speaker": "Mr. Kanagawa",
 				"text": {
@@ -2729,7 +2822,7 @@
 				"bubble_mode": "medium"
 			},
 			{
-				"id": 33,
+				"id": 35,
 				"characters": [
 					{
 						"id": "Di",
@@ -2746,7 +2839,7 @@
 				"bubble_mode": "medium"
 			},
 			{
-				"id": 34,
+				"id": 36,
 				"characters": [
 					{
 						"id": "Di",
@@ -2763,9 +2856,9 @@
 				"bubble_mode": "large"
 			},
 			{
-				"id": 35,
+				"id": 37,
 				"characters": [
-					{"id": "Mr. Kanagawa", "side": "left", "sprite": "mr_kanagava_serious", "mode": "full"}
+					{"id": "Mr. Kanagawa", "side": "left", "sprite": "mr_kanagava_serious", "mode": "zoom", "height_modifier": 0.96}
 				],
 				"speaker": "Mr. Kanagawa",
 				"text": {
@@ -2775,9 +2868,9 @@
 				"bubble_mode": "large"
 			},
 			{
-				"id": 36,
+				"id": 38,
 				"characters": [
-					{"id": "Mr. Kanagawa", "side": "left", "sprite": "mr_kanagava_serious", "mode": "full"}
+					{"id": "Mr. Kanagawa", "side": "left", "sprite": "mr_kanagava_serious", "mode": "zoom", "height_modifier": 0.96}
 				],
 				"speaker": "Mr. Kanagawa",
 				"text": {
@@ -2787,13 +2880,13 @@
 				"bubble_mode": "medium"
 			},
 			{
-				"id": 37,
+				"id": 39,
 				"characters": [
 					{
 						"id": "Di",
 						"side": "right",
 						"sprite": "di_serious",
-						"mode": "full"
+						"mode": "zoom"
 					}
 				],
 				"speaker": "Di",
@@ -2804,13 +2897,13 @@
 				"bubble_mode": "medium"
 			},
 			{
-				"id": 38,
+				"id": 40,
 				"characters": [
 					{
 						"id": "Di",
 						"side": "right",
 						"sprite": "di_serious",
-						"mode": "full"
+						"mode": "zoom"
 					}
 				],
 				"speaker": "Di",
@@ -2821,9 +2914,9 @@
 				"bubble_mode": "large"
 			},
 			{
-				"id": 39,
+				"id": 41,
 				"characters": [
-					{"id": "Mr. Kanagawa", "side": "left", "sprite": "mr_kanagava_serious", "mode": "full"}
+					{"id": "Mr. Kanagawa", "side": "left", "sprite": "mr_kanagava_serious", "mode": "zoom", "height_modifier": 0.96}
 				],
 				"speaker": "Mr. Kanagawa",
 				"text": {
@@ -2833,9 +2926,9 @@
 				"bubble_mode": "small"
 			},
 			{
-				"id": 40,
+				"id": 42,
 				"characters": [
-					{"id": "Mr. Kanagawa", "side": "left", "sprite": "mr_kanagava_serious", "mode": "full"}
+					{"id": "Mr. Kanagawa", "side": "left", "sprite": "mr_kanagava_serious", "mode": "zoom", "height_modifier": 0.96}
 				],
 				"speaker": "Mr. Kanagawa",
 				"text": {
@@ -2845,7 +2938,7 @@
 				"bubble_mode": "large"
 			},
 			{
-				"id": 41,
+				"id": 43,
 				"characters": [
 					{
 						"id": "Di",
@@ -2862,9 +2955,9 @@
 				"bubble_mode": "medium"
 			},
 			{
-				"id": 42,
+				"id": 44,
 				"characters": [
-					{"id": "Mr. Kanagawa", "side": "left", "sprite": "mr_kanagawa_crying", "mode": "full"}
+					{"id": "Mr. Kanagawa", "side": "left", "sprite": "mr_kanagawa_crying", "mode": "zoom"}
 				],
 				"speaker": "Mr. Kanagawa",
 				"text": {
@@ -2874,9 +2967,9 @@
 				"bubble_mode": "large"
 			},
 			{
-				"id": 43,
+				"id": 45,
 				"characters": [
-					{"id": "Mr. Kanagawa", "side": "left", "sprite": "mr_kanagawa_crying", "mode": "full"}
+					{"id": "Mr. Kanagawa", "side": "left", "sprite": "mr_kanagawa_crying", "mode": "zoom"}
 				],
 				"speaker": "Mr. Kanagawa",
 				"text": {
@@ -2886,13 +2979,13 @@
 				"bubble_mode": "large"
 			},
 			{
-				"id": 44,
+				"id": 46,
 				"characters": [
 					{
 						"id": "Di",
 						"side": "right",
 						"sprite": "di_serious",
-						"mode": "full"
+						"mode": "zoom"
 					}
 				],
 				"speaker": "Di",
@@ -2903,13 +2996,13 @@
 				"bubble_mode": "large"
 			},
 			{
-				"id": 45,
+				"id": 47,
 				"characters": [
 					{
 						"id": "Di",
 						"side": "right",
 						"sprite": "di_serious",
-						"mode": "full"
+						"mode": "zoom"
 					}
 				],
 				"speaker": "Di",
@@ -2920,9 +3013,9 @@
 				"bubble_mode": "large"
 			},
 			{
-				"id": 46,
+				"id": 48,
 				"characters": [
-					{"id": "Mr. Kanagawa", "side": "left", "sprite": "mr_kanagava_serious", "mode": "full"}
+					{"id": "Mr. Kanagawa", "side": "left", "sprite": "mr_kanagava_serious", "mode": "zoom", "height_modifier": 0.96}
 				],
 				"speaker": "Mr. Kanagawa",
 				"text": {
@@ -2932,13 +3025,13 @@
 				"bubble_mode": "medium"
 			},
 			{
-				"id": 47,
+				"id": 49,
 				"characters": [
 					{
 						"id": "Di",
 						"side": "right",
 						"sprite": "di_serious",
-						"mode": "full"
+						"mode": "zoom"
 					}
 				],
 				"speaker": "Di",
@@ -2955,14 +3048,17 @@
 				]
 			},
 			{
-				"id": 48,
-				"backgroundChange": "police",
+				"id": 50,
+				"backgroundChange": "police"
+			},
+			{
+				"id": 51,
 				"characters": [
 					{
 						"id": "Daniel",
 						"side": "right",
 						"sprite": "daniel_smile",
-						"mode": "full"
+						"mode": "zoom"
 					}
 				],
 				"speaker": "Daniel",
@@ -2973,14 +3069,14 @@
 				"bubble_mode": "large"
 			},
 			{
-				"id": 49,
+				"id": 52,
 				"backgroundChange": "police",
 				"characters": [
 					{
 						"id": "Daniel",
 						"side": "right",
 						"sprite": "daniel_smile",
-						"mode": "full"
+						"mode": "zoom"
 					}
 				],
 				"speaker": "Daniel",
@@ -2997,13 +3093,13 @@
 				]
 			},
 			{
-				"id": 50,
+				"id": 53,
 				"characters": [
 					{
 						"id": "Di",
 						"side": "left",
 						"sprite": "di_serious",
-						"mode": "full"
+						"mode": "zoom"
 					}
 				],
 				"speaker": "Di",
@@ -3014,16 +3110,16 @@
 				"bubble_mode": "large",
 				"actions": [
 					{
-						"type": "save_checkpoint"
-					},
-					{
 						"type": "unlock_location",
 						"id": "9_mrs_kanagawa_sister"
+					},
+					{
+						"type": "save_checkpoint"
 					}
 				]
 			},
 			{
-				"id": 51,
+				"id": 54,
 				"openMap": true
 			}
 		]
@@ -3104,7 +3200,7 @@
 				],
 				"speaker": "Daniel",
 				"text": {
-					"ru": "что госпожа Канагава страдала от депрессии и, возможно, покончила жизнь самоубийством таким образом.",
+					"ru": "что госпожа Канагава страдала от депрессии и, возможно, покончила жизнь самоубийством.",
 					"en": "that Mrs. Kanagawa was suffering from depression and may have taken her own life this way."
 				},
 				"bubble_mode": "large"
@@ -3119,7 +3215,7 @@
 					"ru": "Как это возможно?",
 					"en": "How is that possible?"
 				},
-				"bubble_mode": "medium"
+				"bubble_mode": "small"
 			},
 			{
 				"id": 8,
@@ -3159,7 +3255,13 @@
 					],
 					"successLine": 10,
 					"wrongLine": 11
-				}
+				},
+				"actions": [
+					{
+						"type": "save_checkpoint"
+					}
+				],
+				"allowBack": false
 			},
 			{
 				"id": 10,
@@ -3168,7 +3270,7 @@
 						"id": "Daniel",
 						"side": "center",
 						"sprite": "daniel_finger_up",
-						"mode": "zoom"
+						"mode": "cut"
 					}
 				],
 				"proofResult": {
@@ -3179,7 +3281,13 @@
 					},
 					"showSelectedItem": true,
 					"continueLine": 12
-				}
+				},
+				"actions": [
+					{
+						"type": "save_checkpoint"
+					}
+				],
+				"allowBack": false
 			},
 			{
 				"id": 11,
@@ -3188,7 +3296,7 @@
 						"id": "Daniel",
 						"side": "center",
 						"sprite": "daniel_shocked",
-						"mode": "zoom"
+						"mode": "cut"
 					}
 				],
 				"bubble_mode": "medium",
@@ -3200,7 +3308,13 @@
 					},
 					"showSelectedItem": true,
 					"retryLine": 9
-				}
+				},
+				"actions": [
+					{
+						"type": "save_checkpoint"
+					}
+				],
+				"allowBack": false
 			},
 			{
 				"id": 12,
@@ -3272,13 +3386,7 @@
 					"ru": "Поэтому у неё не было причин так поступать с собой.",
 					"en": "so she had no reason to do this to herself."
 				},
-				"bubble_mode": "large"
-			},
-			{
-				"id": 17,
-				"characters": [
-					{ "id": "Mrs. Kanagawa sister", "side": "left", "sprite": "mrs_kanagawa_sister", "mode": "zoom" }
-				],
+				"bubble_mode": "large",
 				"actions": [
 					{
 						"type": "complete_task",
@@ -3332,7 +3440,7 @@
 			{
 				"id": 21,
 				"characters": [
-					{ "id": "Mrs. Kanagawa sister", "side": "left", "sprite": "mrs_kanagawa_sister_angry", "mode": "zoom" }
+					{ "id": "Mrs. Kanagawa sister", "side": "left", "sprite": "mrs_kanagawa_sister_angry", "mode": "zoom", "height_modifier": 1.06 }
 				],
 				"speaker": "Mrs. Kanagawa sister",
 				"text": {
@@ -3349,7 +3457,7 @@
 			{
 				"id": 23,
 				"characters": [
-					{ "id": "Mrs. Kanagawa sister", "side": "left", "sprite": "mrs_kanagawa_sister", "mode": "full", "bg": "white" }
+					{ "id": "Mrs. Kanagawa sister", "side": "left", "image":  "mrs_kanagawa_sister.png", "sprite": "mrs_kanagawa_sister", "mode": "zoom", "bg": "white" }
 				],
 				"speaker": "Mrs. Kanagawa sister",
 				"text": {
@@ -3367,7 +3475,7 @@
 			{
 				"id": 25,
 				"characters": [
-					{ "id": "Mrs. Kanagawa sister", "side": "left", "sprite": "mrs_kanagawa_sister", "mode": "full", "bg": "white" }
+					{ "id": "Mrs. Kanagawa sister", "side": "left", "image":  "mrs_kanagawa_sister.png", "sprite": "mrs_kanagawa_sister", "mode": "zoom", "bg": "white" }
 				],
 				"speaker": "Mrs. Kanagawa sister",
 				"text": {
@@ -3385,7 +3493,7 @@
 			{
 				"id": 27,
 				"characters": [
-					{ "id": "Mrs. Kanagawa sister", "side": "left", "sprite": "mrs_kanagawa_sister", "mode": "full", "bg": "white" }
+					{ "id": "Mrs. Kanagawa sister", "side": "left", "image":  "mrs_kanagawa_sister.png", "sprite": "mrs_kanagawa_sister", "mode": "zoom", "bg": "white" }
 				],
 				"speaker": "Mrs. Kanagawa sister",
 				"text": {
@@ -3423,7 +3531,7 @@
 			{
 				"id": 30,
 				"characters": [
-					{ "id": "Mrs. Kanagawa sister", "side": "left", "image": "mrs_kanagawa_sister_angry.png", "mode": "full", "bg": "white" }
+					{ "id": "Mrs. Kanagawa sister", "side": "left", "image": "mrs_kanagawa_sister_angry.png", "mode": "zoom", "bg": "white" }
 				],
 				"speaker": "Mrs. Kanagawa sister",
 				"text": {
@@ -3436,7 +3544,7 @@
 			{
 				"id": 31,
 				"characters": [
-					{ "id": "Mrs. Kanagawa sister", "side": "left", "image": "mrs_kanagawa_sister_angry.png", "mode": "full", "bg": "white" }
+					{ "id": "Mrs. Kanagawa sister", "side": "left", "image": "mrs_kanagawa_sister_angry.png", "mode": "zoom", "bg": "white" }
 				],
 				"speaker": "Mrs. Kanagawa sister",
 				"text": {
@@ -3454,7 +3562,7 @@
 			{
 				"id": 33,
 				"characters": [
-					{ "id": "Mrs. Kanagawa sister", "side": "left", "image": "mrs_kanagawa_sister_angry.png", "mode": "full", "bg": "white" }
+					{ "id": "Mrs. Kanagawa sister", "side": "left", "image": "mrs_kanagawa_sister_angry.png", "mode": "zoom", "bg": "white" }
 				],
 				"speaker": "Mrs. Kanagawa sister",
 				"text": {
@@ -3466,19 +3574,22 @@
 			},
 			{
 				"id": 34,
-				"backgroundChange": "mrs_kanagawa_sister_kitchen",
+				"backgroundChange": "mrs_kanagawa_sister_kitchen"
+			},
+			{
+				"id": 35,
 				"characters": [
-					{ "id": "Mrs. Kanagawa sister", "side": "left", "sprite": "mrs_kanagawa_sister_angry", "mode": "zoom" }
+					{ "id": "Mrs. Kanagawa sister", "side": "left", "sprite": "mrs_kanagawa_sister_angry", "mode": "zoom", "height_modifier": 1.06 }
 				],
 				"speaker": "Mrs. Kanagawa sister",
 				"text": {
 					"ru": "Какой же он лицемер.",
 					"en": "He's such a hypocrite."
 				},
-				"bubble_mode": "medium"
+				"bubble_mode": "small"
 			},
 			{
-				"id": 35,
+				"id": 36,
 				"characters": [
 					{ "id": "Daniel", "side": "right", "sprite": "daniel_serious", "mode": "zoom" }
 				],
@@ -3490,7 +3601,7 @@
 				"bubble_mode": "medium"
 			},
 			{
-				"id": 36,
+				"id": 37,
 				"characters": [
 					{ "id": "Daniel", "side": "right", "sprite": "daniel_serious", "mode": "zoom" }
 				],
@@ -3509,14 +3620,14 @@
 				]
 			},
 			{
-				"id": 37,
+				"id": 38,
 				"backgroundChange": "she_reacted_calmly",
 				"menu": false
 			},
 			{
-				"id": 38,
+				"id": 39,
 				"characters": [
-					{ "id": "Mrs. Kanagawa sister", "side": "left", "sprite": "mrs_kanagawa_sister", "mode": "full", "bg": "white" }
+					{ "id": "Mrs. Kanagawa sister", "side": "left", "image": "mrs_kanagawa_sister.png", "sprite": "mrs_kanagawa_sister", "mode": "zoom", "bg": "white" }
 				],
 				"speaker": "Mrs. Kanagawa sister",
 				"text": {
@@ -3527,9 +3638,9 @@
 				"menu": false
 			},
 			{
-				"id": 39,
+				"id": 40,
 				"characters": [
-					{ "id": "Mrs. Kanagawa sister", "side": "left", "sprite": "mrs_kanagawa_sister", "mode": "full", "bg": "white" }
+					{ "id": "Mrs. Kanagawa sister", "side": "left", "image": "mrs_kanagawa_sister.png", "sprite": "mrs_kanagawa_sister", "mode": "zoom", "bg": "white" }
 				],
 				"speaker": "Mrs. Kanagawa sister",
 				"text": {
@@ -3540,14 +3651,14 @@
 				"menu": false
 			},
 			{
-				"id": 40,
+				"id": 41,
 				"backgroundChange": "self_development_courses",
 				"menu": false
 			},
 			{
-				"id": 41,
+				"id": 42,
 				"characters": [
-					{ "id": "Mrs. Kanagawa sister", "side": "left", "sprite": "mrs_kanagawa_sister", "mode": "full", "bg": "white" }
+					{ "id": "Mrs. Kanagawa sister", "side": "left", "image": "mrs_kanagawa_sister.png", "sprite": "mrs_kanagawa_sister", "mode": "zoom", "bg": "white" }
 				],
 				"speaker": "Mrs. Kanagawa sister",
 				"text": {
@@ -3558,14 +3669,14 @@
 				"menu": false
 			},
 			{
-				"id": 42,
+				"id": 43,
 				"backgroundChange": "file_for_divorce",
 				"menu": false
 			},
 			{
-				"id": 43,
+				"id": 44,
 				"characters": [
-					{ "id": "Mrs. Kanagawa sister", "side": "left", "sprite": "mrs_kanagawa_sister", "mode": "full", "bg": "white" }
+					{ "id": "Mrs. Kanagawa sister", "side": "left", "image": "mrs_kanagawa_sister.png", "sprite": "mrs_kanagawa_sister", "mode": "zoom", "bg": "white" }
 				],
 				"speaker": "Mrs. Kanagawa sister",
 				"text": {
@@ -3576,8 +3687,11 @@
 				"menu": false
 			},
 			{
-				"id": 44,
-				"backgroundChange": "mrs_kanagawa_sister_kitchen",
+				"id": 45,
+				"backgroundChange": "mrs_kanagawa_sister_kitchen"
+			},
+			{
+				"id": 46,
 				"characters": [
 					{ "id": "Mrs. Kanagawa sister", "side": "left", "sprite": "mrs_kanagawa_sister", "mode": "zoom" }
 				],
@@ -3596,7 +3710,7 @@
 				]
 			},
 			{
-				"id": 45,
+				"id": 47,
 				"characters": [
 					{ "id": "Mrs. Kanagawa sister", "side": "left", "sprite": "mrs_kanagawa_sister_finger_up", "mode": "cut" }
 				],
@@ -3608,7 +3722,7 @@
 				"bubble_mode": "large"
 			},
 			{
-				"id": 46,
+				"id": 48,
 				"characters": [
 					{ "id": "Daniel", "side": "right", "sprite": "daniel_thinking", "mode": "zoom" }
 				],
@@ -3620,7 +3734,7 @@
 				"bubble_mode": "large"
 			},
 			{
-				"id": 47,
+				"id": 49,
 				"characters": [
 					{ "id": "Daniel", "side": "right", "sprite": "daniel_serious", "mode": "zoom" }
 				],
@@ -3632,7 +3746,7 @@
 				"bubble_mode": "large"
 			},
 			{
-				"id": 48,
+				"id": 50,
 				"characters": [
 					{ "id": "Daniel", "side": "right", "sprite": "daniel_serious", "mode": "zoom" }
 				],
@@ -3644,7 +3758,7 @@
 				"bubble_mode": "medium"
 			},
 			{
-				"id": 49,
+				"id": 51,
 				"characters": [
 					{ "id": "Mrs. Kanagawa sister", "side": "left", "sprite": "mrs_kanagawa_sister", "mode": "zoom" }
 				],
@@ -3656,7 +3770,7 @@
 				"bubble_mode": "small"
 			},
 			{
-				"id": 50,
+				"id": 52,
 				"characters": [
 					{ "id": "Mrs. Kanagawa sister", "side": "left", "sprite": "mrs_kanagawa_sister_sad", "mode": "zoom" }
 				],
@@ -3668,7 +3782,7 @@
 				"bubble_mode": "medium"
 			},
 			{
-				"id": 51,
+				"id": 53,
 				"characters": [
 					{ "id": "Daniel", "side": "right", "sprite": "daniel_serious", "mode": "zoom" }
 				],
@@ -3680,7 +3794,7 @@
 				"bubble_mode": "large"
 			},
 			{
-				"id": 52,
+				"id": 54,
 				"characters": [
 					{ "id": "Daniel", "side": "right", "sprite": "daniel_serious", "mode": "zoom" }
 				],
@@ -3692,9 +3806,9 @@
 				"bubble_mode": "medium"
 			},
 			{
-				"id": 52,
+				"id": 55,
 				"characters": [
-					{ "id": "Daniel", "side": "center", "sprite": "daniel_finger_up", "mode": "cut" }
+					{ "id": "Daniel", "side": "center", "sprite": "daniel_finger_up", "mode": "cut", "height_modifier": 1.1 }
 				],
 				"speaker": "Narrator",
 				"text": {
@@ -3711,6 +3825,9 @@
 					{
 						"type": "complete_task",
 						"id": "talk_to_mrs_kanagawa_sister"
+					},
+					{
+						"type": "save_checkpoint"
 					}
 				]
 			}

@@ -90,7 +90,7 @@ export default function Index() {
                     )}
                 </View>
                 {/* Главное меню */}
-                <MainMenu />
+                <MainMenu mainScreen={true} />
             </ImageBackground>
             )}
         </SceneFade>

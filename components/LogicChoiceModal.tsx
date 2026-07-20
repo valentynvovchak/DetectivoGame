@@ -17,14 +17,13 @@ type LocalizedText = {
 
 export type LogicChoiceOption = {
     id: string;
-
     text: LocalizedText;
-
     correct?: boolean;
-
     // Каждая опция сама знает,
     // на какую строку перейти после выбора.
     resultLine: number;
+    // Необязательный штраф за неверный ответ
+    hpPenalty?: number;
 };
 
 export type LogicChoiceConfig = {
@@ -41,9 +40,7 @@ export type LogicChoiceConfig = {
 
 type Props = {
     visible: boolean;
-
     choice: LogicChoiceConfig;
-
     onClose: () => void;
 
     onResult: (result: {
@@ -58,7 +55,7 @@ export default function LogicChoiceModal({
          onClose,
          onResult,
      }: Props) {
-    const { lang } = useGameStore();
+    const { lang, loseHp } = useGameStore();
 
     const [selectedId, setSelectedId] = useState<string | null>(null);
     const [confirmVisible, setConfirmVisible] = useState(false);

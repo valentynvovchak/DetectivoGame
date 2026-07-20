@@ -15,6 +15,8 @@ import factsData from "@/data/facts.json";
 import dossierData from "@/data/dossier.json";
 import evidenceData from "@/data/evidence.json";
 import hypothesesData from "@/data/hypotheses.json";
+import MixedIcon from "@/components/Common/MixedIcon";
+import {SCALE} from "@/tools/constants";
 
 type Category = "facts" | "dossier" | "evidence" | "hypotheses";
 
@@ -291,6 +293,9 @@ export default function MakeLogicModal({
         });
     };
 
+    const firstSelectedItem = selectedItems[0];
+    const secondSelectedItem = selectedItems[1];
+
     return (
         <Modal
             visible={visible}
@@ -337,21 +342,16 @@ export default function MakeLogicModal({
                                         styles.lastOddCard,
                                     ]}
                                 >
-                                    {!!item.icon &&
-                                        !!(RESOURCES as any)[
-                                            item.icon
-                                            ] && (
-                                            <Image
-                                                source={
-                                                    (RESOURCES as any)[
-                                                        item.icon
-                                                        ]
-                                                }
-                                                style={
-                                                    styles.cardIcon
-                                                }
+                                    {!!item.icon && (
+                                        <View style={styles.cardIconWrap}>
+                                            <MixedIcon
+                                                icon={item.icon}
+                                                width={152 * SCALE}
+                                                height={152 * SCALE}
+                                                resizeMode="cover"
                                             />
-                                        )}
+                                        </View>
+                                    )}
 
                                     <AppText
                                         style={styles.cardText}
@@ -392,25 +392,39 @@ export default function MakeLogicModal({
                     {/* Выбранные предметы */}
                     <View style={styles.slots}>
                         <View style={styles.slot}>
-                            <AppText
-                                style={styles.slotText}
-                                numberOfLines={4}
-                            >
-                                {selectedItems[0]
-                                        ?.short_description ||
-                                    selectedItems[0]?.name ||
+                            {firstSelectedItem?.icon && (
+                                <View style={styles.slotIconWrap}>
+                                    <MixedIcon
+                                        icon={firstSelectedItem.icon}
+                                        width={142 * SCALE}
+                                        height={142 * SCALE}
+                                        resizeMode="cover"
+                                    />
+                                </View>
+                            )}
+
+                            <AppText style={styles.slotText} numberOfLines={3}>
+                                {firstSelectedItem?.short_description ||
+                                    firstSelectedItem?.name ||
                                     ""}
                             </AppText>
                         </View>
 
                         <View style={styles.slot}>
-                            <AppText
-                                style={styles.slotText}
-                                numberOfLines={4}
-                            >
-                                {selectedItems[1]
-                                        ?.short_description ||
-                                    selectedItems[1]?.name ||
+                            {secondSelectedItem?.icon && (
+                                <View style={styles.slotIconWrap}>
+                                    <MixedIcon
+                                        icon={secondSelectedItem.icon}
+                                        width={142 * SCALE}
+                                        height={142 * SCALE}
+                                        resizeMode="cover"
+                                    />
+                                </View>
+                            )}
+
+                            <AppText style={styles.slotText} numberOfLines={4}>
+                                {secondSelectedItem?.short_description ||
+                                    secondSelectedItem?.name ||
                                     ""}
                             </AppText>
                         </View>
@@ -549,18 +563,20 @@ const styles = StyleSheet.create({
         backgroundColor: "#F5E4AE",
     },
 
-    cardIcon: {
+    cardIconWrap: {
         width: 52,
         height: 52,
 
         borderRadius: 5,
-
-        resizeMode: "cover",
+        overflow: "hidden",
 
         marginRight: 6,
 
         borderWidth: 1,
         borderColor: "#4B736F",
+
+        alignItems: "center",
+        justifyContent: "center",
     },
 
     cardText: {
@@ -630,35 +646,6 @@ const styles = StyleSheet.create({
         marginTop: 14,
     },
 
-    slot: {
-        flex: 1,
-
-        minHeight: 54,
-
-        backgroundColor: "#F1DFA7",
-
-        borderRadius: 5,
-
-        borderWidth: 1.5,
-        borderColor: "#E9DEC1",
-
-        justifyContent: "center",
-        alignItems: "center",
-
-        paddingHorizontal: 6,
-        paddingVertical: 6,
-    },
-
-    slotText: {
-        color: "#314D4B",
-
-        fontSize: 9,
-        lineHeight: 12,
-
-        textAlign: "center",
-
-        fontFamily: "IBMPlexMono-Regular",
-    },
 
     backButton: {
         position: "absolute",
@@ -684,6 +671,51 @@ const styles = StyleSheet.create({
         color: "#FFFFFF",
 
         fontSize: 13,
+
+        fontFamily: "IBMPlexMono-Regular",
+    },
+    slot: {
+        flex: 1,
+        height: 60,
+
+        flexDirection: "row",
+        alignItems: "center",
+
+        backgroundColor: "#F1DFA7",
+
+        borderRadius: 5,
+        borderWidth: 1.5,
+        borderColor: "#E9DEC1",
+
+        paddingHorizontal: 5,
+        paddingVertical: 4,
+    },
+
+    slotIconWrap: {
+        width: 142 * SCALE,
+        height: 142 * SCALE,
+
+        borderRadius: 4,
+        overflow: "hidden",
+
+        marginRight: 5,
+
+        borderWidth: 1,
+        borderColor: "#4B736F",
+
+        alignItems: "center",
+        justifyContent: "center",
+    },
+
+    slotText: {
+        flex: 1,
+
+        color: "#314D4B",
+
+        fontSize: 8,
+        lineHeight: 10,
+
+        textAlign: "left",
 
         fontFamily: "IBMPlexMono-Regular",
     },

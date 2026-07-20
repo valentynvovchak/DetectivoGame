@@ -1,4 +1,4 @@
-import React, {useEffect, useRef, useState} from "react";
+import React, {useEffect, useMemo, useRef, useState} from "react";
 import {
     Animated,
     ImageBackground,
@@ -13,7 +13,7 @@ import {
 
 import dialogs from "@/data/dialogs.json";
 import { useGameStore } from "@/store/gameStore";
-import { globalStyles, height, width } from "@/styles/global";
+import {globalStyles, height, isSmallScreen, isTablet, width} from "@/styles/global";
 import { getBackground, getSprite } from "@/tools/utils";
 
 import CharacterSpriteNew from "@/components/CharacterSpriteNew";
@@ -29,6 +29,20 @@ import ShowProofModal from "@/components/ShowProofModal";
 import MakeLogicModal from "@/components/MakeLogicModal";
 import hypothesesData from "@/data/hypotheses.json";
 import LogicChoiceModal from "@/components/LogicChoiceModal";
+import {LinearGradient} from "react-native-svg";
+import MixedIcon from "@/components/Common/MixedIcon";
+import ClueFlyAnimation from "@/components/animations/ClueFlyAnimation";
+import factsData from "@/data/facts.json";
+import {
+    DialogBubbleMode, doesTextFitBubble,
+    paginateDialogText,
+} from "@/tools/paginateDialogText";
+
+type FactAnimationState = {
+    id: string;
+    text: string;
+    icon: string;
+};
 
 type HotspotCtx = {
     line: any;
@@ -39,14 +53,15 @@ type HotspotCtx = {
 type Props = {
     onEnd?: (fadeToScene: (scene: string) => void) => void;
     canAdvance?: (line: any) => boolean;
-
     // ✅ новый универсальный хендлер
     onHotspotPress?: (spot: any, ctx: HotspotCtx) => void;
-
     // ✅ если надо глобально выключить хотспоты (например после клика)
     hotspotsDisabled?: boolean;
-
     renderOverlays?: (args: { line: any; fadeToScene: any }) => React.ReactNode;
+    renderTopOverlays?: (args: {
+        line: any;
+        fadeToScene: any;
+    }) => React.ReactNode;
 };
 
 export default function DialogScene({
@@ -55,6 +70,7 @@ export default function DialogScene({
       onHotspotPress,
       hotspotsDisabled = false,
       renderOverlays,
+      renderTopOverlays,
     }: Props) {
     const {
         currentScene,
@@ -72,6 +88,10 @@ export default function DialogScene({
         saveProgress,
         isHydrated,
         setSceneBackground,
+        goBackDialog,
+        dialogHistory,
+        loseHp,
+        hasItem,
     } = useGameStore();
 
     if (!isHydrated) {
@@ -97,6 +117,9 @@ export default function DialogScene({
     const [logicVisible, setLogicVisible] = useState(false);
     const [selectedLogicItems, setSelectedLogicItems] = useState<any[]>([]);
     const [logicChoiceVisible, setLogicChoiceVisible] = useState(false);
+
+    const [activeFactAnimation, setActiveFactAnimation] = useState<FactAnimationState | null>(null);
+    const factAnimationResolveRef = useRef<(() => void) | null>(null);
 
     useEffect(() => {
         if (!scene?.background) return;
@@ -149,13 +172,17 @@ export default function DialogScene({
         goToLine(targetIndex + 1);
     };
 
-    const runActions = (dialogLine: any) => {
-        if (!dialogLine?.actions || !Array.isArray(dialogLine.actions)) {
+    const runActions = async (dialogLine: any) => {
+        if (
+            !dialogLine?.actions ||
+            !Array.isArray(dialogLine.actions)
+        ) {
             return;
         }
 
         const lineId = dialogLine.id ?? currentLine;
-        const actionKey = `${currentScene}_${lineId}_actions`;
+        const actionKey =
+            `${currentScene}_${lineId}_actions`;
 
         if (executedActionsRef.current[actionKey]) {
             return;
@@ -163,17 +190,17 @@ export default function DialogScene({
 
         executedActionsRef.current[actionKey] = true;
 
-        dialogLine.actions.forEach((action: any) => {
+        for (const action of dialogLine.actions) {
             if (!action?.type) {
                 console.warn("Invalid action:", action);
-                return;
+                continue;
             }
 
             switch (action.type) {
                 case "add_task": {
                     if (!action.id) {
                         console.warn("Missing task id:", action);
-                        return;
+                        break;
                     }
 
                     addTask(action.id);
@@ -183,7 +210,7 @@ export default function DialogScene({
                 case "complete_task": {
                     if (!action.id) {
                         console.warn("Missing task id:", action);
-                        return;
+                        break;
                     }
 
                     completeTask(action.id);
@@ -193,7 +220,7 @@ export default function DialogScene({
                 case "remove_task": {
                     if (!action.id) {
                         console.warn("Missing task id:", action);
-                        return;
+                        break;
                     }
 
                     removeTask(action.id);
@@ -202,18 +229,43 @@ export default function DialogScene({
 
                 case "add_item": {
                     if (!action.category || !action.id) {
-                        console.warn("Invalid add_item action:", action);
-                        return;
+                        console.warn(
+                            "Invalid add_item action:",
+                            action
+                        );
+
+                        break;
                     }
 
-                    addToData(action.category, action.id);
+                    /*
+                     * Факты автоматически показывают
+                     * анимацию перед добавлением.
+                     */
+                    if (
+                        action.category === "facts" &&
+                        action.animate !== false
+                    ) {
+                        await playFactAnimation(
+                            action.id,
+                            action
+                        );
+                    } else {
+                        addToData(
+                            action.category,
+                            action.id
+                        );
+                    }
+
                     break;
                 }
 
                 case "unlock_location": {
                     if (!action.id) {
-                        console.warn("Missing location id:", action);
-                        return;
+                        console.warn(
+                            "Missing location id:",
+                            action
+                        );
+                        break;
                     }
 
                     unlockLocation(action.id);
@@ -221,24 +273,271 @@ export default function DialogScene({
                 }
 
                 case "save_checkpoint": {
-                    saveProgress();
-                    console.log("💾 Checkpoint saved:", currentScene, currentLine);
+                    await saveProgress();
+
+                    console.log(
+                        "💾 Checkpoint saved:",
+                        currentScene,
+                        currentLine
+                    );
+
                     break;
                 }
 
                 default:
-                    console.warn("Unknown action type:", action.type, action);
+                    console.warn(
+                        "Unknown action type:",
+                        action.type,
+                        action
+                    );
+
                     break;
             }
-        });
+        }
     };
 
     useEffect(() => {
-        if (!isHydrated) return;
-        if (!line) return;
+        if (!isHydrated || !line) return;
 
-        runActions(line);
-    }, [isHydrated, currentScene, currentLine, line]);
+        void runActions(line);
+    }, [
+        isHydrated,
+        currentScene,
+        currentLine,
+        line,
+    ]);
+
+    const playFactAnimation = (
+        factId: string,
+        action?: any
+    ): Promise<void> => {
+        return new Promise<void>((resolve) => {
+            if (hasItem("facts", factId)) {
+                resolve();
+                return;
+            }
+
+            const localizedFact =
+                (factsData as any)?.[factId]?.[lang];
+
+            if (!localizedFact) {
+                console.warn(
+                    `Fact "${factId}" not found in facts.json`
+                );
+
+                addToData("facts", factId);
+                resolve();
+                return;
+            }
+
+            const icon = localizedFact.icon;
+
+            // Для анимации иконка обязательна
+            if (
+                typeof icon !== "string" ||
+                icon.trim().length === 0
+            ) {
+                console.warn(
+                    `Fact "${factId}" does not have a valid icon`
+                );
+
+                // Добавляем факт без анимации
+                addToData("facts", factId);
+                resolve();
+                return;
+            }
+
+            const customText =
+                action?.animationText?.[lang];
+
+            factAnimationResolveRef.current =
+                () => resolve();
+
+            setActiveFactAnimation({
+                id: factId,
+
+                text:
+                    customText ||
+                    localizedFact.name ||
+                    localizedFact.short_description ||
+                    factId,
+
+                icon,
+            });
+        });
+    };
+
+    const handleFactAnimationFinish = () => {
+        const animation = activeFactAnimation;
+
+        if (!animation) {
+            return;
+        }
+
+        const factId = animation.id;
+
+        addToData("facts", factId);
+
+        setActiveFactAnimation(null);
+
+        const resolve =
+            factAnimationResolveRef.current;
+
+        factAnimationResolveRef.current = null;
+
+        resolve?.();
+    };
+
+    const localizedDialogText =
+        line?.text?.[lang] ||
+        line?.text?.en ||
+        "";
+
+    const manuallySpecifiedPages =
+        line?.text_pages?.[lang];
+
+    const isNarrator =
+        line?.speaker === "Narrator" ||
+        line?.speaker === "Narrator2" ||
+        line?.speaker === "SidePanel" ||
+        line?.bubble_mode === "dark" ;
+
+    const textPages = useMemo(() => {
+        /*
+         * Narrator всегда показывает весь текст
+         * одним окном и не участвует в пагинации.
+         */
+        if (isNarrator) {
+            return [localizedDialogText];
+        }
+
+        // Ручное разделение конкретной реплики
+        if (
+            Array.isArray(manuallySpecifiedPages) &&
+            manuallySpecifiedPages.length > 0
+        ) {
+            return manuallySpecifiedPages;
+        }
+
+        // Отключение пагинации через dialogs.json
+        if (line?.auto_paginate === false) {
+            return [localizedDialogText];
+        }
+
+        return paginateDialogText({
+            text: localizedDialogText,
+
+            mode:
+                (line?.bubble_mode ||
+                    "medium") as DialogBubbleMode,
+
+            screenWidth,
+
+            isTablet: isTabletScreen,
+            isSmallScreen,
+
+            maxLines:
+                line?.max_text_lines ?? 3,
+
+            minLastPageWords:
+                line?.min_last_page_words ?? 4,
+        });
+    }, [
+        currentScene,
+        currentLine,
+        line?.id,
+        line?.bubble_mode,
+        line?.speaker,
+        line?.auto_paginate,
+        line?.max_text_lines,
+        manuallySpecifiedPages,
+        localizedDialogText,
+        screenWidth,
+        isTabletScreen,
+        isNarrator,
+    ]);
+
+    const [
+        textPageIndex,
+        setTextPageIndex,
+    ] = useState(0);
+
+    useEffect(() => {
+        setTextPageIndex(0);
+    }, [
+        currentScene,
+        currentLine,
+        lang,
+    ]);
+
+    const visibleDialogText =
+        textPages[textPageIndex] ||
+        localizedDialogText;
+
+    const originalBubbleMode =
+        (line?.bubble_mode ||
+            "medium") as DialogBubbleMode;
+
+    const visibleBubbleMode =
+        useMemo<DialogBubbleMode>(() => {
+            /*
+             * Первую часть всегда показываем
+             * в режиме из dialogs.json.
+             */
+            if (textPageIndex === 0) {
+                return originalBubbleMode;
+            }
+
+            /*
+             * Автоматически уменьшаем только large.
+             * Остальные специальные режимы не трогаем.
+             */
+            if (originalBubbleMode !== "large") {
+                return originalBubbleMode;
+            }
+
+            /*
+             * Возможность отключить автоматику
+             * для конкретной реплики.
+             */
+            if (
+                line?.auto_shrink_continuation === false
+            ) {
+                return originalBubbleMode;
+            }
+
+            const fitsMedium =
+                doesTextFitBubble({
+                    text: visibleDialogText,
+                    mode: "medium",
+
+                    screenWidth,
+                    isTablet: isTabletScreen,
+                    isSmallScreen,
+
+                    maxLines:
+                        line?.max_text_lines ?? 3,
+                });
+
+            return fitsMedium
+                ? "medium"
+                : "large";
+        }, [
+            originalBubbleMode,
+            textPageIndex,
+            visibleDialogText,
+            screenWidth,
+            isTabletScreen,
+            line?.max_text_lines,
+            line?.auto_shrink_continuation,
+        ]);
+
+    const isLastTextPage =
+        textPageIndex >= textPages.length - 1;
+
+    const displayedHotspots =
+        isLastTextPage ? hotspots : [];
+
 
     return (
         <SceneFade>
@@ -246,7 +545,26 @@ export default function DialogScene({
                 <Pressable
                     style={{ flex: 1 }}
                     onPress={() => {
-                        if (!scene?.dialog) return;
+                        if (!scene?.dialog) {
+                            return;
+                        }
+
+                        if (activeFactAnimation) {
+                            return;
+                        }
+
+                        /*
+                         * Сначала показываем следующую часть
+                         * текущей реплики. currentLine при этом
+                         * не меняется.
+                         */
+                        if (!isLastTextPage) {
+                            setTextPageIndex(
+                                (previous) => previous + 1
+                            );
+
+                            return;
+                        }
 
                         // ✅ SHOW PROOF RESULT
                         if (line?.proofResult?.type === "wrong" && line?.proofResult?.retryLine) {
@@ -311,7 +629,7 @@ export default function DialogScene({
 
                         const canAdvanceByDefault =
                             tapToContinue &&
-                            hotspots.length === 0 &&
+                            displayedHotspots.length === 0 &&
                             !hasShowProof &&
                             !hasMakeLogic &&
                             !hasLogicChoice;
@@ -353,8 +671,8 @@ export default function DialogScene({
                             <SpeechBubble
                                 side={line?.characters?.find((c: any) => c.id === line.speaker)?.side || "center"}
                                 speaker={line.speaker}
-                                text={lang === "ru" ? line.text.ru : line.text.en}
-                                mode={line?.bubble_mode || "medium"}
+                                text={visibleDialogText}
+                                mode={visibleBubbleMode}
                                 charMode={line?.characters?.find((c: any) => c.id === line.speaker)?.mode}
                                 lang={lang}
                                 // SVG
@@ -365,7 +683,55 @@ export default function DialogScene({
                             />
                         )}
 
-                        {line?.logicChoice && (
+                        {(textPageIndex > 0 ||
+                            dialogHistory.length > 0) &&
+                            !proofVisible &&
+                            !logicVisible &&
+                            !logicChoiceVisible &&
+                            line?.allowBack !== false && (
+                                // <TouchableOpacity
+                                //     activeOpacity={0.85}
+                                //     style={styles.dialogBackButton}
+                                //     onPress={(event) => {
+                                //         event.stopPropagation();
+                                //         goBackDialog();
+                                //     }}
+                                // >
+                                //     <AppText style={styles.dialogBackButtonText}>
+                                //         {lang === "ru" ? "назад" : "back"}
+                                //     </AppText>
+                                // </TouchableOpacity>
+                                // arrow_back.svg
+                                <TouchableOpacity
+                                    style={styles.dialogBackButton}
+                                    onPress={(event) => {
+                                        event.stopPropagation();
+
+                                        if (textPageIndex > 0) {
+                                            setTextPageIndex(
+                                                (previous) =>
+                                                    Math.max(0, previous - 1)
+                                            );
+
+                                            return;
+                                        }
+
+                                        goBackDialog();
+                                    }}
+                                >
+                                    <MixedIcon
+                                        activeOpacity={0.85}
+                                        icon="arrow_back.svg"
+                                        width={158 * SCALE}
+                                        height={158 * SCALE}
+                                        resizeMode="cover"
+                                    />
+                                </TouchableOpacity>
+
+                            )}
+
+                        {isLastTextPage &&
+                            line?.logicChoice && (
                             <View
                                 pointerEvents="box-none"
                                 style={styles.logicChoiceButtonWrap}
@@ -418,29 +784,42 @@ export default function DialogScene({
                                         styles.hypothesisResultCard,
                                         {
                                             width: isTabletScreen
-                                                ? Math.min(screenWidth * 0.57, 520)
-                                                : Math.min(screenWidth * 0.67, 390),
+                                                ? Math.min(screenWidth * 0.65, 520)
+                                                : Math.min(screenWidth * 0.75, 390),
                                         },
                                     ]}
                                 >
-                                    {!!currentHypothesis.icon &&
-                                        !!RESOURCES[currentHypothesis.icon] && (
-                                            <Image
-                                                source={RESOURCES[currentHypothesis.icon]}
-                                                style={[
-                                                    styles.hypothesisResultImage,
-                                                    {
-                                                        width: isTabletScreen
-                                                            ? Math.min(screenWidth * 0.42, 340)
-                                                            : Math.min(screenWidth * 0.58, 300),
+                                    {!!currentHypothesis.icon && (
+                                        <View
+                                            style={[
+                                                styles.hypothesisResultImageWrap,
+                                                {
+                                                    width: isTabletScreen
+                                                        ? Math.min(screenWidth * 0.42, 340)
+                                                        : Math.min(screenWidth * 0.58, 300),
 
-                                                        height: isTabletScreen
-                                                            ? Math.min(screenHeight * 0.21, 360)
-                                                            : Math.min(screenHeight * 0.27, 350),
-                                                    },
-                                                ]}
+                                                    height: isTabletScreen
+                                                        ? Math.min(screenHeight * 0.22, 360)
+                                                        : Math.min(screenHeight * 0.27, 350),
+                                                },
+                                            ]}
+                                        >
+                                            <MixedIcon
+                                                icon={currentHypothesis.icon}
+                                                width={
+                                                    isTabletScreen
+                                                        ? Math.min(screenWidth * 0.42, 340)
+                                                        : Math.min(screenWidth * 0.58, 300)
+                                                }
+                                                height={
+                                                    isTabletScreen
+                                                        ? Math.min(screenHeight * 0.22, 360)
+                                                        : Math.min(screenHeight * 0.27, 350)
+                                                }
+                                                resizeMode="cover"
                                             />
-                                        )}
+                                        </View>
+                                    )}
 
                                     <View style={styles.hypothesisResultDescription}>
                                         <AppText
@@ -460,7 +839,8 @@ export default function DialogScene({
                             </View>
                         )}
 
-                        {line?.makeLogic && (
+                        {isLastTextPage &&
+                            line?.makeLogic && (
                             <View pointerEvents="box-none" style={styles.logicButtonWrap}>
                                 <TouchableOpacity
                                     activeOpacity={0.85}
@@ -485,11 +865,21 @@ export default function DialogScene({
                                             key={`${item.category}_${item.id}`}
                                             style={styles.logicSelectedCard}
                                         >
-                                            {!!item.icon && !!RESOURCES[item.icon] && (
+                                            {/*{!!item.icon && !!RESOURCES[item.icon] && (
                                                 <Image
                                                     source={RESOURCES[item.icon]}
                                                     style={styles.logicSelectedIcon}
                                                 />
+                                            )}*/}
+                                            {!!item.icon && (
+                                                <View style={styles.logicSelectedIconWrap}>
+                                                    <MixedIcon
+                                                        icon={item.icon}
+                                                        width={58}
+                                                        height={58}
+                                                        resizeMode="cover"
+                                                    />
+                                                </View>
                                             )}
 
                                             <AppText style={styles.logicSelectedText}>
@@ -527,14 +917,24 @@ export default function DialogScene({
                                     line.proofResult.type === "wrong" && styles.selectedProofCardWrong,
                                 ]}
                             >
-                                {!!selectedProof.icon && !!RESOURCES[selectedProof.icon] && (
+                                {/*{!!selectedProof.icon && !!RESOURCES[selectedProof.icon] && (
                                     <Image
                                         source={RESOURCES[selectedProof.icon]}
                                         style={styles.selectedProofIcon}
                                     />
+                                )}*/}
+                                {!!selectedProof.icon && (
+                                    <View style={styles.selectedProofIconWrap}>
+                                        <MixedIcon
+                                            icon={selectedProof.icon}
+                                            width={width * 0.44}
+                                            height={width * 0.34}
+                                            resizeMode="cover"
+                                        />
+                                    </View>
                                 )}
 
-                                <AppText style={styles.selectedProofText} numberOfLines={2}>
+                                <AppText style={styles.selectedProofText} numberOfLines={3}>
                                     {selectedProof.short_description ||
                                         selectedProof.name ||
                                         selectedProof.description}
@@ -560,51 +960,131 @@ export default function DialogScene({
                                 </View>
                             </View>
                         )}
+                        {displayedHotspots.map((spot: any) => {
+                            if (spot.type === "button") {
+                                const buttonWidth = width * (spot.width ?? 0.4);
 
-                        {/* ✅ hotspots (универсально) */}
-                        {hotspots.map((spot: any) => (
-                            <TouchableOpacity
-                                key={spot.id}
-                                disabled={hotspotsDisabled || !onHotspotPress}
-                                onPress={() => onHotspotPress?.(spot, { line, scene, fadeToScene })}
-                                style={[
-                                    styles.hotspot,
-                                    { left: width * spot.x, top: height * spot.y },
-                                ]}
-                            >
-                                {!!spot?.icon && (
-                                    <Image
-                                        source={RESOURCES[spot.icon]}
-                                        style={{
-                                            height: height * spot.height,
-                                            width: width * spot.width,
-                                            resizeMode: "contain",
+                                const buttonHeight = spot.height
+                                    ? height * spot.height
+                                    : 56;
+
+                                return (
+                                    <TouchableOpacity
+                                        key={spot.id}
+                                        activeOpacity={0.8}
+                                        disabled={hotspotsDisabled || !onHotspotPress}
+                                        onPress={(event) => {
+                                            event.stopPropagation();
+
+                                            onHotspotPress?.(spot, {
+                                                line,
+                                                scene,
+                                                fadeToScene,
+                                            });
                                         }}
-                                    />
-                                )}
+                                        style={[
+                                            styles.hotspotButtonTouch,
+                                            {
+                                                left: width * (spot.x ?? 0),
+                                                top: height * (spot.y ?? 0),
+                                                width: buttonWidth,
+                                                height: buttonHeight,
+                                            },
+                                        ]}
+                                    >
+                                        <LinearGradient
+                                            colors={["#CCCCCC", "#CACA99"]}
+                                            start={{ x: 0, y: 0 }}
+                                            end={{ x: 0, y: 1 }}
+                                            style={StyleSheet.absoluteFillObject}
+                                        />
 
-                                {!!spot?.breadcrumb && (
-                                    <View style={styles.breadcrumbWrap}>
-                                        <AppText style={styles.breadcrumbText}>{spot.breadcrumb}</AppText>
-                                    </View>
-                                )}
-                            </TouchableOpacity>
-                        ))}
+                                        <View style={styles.hotspotButtonInner}>
+                                            <AppText style={styles.hotspotButtonText}>
+                                                {spot.text?.[lang] ||
+                                                    spot.text?.en ||
+                                                    spot.text?.ru ||
+                                                    "Button"}
+                                            </AppText>
+                                        </View>
+                                    </TouchableOpacity>
+                                );
+                            }
+
+                            return (
+                                <TouchableOpacity
+                                    key={spot.id}
+                                    disabled={hotspotsDisabled || !onHotspotPress}
+                                    activeOpacity={0.85}
+                                    onPress={(event) => {
+                                        event.stopPropagation();
+
+                                        onHotspotPress?.(spot, {
+                                            line,
+                                            scene,
+                                            fadeToScene,
+                                        });
+                                    }}
+                                    style={[
+                                        styles.hotspot,
+                                        {
+                                            left: width * (spot.x ?? 0),
+                                            top: height * (spot.y ?? 0),
+                                        },
+                                    ]}
+                                >
+                                    {!!spot?.icon && !!RESOURCES[spot.icon] && (
+                                        <Image
+                                            source={RESOURCES[spot.icon]}
+                                            style={{
+                                                height: height * (spot.height ?? 0.1),
+                                                width: width * (spot.width ?? 0.1),
+                                                resizeMode: "contain",
+                                            }}
+                                        />
+                                    )}
+
+                                    {!!spot?.breadcrumb && (
+                                        <View style={styles.breadcrumbWrap}>
+                                            <AppText style={styles.breadcrumbText}>
+                                                {typeof spot.breadcrumb === "object"
+                                                    ? spot.breadcrumb?.[lang] ||
+                                                    spot.breadcrumb?.en ||
+                                                    ""
+                                                    : spot.breadcrumb}
+                                            </AppText>
+                                        </View>
+                                    )}
+                                </TouchableOpacity>
+                            );
+                        })}
 
                         {/* overlays */}
                         {renderOverlays?.({ line, fadeToScene })}
 
-                        {line?.logicChoice && (
+                        {isLastTextPage &&
+                            line?.logicChoice && (
                             <LogicChoiceModal
                                 visible={logicChoiceVisible}
                                 choice={line.logicChoice}
-                                onClose={() => setLogicChoiceVisible(false)}
+                                onClose={() =>
+                                    setLogicChoiceVisible(false)
+                                }
                                 onResult={({ option, correct }) => {
                                     setLogicChoiceVisible(false);
+
+                                    const hpPenalty = correct
+                                        ? 0
+                                        : option.hpPenalty ?? 1;
+
+                                    if (hpPenalty > 0) {
+                                        loseHp(hpPenalty);
+                                    }
 
                                     console.log("🧠 LOGIC CHOICE:", {
                                         optionId: option.id,
                                         correct,
+                                        hpPenalty,
                                         resultLine: option.resultLine,
                                     });
 
@@ -615,7 +1095,8 @@ export default function DialogScene({
                             />
                         )}
 
-                        {line?.showProof && (
+                        {isLastTextPage &&
+                            line?.showProof && (
                             <ShowProofModal
                                 visible={proofVisible}
                                 proof={line.showProof}
@@ -641,7 +1122,8 @@ export default function DialogScene({
                             />
                         )}
 
-                        {line?.makeLogic && (
+                        {isLastTextPage &&
+                            line?.makeLogic && (
                             <MakeLogicModal
                                 visible={logicVisible}
                                 logic={line.makeLogic}
@@ -677,7 +1159,8 @@ export default function DialogScene({
                             />
                         )}
 
-                        {line?.showProof && (
+                        {isLastTextPage &&
+                            line?.showProof && (
                             <View pointerEvents="box-none" style={styles.showProofButtonWrap}>
                                 <TouchableOpacity
                                     activeOpacity={0.85}
@@ -696,6 +1179,35 @@ export default function DialogScene({
                         {line?.menu !== false && <MainMenu />}
 
                         <Animated.View style={[styles.overlay, { opacity: fadeAnim }]} />
+
+                        {/* Самый верхний слой для анимаций */}
+                        <View
+                            pointerEvents="box-none"
+                            style={styles.topAnimationLayer}
+                        >
+                            {activeFactAnimation && (
+                                <ClueFlyAnimation
+                                    text={activeFactAnimation.text}
+                                    icon={activeFactAnimation.icon}
+                                    category="facts"
+                                    lang={lang}
+                                    start={{
+                                        x: width * 0.5,
+                                        y: height * 0.25,
+                                    }}
+                                    end={{
+                                        x: width * 0.68,
+                                        y: height * 0.91,
+                                    }}
+                                    onFinish={handleFactAnimationFinish}
+                                />
+                            )}
+
+                            {renderTopOverlays?.({
+                                line,
+                                fadeToScene,
+                            })}
+                        </View>
                     </ImageBackground>
                 </Pressable>
             )}
@@ -704,7 +1216,6 @@ export default function DialogScene({
 }
 
 const styles = StyleSheet.create({
-    hotspot: { position: "absolute" },
 
     overlay: {
         position: "absolute",
@@ -787,19 +1298,30 @@ const styles = StyleSheet.create({
         top: height * 0.11,
     },
 
-    selectedProofIcon: {
-        width: width * 0.24,
-        height: width * 0.24,
-        resizeMode: "cover",
+    // selectedProofIcon: {
+    //     width: width * 0.24,
+    //     height: width * 0.24,
+    //     resizeMode: "cover",
+    //     borderRadius: 4,
+    //     marginBottom: 6,
+    // },
+    selectedProofIconWrap: {
+        width: width * 0.44,
+        height: width * 0.34,
+
         borderRadius: 4,
-        marginBottom: 6,
+        // marginBottom: 6,
+
+        overflow: "hidden",
+        alignItems: "center",
+        justifyContent: "center",
     },
 
     selectedProofText: {
         paddingBottom: 6 * SCALE,
         color: "#FFFFFF",
         fontSize: 13 * 3 * SCALE,
-        lineHeight: 20 * 3 * SCALE,
+        lineHeight: 17 * 3 * SCALE,
         textAlign: "center",
         fontFamily: "IBMPlexMono-Regular",
     },
@@ -896,12 +1418,23 @@ const styles = StyleSheet.create({
         padding: 7,
     },
 
-    logicSelectedIcon: {
+    // logicSelectedIcon: {
+    //     width: 58,
+    //     height: 58,
+    //     resizeMode: "cover",
+    //     borderRadius: 5,
+    //     marginRight: 8,
+    // },
+    logicSelectedIconWrap: {
         width: 58,
         height: 58,
-        resizeMode: "cover",
+
         borderRadius: 5,
         marginRight: 8,
+
+        overflow: "hidden",
+        alignItems: "center",
+        justifyContent: "center",
     },
 
     logicSelectedText: {
@@ -978,12 +1511,20 @@ const styles = StyleSheet.create({
         alignItems: "center",
     },
 
-    hypothesisResultImage: {
-        resizeMode: "cover",
-
+    // hypothesisResultImage: {
+    //     resizeMode: "cover",
+    //
+    //     borderRadius: 6,
+    //
+    //     marginBottom: 12,
+    // },
+    hypothesisResultImageWrap: {
         borderRadius: 6,
-
         marginBottom: 12,
+
+        overflow: "hidden",
+        alignItems: "center",
+        justifyContent: "center",
     },
 
     hypothesisResultDescription: {
@@ -1084,5 +1625,92 @@ const styles = StyleSheet.create({
         textAlign: "center",
 
         fontFamily: "IBMPlexMono-Bold",
+    },
+    hotspotButtonTouch: {
+        position: "absolute",
+
+        borderRadius: 7,
+
+        overflow: "hidden",
+
+        zIndex: 500,
+        elevation: 500,
+
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 3,
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 4,
+    },
+    hotspot: {
+        position: "absolute",
+    },
+
+    hotspotButtonInner: {
+        position: "absolute",
+
+        top: 2,
+        left: 2,
+        right: 2,
+        bottom: 2,
+
+        backgroundColor: "rgba(41, 79, 75, 0.97)",
+
+        borderColor: "white",
+        borderWidth: 2 * SCALE,
+
+        borderRadius: 5,
+
+        paddingHorizontal: 10,
+        paddingVertical: 8,
+
+        alignItems: "center",
+        justifyContent: "center",
+
+        zIndex: 2,
+        elevation: 2,
+    },
+
+    hotspotButtonText: {
+        color: "#FFFFFF",
+
+        fontFamily: "IBMPlexMono-Regular",
+
+        fontSize: 15 * 3 * SCALE,
+        lineHeight: 23,
+
+        textAlign: "center",
+
+        zIndex: 3,
+    },
+    dialogBackButton: {
+        position: "absolute",
+
+        left: width * 0.06,
+        top: height * 0.12,
+
+        // backgroundColor: "rgba(41, 79, 75, 0.95)",
+
+        // borderWidth: 2,
+        // borderColor: "#E9DEC1",
+
+        // borderRadius: 6,
+
+        // paddingHorizontal: 16,
+        // paddingVertical: 9,
+
+        zIndex: 180,
+        elevation: 180,
+    },
+
+    topAnimationLayer: {
+        ...StyleSheet.absoluteFillObject,
+
+        zIndex: 999999,
+        elevation: 999999,
+
+        overflow: "visible",
     },
 });
