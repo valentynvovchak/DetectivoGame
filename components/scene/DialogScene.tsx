@@ -37,6 +37,7 @@ import {
     DialogBubbleMode, doesTextFitBubble,
     paginateDialogText,
 } from "@/tools/paginateDialogText";
+import NextStepChoiceModal from "@/components/NextStepChoiceModal";
 
 type FactAnimationState = {
     id: string;
@@ -92,6 +93,7 @@ export default function DialogScene({
         dialogHistory,
         loseHp,
         hasItem,
+        clearTasks,
     } = useGameStore();
 
     if (!isHydrated) {
@@ -120,6 +122,7 @@ export default function DialogScene({
 
     const [activeFactAnimation, setActiveFactAnimation] = useState<FactAnimationState | null>(null);
     const factAnimationResolveRef = useRef<(() => void) | null>(null);
+    const [nextStepChoiceVisible, setNextStepChoiceVisible] = useState(false);
 
     useEffect(() => {
         if (!scene?.background) return;
@@ -206,7 +209,6 @@ export default function DialogScene({
                     addTask(action.id);
                     break;
                 }
-
                 case "complete_task": {
                     if (!action.id) {
                         console.warn("Missing task id:", action);
@@ -216,7 +218,6 @@ export default function DialogScene({
                     completeTask(action.id);
                     break;
                 }
-
                 case "remove_task": {
                     if (!action.id) {
                         console.warn("Missing task id:", action);
@@ -226,7 +227,6 @@ export default function DialogScene({
                     removeTask(action.id);
                     break;
                 }
-
                 case "add_item": {
                     if (!action.category || !action.id) {
                         console.warn(
@@ -236,7 +236,6 @@ export default function DialogScene({
 
                         break;
                     }
-
                     /*
                      * Факты автоматически показывают
                      * анимацию перед добавлением.
@@ -255,10 +254,8 @@ export default function DialogScene({
                             action.id
                         );
                     }
-
                     break;
                 }
-
                 case "unlock_location": {
                     if (!action.id) {
                         console.warn(
@@ -267,30 +264,37 @@ export default function DialogScene({
                         );
                         break;
                     }
-
                     unlockLocation(action.id);
                     break;
                 }
-
                 case "save_checkpoint": {
                     await saveProgress();
-
                     console.log(
                         "💾 Checkpoint saved:",
                         currentScene,
                         currentLine
                     );
-
                     break;
                 }
+                case "clear_tasks": {
+                    clearTasks();
+                    break;
+                }
+                case "lose_hp": {
+                    const amount =
+                        typeof action.amount === "number"
+                            ? action.amount
+                            : 1;
 
+                    loseHp(amount);
+                    break;
+                }
                 default:
                     console.warn(
                         "Unknown action type:",
                         action.type,
                         action
                     );
-
                     break;
             }
         }
@@ -535,8 +539,11 @@ export default function DialogScene({
     const isLastTextPage =
         textPageIndex >= textPages.length - 1;
 
-    const displayedHotspots =
-        isLastTextPage ? hotspots : [];
+    // const displayedHotspots = isLastTextPage ? hotspots : [];
+    const displayedHotspots = hotspots;
+    const interactiveHotspots = displayedHotspots.filter(
+        (spot: any) => spot.type !== "inactive"
+    );
 
 
     return (
@@ -626,13 +633,15 @@ export default function DialogScene({
                         const hasMakeLogic = !!line?.makeLogic;
                         const hasLogicChoice = !!line?.logicChoice;
                         const tapToContinue = line?.tapToContinue !== false;
+                        const hasNextStepChoice = !!line?.nextStepChoice;
 
                         const canAdvanceByDefault =
                             tapToContinue &&
-                            displayedHotspots.length === 0 &&
+                            interactiveHotspots.length === 0 &&
                             !hasShowProof &&
                             !hasMakeLogic &&
-                            !hasLogicChoice;
+                            !hasLogicChoice &&
+                            !hasNextStepChoice;
 
                         const isLast = currentLine >= scene.dialog.length - 1;
                         const ok = canAdvance ? canAdvance(line) : canAdvanceByDefault;
@@ -653,18 +662,159 @@ export default function DialogScene({
                         resizeMode={activeResizeMode}
                         style={globalStyles.screen}
                     >
+                        <View
+                            pointerEvents="box-none"
+                            style={styles.hotspotsLayer}
+                        >
+                            {displayedHotspots.map((spot: any) => {
+                                if (spot.type === "inactive") {
+                                    return (
+                                        <View
+                                            key={spot.id}
+                                            pointerEvents="none"
+                                            style={[
+                                                styles.hotspot,
+                                                {
+                                                    left: width * (spot.x ?? 0),
+                                                    top: height * (spot.y ?? 0),
+                                                },
+                                            ]}
+                                        >
+                                            {!!spot?.icon && !!RESOURCES[spot.icon] && (
+                                                <Image
+                                                    source={RESOURCES[spot.icon]}
+                                                    style={{
+                                                        height:
+                                                            height *
+                                                            (spot.height ?? 0.1),
+
+                                                        width:
+                                                            width *
+                                                            (spot.width ?? 0.1),
+
+                                                        resizeMode: "contain",
+                                                    }}
+                                                />
+                                            )}
+                                        </View>
+                                    );
+                                }
+                                if (spot.type === "button") {
+                                    const buttonWidth = width * (spot.width ?? 0.4);
+
+                                    const buttonHeight = spot.height
+                                        ? height * spot.height
+                                        : 56;
+
+                                    return (
+                                        <TouchableOpacity
+                                            key={spot.id}
+                                            activeOpacity={0.8}
+                                            disabled={hotspotsDisabled || !onHotspotPress}
+                                            onPress={(event) => {
+                                                event.stopPropagation();
+
+                                                onHotspotPress?.(spot, {
+                                                    line,
+                                                    scene,
+                                                    fadeToScene,
+                                                });
+                                            }}
+                                            style={[
+                                                styles.hotspotButtonTouch,
+                                                {
+                                                    left: width * (spot.x ?? 0),
+                                                    top: height * (spot.y ?? 0),
+                                                    width: buttonWidth,
+                                                    height: buttonHeight,
+                                                },
+                                            ]}
+                                        >
+                                            <LinearGradient
+                                                colors={["#CCCCCC", "#CACA99"]}
+                                                start={{ x: 0, y: 0 }}
+                                                end={{ x: 0, y: 1 }}
+                                                style={StyleSheet.absoluteFillObject}
+                                            />
+
+                                            <View style={styles.hotspotButtonInner}>
+                                                <AppText style={styles.hotspotButtonText}>
+                                                    {spot.text?.[lang] ||
+                                                        spot.text?.en ||
+                                                        spot.text?.ru ||
+                                                        "Button"}
+                                                </AppText>
+                                            </View>
+                                        </TouchableOpacity>
+                                    );
+                                }
+
+                                return (
+                                    <TouchableOpacity
+                                        key={spot.id}
+                                        disabled={hotspotsDisabled || !onHotspotPress}
+                                        activeOpacity={0.85}
+                                        onPress={(event) => {
+                                            event.stopPropagation();
+
+                                            onHotspotPress?.(spot, {
+                                                line,
+                                                scene,
+                                                fadeToScene,
+                                            });
+                                        }}
+                                        style={[
+                                            styles.hotspot,
+                                            {
+                                                left: width * (spot.x ?? 0),
+                                                top: height * (spot.y ?? 0),
+                                            },
+                                        ]}
+                                    >
+                                        {!!spot?.icon && !!RESOURCES[spot.icon] && (
+                                            <Image
+                                                source={RESOURCES[spot.icon]}
+                                                style={{
+                                                    height: height * (spot.height ?? 0.1),
+                                                    width: width * (spot.width ?? 0.1),
+                                                    resizeMode: "contain",
+                                                }}
+                                            />
+                                        )}
+
+                                        {!!spot?.breadcrumb && (
+                                            <View style={styles.breadcrumbWrap}>
+                                                <AppText style={styles.breadcrumbText}>
+                                                    {typeof spot.breadcrumb === "object"
+                                                        ? spot.breadcrumb?.[lang] ||
+                                                        spot.breadcrumb?.en ||
+                                                        ""
+                                                        : spot.breadcrumb}
+                                                </AppText>
+                                            </View>
+                                        )}
+                                    </TouchableOpacity>
+                                );
+                            })}
+                        </View>
+
                         {/* characters */}
-                        {line?.bubble_mode !== 'avatar' && line?.characters?.map((char: any) => (
-                            <CharacterSpriteNew
-                                key={char.id}
-                                mode={char.mode}
-                                side={char.side}
-                                Sprite={getSprite(char.sprite)}
-                                isSpeaking={char.id === line.speaker}
-                                heightModifier={char?.height_modifier}
-                                proofResult={line?.proofResult}
-                            />
-                        ))}
+                        <View
+                            // pointerEvents="none"
+                            style={styles.charactersLayer}
+                        >
+                            {line?.bubble_mode !== 'avatar' && line?.characters?.map((char: any) => (
+                                <CharacterSpriteNew
+                                    key={char.id}
+                                    mode={char.mode}
+                                    side={char.side}
+                                    Sprite={getSprite(char.sprite)}
+                                    isSpeaking={char.id === line.speaker}
+                                    heightModifier={char?.height_modifier}
+                                    proofResult={line?.proofResult}
+                                />
+                            ))}
+                        </View>
 
                         {/* speech */}
                         {line?.speaker && (
@@ -680,14 +830,19 @@ export default function DialogScene({
                                 // PNG
                                 avatarImage={line?.characters?.[0]?.image}
                                 avatarBg={line?.characters?.[0]?.bg}
+                                avatarPosition={line?.characters?.[0]?.position}
                             />
                         )}
 
-                        {(textPageIndex > 0 ||
-                            dialogHistory.length > 0) &&
+                        {(
+                                typeof line?.backLine === "number" ||
+                                textPageIndex > 0 ||
+                                dialogHistory.length > 0
+                            ) &&
                             !proofVisible &&
                             !logicVisible &&
                             !logicChoiceVisible &&
+                            !nextStepChoiceVisible &&
                             line?.allowBack !== false && (
                                 // <TouchableOpacity
                                 //     activeOpacity={0.85}
@@ -708,11 +863,15 @@ export default function DialogScene({
                                         event.stopPropagation();
 
                                         if (textPageIndex > 0) {
-                                            setTextPageIndex(
-                                                (previous) =>
-                                                    Math.max(0, previous - 1)
+                                            setTextPageIndex((previous) =>
+                                                Math.max(0, previous - 1)
                                             );
+                                            return;
+                                        }
 
+                                        if (typeof line?.backLine === "number") {
+                                            setTextPageIndex(0);
+                                            goToLine(line.backLine);
                                             return;
                                         }
 
@@ -732,25 +891,25 @@ export default function DialogScene({
 
                         {isLastTextPage &&
                             line?.logicChoice && (
-                            <View
-                                pointerEvents="box-none"
-                                style={styles.logicChoiceButtonWrap}
-                            >
-                                <TouchableOpacity
-                                    activeOpacity={0.85}
-                                    style={styles.logicChoiceButton}
-                                    onPress={() => setLogicChoiceVisible(true)}
+                                <View
+                                    pointerEvents="box-none"
+                                    style={styles.logicChoiceButtonWrap}
                                 >
-                                    <AppText style={styles.logicChoiceButtonText}>
-                                        {line.logicChoice.buttonText?.[lang] ||
-                                            line.logicChoice.buttonText?.en ||
-                                            (lang === "ru"
-                                                ? "Выбрать"
-                                                : "Choose")}
-                                    </AppText>
-                                </TouchableOpacity>
-                            </View>
-                        )}
+                                    <TouchableOpacity
+                                        activeOpacity={0.85}
+                                        style={styles.logicChoiceButton}
+                                        onPress={() => setLogicChoiceVisible(true)}
+                                    >
+                                        <AppText style={styles.logicChoiceButtonText}>
+                                            {line.logicChoice.buttonText?.[lang] ||
+                                                line.logicChoice.buttonText?.en ||
+                                                (lang === "ru"
+                                                    ? "Выбрать"
+                                                    : "Choose")}
+                                        </AppText>
+                                    </TouchableOpacity>
+                                </View>
+                            )}
 
                         {line?.choiceResult?.type === "wrong" && (
                             <View
@@ -784,8 +943,8 @@ export default function DialogScene({
                                         styles.hypothesisResultCard,
                                         {
                                             width: isTabletScreen
-                                                ? Math.min(screenWidth * 0.65, 520)
-                                                : Math.min(screenWidth * 0.75, 390),
+                                                ? Math.min(screenWidth * 0.7, 520)
+                                                : Math.min(screenWidth * 0.8, 390),
                                         },
                                     ]}
                                 >
@@ -840,21 +999,49 @@ export default function DialogScene({
                         )}
 
                         {isLastTextPage &&
-                            line?.makeLogic && (
-                            <View pointerEvents="box-none" style={styles.logicButtonWrap}>
-                                <TouchableOpacity
-                                    activeOpacity={0.85}
-                                    style={styles.logicButton}
-                                    onPress={() => setLogicVisible(true)}
+                            line?.nextStepChoice && (
+                                <View
+                                    pointerEvents="box-none"
+                                    style={styles.logicChoiceButtonWrap}
                                 >
-                                    <AppText style={styles.logicButtonText}>
-                                        {line.makeLogic.buttonText?.[lang] ||
-                                            line.makeLogic.buttonText?.en ||
-                                            (lang === "ru" ? "Собрать логику!" : "Make logic!")}
-                                    </AppText>
-                                </TouchableOpacity>
-                            </View>
-                        )}
+                                    <TouchableOpacity
+                                        activeOpacity={0.85}
+                                        style={styles.logicChoiceButton}
+                                        onPress={(event) => {
+                                            event.stopPropagation();
+                                            setNextStepChoiceVisible(true);
+                                        }}
+                                    >
+                                        <AppText
+                                            style={styles.logicChoiceButtonText}
+                                        >
+                                            {line.nextStepChoice.buttonText?.[lang] ||
+                                                line.nextStepChoice.buttonText?.en ||
+                                                (lang === "ru"
+                                                    ? "Выбрать"
+                                                    : "Choose")}
+                                        </AppText>
+                                    </TouchableOpacity>
+                                </View>
+                            )
+                        }
+
+                        {isLastTextPage &&
+                            line?.makeLogic && (
+                                <View pointerEvents="box-none" style={styles.logicButtonWrap}>
+                                    <TouchableOpacity
+                                        activeOpacity={0.85}
+                                        style={styles.logicButton}
+                                        onPress={() => setLogicVisible(true)}
+                                    >
+                                        <AppText style={styles.logicButtonText}>
+                                            {line.makeLogic.buttonText?.[lang] ||
+                                                line.makeLogic.buttonText?.en ||
+                                                (lang === "ru" ? "Собрать логику!" : "Make logic!")}
+                                        </AppText>
+                                    </TouchableOpacity>
+                                </View>
+                            )}
 
                         {line?.logicResult?.type === "wrong" &&
                             line?.logicResult?.showSelectedItems &&
@@ -890,6 +1077,78 @@ export default function DialogScene({
                                 </View>
                             )
                         }
+
+                        {line?.choiceResult?.type === "correct" &&
+                            line?.choiceResult?.showResultCard &&
+                            line?.choiceResult?.resultCard && (
+                                <View
+                                    pointerEvents="none"
+                                    style={styles.nextStepResultWrap}
+                                >
+                                    <View style={styles.nextStepResultCard}>
+                                        {!!line.choiceResult.resultCard.icon && (
+                                            <View
+                                                style={
+                                                    styles.nextStepResultImageWrap
+                                                }
+                                            >
+                                                <MixedIcon
+                                                    icon={
+                                                        line.choiceResult
+                                                            .resultCard.icon
+                                                    }
+                                                    width={width * 0.55}
+                                                    height={height * 0.25}
+                                                    resizeMode="cover"
+                                                />
+                                            </View>
+                                        )}
+
+                                        <View
+                                            style={
+                                                styles.nextStepResultTextBox
+                                            }
+                                        >
+                                            <AppText
+                                                style={
+                                                    styles.nextStepResultText
+                                                }
+                                            >
+                                                {line.choiceResult.resultCard
+                                                        .text?.[lang] ||
+                                                    line.choiceResult.resultCard
+                                                        .text?.en ||
+                                                    ""}
+                                            </AppText>
+                                        </View>
+                                    </View>
+                                </View>
+                            )
+                        }
+
+                        {line?.choiceResult?.type === "correct" &&
+                            line?.choiceResult?.showBadge && (
+                                <View
+                                    pointerEvents="none"
+                                    style={styles.choiceResultBadgeWrap}
+                                >
+                                    <View
+                                        style={
+                                            styles.choiceResultBadgeCorrect
+                                        }
+                                    >
+                                        <AppText
+                                            style={styles.choiceResultText}
+                                        >
+                                            {line.choiceResult.message?.[
+                                                    lang
+                                                    ] ||
+                                                line.choiceResult.message?.en ||
+                                                ""}
+                                        </AppText>
+                                    </View>
+                                </View>
+                            )}
 
                         {line?.logicResult && (
                             <View pointerEvents="none" style={styles.logicResultBadgeWrap}>
@@ -960,107 +1219,31 @@ export default function DialogScene({
                                 </View>
                             </View>
                         )}
-                        {displayedHotspots.map((spot: any) => {
-                            if (spot.type === "button") {
-                                const buttonWidth = width * (spot.width ?? 0.4);
-
-                                const buttonHeight = spot.height
-                                    ? height * spot.height
-                                    : 56;
-
-                                return (
-                                    <TouchableOpacity
-                                        key={spot.id}
-                                        activeOpacity={0.8}
-                                        disabled={hotspotsDisabled || !onHotspotPress}
-                                        onPress={(event) => {
-                                            event.stopPropagation();
-
-                                            onHotspotPress?.(spot, {
-                                                line,
-                                                scene,
-                                                fadeToScene,
-                                            });
-                                        }}
-                                        style={[
-                                            styles.hotspotButtonTouch,
-                                            {
-                                                left: width * (spot.x ?? 0),
-                                                top: height * (spot.y ?? 0),
-                                                width: buttonWidth,
-                                                height: buttonHeight,
-                                            },
-                                        ]}
-                                    >
-                                        <LinearGradient
-                                            colors={["#CCCCCC", "#CACA99"]}
-                                            start={{ x: 0, y: 0 }}
-                                            end={{ x: 0, y: 1 }}
-                                            style={StyleSheet.absoluteFillObject}
-                                        />
-
-                                        <View style={styles.hotspotButtonInner}>
-                                            <AppText style={styles.hotspotButtonText}>
-                                                {spot.text?.[lang] ||
-                                                    spot.text?.en ||
-                                                    spot.text?.ru ||
-                                                    "Button"}
-                                            </AppText>
-                                        </View>
-                                    </TouchableOpacity>
-                                );
-                            }
-
-                            return (
-                                <TouchableOpacity
-                                    key={spot.id}
-                                    disabled={hotspotsDisabled || !onHotspotPress}
-                                    activeOpacity={0.85}
-                                    onPress={(event) => {
-                                        event.stopPropagation();
-
-                                        onHotspotPress?.(spot, {
-                                            line,
-                                            scene,
-                                            fadeToScene,
-                                        });
-                                    }}
-                                    style={[
-                                        styles.hotspot,
-                                        {
-                                            left: width * (spot.x ?? 0),
-                                            top: height * (spot.y ?? 0),
-                                        },
-                                    ]}
-                                >
-                                    {!!spot?.icon && !!RESOURCES[spot.icon] && (
-                                        <Image
-                                            source={RESOURCES[spot.icon]}
-                                            style={{
-                                                height: height * (spot.height ?? 0.1),
-                                                width: width * (spot.width ?? 0.1),
-                                                resizeMode: "contain",
-                                            }}
-                                        />
-                                    )}
-
-                                    {!!spot?.breadcrumb && (
-                                        <View style={styles.breadcrumbWrap}>
-                                            <AppText style={styles.breadcrumbText}>
-                                                {typeof spot.breadcrumb === "object"
-                                                    ? spot.breadcrumb?.[lang] ||
-                                                    spot.breadcrumb?.en ||
-                                                    ""
-                                                    : spot.breadcrumb}
-                                            </AppText>
-                                        </View>
-                                    )}
-                                </TouchableOpacity>
-                            );
-                        })}
 
                         {/* overlays */}
                         {renderOverlays?.({ line, fadeToScene })}
+
+                        {isLastTextPage && line?.nextStepChoice && (
+                            <NextStepChoiceModal
+                                visible={nextStepChoiceVisible}
+                                lang={lang}
+                                choice={line.nextStepChoice}
+                                onClose={() =>
+                                    setNextStepChoiceVisible(false)
+                                }
+                                onResult={({ option, correct }) => {
+                                    setNextStepChoiceVisible(false);
+
+                                    if (!correct) {
+                                        loseHp(option.hpPenalty ?? 1);
+                                    }
+
+                                    if (option.resultLine) {
+                                        goToDialogId(option.resultLine);
+                                    }
+                                }}
+                            />
+                        )}
 
                         {isLastTextPage &&
                             line?.logicChoice && (
@@ -1318,7 +1501,7 @@ const styles = StyleSheet.create({
     },
 
     selectedProofText: {
-        paddingBottom: 6 * SCALE,
+        paddingTop: 14 * SCALE,
         color: "#FFFFFF",
         fontSize: 13 * 3 * SCALE,
         lineHeight: 17 * 3 * SCALE,
@@ -1663,8 +1846,8 @@ const styles = StyleSheet.create({
 
         borderRadius: 5,
 
-        paddingHorizontal: 10,
-        paddingVertical: 8,
+        // paddingHorizontal: 10,
+        // paddingVertical: 8,
 
         alignItems: "center",
         justifyContent: "center",
@@ -1689,7 +1872,7 @@ const styles = StyleSheet.create({
         position: "absolute",
 
         left: width * 0.06,
-        top: height * 0.12,
+        top: height * 0.057,
 
         // backgroundColor: "rgba(41, 79, 75, 0.95)",
 
@@ -1713,4 +1896,113 @@ const styles = StyleSheet.create({
 
         overflow: "visible",
     },
+
+    nextStepResultWrap: {
+        position: "absolute",
+
+        top: height * 0.07,
+        left: 0,
+        right: 0,
+
+        alignItems: "center",
+
+        zIndex: 145,
+        elevation: 145,
+    },
+
+    nextStepResultCard: {
+        width: width * 0.82,
+
+        backgroundColor: "rgba(48, 82, 78, 0.98)",
+
+        borderWidth: 2,
+        borderColor: "#E9DEC1",
+
+        borderRadius: 7,
+
+        padding: 10,
+
+        alignItems: "center",
+    },
+
+    nextStepResultImageWrap: {
+        width: width * 0.55,
+        height: height * 0.25,
+
+        borderRadius: 6,
+        overflow: "hidden",
+
+        alignItems: "center",
+        justifyContent: "center",
+
+        marginBottom: 10,
+    },
+
+    nextStepResultTextBox: {
+        width: "100%",
+
+        minHeight: 48,
+
+        backgroundColor: "#F7F2E7",
+
+        borderRadius: 5,
+
+        paddingHorizontal: 10,
+        paddingVertical: 8,
+
+        justifyContent: "center",
+    },
+
+    nextStepResultText: {
+        color: "#4A5655",
+
+        fontFamily: "IBMPlexMono-Regular",
+
+        fontSize: 12 * 3 * SCALE,
+        lineHeight: 16 * 3 * SCALE,
+
+        textAlign: "center",
+    },
+    choiceResultBadgeCorrect: {
+        minWidth: width * 0.42,
+        maxWidth: width * 0.78,
+
+        backgroundColor: "rgba(41, 79, 75, 0.97)",
+
+        borderWidth: 2,
+        borderColor: "#E9DEC1",
+
+        borderRadius: 5,
+
+        paddingHorizontal: 18,
+        paddingVertical: 12,
+
+        alignItems: "center",
+        justifyContent: "center",
+    },
+
+    hotspotsLayer: {
+        ...StyleSheet.absoluteFillObject,
+
+        // zIndex: 30,
+        // elevation: 30,
+
+        overflow: "visible",
+    },
+    // ***IMPORTANT***
+    charactersLayer: {
+        ...StyleSheet.absoluteFillObject,
+
+        // zIndex: 60,
+        // elevation: 60,
+
+        overflow: "visible",
+    },
+
+    hotspotIcon: {
+        width: "100%",
+        height: "100%",
+        resizeMode: "contain",
+    },
+    // ***/IMPORTANT***
 });

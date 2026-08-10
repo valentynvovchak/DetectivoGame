@@ -21,6 +21,13 @@ import MrsKanagawaSister from "../assets/sprites/MrsKanagawaSister/mrs_kanagawa_
 import MrsKanagawaSisterSad from "../assets/sprites/MrsKanagawaSister/mrs_kanagawa_sister_sad.svg";
 import MrsKanagawaSisterAngry from "../assets/sprites/MrsKanagawaSister/mrs_kanagawa_sister_angry_2.svg";
 import MrsKanagawaSisterFingerUp from "../assets/sprites/MrsKanagawaSister/mrs_kanagawa_sister_finger_up.svg";
+import Lawyer from "../assets/sprites/Lawyer/lawyer.svg";
+import Lawyer2 from "../assets/sprites/Lawyer/lawyer_2.svg";
+import RobertsHoldingABall from "../assets/sprites/Roberts/roberts_holding_a_ball.svg";
+import Colleague from "../assets/sprites/Colleague/colleague-2.svg";
+import ColleagueThinking from "../assets/sprites/Colleague/colleague_thinking-2.svg";
+import ColleagueHandUp from "../assets/sprites/Colleague/colleague_hand_up.svg";
+import ColleagueShocked from "../assets/sprites/Colleague/colleague_shocked.svg";
 
 export const BACKGROUNDS: Record<string, any> = {
     inventory_bg: require("../assets/backgrounds/inventory_bg.jpg"),
@@ -45,6 +52,7 @@ export const BACKGROUNDS: Record<string, any> = {
     kanagawa_house_outdoor: require("../assets/backgrounds/Фон_снаружи_дома_Канагавы_подходит.jpg"),
     kanagawa_house_indoor: require("../assets/backgrounds/Фон дом Канагавы подходит.jpg"),
     interrogation_room: require("../assets/backgrounds/interrogation_room.jpg"),
+    interrogation_room_2: require("../assets/backgrounds/interrogation_room_2.jpg"),
     mrs_kanagawa_sister_kitchen: require("../assets/backgrounds/Фон_сестры_Канагавы_жены_подходит.jpg"),
     mr_kanagawa_complained_about_husband: require("../assets/backgrounds/mr_kanagawa_complained_about_husband.jpg"),
     in_public_loving_husband: require("../assets/backgrounds/in_public_loving_husband.jpg"),
@@ -58,6 +66,15 @@ export const BACKGROUNDS: Record<string, any> = {
     conduct_searches: require("../assets/backgrounds/conduct_searches.jpg"),
     choose_what_to_do_next: require("../assets/backgrounds/choose_what_to_do_next.jpg"),
     choose_the_correct_suspect: require("../assets/backgrounds/choose_the_correct_suspect.jpg"),
+    lawyer_cabinet: require("../assets/backgrounds/lawyer_cabinet.jpg"),
+    last_meeting_with_lawyer: require("../assets/backgrounds/last_meeting_with_lawyer.jpg"),
+    inside_a_car_clean: require("../assets/backgrounds/inside_a_car_clean.png"),
+    gas_on_purpose: require("../assets/backgrounds/gas_on_purpose.jpg"),
+    laboratory_colleague: require("../assets/backgrounds/laboratory_colleague.jpg"),
+    there_was_something_like_that: require("../assets/backgrounds/there_was_something_like_that.jpg"),
+    storage_box: require("../assets/backgrounds/storage_box.jpg"),
+    storage_box_open: require("../assets/backgrounds/storage_box_open.jpg"),
+    kanagawa_rats_garage: require("../assets/backgrounds/kanagawa_rats_garage.jpg"),
 
 };
 
@@ -113,6 +130,21 @@ export const getSprite = (name: string) => {
             return MrsKanagawaSisterAngry;
         case "mrs_kanagawa_sister_finger_up":
             return MrsKanagawaSisterFingerUp;
+        case "lawyer":
+            return Lawyer;
+        case "lawyer2":
+            return Lawyer2;
+        case "roberts_holding_a_ball":
+            return RobertsHoldingABall;
+        case "colleague":
+            return Colleague;
+        case "colleague_thinking":
+            return ColleagueThinking;
+        case "colleague_hand_up":
+            return ColleagueHandUp;
+        case "colleague_shocked":
+            return ColleagueShocked;
+
         default:
             return DanielSmile;
     }

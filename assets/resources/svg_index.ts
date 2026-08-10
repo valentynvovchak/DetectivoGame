@@ -12,7 +12,26 @@ import report from "@/assets/resources/report.svg";
 import two_bodies from "@/assets/resources/two_bodies.svg";
 import mr_kanagawa from "@/assets/resources/mr_kanagawa.svg";
 import estimated_time_of_death from "@/assets/resources/estimated_time_of_death.svg";
-import arrow_back from "@/assets/resources/arrow-back-3.svg";
+import arrow_back from "@/assets/resources/arrow_back_22.svg";
+import mr_kanagawa_divorce_losses from "@/assets/resources/mr_kanagawa_divorce_losses.svg";
+import kanagawas_possible_motive from "@/assets/resources/kanagawas_possible_motive.svg";
+import check_car_again_border from "@/assets/resources/check_car_again_border.svg";
+import kanagawa_house_border from "@/assets/resources/kanagawa_house_border.svg";
+import mr_kanagawa_border from "@/assets/resources/mr_kanagawa_border.svg";
+import housekeeper_border from "@/assets/resources/housekeeper_border.svg";
+import yoga_ball from "@/assets/resources/yoga_ball.svg";
+import test_tube from "@/assets/resources/test_tube.svg";
+import carbon_monoxide_in_yoga_ball from "@/assets/resources/carbon_monoxide_in_yoga_ball.svg";
+import mr_roberts from "@/assets/resources/mr_roberts.svg";
+import talk_to_colleagues from "@/assets/resources/talk_to_colleagues.svg";
+import talk_to_colleagues_sm from "@/assets/resources/talk_to_colleagues_sm.svg";
+import doctor from "@/assets/resources/doctor.svg";
+import carbon_monoxide_canisters_border from "@/assets/resources/carbon_monoxide_canisters_border.svg";
+import arrest_kanagawa_border from "@/assets/resources/arrest_kanagawa_border.svg";
+import mr_kanagawa_asked_daughter_to_stay_home from "@/assets/resources/mr_kanagawa_asked_daughter_to_stay_home.svg";
+import stay_at_home from "@/assets/resources/stay_at_home.svg";
+import mr_kanagawa_claims_gas_for_rats from "@/assets/resources/mr_kanagawa_claims_gas_for_rats.svg";
+
 
 export const SVG_RESOURCES: Record<string, any> = {
     "water_for_fitness.svg": WaterForFitnessIcon,
@@ -30,4 +49,22 @@ export const SVG_RESOURCES: Record<string, any> = {
     "mr_kanagawa.svg": mr_kanagawa,
     "estimated_time_of_death.svg": estimated_time_of_death,
     "arrow_back.svg": arrow_back,
+    "mr_kanagawa_divorce_losses.svg": mr_kanagawa_divorce_losses,
+    "kanagawas_possible_motive.svg": kanagawas_possible_motive,
+    "check_car_again_border.svg": check_car_again_border,
+    "kanagawa_house_border.svg": kanagawa_house_border,
+    "mr_kanagawa_border.svg": mr_kanagawa_border,
+    "housekeeper_border.svg": housekeeper_border,
+    "yoga_ball.svg": yoga_ball,
+    "test_tube.svg": test_tube,
+    "carbon_monoxide_in_yoga_ball.svg": carbon_monoxide_in_yoga_ball,
+    "mr_roberts.svg": mr_roberts,
+    "talk_to_colleagues.svg": talk_to_colleagues,
+    "talk_to_colleagues_sm.svg": talk_to_colleagues_sm,
+    "doctor.svg": doctor,
+    "carbon_monoxide_canisters_border.svg": carbon_monoxide_canisters_border,
+    "arrest_kanagawa_border.svg": arrest_kanagawa_border,
+    "mr_kanagawa_asked_daughter_to_stay_home.svg": mr_kanagawa_asked_daughter_to_stay_home,
+    "stay_at_home.svg": stay_at_home,
+    "mr_kanagawa_claims_gas_for_rats.svg": mr_kanagawa_claims_gas_for_rats,
 };

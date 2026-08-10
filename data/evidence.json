@@ -4,13 +4,13 @@
       "name": "Вода для фитнеса",
       "icon": "water_for_fitness.svg",
       "importance": "low",
-      "description": "В багажнике находились две бутылки воды, на первый взгляд обычные и не примечательные. Пока неясно, имеют ли они отношение к происшествию.",
+      "description": "В багажнике находились две бутылки воды, на первый взгляд обычные и не примечательные. Пока неясно, имеют ли они отношение к происшествию."
     },
     "en": {
       "name": "Water for fitness",
       "icon": "water_for_fitness.svg",
       "importance": "low",
-      "description": "Two bottles of water was found in the trunk, seemingly ordinary at first glance. It is unclear whether they are related to the incident.",
+      "description": "Two bottles of water was found in the trunk, seemingly ordinary at first glance. It is unclear whether they are related to the incident."
     }
   },
   "mrs_kanagawa_id": {
@@ -73,6 +73,38 @@
       "importance": "high",
       "short_description": "Vehicle inspection report: no gas leaks were detected within the vehicle cabin.",
       "description": "The vehicle inspection found no gas leaks inside the cabin. This casts doubt on the initial theory of an accidental vehicle malfunction and suggests that the source of carbon monoxide may have been external or deliberately placed inside the car."
+    }
+  },
+  "large_yoga_ball": {
+    "ru": {
+      "name": "Большой мяч для йоги",
+      "icon": "yoga_ball.svg",
+      "importance": "high",
+      "short_description": "Большой мяч для йоги\n(найденный в автомобиле миссис Канагавы).",
+      "description": "В автомобиле миссис Канагавы был найден большой надувной мяч для йоги. Благодаря своему объёму он мог вместить значительное количество газа. Мяч необходимо проверить на наличие следов угарного газа и признаков преднамеренного наполнения."
+    },
+    "en": {
+      "name": "Large yoga ball",
+      "icon": "yoga_ball.svg",
+      "importance": "high",
+      "short_description": "A large yoga ball\n(found in Mrs. Kanagawa's car).",
+      "description": "A large inflatable yoga ball was found inside Mrs. Kanagawa's car. Due to its size, it could have contained a significant amount of gas. The ball should be examined for traces of carbon monoxide and signs that it was deliberately filled."
+    }
+  },
+  "carbon_monoxide_in_yoga_ball": {
+    "ru": {
+      "name": "Заключение лаборатории: \nВ мяче для йоги обнаружены следы угарного газа.",
+      "icon": "carbon_monoxide_in_yoga_ball.svg",
+      "importance": "high",
+      "short_description": "Заключение лаборатории:\nТесты показали, что в мяче для йоги действительно присутствовал газ.",
+      "description": "Во время лабораторного исследования внутри мяча для йоги были обнаружены остаточные следы угарного газа. Это подтверждает, что мяч мог использоваться как ёмкость для хранения газа, который затем попал в салон автомобиля."
+    },
+    "en": {
+      "name": "Laboratory conclusion \nTraces of carbon monoxide were found in the yoga ball.",
+      "icon": "carbon_monoxide_in_yoga_ball.svg",
+      "importance": "high",
+      "short_description": "Laboratory conclusion:\nThe tests show that carbon monoxide was actually in yoga ball",
+      "description": "During the laboratory examination, residual traces of carbon monoxide were found inside the yoga ball. This confirms that the ball may have been used as a container for the gas before it was released into the vehicle cabin."
     }
   }
 }

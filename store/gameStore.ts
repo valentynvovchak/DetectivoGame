@@ -33,8 +33,8 @@ const mapLocationsDefault = {
         },
         unlocked: false,
         visited: false,
-        x: 0.27,
-        y: 0.71,
+        x: 0.3,
+        y: 0.7,
         icon: "map_laboratory.png",
         // по умолчанию первый визит
         targetScene: "6_laboratory",
@@ -46,8 +46,8 @@ const mapLocationsDefault = {
         },
         unlocked: false,
         visited: false,
-        x: 0.74,
-        y: 0.24,
+        x: 0.71,
+        y: 0.23,
         icon: "map_kanagawa_house.png",
         targetScene: "7_kanagawa_house",
     },
@@ -62,6 +62,30 @@ const mapLocationsDefault = {
         y: 0.15,
         icon: "map_mrs_kanagawa_sister.png",
         targetScene: "9_mrs_kanagawa_sister",
+    },
+    "10_mr_kanagawa_lawyer": {
+        name: {
+            ru: "Юрист мистера канагавы",
+            en: "Mr. Kanagawa's lawyer",
+        },
+        unlocked: false,
+            visited: false,
+            x: 0.10,
+            y: 0.13,
+            icon: "map_lawyer.png",
+            targetScene: "10_mr_kanagawa_lawyer_1",
+    },
+    "11_car_reinspection": {
+        name: {
+            ru: "Место преступления",
+            en: "Crime scene",
+        },
+        unlocked: false,
+        visited: false,
+        x: 0.64,
+        y: 0.34,
+        icon: "map_car.png",
+        targetScene: "11_car_reinspection",
     },
 
 };
@@ -186,6 +210,8 @@ export interface GameState {
             ru: string;
             en: string;
         };
+        icon?: string;
+        placement?: "top" | "bottom";
         locationId?: string;
     } | null;
     dialogHistory: DialogHistoryEntry[];
@@ -234,12 +260,12 @@ export interface GameState {
     setMapNotification: (
         notification: {
             id: string;
-
             text: {
                 ru: string;
                 en: string;
             };
-
+            icon?: string;
+            placement?: "top" | "bottom";
             locationId?: string;
         } | null
     ) => void;
@@ -247,6 +273,7 @@ export interface GameState {
     goBackDialog: () => void;
     clearDialogHistory: () => void;
     loseHp: (amount?: number) => void;
+    clearTasks: () => void;
 }
 
 export const useGameStore = create<GameState>((set, get) => ({
@@ -796,6 +823,19 @@ export const useGameStore = create<GameState>((set, get) => ({
     loseHp: (amount = 1) => {
         set((state) => ({
             hp: Math.max(0, state.hp - amount),
+        }));
+    },
+
+    clearTasks: () => {
+        set((state) => ({
+            activeTasks: [],
+            completedTasks: [],
+            unseenTaskActionsCount: 0,
+
+            // Убираем ещё не показанные уведомления задач
+            uiNotices: state.uiNotices.filter(
+                (notice) => notice.source !== "tasks"
+            ),
         }));
     },
 

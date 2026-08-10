@@ -6,7 +6,7 @@ interface CharacterSpriteProps {
     side: "left" | "right" | "center";
     Sprite: any; // SVG компонент
     isSpeaking?: boolean;
-    mode?: "full"  | "cut"| "zoom" | "zoom2";
+    mode?: "full"  | "cut"| "zoom" | "zoom2" | "bottom";
 }
 
 const { width, height } = Dimensions.get("window");
@@ -22,6 +22,66 @@ export default function CharacterSpriteNew({
 
     if (proofResult && !isSmallScreen && (mode === 'cut' || mode === 'zoom')) {
         mode = 'zoom2'
+    }
+
+    if (mode === "bottom") {
+        /*
+         * Большой персонаж.
+         * Нижняя часть специально уходит за границу экрана.
+         * Экран сам её обрежет.
+         */
+
+        const bottomSpriteWidth =
+            width * 0.72 * heightModifier;
+
+        const bottomSpriteHeight =
+            height * 0.68 * heightModifier;
+
+        const horizontalPosition =
+            side === "left"
+                ? {
+                    left: -width * 0.055,
+                }
+                : side === "right"
+                    ? {
+                        right: -width * 0.055,
+                    }
+                    : {
+                        left:
+                            (width - bottomSpriteWidth) / 2,
+                    };
+
+        return (
+            <View
+                pointerEvents="none"
+                style={[
+                    styles.container,
+                    horizontalPosition,
+                    {
+                        /*
+                         * Вот это и создаёт crop снизу.
+                         *
+                         * НЕ используем overflow:hidden.
+                         */
+                        bottom: -height * 0.34,
+
+                        width: bottomSpriteWidth,
+                        height: bottomSpriteHeight,
+
+                        zIndex: 40,
+                        elevation: 40,
+                    },
+                ]}
+            >
+                <Sprite
+                    width={bottomSpriteWidth}
+                    height={bottomSpriteHeight}
+                    style={[
+                        !isSpeaking && styles.dimmed,
+                    ]}
+                />
+            </View>
+        );
     }
 
     // размер персонажа в зависимости от режима

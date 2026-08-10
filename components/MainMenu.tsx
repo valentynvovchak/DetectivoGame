@@ -52,93 +52,6 @@ export default function MainMenu({
                 </Pressable>
             )}
             {/* Нижняя панель */}
-            {/*<View style={styles.bottomMenu}>*/}
-            {/*    /!* Первая строка *!/*/}
-            {/*    <View style={styles.row}>*/}
-            {/*        <LinearGradient*/}
-            {/*            colors={["#767680", "#CACA99"]}*/}
-            {/*            start={{ x: 0, y: 0 }}*/}
-            {/*            end={{ x: 0, y: 1 }} // сверху вниз*/}
-            {/*            style={{*/}
-            {/*                borderRadius: 7,*/}
-            {/*                padding: 3, // ← толщина рамки*/}
-            {/*            }}*/}
-            {/*        >*/}
-            {/*            <TouchableOpacity onPress={() => setOpenSettings(true)} style={styles.iconWrap}>*/}
-            {/*                <Image source={require("../assets/icons/settings2.png")} style={styles.icon} />*/}
-            {/*            </TouchableOpacity>*/}
-            {/*        </LinearGradient>*/}
-
-
-            {/*        /!*<Link onPress={() => router.push("/map")} asChild>*!/*/}
-            {/*        <LinearGradient*/}
-            {/*            colors={["#767680", "#CACA99"]}*/}
-            {/*            start={{ x: 0, y: 0 }}*/}
-            {/*            end={{ x: 0, y: 1 }} // сверху вниз*/}
-            {/*            style={{*/}
-            {/*                borderRadius: 7,*/}
-            {/*                padding: 3, // ← толщина рамки*/}
-            {/*            }}*/}
-            {/*        >*/}
-            {/*            <TouchableOpacity onPress={() => router.replace("/map")} style={styles.iconWrap}>*/}
-            {/*                <Image source={require("../assets/icons/map.png")} style={styles.icon} />*/}
-            {/*            </TouchableOpacity>*/}
-            {/*        </LinearGradient>*/}
-            {/*        /!*</Link>*!/*/}
-            {/*    </View>*/}
-
-            {/*    /!* Вторая строка *!/*/}
-            {/*    <View style={styles.row}>*/}
-            {/*        <View style={styles.menuButtonWrapper}>*/}
-            {/*            <IconFlyoutNotice source="briefcase" />*/}
-
-            {/*            <LinearGradient*/}
-            {/*                colors={["#767680", "#CACA99"]}*/}
-            {/*                start={{ x: 0, y: 0 }}*/}
-            {/*                end={{ x: 0, y: 1 }}*/}
-            {/*                style={styles.iconBorder}*/}
-            {/*            >*/}
-            {/*                <TouchableOpacity*/}
-            {/*                    onPress={() => setInventoryVisible(true)}*/}
-            {/*                    style={styles.iconWrap}*/}
-            {/*                >*/}
-            {/*                    <Image*/}
-            {/*                        source={require("../assets/icons/briefcase2.png")}*/}
-            {/*                        style={styles.icon}*/}
-            {/*                    />*/}
-            {/*                </TouchableOpacity>*/}
-            {/*            </LinearGradient>*/}
-
-            {/*            {hasNewItems && <View pointerEvents="none" style={styles.redDot} />}*/}
-            {/*        </View>*/}
-
-            {/*        <View style={styles.menuButtonWrapper}>*/}
-            {/*            <IconFlyoutNotice source="tasks" />*/}
-
-            {/*            <LinearGradient*/}
-            {/*                colors={["#767680", "#CACA99"]}*/}
-            {/*                start={{ x: 0, y: 0 }}*/}
-            {/*                end={{ x: 0, y: 1 }}*/}
-            {/*                style={styles.iconBorder}*/}
-            {/*            >*/}
-            {/*                <TouchableOpacity onPress={openTasks} style={styles.iconWrap}>*/}
-            {/*                    <Image*/}
-            {/*                        source={require("../assets/icons/to-do-list2.png")}*/}
-            {/*                        style={styles.icon}*/}
-            {/*                    />*/}
-            {/*                </TouchableOpacity>*/}
-            {/*            </LinearGradient>*/}
-
-            {/*            {unseenTaskActionsCount > 0 && (*/}
-            {/*                <View pointerEvents="none" style={styles.taskBadge}>*/}
-            {/*                    <AppText style={styles.taskBadgeText}>*/}
-            {/*                        {unseenTaskActionsCount > 99 ? "99+" : unseenTaskActionsCount}*/}
-            {/*                    </AppText>*/}
-            {/*                </View>*/}
-            {/*            )}*/}
-            {/*        </View>*/}
-            {/*    </View>*/}
-            {/*</View>*/}
             <View
                 style={[
                     styles.bottomMenu,
@@ -250,14 +163,8 @@ export default function MainMenu({
             {/* Модалки */}
             <SettingsModal visible={openSettings} onClose={() => setOpenSettings(false)} />
             <InfoModal visible={openInfo} onClose={() => setOpenInfo(false)} />
-            <InventoryModal
-                visible={inventoryVisible}
-                onClose={() => setInventoryVisible(false)}
-            />
-            <TasksModal
-                visible={isTasksOpen}
-                onClose={() => setIsTasksOpen(false)}
-            />
+            <InventoryModal visible={inventoryVisible} onClose={() => setInventoryVisible(false)}/>
+            <TasksModal visible={isTasksOpen} onClose={() => setIsTasksOpen(false)}/>
         </>
     );
 }
@@ -307,7 +214,7 @@ const styles = StyleSheet.create({
     checkpointButton: {
         position: "absolute",
         top: 45,
-        left: 30,
+        left: 110,
         backgroundColor: "rgba(255,255,255,0.93)",
         borderRadius: 8,
         paddingVertical: isTablet ? 12 : 8,

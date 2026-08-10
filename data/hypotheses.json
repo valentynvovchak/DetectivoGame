@@ -30,5 +30,53 @@
       "short_description": "Someone deliberately released gas into the car.",
       "description": "The vehicle inspection found no defects or gas leaks. This suggests that the carbon monoxide did not enter the cabin accidentally but was deliberately introduced by someone who intended to kill the people inside."
     }
+  },
+  "mr_kanagawa_possible_motive": {
+    "ru": {
+      "name": "ВОЗМОЖНЫЙ МОТИВ мистера Канагавы:\nВ случае развода он может потерять половину своего имущества, а дети могут остаться с матерью.",
+      "icon": "kanagawas_possible_motive.svg",
+      "importance": "high",
+      "short_description": "ВОЗМОЖНЫЙ МОТИВ г-на Канагавы:\nЕго жена подала на развод, и после этого он может потерять половину своего имущества и опеку над детьми.",
+      "description": "ВОЗМОЖНЫЙ МОТИВ мистера Канагавы:\nМиссис Канагава собиралась подать на развод. В таком случае мистер Канагава мог потерять значительную часть совместного имущества и право опеки над детьми. Эти финансовые и личные последствия могли стать для него возможным мотивом помешать жене осуществить её намерение."
+    },
+    "en": {
+      "name": "Mr. Kanagawa's POSSIBLE MOTIVE: \nHe could lose half of his property in a divorce and the children could stay with their mother.",
+      "icon": "kanagawas_possible_motive.svg",
+      "importance": "high",
+      "short_description": "Mr. Kanagawa's POSSIBLE MOTIVE: \nHis wife filed for divorce, and after it he could lose half of his property and custody of the children.",
+      "description": "Mr. Kanagawa's POSSIBLE MOTIVE: \nMrs. Kanagawa intended to file for divorce. As a result, Mr. Kanagawa could have lost a significant share of the marital property and custody of the children. These financial and personal consequences may have given him a possible motive to prevent his wife from carrying out her plans."
+    }
+  },
+  "stolen_carbon_monoxide_used_in_murder": {
+    "ru": {
+      "name": "Убийца мог использовать угарный газ, пропавший из больницы.",
+      "icon": "missing_carbon_monoxide_cylinder.png",
+      "importance": "high",
+      "short_description": "Пропавший из больницы баллон с угарным газом мог быть использован для убийства.",
+      "description": "В больнице отсутствует один из четырёх баллонов с угарным газом, заказанных мистером Канагавой. При этом причиной смерти жертв стало отравление угарным газом. Эти обстоятельства позволяют предположить, что убийца мог использовать именно пропавший баллон."
+    },
+    "en": {
+      "name": "The killer could have used carbon monoxide that disappeared from the hospital.",
+      "icon": "missing_carbon_monoxide_cylinder.png",
+      "importance": "high",
+      "short_description": "The missing carbon monoxide cylinder from the hospital may have been used in the murder.",
+      "description": "One of the four carbon monoxide cylinders ordered by Mr. Kanagawa is missing from the hospital, while the victims died from carbon monoxide poisoning. Together, these facts suggest that the killer may have used the missing cylinder."
+    }
+  },
+  "daughter_death_was_accidental": {
+    "ru": {
+      "name": "Возможно, смерть дочери не входила в план убийцы.",
+      "icon": "daughter_death_was_accidental.png",
+      "importance": "high",
+      "short_description": "Мистер Канагава просил дочь остаться дома, поэтому её смерть могла быть случайной.",
+      "description": "Если угарный газ был намеренно помещён в автомобиль, настойчивая просьба мистера Канагавы к дочери остаться дома приобретает новое значение. Возможно, предполагаемой целью была только миссис Канагава, а дочь оказалась в машине вопреки его ожиданиям и погибла случайно."
+    },
+    "en": {
+      "name": "Perhaps the daughter's death was accidental.",
+      "icon": "daughter_death_was_accidental.png",
+      "importance": "high",
+      "short_description": "Mr. Kanagawa asked his daughter to stay home, so her death may not have been intended.",
+      "description": "If carbon monoxide was deliberately introduced into the car, Mr. Kanagawa's insistence that his daughter stay home takes on a new meaning. Mrs. Kanagawa may have been the only intended victim, while their daughter entered the car unexpectedly and became an unintended victim."
+    }
   }
 }

@@ -7,6 +7,9 @@ import {
     Dimensions,
     Platform,
     ImageSourcePropType,
+    ViewStyle,
+    TextStyle,
+    Text,
 } from "react-native";
 
 import { isSmallScreen, isTablet } from "@/styles/global";
@@ -17,7 +20,6 @@ import { LinearGradient } from "expo-linear-gradient";
 import { RESOURCES } from "@/assets/resources";
 import SVGImage from "@/components/small/SVGImage";
 import {getSprite} from "@/tools/utils";
-import {platform} from "os";
 
 const { width, height } = Dimensions.get("window");
 const SCALE = baseScale * 3;
@@ -25,19 +27,50 @@ const SCALE = baseScale * 3;
 const AVATAR_SIZE = width * 0.22;
 const AVATAR_BUBBLE_WIDTH = width * 0.75;
 const AVATAR_BUBBLE_HEIGHT = width * 0.28;
-const AVATAR_DIALOG_BOTTOM = height * 0.035;
+// const AVATAR_DIALOG_BOTTOM = height * 0.035;
+
 
 interface SpeechBubbleProps {
     text: string;
     side: "left" | "right" | "center";
     speaker?: string;
-    mode?: "small" | "medium" | "large" | "avatar" | "zip" | "dark" | "explanation";
+    mode?: "small" | "medium" | "large" | "avatar" | "zip" | "dark" | "explanation" | "bottom";
     lang?: GameState["lang"];
     charMode?: string;
     avatarSprite?: string;
     avatarImage?: string;
     avatarBg?: string;
+    avatarPosition: "top" | "bottom";
 }
+
+const stripBoldMarkup = (value: string) => {
+    return value.replace(/\*\*(.*?)\*\*/g, "$1");
+};
+
+const renderBoldText = (value: string) => {
+    const parts = value.split(/(\*\*.*?\*\*)/g);
+
+    return parts.map((part, index) => {
+        const isBold =
+            part.startsWith("**") &&
+            part.endsWith("**");
+
+        if (isBold) {
+            return (
+                <Text
+                    key={index}
+                    style={{
+                        fontFamily: "IBMPlexMono-Bold",
+                    }}
+                >
+                    {part.slice(2, -2)}
+                </Text>
+            );
+        }
+
+        return part;
+    });
+};
 
 export default function SpeechBubble({
          text,
@@ -47,10 +80,15 @@ export default function SpeechBubble({
          charMode,
          avatarSprite,
          avatarImage,
-         avatarBg
+         avatarBg,
+         avatarPosition = "bottom"
     }: SpeechBubbleProps) {
 
     const [darkTextHeight, setDarkTextHeight] = useState(0);
+
+    const AVATAR_DIALOG_BOTTOM = avatarPosition === "top" ?
+        height * 0.82 :
+        height * 0.035;
 
     if (!isSmallScreen) {
         if (mode === "large") {
@@ -98,8 +136,8 @@ export default function SpeechBubble({
 
     if (mode === "zip") {
         const promptWidth = isTablet
-            ? Math.min(width * 0.62, 560)
-            : Math.min(width * 0.78, 420);
+            ? Math.min(width * 0.72, 660)
+            : Math.min(width * 0.88, 520);
 
         const horizontalPosition =
             side === "left"
@@ -113,6 +151,66 @@ export default function SpeechBubble({
                     : {
                         left: (width - promptWidth) / 2,
                     };
+
+        /*
+         * Убираем лишние пробелы, чтобы подсчёт слов
+         * работал одинаково для русского и английского.
+         */
+        const normalizedText =
+            typeof text === "string"
+                ? text.replace(/\s+/g, " ").trim()
+                : "";
+
+        const wordsCount = normalizedText
+            .split(" ")
+            .filter(Boolean)
+            .length;
+
+        /*
+         * Короткие фразы показываем крупнее.
+         *
+         * 1–4 слова  — крупный текст;
+         * 5–8 слов  — средний;
+         * 9+ слов   — стандартный.
+         */
+        const isVeryShortText =
+            wordsCount <= 4 &&
+            normalizedText.length <= 35;
+
+        const isShortText =
+            wordsCount <= 8 &&
+            normalizedText.length <= 70;
+
+        const promptFontSize = isTablet
+            ? isVeryShortText
+                ? 26
+                : isShortText
+                    ? 22
+                    : 19
+            : isSmallScreen
+                ? isVeryShortText
+                    ? 17
+                    : isShortText
+                        ? 15
+                        : 13
+                : isVeryShortText
+                    ? 21
+                    : isShortText
+                        ? 18
+                        : 16;
+
+        const promptLineHeight =
+            Math.round(promptFontSize * 1.3);
+
+        const promptBubbleStyle: ViewStyle = {
+            paddingHorizontal: 0,
+        };
+
+        const promptBubbleTextStyle: TextStyle = {
+            fontSize: promptFontSize,
+            lineHeight: promptLineHeight,
+            textAlign: "center",
+        };
 
         return (
             <View
@@ -131,12 +229,290 @@ export default function SpeechBubble({
                     end={{ x: 0, y: 1 }}
                     style={styles.promptBubbleBorder}
                 >
-                    <View style={styles.promptBubble}>
-                        <AppText style={styles.promptBubbleText}>
-                            {text}
+                    <View
+                        style={[
+                            styles.promptBubble,
+                            promptBubbleStyle,
+                        ]}
+                    >
+                        <AppText
+                            style={[
+                                styles.promptBubbleText,
+                                promptBubbleTextStyle,
+                            ]}
+                            numberOfLines={3}
+                            adjustsFontSizeToFit
+                            minimumFontScale={0.78}
+                        >
+                            {normalizedText}
                         </AppText>
                     </View>
                 </LinearGradient>
+            </View>
+        );
+    }
+
+    /*if (mode === "bottom") {
+        const rawText =
+            typeof text === "string"
+                ? text
+                : "";
+
+        const cleanText = rawText
+            .replace(/\*\*(.*?)\*\*!/g, "$1")
+            .replace(/\s+/g, " ")
+            .trim();
+
+        const wordsCount = cleanText
+            .split(" ")
+            .filter(Boolean)
+            .length;
+
+        /!*
+         * Как в дизайне:
+         *
+         * персонаж слева -> bubble справа от него
+         * персонаж справа -> bubble слева от него
+         *!/
+        const bubbleWidth = isTablet
+            ? Math.min(width * 0.42, 360)
+            : width * 0.43;
+
+        const horizontalPosition =
+            side === "left"
+                ? {
+                    left: width * 0.31,
+                }
+                : side === "right"
+                    ? {
+                        right: width * 0.31,
+                    }
+                    : {
+                        left:
+                            (width - bubbleWidth) / 2,
+                    };
+
+        /!*
+         * Короткие фразы чуть крупнее.
+         *!/
+        const fontSize = isTablet
+            ? wordsCount <= 6
+                ? 17
+                : 15
+            : isSmallScreen
+                ? wordsCount <= 6
+                    ? 13
+                    : 11
+                : wordsCount <= 6
+                    ? 16
+                    : 13;
+
+        const lineHeight =
+            Math.round(fontSize * 1.28);
+
+        return (
+            <View
+                pointerEvents="none"
+                style={[
+                    styles.bottomBubbleRoot,
+                    horizontalPosition,
+                    {
+                        width: bubbleWidth,
+                    },
+                ]}
+            >
+                <View style={styles.bottomBubble}>
+                    <Text
+                        style={[
+                            styles.bottomBubbleText,
+                            {
+                                fontSize,
+                                lineHeight,
+                            },
+                        ]}
+                        numberOfLines={3}
+                        adjustsFontSizeToFit
+                        minimumFontScale={0.78}
+                    >
+                        {renderBoldText(rawText)}
+                    </Text>
+
+                    {/!* хвост bubble *!/}
+                    <View
+                        style={[
+                            styles.bottomBubbleTailBorder,
+
+                            side === "left"
+                                ? styles.bottomBubbleTailLeft
+                                : styles.bottomBubbleTailRight,
+                        ]}
+                    />
+
+                    <View
+                        style={[
+                            styles.bottomBubbleTailInner,
+
+                            side === "left"
+                                ? styles.bottomBubbleTailLeftInner
+                                : styles.bottomBubbleTailRightInner,
+                        ]}
+                    />
+                </View>
+            </View>
+        );
+    }*/
+    if (mode === "bottom") {
+        const rawText =
+            typeof text === "string"
+                ? text
+                : "";
+
+        const cleanText = stripBoldMarkup(rawText)
+            .replace(/\s+/g, " ")
+            .trim();
+
+        const wordsCount = cleanText
+            .split(" ")
+            .filter(Boolean)
+            .length;
+
+        /*
+         * Используем настоящий размер PNG.
+         * Никаких bubbleWidth * 0.48.
+         */
+        const bubbleSource = require(
+            "../assets/ui/прямая речь прямоугольник для игры готовый 1.png"
+        );
+
+        const nativeBubble = Image.resolveAssetSource(bubbleSource);
+
+        /*
+         * Максимальная ширина на экране.
+         * Сам PNG сохраняет ОРИГИНАЛЬНЫЕ пропорции.
+         */
+        const maxBubbleWidth = isTablet
+            ? Math.min(width * 0.48, 420)
+            : width * 0.48;
+
+        const bubbleScale = Math.min(
+            1,
+            maxBubbleWidth / nativeBubble?.width
+        );
+
+        const bubbleWidth =
+            nativeBubble?.width * bubbleScale;
+
+        const bubbleHeight =
+            nativeBubble?.height * bubbleScale;
+
+        /*
+         * Не прижимаем bubble к персонажу.
+         *
+         * LEFT:
+         * [персонаж]    [bubble]
+         *
+         * RIGHT:
+         * [bubble]    [персонаж]
+         */
+        const horizontalPosition =
+            side === "left"
+                ? {
+                    left: width * 0.43,
+                }
+                : side === "right"
+                    ? {
+                        right: width * 0.43,
+                    }
+                    : {
+                        left:
+                            (width - bubbleWidth) / 2,
+                    };
+
+        const fontSize = isTablet
+            ? wordsCount <= 6
+                ? 17
+                : 15
+            : isSmallScreen
+                ? wordsCount <= 6
+                    ? 13
+                    : 11.5
+                : wordsCount <= 6
+                    ? 16
+                    : 13;
+
+        const lineHeight =
+            Math.round(fontSize * 1.28);
+
+        return (
+            <View
+                pointerEvents="none"
+                style={[
+                    styles.bottomBubbleRoot,
+                    horizontalPosition,
+                    {
+                        width: bubbleWidth,
+                        height: bubbleHeight,
+                    },
+                ]}
+            >
+                <ImageBackground
+                    source={bubbleSource}
+                    resizeMode="contain"
+                    style={{
+                        width: bubbleWidth,
+                        height: bubbleHeight,
+                        justifyContent: "center",
+                    }}
+                    imageStyle={[
+                        /*
+                         * Для персонажа справа
+                         * зеркалим только картинку.
+                         */
+                        side === "right" && {
+                            transform: [
+                                {
+                                    scaleX: -1,
+                                },
+                            ],
+                        },
+                    ]}
+                >
+                    <View
+                        style={[
+                            styles.bottomBubbleTextWrap,
+
+                            /*
+                             * Очень небольшие padding.
+                             * Раньше именно padding сильно
+                             * зауживал область текста.
+                             */
+                            side === "left"
+                                ? {
+                                    paddingLeft: bubbleWidth * 0.12,
+                                    paddingRight: bubbleWidth * 0.07,
+                                }
+                                : {
+                                    paddingLeft: bubbleWidth * 0.07,
+                                    paddingRight: bubbleWidth * 0.12,
+                                },
+                        ]}
+                    >
+                        <Text
+                            style={[
+                                styles.bottomBubbleText,
+                                {
+                                    fontSize,
+                                    lineHeight,
+                                },
+                            ]}
+                            numberOfLines={3}
+                            adjustsFontSizeToFit
+                            minimumFontScale={0.8}
+                        >
+                            {renderBoldText(rawText)}
+                        </Text>
+                    </View>
+                </ImageBackground>
             </View>
         );
     }
@@ -243,7 +619,7 @@ export default function SpeechBubble({
                 : null;
 
         return (
-            <View style={styles.avatarDialogRoot}>
+            <View style={[styles.avatarDialogRoot, {bottom: AVATAR_DIALOG_BOTTOM}]}>
                 <View
                     style={[
                         styles.avatarBox,
@@ -478,7 +854,6 @@ const styles = StyleSheet.create({
         position: "absolute",
 
         left: width * 0.03,
-        bottom: AVATAR_DIALOG_BOTTOM,
 
         flexDirection: "row",
         alignItems: "center",
@@ -649,18 +1024,18 @@ const styles = StyleSheet.create({
         fontFamily: "IBMPlexMono-Regular",
 
         fontSize: isTablet
-            ? 17
-            : isSmallScreen
-                ? 11
-                : 14,
-
-        lineHeight: isTablet
-            ? 23
+            ? 21
             : isSmallScreen
                 ? 15
-                : 19,
+                : 18,
 
-        textAlign: "left",
+        lineHeight: isTablet
+            ? 27
+            : isSmallScreen
+                ? 19
+                : 23,
+
+        textAlign: "center",
 
         flexShrink: 1,
     },
@@ -683,11 +1058,8 @@ const styles = StyleSheet.create({
 
     promptBubbleBorder: {
         width: "100%",
-
         padding: isTablet ? 3 : 2,
-
         borderRadius: isTablet ? 8 : 6,
-
         shadowColor: "#000",
         shadowOffset: {
             width: 0,
@@ -695,32 +1067,23 @@ const styles = StyleSheet.create({
         },
         shadowOpacity: 0.25,
         shadowRadius: 5,
-
         elevation: 6,
     },
 
     promptBubble: {
         width: "100%",
-
         minHeight: isTablet ? 90 : 68,
-
         backgroundColor: "rgba(48, 76, 74, 0.97)",
-
         borderRadius: isTablet ? 6 : 4,
-
         paddingHorizontal: isTablet ? 22 : 15,
-        paddingVertical: isTablet ? 16 : 12,
-
+        // paddingVertical: isTablet ? 16 : 12,
         justifyContent: "center",
     },
 
     promptBubbleText: {
         width: "100%",
-
         color: "#F7EFE4",
-
         fontFamily: "IBMPlexMono-Regular",
-
         fontSize: isTablet
             ? 18
             : isSmallScreen
@@ -732,6 +1095,149 @@ const styles = StyleSheet.create({
             : isSmallScreen
                 ? 17
                 : 21,
+        textAlign: "center",
+        flexShrink: 1,
+    },
+
+
+
+    bottomBubbleImage: {
+        width: "100%",
+
+        /*
+         * Не фиксируем огромную высоту.
+         * Bubble остаётся компактным.
+         */
+        minHeight: isTablet ? 88 : 72,
+
+        justifyContent: "center",
+    },
+
+    bottomBubbleImageStyle: {
+        borderRadius: 8,
+    },
+
+    bottomBubble: {
+        position: "relative",
+
+        width: "100%",
+        minHeight: isTablet ? 88 : 72,
+
+        backgroundColor: "#EEF7FF",
+
+        borderWidth: 2,
+        borderColor: "#5D86C8",
+
+        borderRadius: 14,
+
+        paddingHorizontal: isTablet ? 17 : 13,
+        paddingVertical: isTablet ? 12 : 9,
+
+        justifyContent: "center",
+        alignItems: "center",
+
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 2,
+        },
+        shadowOpacity: 0.16,
+        shadowRadius: 3,
+
+        elevation: 4,
+    },
+
+
+    /*
+     * Внешний синий треугольник.
+     */
+    bottomBubbleTailBorder: {
+        position: "absolute",
+
+        bottom: -20,
+
+        width: 0,
+        height: 0,
+
+        borderLeftWidth: 15,
+        borderRightWidth: 15,
+        borderTopWidth: 20,
+
+        borderLeftColor: "transparent",
+        borderRightColor: "transparent",
+        borderTopColor: "#5D86C8",
+    },
+
+    /*
+     * Внутренний светлый треугольник.
+     * Накладывается поверх синего.
+     */
+    bottomBubbleTailInner: {
+        position: "absolute",
+
+        bottom: -16,
+
+        width: 0,
+        height: 0,
+
+        borderLeftWidth: 12,
+        borderRightWidth: 12,
+        borderTopWidth: 17,
+
+        borderLeftColor: "transparent",
+        borderRightColor: "transparent",
+        borderTopColor: "#EEF7FF",
+    },
+
+    /*
+     * Персонаж слева:
+     * хвост находится слева у bubble.
+     */
+    bottomBubbleTailLeft: {
+        left: 18,
+    },
+
+    bottomBubbleTailLeftInner: {
+        left: 21,
+    },
+
+    /*
+     * Персонаж справа:
+     * хвост находится справа.
+     */
+    bottomBubbleTailRight: {
+        right: 18,
+    },
+
+    bottomBubbleTailRightInner: {
+        right: 21,
+    },
+
+    bottomBubbleRoot: {
+        position: "absolute",
+
+        bottom: height * 0.145,
+
+        zIndex: 90,
+        elevation: 90,
+    },
+
+    bottomBubbleTextWrap: {
+        width: "100%",
+        height: "100%",
+
+        paddingTop: "8%",
+        paddingBottom: "15%",
+
+        justifyContent: "center",
+    },
+
+    bottomBubbleText: {
+        width: "100%",
+
+        color: "#222",
+
+        fontFamily: "IBMPlexMono-Regular",
 
         textAlign: "left",
 

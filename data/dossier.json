@@ -166,5 +166,33 @@
       "short_description": "Mrs. Ichika is Mrs. Kanagawa's sister. They were close, and she knows a great deal about the relationships within the Kanagawa family.",
       "description": "Mrs. Ichika is the sister of the deceased Mrs. Kanagawa. The sisters had a close relationship and communicated regularly, so Ichika is well informed about her sister's personal life, emotional state, and relationships within the Kanagawa family. Her testimony may help reveal hidden conflicts, personal problems, or circumstances that other witnesses may have chosen not to disclose."
     }
+  },
+  "mr_matsumoto": {
+    "ru": {
+      "type": "Свидетель",
+      "name": "Мистер Мацумото",
+      "occupation": "Семейный юрист семьи Канагава",
+      "status": "Свидетель — давний друг и юридический представитель семьи",
+      "appearance": {
+        "sprite": "lawyer",
+        "bg": "#CF2525",
+        "mood": "спокойный, опытный, осторожный"
+      },
+      "short_description": "Мистер Мацумото — опытный юрист и давний друг семьи Канагава.",
+      "description": "Мистер Мацумото много лет представляет интересы семьи Канагава и поддерживает с её членами близкие дружеские отношения. Благодаря своей работе он может быть осведомлён о семейных конфликтах, финансовых вопросах и личных обстоятельствах, которые супруги предпочитали скрывать от посторонних. Его показания могут помочь выяснить, обращалась ли миссис Канагава к нему незадолго до смерти и существовали ли юридические проблемы, способные стать причиной преступления."
+    },
+    "en": {
+      "type": "Witness",
+      "name": "Mr. Matsumoto",
+      "occupation": "Lawyer for the Kanagawa family",
+      "status": "Witness — longtime friend and legal representative of the family",
+      "appearance": {
+        "sprite": "lawyer",
+        "bg": "#CF2525",
+        "mood": "calm, experienced, cautious"
+      },
+      "short_description": "Mr. Matsumoto is an experienced lawyer and longtime friend of the Kanagawa family.",
+      "description": "Mr. Matsumoto has represented the Kanagawa family for many years and maintains a close friendship with its members. His work may have given him knowledge of family conflicts, financial matters, and private circumstances the couple preferred to keep hidden from outsiders. His testimony may help determine whether Mrs. Kanagawa contacted him shortly before her death and whether any legal problems could have provided a motive for the crime."
+    }
   }
 }

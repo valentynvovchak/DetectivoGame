@@ -3827,9 +3827,4811 @@
 						"id": "talk_to_mrs_kanagawa_sister"
 					},
 					{
+						"type": "add_task",
+						"id": "talk_to_lawyer"
+					},
+					{
 						"type": "save_checkpoint"
 					}
 				]
+			}
+		]
+	},
+
+	"10_mr_kanagawa_lawyer_1": {
+		"background": "police",
+		"dialog": [
+			{
+				"id": 1,
+				"characters": [
+					{"id": "Di", "side": "left", "sprite": "di_serious", "mode": "full"}
+				],
+				"speaker": "Di",
+				"text": {
+					"ru": "Здравствуйте, детектив Дэниел.",
+					"en": "Hi, detective Daniel."
+				},
+				"bubble_mode": "medium",
+				"actions": [
+					{
+						"type": "save_checkpoint"
+					}
+				]
+			},
+			{
+				"id": 2,
+				"characters": [
+					{"id": "Di", "side": "left", "sprite": "di_serious", "mode": "full"}
+				],
+				"speaker": "Di",
+				"text": {
+					"ru": "Как прошёл разговор с сестрой госпожи Канагавы?",
+					"en": "How did the conversation with Mrs. Kanagawa's sister go?"
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 3,
+				"characters": [
+					{"id": "Daniel", "side": "right", "sprite": "daniel_serious", "mode": "zoom"}
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "Оказалось, они планировали развестись",
+					"en": "It turns out they were planning to get divorced"
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 4,
+				"characters": [
+					{"id": "Daniel", "side": "right", "sprite": "daniel_serious", "mode": "zoom"}
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "но затем ее муж передумал.",
+					"en": "but then her husband changed his mind."
+				},
+				"bubble_mode": "medium"
+			},
+			{
+				"id": 5,
+				"characters": [
+					{"id": "Daniel", "side": "right", "sprite": "daniel_serious", "mode": "zoom"}
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "Думаю, нам нужно более подробно проверить, был ли у мужа мотив или нет?",
+					"en": "I think we need to check in more detail whether the husband had a motive or not?"
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 6,
+				"characters": [
+					{"id": "Daniel", "side": "right", "sprite": "daniel_serious", "mode": "zoom"}
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "Я взял контактную информацию адвоката мистера Канагавы.",
+					"en": "I took the contact information of the Mr. Kanagawa's lawyer"
+				},
+				"bubble_mode": "large"
+			}
+
+		]
+	},
+
+	"10_mr_kanagawa_lawyer_2": {
+		"background": "lawyer_cabinet",
+		"dialog": [
+			{
+				"id": 1,
+				"characters": [
+					{"id": "Lawyer", "side": "left", "sprite": "lawyer2", "mode": "full"}
+				],
+				"actions": [
+					{
+						"type": "save_checkpoint"
+					}
+				],
+				"hotspots": [
+					{
+						"id": "start_dialog",
+						"type": "inspect",
+						"x": 0.4,
+						"y": 0.19,
+						"width": 0.22,
+						"height": 0.22,
+						"icon": "start_dialog.png"
+					}
+				]
+			},
+			{
+				"id": 2,
+				"characters": [
+					{"id": "Lawyer", "side": "left", "sprite": "lawyer2", "mode": "full"}
+				],
+				"speaker": "Lawyer",
+				"text": {
+					"ru": "Здравствуйте, детектив! Что привело вас ко мне?",
+					"en": "Hello Detective, What brought you to me?"
+				},
+				"bubble_mode": "large",
+				"actions": [
+					{
+						"type": "add_item",
+						"category": "dossier",
+						"id": "mr_matsumoto"
+					}
+				]
+			},
+			{
+				"id": 3,
+				"characters": [
+					{"id": "Daniel", "side": "right", "sprite": "daniel_smile", "mode": "zoom"}
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "Здравствуйте, господин Мацумото.",
+					"en": "Hello Mr. Matsumoto"
+				},
+				"bubble_mode": "medium"
+			},
+			{
+				"id": 4,
+				"characters": [
+					{"id": "Daniel", "side": "right", "sprite": "daniel_smile", "mode": "zoom"}
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "Нам стало известно, что мистер Канагава консультировался с вами по поводу развода.",
+					"en": "We have find out that Mr. Kanagawa consulted with you regarding a divorce."
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 5,
+				"characters": [
+					{"id": "Daniel", "side": "right", "sprite": "daniel_smile", "mode": "zoom"}
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "Мы расследуем убийство госпожи Канагавы и её дочери.",
+					"en": "We are investigating the murder of Mrs. Kanagawa and her daughter."
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 6,
+				"characters": [
+					{"id": "Lawyer", "side": "left", "sprite": "lawyer", "mode": "zoom"}
+				],
+				"speaker": "Lawyer",
+				"text": {
+					"ru": "Очень жаль, что такая трагедия постигла его семью.",
+					"en": "It's a great pity that such a tragedy happened to his family."
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 7,
+				"characters": [
+					{"id": "Lawyer", "side": "left", "sprite": "lawyer", "mode": "zoom"}
+				],
+				"speaker": "Lawyer",
+				"text": {
+					"ru": "Но я не могу разглашать информацию о клиентах без веской причины.",
+					"en": "But I cannot disclose information about clients without good reason."
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 8,
+				"characters": [
+					{ "id": "Daniel", "side": "center", "sprite": "daniel_thinking", "mode": "zoom2" }
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "Какой факт дает основания для изучения мотивов мистера Канагавы?",
+					"en": "What fact provides grounds for examining Mr. Kanagawa's motive?"
+				},
+				"bubble_mode": "zip",
+				"tapToContinue": false,
+				"showProof": {
+					"buttonText": {
+						"ru": "Показать доказательство",
+						"en": "Show proof"
+					},
+					"categories": ["facts"],
+					"correct": [
+						{
+							"category": "facts",
+							"id": "mrs_kanagawa_wanted_divorce"
+						},
+						{
+							"category": "facts",
+							"id": "mr_kanagawa_affair_with_assistant"
+						}
+					],
+					"successLine": 9,
+					"wrongLine": 10
+				},
+				"actions": [
+					{
+						"type": "save_checkpoint"
+					}
+				],
+				"allowBack": false
+			},
+			{
+				"id": 9,
+				"characters": [
+					{
+						"id": "Daniel",
+						"side": "center",
+						"sprite": "daniel_finger_up",
+						"mode": "cut"
+					}
+				],
+				"proofResult": {
+					"type": "correct",
+					"message": {
+						"ru": "Правильный выбор!",
+						"en": "Right choice!"
+					},
+					"showSelectedItem": true,
+					"continueLine": 11
+				},
+				"actions": [
+					{
+						"type": "save_checkpoint"
+					}
+				],
+				"allowBack": false
+			},
+			{
+				"id": 10,
+				"characters": [
+					{
+						"id": "Daniel",
+						"side": "center",
+						"sprite": "daniel_shocked",
+						"mode": "cut"
+					}
+				],
+				"bubble_mode": "medium",
+				"proofResult": {
+					"type": "wrong",
+					"message": {
+						"ru": "Неверно! Подумай ещё раз.",
+						"en": "Wrong! Think again."
+					},
+					"showSelectedItem": true,
+					"retryLine": 8
+				},
+				"actions": [
+					{
+						"type": "save_checkpoint"
+					}
+				],
+				"allowBack": false
+			},
+			{
+				"id": 11,
+				"characters": [
+					{ "id": "Daniel", "side": "right", "sprite": "daniel_smile", "mode": "zoom" }
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "Ее сестра рассказала нам, что господин Канагава изменяет своей жене.",
+					"en": "Her sister told us that Mr. Kanagawa was cheating on his wife"
+				},
+				"bubble_mode": "medium"
+			},
+			{
+				"id": 12,
+				"characters": [
+					{ "id": "Daniel", "side": "right", "sprite": "daniel_smile", "mode": "zoom" }
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "они планировали развестись, но потом передумали.",
+					"en": "and they were planning to divorce but then changed their minds."
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 13,
+				"characters": [
+					{ "id": "Daniel", "side": "right", "sprite": "daniel_smile", "mode": "zoom" }
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "Это вызывает подозрения...",
+					"en": "This raises suspicions..."
+				},
+				"bubble_mode": "medium"
+			},
+			{
+				"id": 14,
+				"backgroundChange": "last_meeting_with_lawyer",
+				"menu": false
+			},
+			{
+				"id": 15,
+				"characters": [
+					{ "id": "Layer", "side": "left", "image": "lawyer.png", "sprite": "lawyer", "mode": "full", "bg": "white" }
+				],
+				"speaker": "Layer",
+				"text": {
+					"ru": "Теперь я понимаю...",
+					"en": "Now i understand..."
+				},
+				"bubble_mode": "avatar",
+				"menu": false
+			},
+			{
+				"id": 16,
+				"characters": [
+					{ "id": "Layer", "side": "left", "image": "lawyer.png", "sprite": "lawyer", "mode": "full", "bg": "white" }
+				],
+				"speaker": "Layer",
+				"text": {
+					"ru": "На нашей последней встрече мы обсудили возможные последствия его развода.",
+					"en": "At our last meeting we discussed the possible consequences of his divorce."
+				},
+				"bubble_mode": "avatar",
+				"menu": false
+			},
+			{
+				"id": 17,
+				"characters": [
+					{ "id": "Layer", "side": "left", "image": "lawyer.png", "sprite": "lawyer", "mode": "full", "bg": "white" }
+				],
+				"speaker": "Layer",
+				"text": {
+					"ru": "Я сказал ему, что существует высокая вероятность того, что его жена получит половину их совместно нажитого имущества.",
+					"en": "I told him that there was a high probability that his wife would receive half of their shared property."
+				},
+				"bubble_mode": "avatar",
+				"menu": false
+			},
+			{
+				"id": 18,
+				"characters": [
+					{ "id": "Layer", "side": "left", "image": "lawyer.png", "sprite": "lawyer", "mode": "full", "bg": "white" }
+				],
+				"speaker": "Layer",
+				"text": {
+					"ru": "Но самое худшее для него то, что дети, скорее всего, останутся с матерью.",
+					"en": "But the worst thing for him is that the children will most likely stay with their mother."
+				},
+				"bubble_mode": "avatar",
+				"menu": false
+			},
+			{
+				"id": 19,
+				"backgroundChange": "lawyer_cabinet",
+				"menu": false
+			},
+			{
+				"id": 20,
+				"characters": [
+					{ "id": "Daniel", "side": "center", "sprite": "daniel_thinking", "mode": "zoom" }
+				],
+				"menu": true,
+				"actions": [
+					{
+						"type": "add_item",
+						"category": "facts",
+						"id": "mr_kanagawa_divorce_losses"
+					}
+				]
+			},
+			{
+				"id": 21,
+				"characters": [
+					{ "id": "Daniel", "side": "right", "sprite": "daniel_thinking", "mode": "zoom" }
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "И что он сказал?",
+					"en": "And what did he say?"
+				},
+				"bubble_mode": "medium"
+			},
+			{
+				"id": 22,
+				"characters": [
+					{ "id": "Layer", "side": "left", "sprite": "lawyer", "mode": "zoom", "bg": "white" }
+				],
+				"speaker": "Layer",
+				"text": {
+					"ru": "В этот момент он убедил жену не подавать на развод.",
+					"en": "At this point, he persuaded his wife not to file for divorce."
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 23,
+				"characters": [
+					{ "id": "Layer", "side": "left", "sprite": "lawyer", "mode": "zoom", "bg": "white" }
+				],
+				"speaker": "Layer",
+				"text": {
+					"ru": "и, по крайней мере, продолжать жить вместе.",
+					"en": "and to at least continue living together"
+				},
+				"bubble_mode": "medium"
+			},
+			{
+				"id": 24,
+				"characters": [
+					{ "id": "Layer", "side": "left", "sprite": "lawyer", "mode": "zoom", "bg": "white" }
+				],
+				"speaker": "Layer",
+				"text": {
+					"ru": "Его аргумент заключался в том, что развод сильно ударит по детям.",
+					"en": "His argument was that the children would be hard hit by the divorce."
+				},
+				"bubble_mode": "medium"
+			},
+			{
+				"id": 25,
+				"characters": [
+					{ "id": "Daniel", "side": "right", "sprite": "daniel_serious", "mode": "zoom" }
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "Очень интересно",
+					"en": "Very interesting"
+				},
+				"bubble_mode": "medium"
+			},
+			{
+				"id": 26,
+				"characters": [
+					{ "id": "Daniel", "side": "right", "sprite": "daniel_serious", "mode": "zoom" }
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "Мистер Канагава связывался с вами ещё после этого?",
+					"en": "Did Mr. Kanagawa contact you more after that?"
+				},
+				"bubble_mode": "medium"
+			},
+			{
+				"id": 27,
+				"characters": [
+					{ "id": "Layer", "side": "left", "sprite": "lawyer", "mode": "zoom", "bg": "white" }
+				],
+				"speaker": "Layer",
+				"text": {
+					"ru": "Примерно неделю назад он хотел записаться на консультацию.",
+					"en": "About a week ago, he wanted to schedule a consultation."
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 28,
+				"characters": [
+					{ "id": "Layer", "side": "left", "sprite": "lawyer", "mode": "zoom", "bg": "white" }
+				],
+				"speaker": "Layer",
+				"text": {
+					"ru": "Он сказал, что его жена решила снова подать на развод.",
+					"en": "He said his wife had decided to file for divorce again."
+				},
+				"bubble_mode": "medium"
+			},
+			{
+				"id": 29,
+				"characters": [
+					{ "id": "Daniel", "side": "right", "sprite": "daniel_smile", "mode": "zoom" }
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "Спасибо, господин Мацумото, вы нам очень помогли.",
+					"en": "Thank you mr. Matsumoto, you helped us a lot."
+				},
+				"bubble_mode": "medium",
+				"actions": [
+					{
+						"type": "complete_task",
+						"id": "talk_to_lawyer"
+					}
+				]
+			},
+			{
+				"id": 30,
+				"characters": [
+					{ "id": "Daniel", "side": "center", "sprite": "daniel_thinking", "mode": "zoom2" }
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "Какие факты или доказательства указывают на то, что у митера Канагавы мог быть мотив?",
+					"en": "What fact or evidence suggests that Mr.Kanagawa may have had a motive?"
+				},
+				"bubble_mode": "zip",
+				"tapToContinue": false,
+				"makeLogic": {
+					"buttonText": {
+						"ru": "Собрать логику!",
+						"en": "Make logic!"
+					},
+					"title": {
+						"ru": "make logic",
+						"en": "make logic"
+					},
+					"description": {
+						"ru": "Соедините два факта или улики, которые доказывают, что у мистера Канагавы мог быть мотив?",
+						"en": "Connect two pieces of evidence or facts that prove that Mr.Kanagawa may have had a motive?"
+					},
+					"items": [
+						{
+							"category": "facts",
+							"id": "mr_kanagawa_divorce_losses"
+						},
+						{
+							"category": "facts",
+							"id": "mrs_kanagawa_depression"
+						},
+						{
+							"category": "facts",
+							"id": "mr_kanagawa_abusive_husband"
+						},
+						{
+							"category": "facts",
+							"id": "mrs_kanagawa_wanted_divorce"
+						}
+					],
+					"correctPairs": [
+						[
+							{
+								"category": "facts",
+								"id": "mr_kanagawa_divorce_losses"
+							},
+							{
+								"category": "facts",
+								"id": "mrs_kanagawa_wanted_divorce"
+							}
+						]
+					],
+					"successLine": 31,
+					"wrongLine": 32
+				},
+				"actions": [
+					{
+						"type": "save_checkpoint"
+					}
+				],
+				"allowBack": false
+			},
+			{
+				"id": 31,
+				"characters": [
+					{"id": "Daniel", "side": "center", "sprite": "daniel_finger_up", "mode": "zoom2"}
+				],
+				"logicResult": {
+					"type": "correct",
+					"message": {
+						"ru": "Новая гипотеза!",
+						"en": "new hypothesis!"
+					},
+					"showHypothesis": true,
+					"hypothesisId": "mr_kanagawa_possible_motive",
+					"continueLine": 33
+				},
+				"actions": [
+					{
+						"type": "add_item",
+						"category": "hypotheses",
+						"id": "mr_kanagawa_possible_motive"
+					},
+					{
+						"type": "save_checkpoint"
+					}
+				],
+				"allowBack": false
+			},
+			{
+				"id": 32,
+				"characters": [
+					{"id": "Daniel", "side": "center", "sprite": "daniel_shocked", "mode": "cut"}
+				],
+				"logicResult": {
+					"type": "wrong",
+					"message": {
+						"ru": "Неверно! Подумай ещё раз.",
+						"en": "Wrong! Think again."
+					},
+					"retryLine": 30
+				},
+				"actions": [
+					{
+						"type": "save_checkpoint"
+					}
+				],
+				"allowBack": false
+			},
+			{
+				"id": 33,
+				"backgroundChange": "police"
+			},
+			{
+				"id": 34,
+				"characters": [
+					{"id": "Di", "side": "left", "sprite": "di_serious", "mode": "zoom"}
+				],
+				"speaker": "Di",
+				"text": {
+					"ru": "С возвращением, детектив!",
+					"en": "Welcome back, Detective!"
+				},
+				"bubble_mode": "medium",
+				"actions": [
+					{
+						"type": "complete_task",
+						"id": "motive_for_the_murder"
+					}
+				]
+			},
+			{
+				"id": 35,
+				"characters": [
+					{"id": "Di", "side": "left", "sprite": "di_serious", "mode": "zoom"}
+				],
+				"speaker": "Di",
+				"text": {
+					"ru": "Пожалуйста, скажите, что у вас что-нибудь есть.",
+					"en": "Please tell me you’ve got something"
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 36,
+				"characters": [
+					{"id": "Daniel", "side": "right", "sprite": "daniel_smile", "mode": "zoom"}
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "Собственно говоря, да..",
+					"en": "actually, yes.."
+				},
+				"bubble_mode": "medium"
+			},
+			{
+				"id": 37,
+				"characters": [
+					{"id": "Daniel", "side": "right", "sprite": "daniel_smile", "mode": "zoom"}
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "Я понял, что у господина Канагавы был мотив совершить это преступление.",
+					"en": "I realized that Mr. Kanagawa did have a motive to commit the crime."
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 38,
+				"characters": [
+					{"id": "Di", "side": "left", "sprite": "di_shocked", "mode": "zoom"}
+				],
+				"speaker": "Di",
+				"text": {
+					"ru": "Как это возможно?",
+					"en": "How is this possible?"
+				},
+				"bubble_mode": "small"
+			},
+			{
+				"id": 39,
+				"characters": [
+					{"id": "Di", "side": "left", "sprite": "di_shocked", "mode": "zoom"}
+				],
+				"speaker": "Di",
+				"text": {
+					"ru": "Но мы же знаем, что он находился на операции, когда умерла его жена, верно?",
+					"en": "But we know that he was undergoing surgery when his wife died, right?"
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 40,
+				"characters": [
+					{"id": "Daniel", "side": "right", "sprite": "daniel_thinking", "mode": "zoom"}
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "Это то что нам нужно проверить.",
+					"en": "This is what we need to check."
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 41,
+				"characters": [
+					{"id": "Daniel", "side": "right", "sprite": "daniel_thinking", "mode": "zoom"}
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "Как мы можем найти доказательства против мистера Канагавы?",
+					"en": "How can we find evidence against Mr. Kanagawa?"
+				},
+				"bubble_mode": "large",
+				"actions": [
+					{
+						"type": "clear_tasks"
+					},
+					{
+						"type": "save_checkpoint"
+					}
+				]
+			},
+			{
+				"id": 42,
+				"characters": [
+					{
+						"id": "Daniel",
+						"side": "right",
+						"sprite": "daniel_thinking",
+						"mode": "zoom"
+					}
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "Что нам следует делать дальше?",
+					"en": "What should we do next?"
+				},
+				"bubble_mode": "medium",
+				"tapToContinue": false,
+				"nextStepChoice": {
+					"buttonText": {
+						"ru": "Выбрать",
+						"en": "Choose"
+					},
+					"title": {
+						"ru": "make 🧠 logic",
+						"en": "make 🧠 logic"
+					},
+					"description": {
+						"ru": "Что нам следует сделать дальше?",
+						"en": "What should we do next?"
+					},
+					"selectText": {
+						"ru": "Выбрать",
+						"en": "Select"
+					},
+					"options": [
+						{
+							"id": "talk_to_housekeeper_again",
+							"icon": "housekeeper_border.svg",
+							"text": {
+								"ru": "Снова поговорить с домработницей",
+								"en": "Talk to the housekeeper again"
+							},
+							"correct": false,
+							"hpPenalty": 1,
+							"resultLine": 44
+						},
+						{
+							"id": "question_mr_kanagawa",
+							"icon": "mr_kanagawa_border.svg",
+							"text": {
+								"ru": "Вызвать мистера Канагаву на повторный допрос",
+								"en": "Call Mr. Kanagawa in for questioning"
+							},
+							"correct": false,
+							"hpPenalty": 1,
+							"resultLine": 45
+						},
+						{
+							"id": "check_car_again",
+							"icon": "check_car_again_border.svg",
+							"text": {
+								"ru": "Повторно осмотреть автомобиль на следы угарного газа",
+								"en": "Check the car again for carbon monoxide"
+							},
+							"correct": true,
+							"resultLine": 43
+						},
+						{
+							"id": "search_kanagawa_house",
+							"icon": "kanagawa_house_border.svg",
+							"text": {
+								"ru": "Провести обыск в доме Канагавы",
+								"en": "Search Mr. Kanagawa's house"
+							},
+							"correct": false,
+							"hpPenalty": 1,
+							"resultLine": 46
+						}
+					]
+				},
+				"allowBack": false
+			},
+			{
+				"id": 43,
+				"characters": [
+					{
+						"id": "Daniel",
+						"side": "center",
+						"sprite": "daniel_finger_up",
+						"mode": "zoom"
+					}
+				],
+				"choiceResult": {
+					"type": "correct",
+					"message": {
+						"ru": "Правильный выбор!",
+						"en": "Right choice!"
+					},
+					"showBadge": true,
+					"showResultCard": true,
+					"resultCard": {
+						"icon": "check_car_again_border.svg",
+						"text": {
+							"ru": "Нам нужно еще раз осмотреть машину, но на этот раз мы ищем предметы, которые могут вызвать отравление угарным газом.",
+							"en": "We need to check car again - but this time we're looking for objects that can poison with carbon monoxide."
+						}
+					},
+					"continueLine": 47
+				},
+				"actions": [
+					{
+						"type": "save_checkpoint"
+					}
+				],
+				"allowBack": false
+			},
+			{
+				"id": 44,
+				"characters": [
+					{
+						"id": "Daniel",
+						"side": "center",
+						"sprite": "daniel_shocked",
+						"mode": "zoom"
+					}
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "Нет причин снова с ней разговаривать.",
+					"en": "There is no reason to talk to her again."
+				},
+				"bubble_mode": "explanation",
+				"choiceResult": {
+					"type": "wrong",
+					"message": {
+						"ru": "Неверно! Подумай ещё раз.",
+						"en": "Wrong! Think again."
+					},
+					"retryLine": 42
+				},
+				"actions": [
+					{
+						"type": "save_checkpoint"
+					}
+				],
+				"allowBack": false
+			},
+			{
+				"id": 45,
+				"characters": [
+					{
+						"id": "Daniel",
+						"side": "center",
+						"sprite": "daniel_shocked",
+						"mode": "zoom"
+					}
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "Нет причин снова с ним разговаривать.",
+					"en": "There is no reason to talk to him again"
+				},
+				"bubble_mode": "explanation",
+				"choiceResult": {
+					"type": "wrong",
+					"message": {
+						"ru": "Неверно! Подумай ещё раз.",
+						"en": "Wrong! Think again."
+					},
+					"retryLine": 42
+				},
+				"actions": [
+					{
+						"type": "save_checkpoint"
+					}
+				],
+				"allowBack": false
+			},
+			{
+				"id": 46,
+				"characters": [
+					{
+						"id": "Daniel",
+						"side": "center",
+						"sprite": "daniel_shocked",
+						"mode": "zoom"
+					}
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "У нас пока недостаточно доказательств, чтобы получить ордер на обыск дома мистера Канагавы.",
+					"en": "We do not yet have enough evidence to obtain a warrant to search Mr. Kanagawa's house."
+				},
+				"bubble_mode": "explanation",
+				"choiceResult": {
+					"type": "wrong",
+					"message": {
+						"ru": "Неверно! Подумай ещё раз.",
+						"en": "Wrong! Think again."
+					},
+					"retryLine": 42
+				},
+				"actions": [
+					{
+						"type": "save_checkpoint"
+					}
+				],
+				"allowBack": false
+			},
+			{
+				"id": 47,
+				"characters": [
+					{
+						"id": "Daniel",
+						"side": "right",
+						"sprite": "daniel_finger_up",
+						"mode": "cut"
+					}
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "Проверим автомобиль ещё раз и выясним, как угарный газ мог попасть внутрь.",
+					"en": "Let's inspect the car again and find out how carbon monoxide could have entered it."
+				},
+				"bubble_mode": "medium",
+				"actions": [
+					{
+						"type": "add_task",
+						"id": "check_car_again"
+					},
+					{
+						"type": "save_checkpoint"
+					}
+				],
+				"allowBack": false
+			},
+			{
+				"id": 48,
+				"characters": [
+					{"id": "Di", "side": "left", "sprite": "di_serious", "mode": "zoom"}
+				],
+				"speaker": "Di",
+				"text": {
+					"ru": "Что же нам делать, мистер Дэниел?",
+					"en": "What are we going to do, Mr. Daniel?"
+				},
+				"bubble_mode": "medium"
+			},
+			{
+				"id": 49,
+				"characters": [
+					{
+						"id": "Daniel",
+						"side": "right",
+						"sprite": "daniel_serious",
+						"mode": "zoom"
+					}
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "Нам чего-то не хватает.",
+					"en": "We're missing something."
+				},
+				"bubble_mode": "small"
+			},
+			{
+				"id": 50,
+				"characters": [
+					{
+						"id": "Daniel",
+						"side": "right",
+						"sprite": "daniel_serious",
+						"mode": "zoom"
+					}
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "Давайте еще раз осмотрим машину.",
+					"en": "Let’s inspect the car again."
+				},
+				"bubble_mode": "medium"
+			},
+			{
+				"id": 51,
+				"characters": [
+					{"id": "Di", "side": "left", "sprite": "di_thinking", "mode": "zoom"}
+				],
+				"speaker": "Di",
+				"text": {
+					"ru": "Хорошо. Надеюсь, это поможет!",
+					"en": "Alright. I hope this helps!"
+				},
+				"bubble_mode": "medium",
+				"actions": [
+					{
+						"type": "unlock_location",
+						"id": "11_car_reinspection"
+					},
+					{
+						"type": "save_checkpoint"
+					}
+				],
+				"openMap": true
+			}
+		]
+	},
+
+	"11_car_reinspection": {
+		"background": "default",
+		"dialog": [
+			{
+				"id": 1,
+				"characters": [
+					{"id": "Di", "side": "left", "sprite": "di_serious", "mode": "zoom"}
+				],
+				"speaker": "Di",
+				"text": {
+					"ru": "И снова в путь...",
+					"en": "Here were go again..."
+				},
+				"bubble_mode": "small",
+				"actions": [
+					{
+						"type": "save_checkpoint"
+					}
+				]
+			},
+			{
+				"id": 2,
+				"characters": [
+					{"id": "Di", "side": "left", "sprite": "di_serious", "mode": "zoom"}
+				],
+				"speaker": "Di",
+				"text": {
+					"ru": "На что нам следует обратить внимание?",
+					"en": "What should we pay attention to?"
+				},
+				"bubble_mode": "medium"
+			},
+			{
+				"id": 3,
+				"characters": [
+					{
+						"id": "Daniel",
+						"side": "right",
+						"sprite": "daniel_thinking",
+						"mode": "zoom"
+					}
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "Это, должно быть, какой-то большой объект.",
+					"en": "It must be some big object."
+				},
+				"bubble_mode": "medium"
+			},
+			{
+				"id": 4,
+				"characters": [
+					{
+						"id": "Daniel",
+						"side": "right",
+						"sprite": "daniel_thinking",
+						"mode": "zoom"
+					}
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "Там, где могло бы поместиться большое количество угарного газа.",
+					"en": "Where a lot of carbon monoxide could fit."
+				},
+				"bubble_mode": "medium"
+			},
+			{
+				"id": 5,
+				"speaker": "Narrator2",
+				"text": {
+					"ru": "Какой предмет может содержать большое количество угарного газа?",
+					"en": "Which object could contain a large amount of carbon monoxide?"
+				},
+				"hotspots": [
+					{
+						"id": "kanagawa_car",
+						"type": "inspect",
+						"x": 0.56,
+						"y": 0.73,
+						"width": 0.09,
+						"height": 0.09,
+						"icon": "eye.png",
+						"name": {
+							"ru": "Машина миссис Канагавы",
+							"en": "Mrs. Kanagawa's car"
+						},
+						"modal": {
+							"x": 0.16,
+							"y": 0.34,
+							"width": 0.68
+						}
+					}
+				]
+			},
+			{
+				"id": 6,
+				"backgroundNoAnimationChange": "inside_a_car_clean",
+				"hotspots": [
+					{
+						"name": {
+							"en": "Basketball",
+							"ru": "Баскетбольный мяч"
+						},
+						"type": "inspect",
+						"id": "basket_ball",
+						"x": -0.06,
+						"y": 0.5,
+						"width": 0.4,
+						"height": 0.4,
+						"icon": "basket_ball.png",
+						"modal": {
+							"x": 0.04,
+							"y": 0.7,
+							"width": 0.5,
+							"height": 0.2
+						}
+					},
+					{
+						"name": {
+							"en": "Two fitness bottles",
+							"ru": "Две бутылки воды"
+						},
+						"type": "inspect",
+						"id": "car_two_bottles",
+						"x": 0.35,
+						"y": 0.62,
+						"width": 0.29,
+						"height": 0.22,
+						"icon": "two_bottles.png",
+						"modal": {
+							"x": 0.27,
+							"y": 0.75,
+							"width": 0.5,
+							"height": 0.2
+						}
+					},
+					{
+						"name": {
+							"en": "Yoga ball",
+							"ru": "Мяч для йоги"
+						},
+						"type": "inspect",
+						"id": "car_yoga_ball",
+						"x": 0.65,
+						"y": 0.43,
+						"width": 0.6,
+						"height": 0.6,
+						"icon": "yoga_ball.png",
+						"modal": {
+							"x": 0.48,
+							"y": 0.72,
+							"width": 0.5,
+							"height": 0.2
+						}
+					},
+					{
+						"type": "inspect",
+						"id": "car_eye",
+						"x": 0.43,
+						"y": 0.48,
+						"width": 0.09,
+						"height": 0.0675,
+						"icon": "eye.png"
+					}
+				]
+			},
+			{
+				"id": 7,
+				"backgroundNoAnimationChange": "inside_a_car_glove_compartment",
+				"backLine": 6,
+				"hotspots": [
+					{
+						"name": {
+							"en": "Documents",
+							"ru": "Документы"
+						},
+						"type": "inspect",
+						"id": "car_documents",
+						"x": 0.43,
+						"y": 0.52,
+						"width": 0.22,
+						"height": 0.22,
+						"icon": "pointer2.png",
+						"modal": {
+							"x": 0.24,
+							"y": 0.66,
+							"width": 0.52,
+							"height": 0.2
+						}
+					}
+				]
+			},
+			{
+				"id": 8,
+				"backgroundNoAnimationChange": "inside_a_car_clean",
+				"characters": [
+					{
+						"id": "Daniel",
+						"side": "center",
+						"sprite": "daniel_shocked",
+						"mode": "zoom"
+					}
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "Баскетбольный мяч слишком мал. Он не мог вместить достаточно газа, чтобы заполнить салон автомобиля.",
+					"en": "The basketball is too small. It could not contain enough gas to fill the vehicle cabin."
+				},
+				"bubble_mode": "explanation",
+				"choiceResult": {
+					"type": "wrong",
+					"message": {
+						"ru": "Неверно! Подумай ещё раз.",
+						"en": "Wrong! Think again."
+					},
+					"retryLine": 6
+				},
+				"hotspots": [
+					{
+						"name": {
+							"en": "Basketball",
+							"ru": "Баскетбольный мяч"
+						},
+						"type": "inactive",
+						"id": "basket_ball",
+						"x": -0.06,
+						"y": 0.5,
+						"width": 0.4,
+						"height": 0.4,
+						"icon": "basket_ball.png",
+						"modal": {
+							"x": 0.04,
+							"y": 0.7,
+							"width": 0.5,
+							"height": 0.2
+						}
+					},
+					{
+						"name": {
+							"en": "Two fitness bottles",
+							"ru": "Две бутылки воды"
+						},
+						"type": "inactive",
+						"id": "car_two_bottles",
+						"x": 0.35,
+						"y": 0.62,
+						"width": 0.29,
+						"height": 0.22,
+						"icon": "two_bottles.png",
+						"modal": {
+							"x": 0.27,
+							"y": 0.75,
+							"width": 0.5,
+							"height": 0.2
+						}
+					},
+					{
+						"name": {
+							"en": "Yoga ball",
+							"ru": "Мяч для йоги"
+						},
+						"type": "inactive",
+						"id": "car_yoga_ball",
+						"x": 0.65,
+						"y": 0.43,
+						"width": 0.6,
+						"height": 0.6,
+						"icon": "yoga_ball.png",
+						"modal": {
+							"x": 0.48,
+							"y": 0.72,
+							"width": 0.5,
+							"height": 0.2
+						}
+					}
+				],
+				"allowBack": false
+			},
+			{
+				"id": 9,
+				"backgroundNoAnimationChange": "inside_a_car_clean",
+				"characters": [
+					{
+						"id": "Daniel",
+						"side": "center",
+						"sprite": "daniel_shocked",
+						"mode": "zoom"
+					}
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "Эти бутылки слишком малы. В них нельзя было поместить достаточно угарного газа, чтобы отравить людей в салоне.",
+					"en": "These bottles are too small. They could not contain enough carbon monoxide to poison the people inside the car."
+				},
+				"bubble_mode": "explanation",
+				"choiceResult": {
+					"type": "wrong",
+					"message": {
+						"ru": "Неверно! Подумай ещё раз.",
+						"en": "Wrong! Think again."
+					},
+					"retryLine": 6
+				},
+				"hotspots": [
+					{
+						"name": {
+							"en": "Basketball",
+							"ru": "Баскетбольный мяч"
+						},
+						"type": "inactive",
+						"id": "basket_ball",
+						"x": -0.06,
+						"y": 0.5,
+						"width": 0.4,
+						"height": 0.4,
+						"icon": "basket_ball.png",
+						"modal": {
+							"x": 0.04,
+							"y": 0.7,
+							"width": 0.5,
+							"height": 0.2
+						}
+					},
+					{
+						"name": {
+							"en": "Two fitness bottles",
+							"ru": "Две бутылки воды"
+						},
+						"type": "inactive",
+						"id": "car_two_bottles",
+						"x": 0.35,
+						"y": 0.62,
+						"width": 0.29,
+						"height": 0.22,
+						"icon": "two_bottles.png",
+						"modal": {
+							"x": 0.27,
+							"y": 0.75,
+							"width": 0.5,
+							"height": 0.2
+						}
+					},
+					{
+						"name": {
+							"en": "Yoga ball",
+							"ru": "Мяч для йоги"
+						},
+						"type": "inactive",
+						"id": "car_yoga_ball",
+						"x": 0.65,
+						"y": 0.43,
+						"width": 0.6,
+						"height": 0.6,
+						"icon": "yoga_ball.png",
+						"modal": {
+							"x": 0.48,
+							"y": 0.72,
+							"width": 0.5,
+							"height": 0.2
+						}
+					}
+				],
+				"allowBack": false
+			},
+			{
+				"id": 10,
+				"backgroundNoAnimationChange": "inside_a_car_glove_compartment",
+				"characters": [
+					{
+						"id": "Daniel",
+						"side": "center",
+						"sprite": "daniel_shocked",
+						"mode": "zoom"
+					}
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "Документы не могут содержать угарный газ. Мы ищем предмет, который можно было наполнить газом и оставить в салоне автомобиля.",
+					"en": "Documents cannot contain carbon monoxide. We are looking for an object that could have been filled with gas and left inside the car."
+				},
+				"bubble_mode": "explanation",
+				"choiceResult": {
+					"type": "wrong",
+					"message": {
+						"ru": "Совсем нелогично! Потеряно 2 HP.",
+						"en": "That makes no sense! 2 HP lost."
+					},
+					"retryLine": 6
+				},
+				"actions": [
+					{
+						"type": "lose_hp",
+						"amount": 2
+					},
+					{
+						"type": "save_checkpoint"
+					}
+				],
+				"allowBack": false
+			},
+			{
+				"id": 11,
+				"backgroundNoAnimationChange": "inside_a_car_clean",
+				"characters": [
+					{
+						"id": "Daniel",
+						"side": "right",
+						"sprite": "daniel_finger_up",
+						"mode": "cut"
+					}
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "Да, мяч для йоги мог вместить большое количество угарного газа. Нужно проверить его внимательнее.",
+					"en": "Yes, the yoga ball could have held a large amount of carbon monoxide. We need to examine it more closely."
+				},
+				"bubble_mode": "large",
+				"choiceResult": {
+					"type": "correct",
+					"message": {
+						"ru": "Правильный выбор!",
+						"en": "Right choice!"
+					}
+				},
+				"actions": [
+					{
+						"type": "complete_task",
+						"id": "check_car_again"
+					},
+					{
+						"type": "add_item",
+						"category": "evidence",
+						"id": "large_yoga_ball"
+					},
+					{
+						"type": "save_checkpoint"
+					}
+				],
+				"hotspots": [
+					{
+						"name": {
+							"en": "Basketball",
+							"ru": "Баскетбольный мяч"
+						},
+						"type": "inactive",
+						"id": "basket_ball",
+						"x": -0.06,
+						"y": 0.5,
+						"width": 0.4,
+						"height": 0.4,
+						"icon": "basket_ball.png",
+						"modal": {
+							"x": 0.04,
+							"y": 0.7,
+							"width": 0.5,
+							"height": 0.2
+						}
+					},
+					{
+						"name": {
+							"en": "Two fitness bottles",
+							"ru": "Две бутылки воды"
+						},
+						"type": "inactive",
+						"id": "car_two_bottles",
+						"x": 0.35,
+						"y": 0.62,
+						"width": 0.29,
+						"height": 0.22,
+						"icon": "two_bottles.png",
+						"modal": {
+							"x": 0.27,
+							"y": 0.75,
+							"width": 0.5,
+							"height": 0.2
+						}
+					},
+					{
+						"name": {
+							"en": "Yoga ball",
+							"ru": "Мяч для йоги"
+						},
+						"type": "inactive",
+						"id": "car_yoga_ball",
+						"x": 0.65,
+						"y": 0.43,
+						"width": 0.6,
+						"height": 0.6,
+						"icon": "yoga_ball.png",
+						"modal": {
+							"x": 0.48,
+							"y": 0.72,
+							"width": 0.5,
+							"height": 0.2
+						}
+					}
+				],
+				"allowBack": false
+			}
+		]
+	},
+
+	"12_test_results": {
+		"background": "laboratory",
+		"dialog": [
+			{
+				"id": 1,
+				"characters": [
+					{ "id": "Laboratory Assistant", "side": "left", "sprite": "roberts_yes", "mode": "cut" }
+				],
+				"speaker": "Laboratory Assistant",
+				"text": {
+					"ru": "Здравствуйте, детективы!",
+					"en": "Hello detectives!"
+				},
+				"bubble_mode": "medium"
+			},
+			{
+				"id": 2,
+				"characters": [
+					{ "id": "Laboratory Assistant", "side": "left", "sprite": "roberts", "mode": "zoom" }
+				],
+				"speaker": "Laboratory Assistant",
+				"text": {
+					"ru": "У меня тут кое-что интересное...",
+					"en": "I’ve got something interesting here."
+				},
+				"bubble_mode": "medium"
+			},
+			{
+				"id": 3,
+				"characters": [
+					{ "id": "Di", "side": "right", "sprite": "di_serious", "mode": "zoom" }
+				],
+				"speaker": "Di",
+				"text": {
+					"ru": "Ну же, не заставляйте нас ждать...",
+					"en": "Come on, don’t keep us waiting.."
+				},
+				"bubble_mode": "medium"
+			},
+			{
+				"id": 4,
+				"characters": [
+					{ "id": "Di", "side": "right", "sprite": "di_serious", "mode": "zoom" }
+				],
+				"speaker": "Di",
+				"text": {
+					"ru": "Вы что-нибудь нашли в мяче?",
+					"en": "Did you find anything in the ball?"
+				},
+				"bubble_mode": "medium"
+			},
+			{
+				"id": 5,
+				"characters": [
+					{ "id": "Laboratory Assistant", "side": "left", "sprite": "roberts_holding_a_ball", "mode": "cut" }
+				],
+				"speaker": "Laboratory Assistant",
+				"text": {
+					"ru": "Что ж, вы были правы.",
+					"en": "Well, you were right."
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 6,
+				"characters": [
+					{ "id": "Laboratory Assistant", "side": "left", "sprite": "roberts_holding_a_ball", "mode": "cut" }
+				],
+				"speaker": "Laboratory Assistant",
+				"text": {
+					"ru": "Такой газ не мог попасть в этот шар случайно.",
+					"en": "Such gas couldn't have gotten into that ball by accident."
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 7,
+				"characters": [
+					{ "id": "Laboratory Assistant", "side": "left", "sprite": "roberts_holding_a_ball", "mode": "cut" }
+				],
+				"speaker": "Laboratory Assistant",
+				"text": {
+					"ru": "Результаты анализов показали, что в этом шаре действительно присутствовал угарный газ!",
+					"en": "The tests show that carbon monoxide was actually in this ball!"
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 8,
+				"characters": [
+					{ "id": "Laboratory Assistant", "side": "left", "sprite": "roberts_holding_a_ball", "mode": "cut" }
+				],
+				"speaker": "Laboratory Assistant",
+				"text": {
+					"ru": "Вы можете в это поверить?",
+					"en": "Can you believe it?"
+				},
+				"bubble_mode": "medium",
+				"actions": [
+					{
+						"type": "add_item",
+						"category": "evidence",
+						"id": "carbon_monoxide_in_yoga_ball"
+					}
+				]
+			},
+			{
+				"id": 9,
+				"characters": [
+					{ "id": "Di", "side": "right", "sprite": "di_shocked", "mode": "zoom" }
+				],
+				"speaker": "Di",
+				"text": {
+					"ru": "Ни за что!",
+					"en": "No way!"
+				},
+				"bubble_mode": "small"
+			},
+			{
+				"id": 10,
+				"characters": [
+					{ "id": "Di", "side": "right", "sprite": "di_shocked", "mode": "zoom" }
+				],
+				"speaker": "Di",
+				"text": {
+					"ru": "Мистер Дэниел, у нас наконец-то есть серьезное доказательство по этому делу!",
+					"en": "Mr. Daniel, we finally have a serious piece of evidence in this case!"
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 11,
+				"characters": [
+					{ "id": "Daniel", "side": "left", "sprite": "daniel_thinking", "mode": "zoom" }
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "Поэтому мы не обнаружили никаких дефектов в автомобиле..",
+					"en": "That’s why we didn’t find any defects in the car.."
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 12,
+				"characters": [
+					{ "id": "Daniel", "side": "left", "sprite": "daniel_thinking", "mode": "zoom" }
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "потому что угарный газ находился только внутри этого шара!",
+					"en": "because the carbon monoxide was only inside this ball!"
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 13,
+				"characters": [
+					{ "id": "Daniel", "side": "left", "sprite": "daniel_thinking", "mode": "zoom" }
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "Мистер Робертс, хотели бы вы что-нибудь добавить к этому анализу?",
+					"en": "Mr. Roberts, do you have anything else to add to this analysis?"
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 14,
+				"backgroundChange": "gas_on_purpose",
+				"menu": false
+			},
+			{
+				"id": 15,
+				"characters": [
+					{ "id": "Laboratory Assistant", "side": "center", "image": "mr_roberts.svg", "sprite": "roberts", "bg": "white", "position": "top", "mode": "zoom" }
+				],
+				"speaker": "Laboratory Assistant",
+				"text": {
+					"ru": "Такой газ не мог попасть в этот шар случайно.",
+					"en": "Such gas couldn't have gotten into that ball by accident."
+				},
+				"bubble_mode": "avatar"
+			},
+			{
+				"id": 16,
+				"characters": [
+					{ "id": "Laboratory Assistant", "side": "center", "image": "mr_roberts.svg", "sprite": "roberts", "bg": "white", "position": "top", "mode": "zoom" }
+				],
+				"speaker": "Laboratory Assistant",
+				"text": {
+					"ru": "Кто-то специально это туда залил.",
+					"en": "Someone put it there on purpose."
+				},
+				"bubble_mode": "avatar"
+			},
+			{
+				"id": 17,
+				"backgroundChange": "laboratory",
+				"menu": false
+			},
+			{
+				"id": 18,
+				"characters": [
+					{ "id": "Daniel", "side": "right", "sprite": "daniel_smile", "mode": "zoom" }
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "Спасибо, отличная работа!",
+					"en": "Thanks, great job!"
+				},
+				"bubble_mode": "medium"
+			},
+			{
+				"id": 19,
+				"characters": [
+					{ "id": "Di", "side": "left", "sprite": "di_serious", "mode": "zoom" }
+				],
+				"speaker": "Di",
+				"text": {
+					"ru": "Итак, работа выполнена?",
+					"en": "So, is the job done?"
+				},
+				"bubble_mode": "medium"
+			},
+			{
+				"id": 20,
+				"characters": [
+					{ "id": "Daniel", "side": "right", "sprite": "daniel_serious", "mode": "zoom" }
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "Не так быстро.",
+					"en": "Not so fast."
+				},
+				"bubble_mode": "small"
+			},
+			{
+				"id": 21,
+				"characters": [
+					{ "id": "Daniel", "side": "right", "sprite": "daniel_serious", "mode": "zoom" }
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "Нам еще предстоит доказать",
+					"en": "We still need to prove"
+				},
+				"bubble_mode": "medium"
+			},
+			{
+				"id": 22,
+				"characters": [
+					{ "id": "Daniel", "side": "right", "sprite": "daniel_serious", "mode": "zoom" }
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "что именно он наполнил мяч угарным газом.",
+					"en": "that he was the one who filled the ball with carbon monoxide."
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 23,
+				"characters": [
+					{ "id": "Daniel", "side": "right", "sprite": "daniel_serious", "mode": "zoom" }
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "и что именно он положил это в машину.",
+					"en": "and that he was the one who put it in the car."
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 24,
+				"characters": [
+					{ "id": "Daniel", "side": "right", "sprite": "daniel_serious", "mode": "zoom" }
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "Для начала давайте хотя бы выясним,",
+					"en": "First of all, let's at least find out"
+				},
+				"bubble_mode": "medium"
+			},
+			{
+				"id": 25,
+				"characters": [
+					{ "id": "Daniel", "side": "right", "sprite": "daniel_serious", "mode": "zoom" }
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "был ли у мистера Канагавы вообще доступ к газу?",
+					"en": "whether Mr. Kanagawa even had access to gas?"
+				},
+				"bubble_mode": "medium",
+				"actions": [
+					{
+						"type": "add_task",
+						"id": "mr_kanagawa_access_to_gas"
+					},
+					{
+						"type": "save_checkpoint"
+					}
+				],
+				"allowBack": false
+			},
+			{
+				"id": 26,
+				"characters": [
+					{
+						"id": "Daniel",
+						"side": "center",
+						"sprite": "daniel_thinking",
+						"mode": "zoom2"
+					}
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "Что нам следует делать дальше?",
+					"en": "What should we do next?"
+				},
+				"bubble_mode": "zip",
+				"tapToContinue": false,
+				"nextStepChoice": {
+					"buttonText": {
+						"ru": "Выбрать",
+						"en": "Choose"
+					},
+					"title": {
+						"ru": "make 🧠 logic",
+						"en": "make 🧠 logic"
+					},
+					"description": {
+						"ru": "Что нам следует сделать дальше?",
+						"en": "What should we do next?"
+					},
+					"selectText": {
+						"ru": "Выбрать",
+						"en": "Select"
+					},
+					"options": [
+						{
+							"id": "talk_to_mr_kanagawa_colleagues",
+							"icon": "talk_to_colleagues_sm.svg",
+							"text": {
+								"ru": "Поговорить с коллегами мистера Канагавы в больнице",
+								"en": "Talk to Mr. Kanagawa's colleagues in hospital"
+							},
+							"correct": true,
+							"resultLine": 27
+						},
+						{
+							"id": "question_mr_kanagawa_again",
+							"icon": "mr_kanagawa_border.svg",
+							"text": {
+								"ru": "Снова вызвать мистера Канагаву на допрос",
+								"en": "Call Mr. Kanagawa in for questioning"
+							},
+							"correct": false,
+							"hpPenalty": 1,
+							"resultLine": 28
+						},
+						{
+							"id": "check_car_again",
+							"icon": "check_car_again_border.svg",
+							"text": {
+								"ru": "Ещё раз осмотреть автомобиль",
+								"en": "Check the car again"
+							},
+							"correct": false,
+							"hpPenalty": 1,
+							"resultLine": 29
+						},
+						{
+							"id": "search_kanagawa_house",
+							"icon": "kanagawa_house_border.svg",
+							"text": {
+								"ru": "Провести обыск в доме мистера Канагавы",
+								"en": "Search Mr. Kanagawa's house"
+							},
+							"correct": false,
+							"hpPenalty": 1,
+							"resultLine": 30
+						}
+					]
+				},
+				"allowBack": false
+			},
+			{
+				"id": 27,
+				"characters": [
+					{
+						"id": "Daniel",
+						"side": "center",
+						"sprite": "daniel_finger_up",
+						"mode": "zoom"
+					}
+				],
+				"choiceResult": {
+					"type": "correct",
+					"message": {
+						"ru": "Правильный выбор!",
+						"en": "Right choice!"
+					},
+					"showBadge": true,
+					"showResultCard": true,
+					"resultCard": {
+						"icon": "talk_to_colleagues.svg",
+						"text": {
+							"ru": "Поговорить с коллегами мистера Канагавы в больнице.",
+							"en": "Talk to Mr. Kanagawa's colleagues in hospital."
+						}
+					},
+					"continueLine": 31
+				},
+				"actions": [
+					{
+						"type": "save_checkpoint"
+					}
+				],
+				"allowBack": false
+			},
+			{
+				"id": 28,
+				"characters": [
+					{
+						"id": "Daniel",
+						"side": "center",
+						"sprite": "daniel_shocked",
+						"mode": "zoom"
+					}
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "У нас пока недостаточно новых доказательств. Для повторного допроса ещё слишком рано.",
+					"en": "We do not have enough new evidence yet, so it is too early for another interrogation."
+				},
+				"bubble_mode": "explanation",
+				"choiceResult": {
+					"type": "wrong",
+					"message": {
+						"ru": "Неверно! Подумай ещё раз.",
+						"en": "Wrong! Think again."
+					},
+					"retryLine": 26
+				},
+				"actions": [
+					{
+						"type": "save_checkpoint"
+					}
+				],
+				"allowBack": false
+			},
+			{
+				"id": 29,
+				"characters": [
+					{
+						"id": "Daniel",
+						"side": "center",
+						"sprite": "daniel_shocked",
+						"mode": "zoom"
+					}
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "Мы уже повторно осмотрели автомобиль. Возвращаться к этому ещё раз нет необходимости.",
+					"en": "We have already inspected the car again. There is no need to do it another time."
+				},
+				"bubble_mode": "explanation",
+				"choiceResult": {
+					"type": "wrong",
+					"message": {
+						"ru": "Неверно! Подумай ещё раз.",
+						"en": "Wrong! Think again."
+					},
+					"retryLine": 26
+				},
+				"actions": [
+					{
+						"type": "save_checkpoint"
+					}
+				],
+				"allowBack": false
+			},
+			{
+				"id": 30,
+				"characters": [
+					{
+						"id": "Daniel",
+						"side": "center",
+						"sprite": "daniel_shocked",
+						"mode": "zoom"
+					}
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "У нас всё ещё недостаточно доказательств, чтобы получить ордер на обыск дома мистера Канагавы.",
+					"en": "We still do not have enough evidence to obtain a warrant to search Mr. Kanagawa's house."
+				},
+				"bubble_mode": "explanation",
+				"choiceResult": {
+					"type": "wrong",
+					"message": {
+						"ru": "Неверно! Подумай ещё раз.",
+						"en": "Wrong! Think again."
+					},
+					"retryLine": 26
+				},
+				"actions": [
+					{
+						"type": "save_checkpoint"
+					}
+				],
+				"allowBack": false
+			},
+			{
+				"id": 31,
+				"characters": [
+					{
+						"id": "Daniel",
+						"side": "right",
+						"sprite": "daniel_finger_up",
+						"mode": "cut"
+					}
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "Поговорим с его коллегами. Возможно, они знают, чем мистер Канагава занимался перед трагедией.",
+					"en": "Let's speak with his colleagues. They may know what Mr. Kanagawa was doing before the tragedy."
+				},
+				"bubble_mode": "large",
+				"actions": [
+					{
+						"type": "add_task",
+						"id": "talk_to_mr_kanagawa_colleagues"
+					},
+					{
+						"type": "save_checkpoint"
+					}
+				],
+				"allowBack": false
+			}
+		]
+	},
+
+	"13_hospital_colleagues": {
+		"background": "laboratory_colleague",
+		"dialog": [
+			{
+				"id": 1,
+				"characters": [
+					{
+						"id": "Hospital Colleague",
+						"side": "left",
+						"sprite": "colleague",
+						"mode": "cut"
+					}
+				],
+				"speaker": "Hospital Colleague",
+				"text": {
+					"ru": "Добрый вечер, детективы.",
+					"en": "Good evening, detectives."
+				},
+				"bubble_mode": "small",
+				"actions": [
+					{
+						"type": "save_checkpoint"
+					}
+				]
+			},
+			{
+				"id": 2,
+				"characters": [
+					{
+						"id": "Hospital Colleague",
+						"side": "left",
+						"sprite": "colleague",
+						"mode": "cut"
+					}
+				],
+				"speaker": "Hospital Colleague",
+				"text": {
+					"ru": "Вы разыскиваете мистера Канагаву?",
+					"en": "Were you looking for Mr. Kanagawa?"
+				},
+				"bubble_mode": "medium"
+			},
+			{
+				"id": 3,
+				"characters": [
+					{
+						"id": "Di",
+						"side": "right",
+						"sprite": "di_serious",
+						"mode": "zoom"
+					}
+				],
+				"speaker": "Di",
+				"text": {
+					"ru": "Нет, на самом деле нет.",
+					"en": "Actually, no.."
+				},
+				"bubble_mode": "small"
+			},
+			{
+				"id": 4,
+				"characters": [
+					{
+						"id": "Di",
+						"side": "right",
+						"sprite": "di_serious",
+						"mode": "zoom"
+					}
+				],
+				"speaker": "Di",
+				"text": {
+					"ru": "Мы здесь, чтобы обсудить поведение мистера Канагавы за прошедшую неделю.",
+					"en": "We're here to talk about Mr. Kanagawa's behavior over the past week."
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 5,
+				"characters": [
+					{
+						"id": "Di",
+						"side": "right",
+						"sprite": "di_serious",
+						"mode": "zoom"
+					}
+				],
+				"speaker": "Di",
+				"text": {
+					"ru": "Мог ли господин Канагава в последнее время работать с угарным газом?",
+					"en": "Could Mr. Kanagawa have been working with carbon monoxide lately?"
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 6,
+				"characters": [
+					{
+						"id": "Hospital Colleague",
+						"side": "left",
+						"sprite": "colleague_thinking",
+						"mode": "zoom"
+					}
+				],
+				"speaker": "Hospital Colleague",
+				"text": {
+					"ru": "Дайте подумать...",
+					"en": "Let me think..."
+				},
+				"bubble_mode": "medium"
+			},
+			{
+				"id": 7,
+				"backgroundChange": "there_was_something_like_that"
+			},
+			{
+				"id": 8,
+				"characters": [
+					{
+						"id": "Hospital Colleague",
+						"side": "left",
+						"sprite": "colleague_thinking",
+						"mode": "zoom",
+						"image": "colleague_thinking.png",
+						"position": "top",
+						"bg": "white"
+					}
+				],
+				"speaker": "Hospital Colleague",
+				"text": {
+					"ru": "На самом деле, что-то подобное действительно имело место.",
+					"en": "Actually, there was something like that."
+				},
+				"bubble_mode": "avatar"
+			},
+			{
+				"id": 9,
+				"characters": [
+					{
+						"id": "Hospital Colleague",
+						"side": "left",
+						"sprite": "colleague_thinking",
+						"mode": "zoom",
+						"image": "colleague_thinking.png",
+						"position": "top",
+						"bg": "white"
+					}
+				],
+				"speaker": "Hospital Colleague",
+				"text": {
+					"ru": "Он заказал четыре баллона этого газа.",
+					"en": "He ordered four cylinders of that gas.."
+				},
+				"bubble_mode": "avatar"
+			},
+			{
+				"id": 10,
+				"characters": [
+					{
+						"id": "Hospital Colleague",
+						"side": "left",
+						"sprite": "colleague_thinking",
+						"mode": "zoom",
+						"image": "colleague_thinking.png",
+						"position": "top",
+						"bg": "white"
+					}
+				],
+				"speaker": "Hospital Colleague",
+				"text": {
+					"ru": "Но он сказал, что это в исследовательских целях.",
+					"en": "but he said it was for research purposes."
+				},
+				"bubble_mode": "avatar"
+			},
+			{
+				"id": 11,
+				"backgroundChange": "laboratory_colleague"
+			},
+			{
+				"id": 12,
+				"characters": [
+					{
+						"id": "Daniel",
+						"side": "center",
+						"sprite": "daniel_thinking",
+						"mode": "zoom"
+					}
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "Что нам следует делать дальше?",
+					"en": "What should we do next?"
+				},
+				"bubble_mode": "zip",
+				"tapToContinue": false,
+				"nextStepChoice": {
+					"buttonText": {
+						"ru": "Выбрать",
+						"en": "Choose"
+					},
+					"title": {
+						"ru": "make 🧠 logic",
+						"en": "make 🧠 logic"
+					},
+					"description": {
+						"ru": "Что нам следует делать дальше?",
+						"en": "What should we do next?"
+					},
+					"selectText": {
+						"ru": "Выбрать",
+						"en": "Select"
+					},
+					"options": [
+						{
+							"id": "arrest_mr_kanagawa",
+							"icon": "arrest_kanagawa_border.png",
+							"text": {
+								"ru": "Арестовать мистера Канагаву",
+								"en": "Arrest Mr. Kanagawa"
+							},
+							"correct": false,
+							"hpPenalty": 1,
+							"resultLine": 14
+						},
+						{
+							"id": "question_mr_kanagawa_again",
+							"icon": "mr_kanagawa_border.svg",
+							"text": {
+								"ru": "Вызвать мистера Канагаву на допрос",
+								"en": "Call Mr. Kanagawa in for questioning"
+							},
+							"correct": false,
+							"hpPenalty": 1,
+							"resultLine": 15
+						},
+						{
+							"id": "check_missing_carbon_monoxide_cylinders",
+							"icon": "carbon_monoxide_canisters_border.png",
+							"text": {
+								"ru": "Проверить, не пропал ли какой-нибудь баллон с угарным газом",
+								"en": "Check for any missing carbon monoxide canisters"
+							},
+							"correct": true,
+							"resultLine": 13
+						},
+						{
+							"id": "search_mr_kanagawa_house",
+							"icon": "kanagawa_house_border.svg",
+							"text": {
+								"ru": "Обыскать дом мистера Канагавы",
+								"en": "Search Mr. Kanagawa's house"
+							},
+							"correct": false,
+							"hpPenalty": 1,
+							"resultLine": 16
+						}
+					]
+				},
+				"actions": [
+					{
+						"type": "save_checkpoint"
+					}
+				],
+				"allowBack": false
+			},
+			{
+				"id": 13,
+				"characters": [
+					{
+						"id": "Daniel",
+						"side": "center",
+						"sprite": "daniel_finger_up",
+						"mode": "zoom"
+					}
+				],
+				"choiceResult": {
+					"type": "correct",
+					"message": {
+						"ru": "Правильный выбор!",
+						"en": "Right choice!"
+					},
+					"showBadge": true,
+					"showResultCard": true,
+					"resultCard": {
+						"icon": "carbon_monoxide_canisters_border.png",
+						"text": {
+							"ru": "Давайте проверим, все ли баллоны с газом на месте.",
+							"en": "Let's check if all the gas cylinders are in place."
+						}
+					},
+					"continueLine": 17
+				},
+				"actions": [
+					{
+						"type": "save_checkpoint"
+					}
+				],
+				"allowBack": false
+			},
+			{
+				"id": 14,
+				"characters": [
+					{
+						"id": "Daniel",
+						"side": "center",
+						"sprite": "daniel_shocked",
+						"mode": "zoom"
+					}
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "У нас недостаточно доказательств, чтобы арестовать мистера Канагаву.",
+					"en": "There is not enough evidence to arrest Mr. Kanagawa."
+				},
+				"bubble_mode": "explanation",
+				"choiceResult": {
+					"type": "wrong",
+					"message": {
+						"ru": "Неверно! Подумай ещё раз.",
+						"en": "Wrong! Think again."
+					},
+					"retryLine": 12
+				},
+				"actions": [
+					{
+						"type": "save_checkpoint"
+					}
+				],
+				"allowBack": false
+			},
+			{
+				"id": 15,
+				"characters": [
+					{
+						"id": "Daniel",
+						"side": "center",
+						"sprite": "daniel_shocked",
+						"mode": "zoom"
+					}
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "У нас пока недостаточно новых доказательств. Для ещё одного допроса слишком рано.",
+					"en": "We don't have enough new evidence yet, so it's too early for another interrogation."
+				},
+				"bubble_mode": "explanation",
+				"choiceResult": {
+					"type": "wrong",
+					"message": {
+						"ru": "Неверно! Подумай ещё раз.",
+						"en": "Wrong! Think again."
+					},
+					"retryLine": 12
+				},
+				"actions": [
+					{
+						"type": "save_checkpoint"
+					}
+				],
+				"allowBack": false
+			},
+			{
+				"id": 16,
+				"characters": [
+					{
+						"id": "Daniel",
+						"side": "center",
+						"sprite": "daniel_shocked",
+						"mode": "zoom"
+					}
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "У нас недостаточно доказательств, чтобы получить ордер на обыск дома мистера Канагавы.",
+					"en": "There is not enough evidence to get a search warrant for Mr. Kanagawa's house."
+				},
+				"bubble_mode": "explanation",
+				"choiceResult": {
+					"type": "wrong",
+					"message": {
+						"ru": "Неверно! Подумай ещё раз.",
+						"en": "Wrong! Think again."
+					},
+					"retryLine": 12
+				},
+				"actions": [
+					{
+						"type": "save_checkpoint"
+					}
+				],
+				"allowBack": false
+			},
+			{
+				"id": 17,
+				"characters": [
+					{
+						"id": "Daniel",
+						"side": "right",
+						"sprite": "daniel_serious",
+						"mode": "zoom"
+					}
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "Значит, именно мистер Канагава заказал четыре баллона угарного газа?",
+					"en": "So, it was Mr. Kanagawa who ordered the four carbon monoxide canisters?"
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 18,
+				"characters": [
+					{
+						"id": "Daniel",
+						"side": "right",
+						"sprite": "daniel_serious",
+						"mode": "zoom"
+					}
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "Тогда покажите нам, где он их оставил.",
+					"en": "Then show us where he put them."
+				},
+				"bubble_mode": "medium"
+			},
+			{
+				"id": 19,
+				"characters": [
+					{
+						"id": "Hospital Colleague",
+						"side": "left",
+						"sprite": "colleague_hand_up",
+						"mode": "zoom"
+					}
+				],
+				"speaker": "Hospital Colleague",
+				"text": {
+					"ru": "Ого, звучит серьёзно",
+					"en": "Whoa, this sounds serious"
+				},
+				"bubble_mode": "small"
+			},
+			{
+				"id": 20,
+				"characters": [
+					{
+						"id": "Hospital Colleague",
+						"side": "left",
+						"sprite": "colleague_hand_up",
+						"mode": "zoom"
+					}
+				],
+				"speaker": "Hospital Colleague",
+				"text": {
+					"ru": "Хорошо, следуйте за мной на склад.",
+					"en": "Alright, follow me to the storage room."
+				},
+				"bubble_mode": "medium"
+			},
+			{
+				"id": 21,
+				"backgroundChange": "storage_box",
+				"menu": false
+			},
+			{
+				"id": 22,
+				"characters": [
+					{
+						"id": "Hospital Colleague",
+						"side": "left",
+						"sprite": "colleague",
+						"mode": "bottom"
+					}
+				],
+				"speaker": "Hospital Colleague",
+				"text": {
+					"ru": "Я помню, что здесь было **четыре** баллона с газом.",
+					"en": "I remember there being **four** gas cylinders here."
+				},
+				"bubble_mode": "bottom",
+				"menu": false
+			},
+			{
+				"id": 23,
+				"characters": [
+					{
+						"id": "Di",
+						"side": "right",
+						"sprite": "di_thinking",
+						"mode": "bottom"
+					}
+				],
+				"speaker": "Di",
+				"text": {
+					"ru": "Можете открыть ящик, чтобы мы проверили?",
+					"en": "Can you open the box so we can check?"
+				},
+				"bubble_mode": "bottom",
+				"menu": false
+			},
+			{
+				"id": 24,
+				"backgroundNoAnimationChange": "storage_box_open",
+				"menu": false
+			},
+			{
+				"id": 25,
+				"characters": [
+					{
+						"id": "Hospital Colleague",
+						"side": "left",
+						"sprite": "colleague_shocked",
+						"mode": "bottom"
+					}
+				],
+				"speaker": "Hospital Colleague",
+				"text": {
+					"ru": "Боже мой! Здесь всего **три** цилиндра! Неужели господин Канагава украл один?",
+					"en": "Oh my God! There are only **three** cylinders here! Could Mr. Kanagawa have stolen one?"
+				},
+				"bubble_mode": "bottom",
+				"menu": false
+			},
+			{
+				"id": 26,
+				"characters": [
+					{
+						"id": "Daniel",
+						"side": "right",
+						"sprite": "daniel_serious",
+						"mode": "bottom"
+					}
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "К сожалению, да. По всей видимости, так и есть.",
+					"en": "Unfortunately, yes. It definitely looks like it."
+				},
+				"bubble_mode": "bottom",
+				"menu": false,
+				"actions": [
+					{
+						"type": "add_item",
+						"category": "facts",
+						"id": "missing_carbon_monoxide_cylinder"
+					},
+					{
+						"type": "complete_task",
+						"id": "mr_kanagawa_access_to_gas"
+					}
+				]
+			},
+			{
+				"id": 27,
+				"backgroundNoAnimationChange": "laboratory_colleague",
+				"characters": [
+					{
+						"id": "Daniel",
+						"side": "center",
+						"sprite": "daniel_thinking",
+						"mode": "zoom"
+					}
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "Что это нам говорит?",
+					"en": "What does this tell us?"
+				},
+				"bubble_mode": "zip",
+				"tapToContinue": false,
+				"makeLogic": {
+					"buttonText": {
+						"ru": "Соединить",
+						"en": "Connect"
+					},
+					"title": {
+						"ru": "make 🧠 logic",
+						"en": "make 🧠 logic"
+					},
+					"description": {
+						"ru": "Выберите два связанных факта или доказательства, чтобы сформировать гипотезу.",
+						"en": "Select 2 related facts or pieces of evidence to form a hypothesis."
+					},
+					"items": [
+						{
+							"category": "facts",
+							"id": "missing_carbon_monoxide_cylinder"
+						},
+						{
+							"category": "facts",
+							"id": "mrs_kanagawa_drove_only_1500_feet"
+						},
+						{
+							"category": "evidence",
+							"id": "laboratory_conclusion"
+						},
+						{
+							"category": "facts",
+							"id": "mr_kanagawa_divorce_losses"
+						}
+					],
+					"correctPairs": [
+						[
+							{
+								"category": "facts",
+								"id": "missing_carbon_monoxide_cylinder"
+							},
+							{
+								"category": "evidence",
+								"id": "laboratory_conclusion"
+							}
+						]
+					],
+					"successLine": 28,
+					"wrongLine": 29
+				},
+				"actions": [
+					{
+						"type": "save_checkpoint"
+					}
+				],
+				"allowBack": false
+			},
+			{
+				"id": 28,
+				"backgroundNoAnimationChange": "laboratory_colleague",
+				"characters": [
+					{
+						"id": "Daniel",
+						"side": "center",
+						"sprite": "daniel_finger_up",
+						"mode": "zoom2"
+					}
+				],
+				"logicResult": {
+					"type": "correct",
+					"message": {
+						"ru": "Новая гипотеза!",
+						"en": "New hypothesis!"
+					},
+					"showHypothesis": true,
+					"hypothesisId": "stolen_carbon_monoxide_used_in_murder",
+					"continueLine": 30
+				},
+				"actions": [
+					{
+						"type": "add_item",
+						"category": "hypotheses",
+						"id": "stolen_carbon_monoxide_used_in_murder"
+					},
+					{
+						"type": "complete_task",
+						"id": "talk_to_mr_kanagawa_colleagues"
+					},
+					{
+						"type": "save_checkpoint"
+					}
+				],
+				"allowBack": false
+			},
+			{
+				"id": 29,
+				"backgroundNoAnimationChange": "laboratory_colleague",
+				"characters": [
+					{
+						"id": "Daniel",
+						"side": "center",
+						"sprite": "daniel_shocked",
+						"mode": "zoom"
+					}
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "Эти сведения сами по себе не объясняют, откуда убийца мог получить угарный газ.",
+					"en": "These clues do not explain where the killer could have obtained the carbon monoxide."
+				},
+				"bubble_mode": "explanation",
+				"logicResult": {
+					"type": "wrong",
+					"message": {
+						"ru": "Неверно! Подумай ещё раз.",
+						"en": "Wrong! Think again."
+					},
+					"retryLine": 27
+				},
+				"actions": [
+					{
+						"type": "save_checkpoint"
+					}
+				],
+				"allowBack": false
+			},
+			{
+				"id": 30,
+				"backgroundChange": "police"
+			},
+			{
+				"id": 31,
+				"characters": [
+					{
+						"id": "Di",
+						"side": "left",
+						"sprite": "di_serious",
+						"mode": "zoom"
+					}
+				],
+				"speaker": "Di",
+				"text": {
+					"ru": "Мистер Дэниел, теперь мы можем предъявить обвинение мистеру Канагаве?",
+					"en": "Mr. Daniel, can we now press charges against Mr. Kanagawa?"
+				},
+				"bubble_mode": "large",
+				"allowBack": false
+			},
+			{
+				"id": 32,
+				"characters": [
+					{
+						"id": "Di",
+						"side": "left",
+						"sprite": "di_serious",
+						"mode": "zoom"
+					}
+				],
+				"speaker": "Di",
+				"text": {
+					"ru": "Теперь всё выглядит довольно очевидно.",
+					"en": "It all seems pretty clear to me now."
+				},
+				"bubble_mode": "medium"
+			},
+			{
+				"id": 33,
+				"characters": [
+					{
+						"id": "Daniel",
+						"side": "left",
+						"sprite": "daniel_thinking",
+						"mode": "zoom"
+					}
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "Пока нет... Видите ли, проблема в том, что любой опытный адвокат сможет развалить наше дело.",
+					"en": "Not right now... Look, the problem is that any experienced lawyer could win the case against us."
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 34,
+				"characters": [
+					{
+						"id": "Daniel",
+						"side": "left",
+						"sprite": "daniel_thinking",
+						"mode": "zoom"
+					}
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "На данный момент мы выяснили лишь то, что у мистера Канагавы был мотив.",
+					"en": "At this stage, all we've found is that Mr. Kanagawa had a motive."
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 35,
+				"characters": [
+					{
+						"id": "Daniel",
+						"side": "left",
+						"sprite": "daniel_thinking",
+						"mode": "zoom"
+					}
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "И что жертвы были отравлены газом из баллона, пропавшего из больницы.",
+					"en": "And that the victims were poisoned by gas from a cylinder missing from the hospital."
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 36,
+				"characters": [
+					{
+						"id": "Di",
+						"side": "right",
+						"sprite": "di_thinking",
+						"mode": "zoom"
+					}
+				],
+				"speaker": "Di",
+				"text": {
+					"ru": "Тогда какие доказательства нам нужно найти?",
+					"en": "Then what kind of evidence do we need to find?"
+				},
+				"bubble_mode": "medium"
+			},
+			{
+				"id": 37,
+				"characters": [
+					{
+						"id": "Daniel",
+						"side": "left",
+						"sprite": "daniel_serious",
+						"mode": "zoom"
+					}
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "Например, нам нужно доказать, что он наполнил мяч газом и поместил его в машину.",
+					"en": "For example, we need to prove that he filled a ball with the gas and placed it inside the car."
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 38,
+				"characters": [
+					{
+						"id": "Daniel",
+						"side": "left",
+						"sprite": "daniel_serious",
+						"mode": "zoom"
+					}
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "Нам нужны более веские доказательства против него.",
+					"en": "We need stronger evidence against him."
+				},
+				"bubble_mode": "medium"
+			},
+			{
+				"id": 39,
+				"characters": [
+					{
+						"id": "Di",
+						"side": "right",
+						"sprite": "di_serious",
+						"mode": "zoom"
+					}
+				],
+				"speaker": "Di",
+				"text": {
+					"ru": "Может, вызовем его на допрос?",
+					"en": "Can we call him in for questioning?"
+				},
+				"bubble_mode": "medium"
+			},
+			{
+				"id": 40,
+				"characters": [
+					{
+						"id": "Di",
+						"side": "right",
+						"sprite": "di_serious",
+						"mode": "zoom"
+					}
+				],
+				"speaker": "Di",
+				"text": {
+					"ru": "Мы можем показать ему новые доказательства, которые собрали против него.",
+					"en": "We can show him the new evidence we've gathered against him."
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 41,
+				"characters": [
+					{
+						"id": "Di",
+						"side": "right",
+						"sprite": "di_serious",
+						"mode": "zoom"
+					}
+				],
+				"speaker": "Di",
+				"text": {
+					"ru": "Может быть, тогда он расскажет нам что-нибудь новое?",
+					"en": "Maybe he'll tell us something new then?"
+				},
+				"bubble_mode": "medium"
+			},
+			{
+				"id": 42,
+				"characters": [
+					{
+						"id": "Daniel",
+						"side": "left",
+						"sprite": "daniel_smile",
+						"mode": "zoom"
+					}
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "Не думаю, что он внезапно решит рассказать нам всё.",
+					"en": "I don't think he'll suddenly decide to tell us everything."
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 43,
+				"characters": [
+					{
+						"id": "Daniel",
+						"side": "left",
+						"sprite": "daniel_smile",
+						"mode": "zoom"
+					}
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "Но давайте попробуем.",
+					"en": "But let's give it a try."
+				},
+				"bubble_mode": "small",
+				"actions": [
+					{
+						"type": "save_checkpoint"
+					}
+				]
+			},
+			{
+				"id": 44,
+				"characters": [
+					{
+						"id": "Di",
+						"side": "center",
+						"sprite": "di_serious",
+						"mode": "zoom"
+					}
+				],
+				"bubble_mode": "medium",
+				"tapToContinue": false,
+				"hotspots": [
+					{
+						"id": "start_interrogation",
+						"type": "button",
+						"x": 0.27,
+						"y": 0.64,
+						"width": 0.46,
+						"height": 0.06,
+						"text": {
+							"ru": "Начать допрос",
+							"en": "Start interrogation"
+						}
+					}
+				]
+			},
+			{
+				"id": 45,
+				"backgroundChange": "interrogation_room_2",
+				"backgroundHoldMs": 1500
+			},
+			{
+				"id": 46,
+				"characters": [
+					{
+						"id": "Mr. Kanagawa",
+						"side": "left",
+						"sprite": "mr_kanagava_serious",
+						"mode": "zoom"
+					}
+				],
+				"speaker": "Mr. Kanagawa",
+				"text": {
+					"ru": "Здравствуйте, детектив Ди. Я приехал так быстро, как только смог. У вас уже есть подозреваемые?",
+					"en": "Hello, Detective Dee. I came as soon as I could. Do you have any suspects?"
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 47,
+				"characters": [
+					{
+						"id": "Di",
+						"side": "right",
+						"sprite": "di_serious",
+						"mode": "zoom"
+					}
+				],
+				"speaker": "Di",
+				"text": {
+					"ru": "Добрый вечер, мистер Канагава. Мы подробнее изучили ваши отношения с женой...",
+					"en": "Good evening, Mr. Kanagawa. We've looked further into the relationship you had with your wife..."
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 48,
+				"characters": [
+					{
+						"id": "Di",
+						"side": "right",
+						"sprite": "di_serious",
+						"mode": "zoom"
+					}
+				],
+				"speaker": "Di",
+				"text": {
+					"ru": "И мы сильно сомневаемся, что она могла сделать с собой нечто подобное.",
+					"en": "And we highly doubt she could have done something like this to herself!"
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 49,
+				"characters": [
+					{
+						"id": "Mr. Kanagawa",
+						"side": "left",
+						"sprite": "mr_kanagava_thinking",
+						"mode": "cut"
+					}
+				],
+				"speaker": "Mr. Kanagawa",
+				"text": {
+					"ru": "Боже мой! Вы хотите сказать, что кто-то мог их отравить?",
+					"en": "Oh my God! Does that mean someone could have poisoned them?"
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 50,
+				"characters": [
+					{
+						"id": "Mr. Kanagawa",
+						"side": "left",
+						"sprite": "mr_kanagawa_crying",
+						"mode": "zoom"
+					}
+				],
+				"speaker": "Mr. Kanagawa",
+				"text": {
+					"ru": "Кто мог так поступить с моей прекрасной женой?",
+					"en": "Who could have done this to my beautiful wife?"
+				},
+				"bubble_mode": "medium"
+			},
+			{
+				"id": 51,
+				"characters": [
+					{
+						"id": "Daniel",
+						"side": "left",
+						"sprite": "daniel_shocked",
+						"mode": "cut"
+					}
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "Мистер Канагава, хватит лгать! Мы уже знаем, что вы изменяли своей жене.",
+					"en": "Mr. Kanagawa, stop lying! We already know that you were cheating on your wife."
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 52,
+				"characters": [
+					{
+						"id": "Daniel",
+						"side": "left",
+						"sprite": "daniel_shocked",
+						"mode": "cut"
+					}
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "И что вы уже собирались разводиться.",
+					"en": "And were already planning to get a divorce."
+				},
+				"bubble_mode": "medium"
+			},
+			{
+				"id": 53,
+				"characters": [
+					{
+						"id": "Di",
+						"side": "right",
+						"sprite": "di_serious",
+						"mode": "zoom"
+					}
+				],
+				"speaker": "Di",
+				"text": {
+					"ru": "А после развода вы могли потерять половину имущества и право опеки над детьми.",
+					"en": "And after the divorce, you could have lost half of your assets and custody of the children."
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 54,
+				"characters": [
+					{
+						"id": "Di",
+						"side": "right",
+						"sprite": "di_thinking",
+						"mode": "zoom"
+					}
+				],
+				"speaker": "Di",
+				"text": {
+					"ru": "Это серьёзный мотив для убийства.",
+					"en": "This is a strong motive for murder."
+				},
+				"bubble_mode": "medium"
+			},
+			{
+				"id": 55,
+				"characters": [
+					{
+						"id": "Mr. Kanagawa",
+						"side": "left",
+						"sprite": "mr_kanagava_scared",
+						"mode": "zoom"
+					}
+				],
+				"speaker": "Mr. Kanagawa",
+				"text": {
+					"ru": "Так, так, подождите. Теперь вы подозреваете меня?",
+					"en": "Whoa, whoa, wait a second. So now you're suspecting me?"
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 56,
+				"characters": [
+					{
+						"id": "Mr. Kanagawa",
+						"side": "left",
+						"sprite": "mr_kanagava_serious",
+						"mode": "zoom"
+					}
+				],
+				"speaker": "Mr. Kanagawa",
+				"text": {
+					"ru": "Хорошо. Раз уж всё зашло так далеко, давайте поговорим серьёзно...",
+					"en": "Fine, if that's how it is. Let's talk seriously..."
+				},
+				"bubble_mode": "medium"
+			},
+			{
+				"id": 57,
+				"characters": [
+					{
+						"id": "Mr. Kanagawa",
+						"side": "left",
+						"sprite": "mr_kanagava_serious",
+						"mode": "zoom"
+					}
+				],
+				"speaker": "Mr. Kanagawa",
+				"text": {
+					"ru": "Если я так боялся потерять опеку над детьми...",
+					"en": "If I was so afraid of losing custody of my children..."
+				},
+				"bubble_mode": "medium"
+			},
+			{
+				"id": 58,
+				"characters": [
+					{
+						"id": "Mr. Kanagawa",
+						"side": "left",
+						"sprite": "mr_kanagava_thinking",
+						"mode": "cut"
+					}
+				],
+				"speaker": "Mr. Kanagawa",
+				"text": {
+					"ru": "Тогда зачем мне было убивать не только жену, но и собственную дочь?",
+					"en": "Then why would I kill not only my wife but my daughter as well?"
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 59,
+				"characters": [
+					{
+						"id": "Mr. Kanagawa",
+						"side": "left",
+						"sprite": "mr_kanagava_thinking",
+						"mode": "cut"
+					}
+				],
+				"speaker": "Mr. Kanagawa",
+				"text": {
+					"ru": "Вы об этом не подумали?",
+					"en": "Didn't you think about that?"
+				},
+				"bubble_mode": "medium"
+			},
+			{
+				"id": 60,
+				"characters": [
+					{
+						"id": "Mr. Kanagawa",
+						"side": "left",
+						"sprite": "mr_kanagawa_crying",
+						"mode": "zoom"
+					}
+				],
+				"speaker": "Mr. Kanagawa",
+				"text": {
+					"ru": "Моя бедная дочь... Я совершенно потерян без неё...",
+					"en": "My poor daughter... I'm so lost without her..."
+				},
+				"bubble_mode": "medium"
+			},
+			{
+				"id": 61,
+				"characters": [
+					{
+						"id": "Mr. Kanagawa",
+						"side": "left",
+						"sprite": "mr_kanagawa_crying",
+						"mode": "zoom"
+					}
+				],
+				"speaker": "Mr. Kanagawa",
+				"text": {
+					"ru": "Я никогда не сделал бы ничего, что могло бы причинить ей вред.",
+					"en": "I would never have done anything to hurt her."
+				},
+				"bubble_mode": "medium"
+			},
+			{
+				"id": 62,
+				"characters": [
+					{
+						"id": "Mr. Kanagawa",
+						"side": "left",
+						"sprite": "mr_kanagawa_thinking",
+						"mode": "zoom",
+						"image": "mr_kanagawa_thinking.png",
+						"bg": "white"
+					}
+				],
+				"speaker": "Mr. Kanagawa",
+				"text": {
+					"ru": "На самом деле всё совсем наоборот. В тот день я настойчиво просил дочь остаться дома и никуда не выходить!",
+					"en": "In fact, quite the opposite. That day, I strongly urged my daughter to stay home and not go anywhere!"
+				},
+				"bubble_mode": "avatar",
+				"actions": [
+					{
+						"type": "add_item",
+						"category": "facts",
+						"id": "mr_kanagawa_asked_daughter_to_stay_home"
+					}
+				],
+				"hotspots": [
+					{
+						"name": {
+							"en": "Stay at home",
+							"ru": "Оставайся дома"
+						},
+						"type": "inspect",
+						"id": "stay_at_home",
+						"x": 0.085,
+						"y": 0.12,
+						"width": 0.82,
+						"height": 0.82,
+						"icon": "stay_at_home.png",
+						"modal": {
+							"x": 0.24,
+							"y": 0.66,
+							"width": 0.52,
+							"height": 0.2
+						}
+					}
+				]
+			},
+			{
+				"id": 63,
+				"characters": [
+					{
+						"id": "Daniel",
+						"side": "center",
+						"sprite": "daniel_smile",
+						"mode": "zoom"
+					}
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "Хм... Похоже, мистер Канагава только что случайно проговорился...",
+					"en": "Hmm... It seems Mr. Kanagawa just let something slip..."
+				},
+				"bubble_mode": "zip",
+				"actions": [
+					{
+						"type": "save_checkpoint"
+					}
+				],
+				"hotspots": [
+					{
+						"name": {
+							"en": "bubbles",
+							"ru": "Пузырьки"
+						},
+						"type": "inactive",
+						"id": "bubbles",
+						"x": 0.215,
+						"y": 0.29,
+						"width": 0.15,
+						"height": 0.15,
+						"icon": "bubbles.png",
+						"modal": {
+							"x": 0.24,
+							"y": 0.66,
+							"width": 0.52,
+							"height": 0.2
+						}
+					}
+				]
+			},
+			{
+				"id": 64,
+				"characters": [
+					{
+						"id": "Daniel",
+						"side": "right",
+						"sprite": "daniel_serious",
+						"mode": "zoom"
+					}
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "Мистер Канагава, сейчас мы рассматриваем только факты.",
+					"en": "Mr. Kanagawa, right now we are looking only at the facts."
+				},
+				"bubble_mode": "medium"
+			},
+			{
+				"id": 65,
+				"characters": [
+					{
+						"id": "Daniel",
+						"side": "right",
+						"sprite": "daniel_serious",
+						"mode": "zoom"
+					}
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "И они говорят не в вашу пользу.",
+					"en": "And they are against you."
+				},
+				"bubble_mode": "small"
+			},
+			{
+				"id": 66,
+				"characters": [
+					{
+						"id": "Daniel",
+						"side": "right",
+						"sprite": "daniel_serious",
+						"mode": "zoom"
+					}
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "Давайте взглянем ещё на один факт:",
+					"en": "Let's look at another fact:"
+				},
+				"bubble_mode": "medium"
+			},
+			{
+				"id": 67,
+				"characters": [
+					{
+						"id": "Daniel",
+						"side": "right",
+						"sprite": "daniel_serious",
+						"mode": "zoom"
+					}
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "Один баллон с угарным газом пропал из вашей лаборатории.",
+					"en": "A carbon monoxide cylinder went missing from your laboratory."
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 68,
+				"characters": [
+					{
+						"id": "Daniel",
+						"side": "right",
+						"sprite": "daniel_serious",
+						"mode": "zoom"
+					}
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "А через несколько дней ваша жена и дочь были отравлены в своей машине.",
+					"en": "And a few days later, your wife and daughter were poisoned in their car."
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 69,
+				"characters": [
+					{
+						"id": "Daniel",
+						"side": "right",
+						"sprite": "daniel_thinking",
+						"mode": "zoom"
+					}
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "Что вы можете на это сказать?",
+					"en": "What do you have to say to that?"
+				},
+				"bubble_mode": "medium"
+			},
+			{
+				"id": 70,
+				"characters": [
+					{
+						"id": "Mr. Kanagawa",
+						"side": "left",
+						"sprite": "mr_kanagava_thinking",
+						"mode": "cut"
+					}
+				],
+				"speaker": "Mr. Kanagawa",
+				"text": {
+					"ru": "Ну... Я понимаю, к чему вы ведёте...",
+					"en": "Well... I understand what you mean..."
+				},
+				"bubble_mode": "medium"
+			},
+			{
+				"id": 71,
+				"characters": [
+					{
+						"id": "Mr. Kanagawa",
+						"side": "left",
+						"sprite": "mr_kanagava_thinking",
+						"mode": "cut"
+					}
+				],
+				"speaker": "Mr. Kanagawa",
+				"text": {
+					"ru": "Но вы понимаете, что эти факты могут быть вообще никак не связаны?!",
+					"en": "But do you realize those facts might not be connected at all?!"
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 72,
+				"characters": [
+					{
+						"id": "Mr. Kanagawa",
+						"side": "left",
+						"sprite": "mr_kanagava_serious",
+						"mode": "zoom"
+					}
+				],
+				"speaker": "Mr. Kanagawa",
+				"text": {
+					"ru": "Да. Я действительно взял из лаборатории один баллон с угарным газом.",
+					"en": "Yes. I did take one carbon monoxide cylinder from the lab."
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 73,
+				"characters": [
+					{
+						"id": "Mr. Kanagawa",
+						"side": "left",
+						"sprite": "mr_kanagava_serious",
+						"mode": "zoom"
+					}
+				],
+				"speaker": "Mr. Kanagawa",
+				"text": {
+					"ru": "Я взял один баллон и поставил его в гараже...",
+					"en": "I took one cylinder and put it in the garage..."
+				},
+				"bubble_mode": "medium"
+			},
+			{
+				"id": 74,
+				"characters": [
+					{
+						"id": "Di",
+						"side": "right",
+						"sprite": "di_thinking",
+						"mode": "zoom"
+					}
+				],
+				"speaker": "Di",
+				"text": {
+					"ru": "Зачем вам понадобился угарный газ?",
+					"en": "Why did you need carbon monoxide?"
+				},
+				"bubble_mode": "medium"
+			},
+			{
+				"id": 75,
+				"backgroundChange": "kanagawa_rats_garage"
+			},
+			{
+				"id": 76,
+				"characters": [
+					{
+						"id": "Mr. Kanagawa",
+						"side": "left",
+						"sprite": "mr_kanagawa_thinking",
+						"mode": "zoom",
+						"image": "mr_kanagawa_thinking.png",
+						"bg": "white"
+					}
+				],
+				"speaker": "Mr. Kanagawa",
+				"text": {
+					"ru": "Я хотел с его помощью отравить крыс в гараже.",
+					"en": "I wanted to kill the rats in my garage with it."
+				},
+				"bubble_mode": "avatar"
+			},
+			{
+				"id": 77,
+				"characters": [
+					{
+						"id": "Di",
+						"side": "right",
+						"image": "di_thinking.png",
+						"sprite": "di_thinking",
+						"mode": "zoom",
+						"bg": "white"
+					}
+				],
+				"speaker": "Di",
+				"text": {
+					"ru": "Крыс? Вы серьёзно?",
+					"en": "Rats? Are you serious?"
+				},
+				"bubble_mode": "avatar"
+			},
+			{
+				"id": 78,
+				"characters": [
+					{
+						"id": "Mr. Kanagawa",
+						"side": "left",
+						"image": "mr_kanagawa_serious.png",
+						"sprite": "mr_kanagava_serious",
+						"mode": "zoom",
+						"bg": "white"
+					}
+				],
+				"speaker": "Mr. Kanagawa",
+				"text": {
+					"ru": "Да. Оказалось, что целого баллона для этого слишком много.",
+					"en": "Yes. A whole cylinder turned out to be too much."
+				},
+				"bubble_mode": "avatar"
+			},
+			{
+				"id": 79,
+				"characters": [
+					{
+						"id": "Mr. Kanagawa",
+						"side": "left",
+						"image": "mr_kanagawa_serious.png",
+						"sprite": "mr_kanagava_serious",
+						"mode": "zoom",
+						"bg": "white"
+					}
+				],
+				"speaker": "Mr. Kanagawa",
+				"text": {
+					"ru": "Поэтому я решил закачать немного газа в мяч и оставить его в гараже.",
+					"en": "So I thought I'd pump a little into a ball and leave it in the garage."
+				},
+				"bubble_mode": "avatar",
+				"actions": [
+					{
+						"type": "add_item",
+						"category": "facts",
+						"id": "mr_kanagawa_claims_gas_for_rats"
+					}
+				]
+			},
+			{
+				"id": 80,
+				"backgroundNoAnimationChange": "interrogation_room_2",
+				"characters": [
+					{
+						"id": "Mr. Kanagawa",
+						"side": "left",
+						"sprite": "mr_kanagava_scared",
+						"mode": "zoom"
+					}
+				],
+				"speaker": "Mr. Kanagawa",
+				"text": {
+					"ru": "Клянусь, это единственная причина, по которой мне понадобился этот баллон.",
+					"en": "I swear, that's the only reason I needed that cylinder."
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 81,
+				"characters": [
+					{
+						"id": "Daniel",
+						"side": "right",
+						"sprite": "daniel_serious",
+						"mode": "zoom"
+					}
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "Что ж, мы понимаем вашу тактику.",
+					"en": "Well, we understand your tactics."
+				},
+				"bubble_mode": "medium"
+			},
+			{
+				"id": 82,
+				"characters": [
+					{
+						"id": "Daniel",
+						"side": "right",
+						"sprite": "daniel_shocked",
+						"mode": "cut"
+					}
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "Мистер Канагава, я рекомендую вам сделать полное признание...",
+					"en": "Mr. Kanagawa, I recommend you make a full confession..."
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 83,
+				"characters": [
+					{
+						"id": "Daniel",
+						"side": "right",
+						"sprite": "daniel_shocked",
+						"mode": "cut"
+					}
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "Пока ещё не слишком поздно.",
+					"en": "Before it's too late."
+				},
+				"bubble_mode": "small"
+			},
+			{
+				"id": 84,
+				"characters": [
+					{
+						"id": "Daniel",
+						"side": "right",
+						"sprite": "daniel_shocked",
+						"mode": "cut"
+					}
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "Тогда у вас будет шанс добиться смягчения приговора.",
+					"en": "Then you will have a chance to reduce your sentence."
+				},
+				"bubble_mode": "medium"
+			},
+			{
+				"id": 85,
+				"characters": [
+					{
+						"id": "Mr. Kanagawa",
+						"side": "left",
+						"sprite": "mr_kanagava_serious",
+						"mode": "zoom"
+					}
+				],
+				"speaker": "Mr. Kanagawa",
+				"text": {
+					"ru": "Знаете, пожалуй, с этого момента я больше не буду давать никаких показаний...",
+					"en": "You know, at this point, I think I'll stop giving any statements..."
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 86,
+				"characters": [
+					{
+						"id": "Mr. Kanagawa",
+						"side": "left",
+						"sprite": "mr_kanagava_serious",
+						"mode": "zoom"
+					}
+				],
+				"speaker": "Mr. Kanagawa",
+				"text": {
+					"ru": "И позвоню своему адвокату.",
+					"en": "And call my lawyer."
+				},
+				"bubble_mode": "small"
+			},
+			{
+				"id": 87,
+				"characters": [
+					{
+						"id": "Mr. Kanagawa",
+						"side": "left",
+						"sprite": "mr_kanagava_thinking",
+						"mode": "cut"
+					}
+				],
+				"speaker": "Mr. Kanagawa",
+				"text": {
+					"ru": "И кстати...",
+					"en": "And by the way..."
+				},
+				"bubble_mode": "small"
+			},
+			{
+				"id": 88,
+				"characters": [
+					{
+						"id": "Mr. Kanagawa",
+						"side": "left",
+						"sprite": "mr_kanagava_thinking",
+						"mode": "cut"
+					}
+				],
+				"speaker": "Mr. Kanagawa",
+				"text": {
+					"ru": "Если вы всё ещё считаете, что это сделал я...",
+					"en": "If you still think that I did it..."
+				},
+				"bubble_mode": "medium"
+			},
+			{
+				"id": 89,
+				"characters": [
+					{
+						"id": "Mr. Kanagawa",
+						"side": "left",
+						"sprite": "mr_kanagava_thinking",
+						"mode": "cut"
+					}
+				],
+				"speaker": "Mr. Kanagawa",
+				"text": {
+					"ru": "Тогда как вы докажете, что именно я положил мяч в машину?",
+					"en": "Then how can you prove I put the ball in the car?"
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 90,
+				"characters": [
+					{
+						"id": "Daniel",
+						"side": "right",
+						"sprite": "daniel_thinking",
+						"mode": "zoom"
+					}
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "Хороший вопрос. Не переживайте...",
+					"en": "That's a good question. Don't worry..."
+				},
+				"bubble_mode": "medium"
+			},
+			{
+				"id": 91,
+				"characters": [
+					{
+						"id": "Daniel",
+						"side": "right",
+						"sprite": "daniel_thinking",
+						"mode": "zoom"
+					}
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "Если вы действительно совершили это преступление, доказательства обязательно найдутся.",
+					"en": "If you actually committed this crime, the evidence will turn up."
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 92,
+				"characters": [
+					{
+						"id": "Daniel",
+						"side": "right",
+						"sprite": "daniel_thinking",
+						"mode": "zoom"
+					}
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "Они всегда находятся.",
+					"en": "It always does."
+				},
+				"bubble_mode": "small",
+				"actions": [
+					{
+						"type": "complete_task",
+						"id": "question_mr_kanagawa_again"
+					},
+					{
+						"type": "save_checkpoint"
+					}
+				]
+			},
+			{
+				"id": 93,
+				"backgroundChange": "police",
+				"backgroundHoldMs": 1500
+			},
+			{
+				"id": 94,
+				"characters": [
+					{
+						"id": "Di",
+						"side": "right",
+						"sprite": "di_serious",
+						"mode": "zoom"
+					}
+				],
+				"speaker": "Di",
+				"text": {
+					"ru": "Вот теперь разговор становится интереснее!",
+					"en": "Whoa, now we're talking!"
+				},
+				"bubble_mode": "medium"
+			},
+			{
+				"id": 95,
+				"characters": [
+					{
+						"id": "Di",
+						"side": "right",
+						"sprite": "di_serious",
+						"mode": "zoom"
+					}
+				],
+				"speaker": "Di",
+				"text": {
+					"ru": "Оказывается, когда у нас есть доказательства...",
+					"en": "It turns out that when we have evidence..."
+				},
+				"bubble_mode": "medium"
+			},
+			{
+				"id": 96,
+				"characters": [
+					{
+						"id": "Di",
+						"side": "right",
+						"sprite": "di_serious",
+						"mode": "zoom"
+					}
+				],
+				"speaker": "Di",
+				"text": {
+					"ru": "Допрос становится гораздо продуктивнее!",
+					"en": "Interrogation becomes much more productive!"
+				},
+				"bubble_mode": "medium"
+			},
+			{
+				"id": 97,
+				"characters": [
+					{
+						"id": "Daniel",
+						"side": "left",
+						"sprite": "daniel_smile",
+						"mode": "zoom"
+					}
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "Вы слышали? Он сказал, что просил дочь...",
+					"en": "Did you hear that? He said he ordered his daughter..."
+				},
+				"bubble_mode": "medium"
+			},
+			{
+				"id": 98,
+				"characters": [
+					{
+						"id": "Daniel",
+						"side": "left",
+						"sprite": "daniel_smile",
+						"mode": "zoom"
+					}
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "Остаться дома в тот день и никуда не выходить.",
+					"en": "To stay home that day and not go anywhere."
+				},
+				"bubble_mode": "medium"
+			},
+			{
+				"id": 99,
+				"characters": [
+					{
+						"id": "Di",
+						"side": "right",
+						"sprite": "di_serious",
+						"mode": "zoom"
+					}
+				],
+				"speaker": "Di",
+				"text": {
+					"ru": "Да, но он сказал, что хотел, чтобы она готовилась к экзаменам.",
+					"en": "Yeah, but he said he wanted her to study for her exams."
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 100,
+				"characters": [
+					{
+						"id": "Di",
+						"side": "right",
+						"sprite": "di_serious",
+						"mode": "zoom"
+					}
+				],
+				"speaker": "Di",
+				"text": {
+					"ru": "Как это связано с нашим делом?",
+					"en": "How does that relate to our case?"
+				},
+				"bubble_mode": "medium"
+			},
+			{
+				"id": 101,
+				"characters": [
+					{
+						"id": "Daniel",
+						"side": "left",
+						"sprite": "daniel_smile",
+						"mode": "zoom"
+					}
+				],
+				"speaker": "Daniel",
+				"text_pages": {
+					"ru": ["Вот в чём дело... До этого разговора", "у меня были сомнения насчёт нашего подозреваемого."],
+					"en": ["Here's the deal... Before this conversation,", "I had my doubts about our suspect."]
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 102,
+				"characters": [
+					{
+						"id": "Daniel",
+						"side": "left",
+						"sprite": "daniel_smile",
+						"mode": "zoom"
+					}
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "Я всё думал... зачем мистеру Канагаве убивать свою дочь вместе с женой?",
+					"en": "I kept thinking... why would Mr. Kanagawa want to kill his daughter along with his wife?"
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 103,
+				"characters": [
+					{
+						"id": "Daniel",
+						"side": "center",
+						"sprite": "daniel_thinking",
+						"mode": "zoom"
+					}
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "Какой вывод мы можем из этого сделать?",
+					"en": "What conclusion can we make here?"
+				},
+				"bubble_mode": "zip",
+				"tapToContinue": false,
+				"makeLogic": {
+					"buttonText": {
+						"ru": "Соединить",
+						"en": "Connect"
+					},
+					"title": {
+						"ru": "make 🧠 logic",
+						"en": "make 🧠 logic"
+					},
+					"description": {
+						"ru": "Выберите два связанных факта, чтобы сформировать гипотезу.",
+						"en": "Select 2 related facts to form a hypothesis!"
+					},
+					"items": [
+						{
+							"category": "facts",
+							"id": "mr_kanagawa_asked_daughter_to_stay_home"
+						},
+						{
+							"category": "hypotheses",
+							"id": "gas_released_deliberately"
+						},
+						{
+							"category": "facts",
+							"id": "mr_kanagawa_affair_with_assistant"
+						},
+						{
+							"category": "facts",
+							"id": "mr_kanagawa_divorce_losses"
+						}
+					],
+					"correctPairs": [
+						[
+							{
+								"category": "facts",
+								"id": "mr_kanagawa_asked_daughter_to_stay_home"
+							},
+							{
+								"category": "hypotheses",
+								"id": "gas_released_deliberately"
+							}
+						]
+					],
+					"successLine": 104,
+					"wrongLine": 105
+				},
+				"actions": [
+					{
+						"type": "save_checkpoint"
+					}
+				],
+				"allowBack": false
+			},
+			{
+				"id": 104,
+				"characters": [
+					{
+						"id": "Daniel",
+						"side": "center",
+						"sprite": "daniel_finger_up",
+						"mode": "zoom2"
+					}
+				],
+				"logicResult": {
+					"type": "correct",
+					"message": {
+						"ru": "Новая гипотеза!",
+						"en": "New hypothesis!"
+					},
+					"showHypothesis": true,
+					"hypothesisId": "daughter_death_was_accidental",
+					"continueLine": 106
+				},
+				"actions": [
+					{
+						"type": "add_item",
+						"category": "hypotheses",
+						"id": "daughter_death_was_accidental"
+					},
+					{
+						"type": "save_checkpoint"
+					}
+				],
+				"allowBack": false
+			},
+			{
+				"id": 105,
+				"characters": [
+					{
+						"id": "Daniel",
+						"side": "center",
+						"sprite": "daniel_shocked",
+						"mode": "cut"
+					}
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "Нет. Эти сведения не объясняют, почему мистер Канагава просил дочь остаться дома именно в тот день.",
+					"en": "No. Those clues don't explain why Mr. Kanagawa wanted his daughter to stay home that day."
+				},
+				"bubble_mode": "explanation",
+				"logicResult": {
+					"type": "wrong",
+					"message": {
+						"ru": "Неверно! Подумай ещё раз.",
+						"en": "Wrong! Think again."
+					},
+					"retryLine": 103
+				},
+				"actions": [
+					{
+						"type": "save_checkpoint"
+					}
+				],
+				"allowBack": false
+			},
+			{
+				"id": 106,
+				"characters": [
+					{
+						"id": "Daniel",
+						"side": "left",
+						"sprite": "daniel_thinking",
+						"mode": "zoom"
+					}
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "Но теперь он сам дал нам ответ.",
+					"en": "But now, he's given us the answer himself."
+				},
+				"bubble_mode": "medium",
+				"allowBack": false
+			},
+			{
+				"id": 107,
+				"characters": [
+					{
+						"id": "Daniel",
+						"side": "left",
+						"sprite": "daniel_thinking",
+						"mode": "zoom"
+					}
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "Если моя теория верна, он собирался отравить только свою жену.",
+					"en": "If my theory is correct, he only intended to poison his wife."
+				},
+				"bubble_mode": "large",
+				"allowBack": false
+			},
+			{
+				"id": 108,
+				"characters": [
+					{
+						"id": "Daniel",
+						"side": "left",
+						"sprite": "daniel_thinking",
+						"mode": "zoom"
+					}
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "Он просил дочь остаться дома, чтобы она случайно не села в машину вместе с матерью.",
+					"en": "He ordered his daughter to stay home so she wouldn't accidentally get into the car with her mother."
+				},
+				"bubble_mode": "large",
+				"actions": [
+					{
+						"type": "save_checkpoint"
+					}
+				],
+				"allowBack": false
+			},
+			{
+				"id": 109,
+				"characters": [
+					{
+						"id": "Di",
+						"side": "right",
+						"sprite": "di_ok",
+						"mode": "zoom"
+					}
+				],
+				"speaker": "Di",
+				"text": {
+					"ru": "Мистер Дэниел, это блестящая догадка!",
+					"en": "Mr. Daniel, that's a brilliant hunch!"
+				},
+				"bubble_mode": "medium"
+			},
+			{
+				"id": 110,
+				"characters": [
+					{
+						"id": "Di",
+						"side": "right",
+						"sprite": "di_ok",
+						"mode": "zoom"
+					}
+				],
+				"speaker": "Di",
+				"text": {
+					"ru": "Как вы думаете, что нам следует делать дальше?",
+					"en": "What do you think we should do next?"
+				},
+				"bubble_mode": "medium"
+			},
+			{
+				"id": 111,
+				"characters": [
+					{
+						"id": "Daniel",
+						"side": "left",
+						"sprite": "daniel_serious",
+						"mode": "zoom"
+					}
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "Теперь наша задача — собрать больше доказательств против мистера Канагавы.",
+					"en": "Our task now is to gather more evidence against Mr. Kanagawa."
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 112,
+				"characters": [
+					{
+						"id": "Daniel",
+						"side": "center",
+						"sprite": "daniel_thinking",
+						"mode": "zoom"
+					}
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "Что нам следует делать дальше?",
+					"en": "What should we do next?"
+				},
+				"bubble_mode": "zip",
+				"tapToContinue": false,
+				"nextStepChoice": {
+					"buttonText": {
+						"ru": "Выбрать",
+						"en": "Choose"
+					},
+					"title": {
+						"ru": "make 🧠 logic",
+						"en": "make 🧠 logic"
+					},
+					"description": {
+						"ru": "Что нам следует делать дальше?",
+						"en": "What should we do next?"
+					},
+					"selectText": {
+						"ru": "Выбрать",
+						"en": "Select"
+					},
+					"options": [
+						{
+							"id": "talk_to_lawyer_again",
+							"icon": "lawyer.png",
+							"text": {
+								"ru": "Снова поговорить с адвокатом",
+								"en": "Talk to lawyer again"
+							},
+							"correct": false,
+							"hpPenalty": 1,
+							"resultLine": 114
+						},
+						{
+							"id": "talk_to_sister_again",
+							"icon": "mrs_kanagawa_sister.png",
+							"text": {
+								"ru": "Снова поговорить с сестрой миссис Канагавы",
+								"en": "Talk to Mrs. Kanagawa's sister again"
+							},
+							"correct": false,
+							"hpPenalty": 1,
+							"resultLine": 115
+						},
+						{
+							"id": "arrest_mr_kanagawa",
+							"icon": "arrest_kanagawa_border.svg",
+							"text": {
+								"ru": "Арестовать мистера Канагаву",
+								"en": "Arrest Mr. Kanagawa"
+							},
+							"correct": false,
+							"hpPenalty": 1,
+							"resultLine": 116
+						},
+						{
+							"id": "search_kanagawa_house",
+							"icon": "kanagawa_house_search.png",
+							"text": {
+								"ru": "Обыскать дом мистера Канагавы",
+								"en": "Search Mr. Kanagawa's house"
+							},
+							"correct": true,
+							"resultLine": 113
+						}
+					]
+				},
+				"actions": [
+					{
+						"type": "save_checkpoint"
+					}
+				],
+				"allowBack": false
+			},
+			{
+				"id": 113,
+				"characters": [
+					{
+						"id": "Daniel",
+						"side": "center",
+						"sprite": "daniel_finger_up",
+						"mode": "zoom"
+					}
+				],
+				"choiceResult": {
+					"type": "correct",
+					"message": {
+						"ru": "Правильный выбор!",
+						"en": "Right choice!"
+					},
+					"showBadge": true,
+					"showResultCard": true,
+					"resultCard": {
+						"icon": "kanagawa_house_search.png",
+						"text": {
+							"ru": "Если мистер Канагава — убийца, он мог оставить какие-либо доказательства в доме.",
+							"en": "If Mr. Kanagawa is the killer, then he may have left some evidence in the house."
+						}
+					},
+					"continueLine": 117
+				},
+				"actions": [
+					{
+						"type": "save_checkpoint"
+					}
+				],
+				"allowBack": false
+			},
+			{
+				"id": 114,
+				"characters": [
+					{
+						"id": "Daniel",
+						"side": "center",
+						"sprite": "daniel_shocked",
+						"mode": "cut"
+					}
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "Адвокат уже рассказал нам всё, что знал.",
+					"en": "He told us everything he knew."
+				},
+				"bubble_mode": "explanation",
+				"choiceResult": {
+					"type": "wrong",
+					"message": {
+						"ru": "Неверно! Подумай ещё раз.",
+						"en": "Wrong! Think again."
+					},
+					"retryLine": 112
+				},
+				"actions": [
+					{
+						"type": "save_checkpoint"
+					}
+				],
+				"allowBack": false
+			},
+			{
+				"id": 115,
+				"characters": [
+					{
+						"id": "Daniel",
+						"side": "center",
+						"sprite": "daniel_shocked",
+						"mode": "cut"
+					}
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "Сестра миссис Канагавы уже рассказала нам всё, что знала.",
+					"en": "She told us everything she knew."
+				},
+				"bubble_mode": "explanation",
+				"choiceResult": {
+					"type": "wrong",
+					"message": {
+						"ru": "Неверно! Подумай ещё раз.",
+						"en": "Wrong! Think again."
+					},
+					"retryLine": 112
+				},
+				"actions": [
+					{
+						"type": "save_checkpoint"
+					}
+				],
+				"allowBack": false
+			},
+			{
+				"id": 116,
+				"characters": [
+					{
+						"id": "Daniel",
+						"side": "center",
+						"sprite": "daniel_shocked",
+						"mode": "cut"
+					}
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "У нас пока недостаточно доказательств, чтобы арестовать мистера Канагаву.",
+					"en": "There is not enough evidence to arrest Mr. Kanagawa."
+				},
+				"bubble_mode": "explanation",
+				"choiceResult": {
+					"type": "wrong",
+					"message": {
+						"ru": "Неверно! Подумай ещё раз.",
+						"en": "Wrong! Think again."
+					},
+					"retryLine": 112
+				},
+				"actions": [
+					{
+						"type": "save_checkpoint"
+					}
+				],
+				"allowBack": false
+			},
+			{
+				"id": 117,
+				"backgroundNoAnimationChange": "default",
+				"characters": [
+					{
+						"id": "Daniel",
+						"side": "center",
+						"sprite": "daniel_finger_up",
+						"mode": "cut"
+					}
+				],
+				"bubble_mode": "large",
+				"actions": [
+					{
+						"type": "add_task",
+						"id": "search_kanagawa_house"
+					},
+					{
+						"type": "save_checkpoint"
+					}
+				]
+			}
+
+		]
+	},
+
+	"14_kanagawa_house_search": {
+		"background": "kanagawa_house_indoor",
+		"dialog": [
+			{
+				"id": 1,
+				"characters": [
+					{
+						"id": "Housekeeper",
+						"side": "left",
+						"sprite": "housekeeper",
+						"mode": "cut"
+					}
+				],
+				"speaker": "Housekeeper",
+				"text": {
+					"ru": "Добро пожаловать, детективы. Я могу вам чем-нибудь помочь?",
+					"en": "Welcome, detectives. Can I help you with something?"
+				},
+				"bubble_mode": "large",
+				"actions": [
+					{
+						"type": "save_checkpoint"
+					}
+				]
+			},
+			{
+				"id": 2,
+				"characters": [
+					{
+						"id": "Daniel",
+						"side": "right",
+						"sprite": "daniel_smile",
+						"mode": "zoom"
+					}
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "Доброе утро. Мы приехали провести обыск в доме мистера Канагавы.",
+					"en": "Good morning. We are here to conduct a search of Mr. Kanagawa's house."
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 3,
+				"characters": [
+					{
+						"id": "Daniel",
+						"side": "right",
+						"sprite": "daniel_smile",
+						"mode": "zoom"
+					}
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "Но прежде не могли бы вы ответить ещё на несколько вопросов?",
+					"en": "But before that, could you answer a few questions?"
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 4,
+				"characters": [
+					{
+						"id": "Housekeeper",
+						"side": "left",
+						"sprite": "housekeeper",
+						"mode": "cut"
+					}
+				],
+				"speaker": "Housekeeper",
+				"text": {
+					"ru": "Конечно, детектив Дэниел. Я буду рада помочь.",
+					"en": "I'd be happy to help, Detective Daniel."
+				},
+				"bubble_mode": "medium"
+			},
+			{
+				"id": 5,
+				"characters": [
+					{
+						"id": "Daniel",
+						"side": "right",
+						"sprite": "daniel_serious",
+						"mode": "zoom"
+					}
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "Нас интересует, что делал мистер Канагава перед тем, как уйти из дома в тот день.",
+					"en": "We are interested in what Mr. Kanagawa did before leaving home that day."
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 6,
+				"characters": [
+					{
+						"id": "Housekeeper",
+						"side": "left",
+						"sprite": "housekeeper_worried",
+						"mode": "cut"
+					}
+				],
+				"speaker": "Housekeeper",
+				"text": {
+					"ru": "Даже не знаю... Я не заметила ничего особенного.",
+					"en": "I don't even know. I didn't see anything special."
+				},
+				"bubble_mode": "medium"
+			},
+			{
+				"id": 7,
+				"characters": [
+					{
+						"id": "Di",
+						"side": "right",
+						"sprite": "di_serious",
+						"mode": "zoom"
+					}
+				],
+				"speaker": "Di",
+				"text": {
+					"ru": "Может быть, он с кем-то разговаривал? Или с кем-то спорил?",
+					"en": "Maybe he was talking to someone? Or arguing?"
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 8,
+				"characters": [
+					{
+						"id": "Housekeeper",
+						"side": "left",
+						"sprite": "housekeeper_worried",
+						"mode": "cut"
+					}
+				],
+				"speaker": "Housekeeper",
+				"text": {
+					"ru": "Ой, точно! Я только что вспомнила!",
+					"en": "Oh, I just remembered!"
+				},
+				"bubble_mode": "medium"
+			},
+			{
+				"id": 9,
+				"characters": [
+					{
+						"id": "Housekeeper",
+						"side": "left",
+						"sprite": "housekeeper_worried",
+						"mode": "cut"
+					}
+				],
+				"speaker": "Housekeeper",
+				"text": {
+					"ru": "В тот день он довольно сильно поссорился со своей дочерью...",
+					"en": "He was arguing quite heatedly with his daughter that day..."
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 10,
+				"characters": [
+					{
+						"id": "Housekeeper",
+						"side": "left",
+						"sprite": "housekeeper_worried",
+						"mode": "cut"
+					}
+				],
+				"speaker": "Housekeeper",
+				"text": {
+					"ru": "Он велел ей остаться дома и готовиться к экзаменам.",
+					"en": "He ordered her to stay home and study for her exams."
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 11,
+				"characters": [
+					{
+						"id": "Di",
+						"side": "right",
+						"sprite": "di_thinking",
+						"mode": "zoom"
+					}
+				],
+				"speaker": "Di",
+				"text": {
+					"ru": "Подозрительно, что он просил дочь...",
+					"en": "It's suspicious that he asked his daughter..."
+				},
+				"bubble_mode": "medium"
+			},
+			{
+				"id": 12,
+				"characters": [
+					{
+						"id": "Di",
+						"side": "right",
+						"sprite": "di_thinking",
+						"mode": "zoom"
+					}
+				],
+				"speaker": "Di",
+				"text": {
+					"ru": "Остаться дома именно в тот день, вам не кажется?",
+					"en": "To stay home on that particular day, isn't it?"
+				},
+				"bubble_mode": "medium"
+			},
+			{
+				"id": 13,
+				"characters": [
+					{
+						"id": "Housekeeper",
+						"side": "left",
+						"sprite": "housekeeper",
+						"mode": "cut"
+					}
+				],
+				"speaker": "Housekeeper",
+				"text": {
+					"ru": "Я с вами согласна.",
+					"en": "I agree with you."
+				},
+				"bubble_mode": "small"
+			},
+			{
+				"id": 14,
+				"characters": [
+					{
+						"id": "Housekeeper",
+						"side": "left",
+						"sprite": "housekeeper",
+						"mode": "cut"
+					}
+				],
+				"speaker": "Housekeeper",
+				"text": {
+					"ru": "Теперь, когда он стал подозреваемым, это действительно выглядит странно.",
+					"en": "Now that he is a suspect, it looks suspicious."
+				},
+				"bubble_mode": "large"
 			}
 		]
 	}

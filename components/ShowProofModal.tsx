@@ -229,9 +229,9 @@ export default function ShowProofModal({
                                 )}
 
                                 <View style={styles.cardTextWrap}>
-                                    <AppText style={styles.cardTitle}>
-                                        {item.name}
-                                    </AppText>
+                                    {/*<AppText style={styles.cardTitle}>*/}
+                                    {/*    {item.name}*/}
+                                    {/*</AppText>*/}
 
                                     <AppText style={styles.cardDescription}>
                                         {item.short_description ||
@@ -390,8 +390,8 @@ const styles = StyleSheet.create({
 
     cardDescription: {
         color: "#fff",
-        fontSize: 10 * 3 * SCALE,
-        lineHeight: 14 * 3 * SCALE,
+        fontSize: 14 * 3 * SCALE,
+        lineHeight: 18 * 3 * SCALE,
         fontFamily: "IBMPlexMono-Regular",
     },
     itemIconWrap: {

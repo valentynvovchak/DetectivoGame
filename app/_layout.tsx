@@ -68,7 +68,14 @@ export default function RootLayout() {
                 <Stack.Screen name="3_street_witness" />
                 <Stack.Screen name="4_car_inspection" />
                 <Stack.Screen name="5_hospital" />
-
+                <Stack.Screen name="6_laboratory" />
+                <Stack.Screen name="7_kanagawa_house" />
+                <Stack.Screen name="8_report_is_ready" />
+                <Stack.Screen name="9_mrs_kanagawa_sister" />
+                <Stack.Screen name="10_mr_kanagawa_lawyer_1" />
+                <Stack.Screen name="10_mr_kanagawa_lawyer_2" />
+                <Stack.Screen name="11_car_reinspection" />
+                <Stack.Screen name="12_test_results" />
                 {/* ✅ карта как модалка поверх */}
                 <Stack.Screen
                     name="map"

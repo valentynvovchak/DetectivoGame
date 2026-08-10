@@ -15,6 +15,9 @@ import { useGameStore } from "@/store/gameStore";
 import { router } from "expo-router";
 import AppText from "@/components/Common/AppText";
 import { ICONS } from "@/assets/icons";
+import MixedIcon from "@/components/Common/MixedIcon";
+import {height, isTablet, width} from "@/styles/global";
+import {SCALE} from "@/tools/constants";
 
 const { width: SCREEN_W, height: SCREEN_H } = Dimensions.get("window");
 
@@ -171,6 +174,9 @@ export default function WorldMap() {
                                 key={id}
                                 style={[
                                     styles.locationWrap,
+
+                                    isSelected && styles.locationWrapSelected,
+
                                     {
                                         left: MAP_W * loc.x,
                                         top: MAP_H * loc.y,
@@ -253,6 +259,34 @@ export default function WorldMap() {
             </Animated.View>
 
             {mapNotification && (
+                <View
+                    pointerEvents="none"
+                    style={[
+                        styles.mapNotification,
+                        mapNotification.placement === "top"
+                            ? styles.mapNotificationTop
+                            : styles.mapNotificationBottom,
+                    ]}
+                >
+                    {!!mapNotification.icon && (
+                        <View style={styles.mapNotificationIcon}>
+                            <MixedIcon
+                                icon={mapNotification.icon}
+                                width={46}
+                                height={46}
+                                resizeMode="contain"
+                            />
+                        </View>
+                    )}
+
+                    <AppText style={styles.mapNotificationText}>
+                        {mapNotification.text?.[lang] ||
+                            mapNotification.text?.en ||
+                            ""}
+                    </AppText>
+                </View>
+            )}
+            {/*{mapNotification && (
                 <Animated.View
                     pointerEvents="none"
                     style={[
@@ -274,7 +308,7 @@ export default function WorldMap() {
                             mapNotification.text?.en}
                     </AppText>
                 </Animated.View>
-            )}
+            )}*/}
         </View>
     );
 }
@@ -336,18 +370,25 @@ const styles = StyleSheet.create({
 
     locationPopup: {
         position: "absolute",
-        bottom: 76,
+
+        bottom: 82,
+
         width: 230,
         minHeight: 105,
+
         backgroundColor: "rgba(33, 55, 54, 0.96)",
+
         borderWidth: 1.5,
         borderColor: "#E9DEC1",
         borderRadius: 8,
+
         paddingHorizontal: 12,
         paddingVertical: 10,
+
         alignItems: "center",
-        zIndex: 100,
-        elevation: 100,
+
+        zIndex: 1100,
+        elevation: 1100,
     },
 
     popupTail: {
@@ -407,55 +448,62 @@ const styles = StyleSheet.create({
         fontFamily: "IBMPlexMono-Regular",
     },
 
-    mapNotification: {
-        position: "absolute",
+    // mapNotification: {
+    //     position: "absolute",
+    //
+    //     left: "6%",
+    //     right: "6%",
+    //
+    //     bottom: "5%",
+    //
+    //     backgroundColor: "rgba(42, 72, 70, 0.97)",
+    //
+    //     borderWidth: 2,
+    //     borderColor: "#E9DEC1",
+    //
+    //     borderRadius: 6,
+    //
+    //     paddingHorizontal: 16,
+    //     paddingVertical: 14,
+    //
+    //     zIndex: 200,
+    //     elevation: 200,
+    //
+    //     shadowColor: "#000",
+    //     shadowOffset: {
+    //         width: 0,
+    //         height: 4,
+    //     },
+    //     shadowOpacity: 0.3,
+    //     shadowRadius: 6,
+    // },
 
-        left: "6%",
-        right: "6%",
-
-        bottom: "5%",
-
-        backgroundColor: "rgba(42, 72, 70, 0.97)",
-
-        borderWidth: 2,
-        borderColor: "#E9DEC1",
-
-        borderRadius: 6,
-
-        paddingHorizontal: 16,
-        paddingVertical: 14,
-
-        zIndex: 200,
-        elevation: 200,
-
-        shadowColor: "#000",
-        shadowOffset: {
-            width: 0,
-            height: 4,
-        },
-        shadowOpacity: 0.3,
-        shadowRadius: 6,
-    },
-
-    mapNotificationText: {
-        color: "#FFFFFF",
-
-        fontSize: 14,
-        lineHeight: 19,
-
-        fontFamily: "IBMPlexMono-Regular",
-    },
+    // mapNotificationText: {
+    //     color: "#FFFFFF",
+    //
+    //     fontSize: 14,
+    //     lineHeight: 19,
+    //
+    //     fontFamily: "IBMPlexMono-Regular",
+    // },
     locationIconWrap: {
         position: "relative",
+
         alignItems: "center",
         justifyContent: "center",
+
         overflow: "visible",
+
+        zIndex: 1,
+        elevation: 1,
     },
 
     locationTriangle: {
         position: "absolute",
 
         bottom: -18,
+        left: '52%',
+        transform: [{ translateX: '-50%' }],
 
         width: 22,
         height: 16,
@@ -464,5 +512,75 @@ const styles = StyleSheet.create({
 
         zIndex: 20,
         elevation: 20,
+    },
+
+    mapNotification: {
+        position: "absolute",
+
+        left: width * 0.06,
+        right: width * 0.06,
+
+        minHeight: 76,
+
+        flexDirection: "row",
+        alignItems: "center",
+
+        backgroundColor: "rgba(48, 82, 78, 0.97)",
+
+        borderWidth: 2,
+        borderColor: "#E9DEC1",
+        borderRadius: 7,
+
+        paddingHorizontal: 14,
+        paddingVertical: 12,
+
+        zIndex: 500,
+        elevation: 500,
+
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 4,
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 5,
+    },
+
+    mapNotificationTop: {
+        top: height * 0.13,
+    },
+
+    mapNotificationBottom: {
+        bottom: height * 0.08,
+    },
+
+    mapNotificationIcon: {
+        width: 52,
+        height: 52,
+
+        flexShrink: 0,
+
+        marginRight: 12,
+
+        alignItems: "center",
+        justifyContent: "center",
+    },
+
+    mapNotificationText: {
+        flex: 1,
+
+        color: "#F7EFE4",
+
+        fontFamily: "IBMPlexMono-Regular",
+
+        fontSize: isTablet ? 19 * 3 * SCALE : 14 * 3 * SCALE,
+        lineHeight: isTablet ? 25 * 3 * SCALE : 19 * 3 * SCALE,
+
+        textAlign: "left",
+    },
+
+    locationWrapSelected: {
+        zIndex: 1000,
+        elevation: 1000,
     },
 });

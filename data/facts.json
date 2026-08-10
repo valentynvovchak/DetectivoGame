@@ -4,12 +4,14 @@
       "name": "На автобусной остановке в автомобиле были обнаружены два тела.",
       "icon": "two_bodies.svg",
       "importance": "medium",
+      "short_description": "В автомобиле возле автобусной остановки обнаружены два тела.",
       "description": "В припаркованном возле автобусной остановки автомобиле были обнаружены тела мужчины и женщины. Двери машины были закрыты, следов борьбы или попыток выбраться наружу на первый взгляд не обнаружено."
     },
     "en": {
       "name": "Two bodies were discovered in a car at the bus stop",
       "icon": "two_bodies.svg",
       "importance": "medium",
+      "short_description": "Two bodies were found in a car near the bus stop.",
       "description": "The bodies of a man and a woman were found inside a car parked near the bus stop. The vehicle was locked, and at first glance there were no signs of a struggle or an attempt to escape."
     }
   },
@@ -18,12 +20,14 @@
       "name": "Кожа жертв имела ярко-красный оттенок.",
       "icon": "red_skin_tone.svg",
       "importance": "medium",
+      "short_description": "Кожа погибших имела необычный ярко-красный оттенок.",
       "description": "Мисс Мэй обратила внимание на необычный ярко-красный оттенок кожи погибших. Такой признак может указывать на отравление угарным газом, поэтому причина смерти требует отдельной проверки."
     },
     "en": {
       "name": "The victims' skin had a bright red tint",
       "icon": "red_skin_tone.svg",
       "importance": "medium",
+      "short_description": "The victims' skin had an unusual bright red tint.",
       "description": "Ms. Mei noticed an unusual bright red tint on the victims' skin. This sign may indicate carbon monoxide poisoning, so the cause of death needs to be examined more carefully."
     }
   },
@@ -32,12 +36,14 @@
       "name": "Мистер Канагава был на операции в момент смерти жены и дочери.",
       "icon": "mr_kanagawa_was_in_surgery.svg",
       "importance": "high",
+      "short_description": "Во время смерти жены и дочери мистер Канагава находился на операции.",
       "description": "Мистер Канагава заявил, что в день трагедии находился в больнице и почти всё время провёл в операционном блоке."
     },
     "en": {
       "name": "Mr. Kanagawa was in surgery at the time of the death of his wife and daughter.",
       "icon": "mr_kanagawa_was_in_surgery.svg",
       "importance": "high",
+      "short_description": "Mr. Kanagawa was in surgery when his wife and daughter died.",
       "description": "Mr. Kanagawa stated that on the day of the incident he was at the hospital and spent most of the time in the operating room."
     }
   },
@@ -46,12 +52,14 @@
       "name": "Конфликты миссис Канагава",
       "icon": "question_conflict.png",
       "importance": "medium",
+      "short_description": "Муж отрицает, что у миссис Канагава были конфликты.",
       "description": "Муж утверждает что это невозможно, чтобы миссис Канагава имела конфликты с кем-либо незадолго до своей смерти."
     },
     "en": {
       "name": "Conflicts of Mrs. Kanagawa",
       "icon": "question_conflict.png",
       "importance": "medium",
+      "short_description": "Her husband denies that Mrs. Kanagawa had any conflicts.",
       "description": "The husband claims that it is impossible that Mrs. Kanagawa had any conflicts with anyone shortly before her death."
     }
   },
@@ -60,12 +68,14 @@
       "name": "Миссис Канагава и её дочь вышли из дома в 12:00.",
       "icon": "mrs_kanagawa_left_home_at_noon.svg",
       "importance": "high",
+      "short_description": "Миссис Канагава и её дочь покинули дом около 12:00.",
       "description": "По словам домработницы, миссис Канагава и её дочь покинули дом около 12:00. Это помогает восстановить маршрут жертв в день происшествия и сузить временной промежуток между их выходом из дома и предполагаемым временем смерти."
     },
     "en": {
       "name": "Mrs. Kanagawa and her daughter left home at 12:00.",
       "icon": "mrs_kanagawa_left_home_at_noon.svg",
       "importance": "high",
+      "short_description": "Mrs. Kanagawa and her daughter left home around 12:00.",
       "description": "According to the housekeeper, Mrs. Kanagawa and her daughter left the house around 12:00. This helps reconstruct the victims' movements on the day of the incident and narrow down the time between leaving home and the estimated time of death."
     }
   },
@@ -74,12 +84,14 @@
       "name": "Миссис Канагава и её дочь проехали всего 500 метров от дома.",
       "icon": "mrs_kanagawa_drove_only_1500_feet.svg",
       "importance": "high",
+      "short_description": "Автомобиль остановился всего в 500 метрах от дома.",
       "description": "После выхода из дома миссис Канагава и её дочь успели проехать всего около 1500 футов. Такое короткое расстояние указывает на то, что что-то произошло почти сразу после начала поездки. Это может означать, что опасность уже находилась в машине или была подготовлена заранее."
     },
     "en": {
       "name": "Mrs. Kanagawa and her daughter only managed to drive 1500 feet from home.",
       "icon": "mrs_kanagawa_drove_only_1500_feet.svg",
       "importance": "high",
+      "short_description": "The car stopped only 1500 feet away from their home.",
       "description": "After leaving home, Mrs. Kanagawa and her daughter only managed to drive about 1500 feet. Such a short distance suggests that something happened almost immediately after the trip began. This may mean the danger was already inside the car or had been prepared in advance."
     }
   },
@@ -88,12 +100,14 @@
       "name": "Миссис Канагава страдала депрессией.",
       "icon": "mrs_kanagawa_depression.png",
       "importance": "high",
+      "short_description": "Миссис Канагава ранее страдала депрессией.",
       "description": "Выяснилось, что миссис Канагава страдала депрессией. Эта информация может иметь значение для расследования, однако сама по себе не объясняет обстоятельства смерти её дочери и не доказывает версию о самоубийстве."
     },
     "en": {
       "name": "Mrs. Kanagawa suffered from depression.",
       "icon": "mrs_kanagawa_depression.png",
       "importance": "high",
+      "short_description": "Mrs. Kanagawa had previously suffered from depression.",
       "description": "It was discovered that Mrs. Kanagawa suffered from depression. This information may be relevant to the investigation, but by itself it does not explain the circumstances of her daughter's death or prove the suicide theory."
     }
   },
@@ -102,12 +116,14 @@
       "name": "Миссис Канагава избавилась от депрессии около года назад.",
       "icon": "mrs_kanagawa_recovered_from_depression.svg",
       "importance": "high",
+      "short_description": "Состояние миссис Канагава значительно улучшилось около года назад.",
       "description": "По словам её сестры, миссис Канагава страдала депрессией, но около года назад её состояние значительно улучшилось. Она смогла вернуться к обычной жизни, и в последнее время близкие не замечали признаков серьёзного ухудшения её эмоционального состояния."
     },
     "en": {
       "name": "Mrs. Kanagawa recovered from depression about a year ago.",
       "icon": "mrs_kanagawa_recovered_from_depression.svg",
       "importance": "high",
+      "short_description": "Mrs. Kanagawa's condition improved significantly about a year ago.",
       "description": "According to her sister, Mrs. Kanagawa had suffered from depression, but her condition improved significantly about a year ago. She was able to return to her normal life, and recently her family had noticed no signs of a serious decline in her emotional state."
     }
   },
@@ -116,12 +132,14 @@
       "name": "Миссис Канагава жаловалась на жестокое обращение со стороны мужа.",
       "icon": "mr_kanagawa_abusive_husband.png",
       "importance": "high",
+      "short_description": "Миссис Канагава рассказывала сестре о жестоком обращении мужа.",
       "description": "По словам сестры, миссис Канагава рассказывала, что муж обращался с ней жестоко. Эта информация ставит под сомнение его слова о благополучных отношениях в семье и может указывать на серьёзный скрытый конфликт между супругами."
     },
     "en": {
       "name": "Mrs. Kanagawa complained that her husband was abusive.",
       "icon": "mr_kanagawa_abusive_husband.png",
       "importance": "high",
+      "short_description": "Mrs. Kanagawa told her sister that her husband treated her abusively.",
       "description": "According to her sister, Mrs. Kanagawa had complained that her husband treated her abusively. This casts doubt on his claims of a happy family relationship and may point to a serious hidden conflict between the spouses."
     }
   },
@@ -130,12 +148,14 @@
       "name": "Мистер Канагава изменял жене со своей ассистенткой.",
       "icon": "mr_kanagawa_affair_with_assistant.svg",
       "importance": "high",
+      "short_description": "У мистера Канагавы был роман с его ассистенткой.",
       "description": "По словам сестры миссис Канагавы, у мистера Канагавы был роман с его ассистенткой. Это раскрывает ещё один серьёзный конфликт внутри семьи и может быть связано как с ухудшением отношений между супругами, так и с возможным мотивом преступления."
     },
     "en": {
       "name": "Mr. Kanagawa was having an affair with his assistant.",
       "icon": "mr_kanagawa_affair_with_assistant.svg",
       "importance": "high",
+      "short_description": "Mr. Kanagawa was having an affair with his assistant.",
       "description": "According to Mrs. Kanagawa's sister, Mr. Kanagawa was having an affair with his assistant. This reveals another serious conflict within the family and may be connected both to the deterioration of the couple's relationship and to a possible motive for the crime."
     }
   },
@@ -144,13 +164,79 @@
       "name": "Миссис Канагава хотела подать на развод.",
       "icon": "mrs_kanagawa_wanted_divorce.svg",
       "importance": "high",
+      "short_description": "Незадолго до смерти миссис Канагава собиралась развестись с мужем.",
       "description": "По словам её сестры, миссис Канагава намеревалась развестись с мужем. На фоне жестокого обращения и его романа с ассистенткой это указывает на серьёзный семейный конфликт и может иметь важное значение для установления возможного мотива преступления."
     },
     "en": {
       "name": "Mrs. Kanagawa wanted to file for divorce.",
       "icon": "mrs_kanagawa_wanted_divorce.svg",
       "importance": "high",
+      "short_description": "Shortly before her death, Mrs. Kanagawa planned to divorce her husband.",
       "description": "According to her sister, Mrs. Kanagawa intended to divorce her husband. Given his abusive behavior and affair with his assistant, this points to a serious family conflict and may be important in establishing a possible motive for the crime."
+    }
+  },
+  "mr_kanagawa_divorce_losses": {
+    "ru": {
+      "name": "После развода мистер Канагава мог потерять половину имущества и опеку над детьми.",
+      "icon": "mr_kanagawa_divorce_losses.svg",
+      "importance": "high",
+      "short_description": "Развод мог лишить мистера Канагаву половины имущества и опеки над детьми.",
+      "description": "По словам мистера Мацумото, развод мог иметь для мистера Канагавы серьёзные последствия. Он рисковал потерять значительную часть совместного имущества, а также право опеки над детьми. Это могло дать ему весомый финансовый и личный мотив помешать жене подать на развод."
+    },
+    "en": {
+      "name": "After the divorce, Mr. Kanagawa could lose half of the property and custody of the children.",
+      "icon": "mr_kanagawa_divorce_losses.svg",
+      "importance": "high",
+      "short_description": "The divorce could cost Mr. Kanagawa half of the property and custody of the children.",
+      "description": "According to Mr. Matsumoto, the divorce could have had serious consequences for Mr. Kanagawa. He risked losing a significant share of the marital property as well as custody of the children. This may have given him a strong financial and personal motive to prevent his wife from filing for divorce."
+    }
+  },
+  "missing_carbon_monoxide_cylinder": {
+    "ru": {
+      "name": "Один баллон с угарным газом пропал с рабочего места мистера Канагавы.",
+      "icon": "missing_carbon_monoxide_cylinder.png",
+      "importance": "high",
+      "short_description": "Один баллон с угарным газом отсутствует на рабочем месте мистера Канагавы.",
+      "description": "По словам коллеги мистера Канагавы, на складе должно было находиться четыре баллона с угарным газом, однако при проверке обнаружили только три. Один баллон пропал. Поскольку именно мистер Канагава заказывал эти баллоны, исчезновение одного из них может иметь прямое отношение к расследованию."
+    },
+    "en": {
+      "name": "One carbon monoxide cylinder is missing from Mr. Kanagawa's workplace.",
+      "icon": "missing_carbon_monoxide_cylinder.png",
+      "importance": "high",
+      "short_description": "One carbon monoxide cylinder is missing from Mr. Kanagawa's workplace.",
+      "description": "According to Mr. Kanagawa's colleague, four carbon monoxide cylinders were supposed to be kept in storage, but only three were found during the inspection. One cylinder is missing. Since Mr. Kanagawa was the person who ordered the cylinders, its disappearance may be directly connected to the investigation."
+    }
+  },
+  "mr_kanagawa_asked_daughter_to_stay_home": {
+    "ru": {
+      "name": "В день происшествия мистер Канагава настойчиво просил дочь остаться дома.",
+      "icon": "stay_at_home.svg",
+      "importance": "high",
+      "short_description": "Мистер Канагава настойчиво просил дочь остаться дома в день убийства.",
+      "description": "Во время повторного допроса мистер Канагава рассказал, что в день происшествия настойчиво просил дочь остаться дома и никуда не выходить. Это заявление особенно важно, поскольку ранее он не упоминал об этом обстоятельстве и фактически сам раскрыл новую деталь событий того дня."
+    },
+    "en": {
+      "name": "On the day of the incident, Mr. Kanagawa strongly urged his daughter to remain at home.",
+      "icon": "stay_at_home.svg",
+      "importance": "high",
+      "short_description": "Mr. Kanagawa strongly urged his daughter to stay home on the day of the murders.",
+      "description": "During the second interrogation, Mr. Kanagawa revealed that on the day of the incident he strongly urged his daughter to stay home and not go anywhere. This is particularly important because he had not mentioned this detail before, effectively revealing new information about the events of that day."
+    }
+  },
+  "mr_kanagawa_claims_gas_for_rats": {
+    "ru": {
+      "name": "Мистер Канагава утверждает, что взял угарный газ, чтобы отравить крыс в гараже.",
+      "icon": "mr_kanagawa_claims_gas_for_rats.svg",
+      "importance": "high",
+      "short_description": "Мистер Канагава утверждает, что взял газ для борьбы с крысами в своём гараже.",
+      "description": "Во время повторного допроса мистер Канагава признался, что забрал из больницы один баллон с угарным газом. По его словам, газ был нужен для уничтожения крыс в гараже. Он также утверждает, что закачал часть газа в мяч и оставил его в гараже."
+    },
+    "en": {
+      "name": "Mr. Kanagawa claims he took the gas to poison the rats in his garage.",
+      "icon": "mr_kanagawa_claims_gas_for_rats.svg",
+      "importance": "high",
+      "short_description": "Mr. Kanagawa claims he took the gas to poison rats in his garage.",
+      "description": "During the second interrogation, Mr. Kanagawa admitted taking one carbon monoxide cylinder from the hospital. He claims he needed the gas to kill rats in his garage and says that he pumped some of it into a ball and left it there."
     }
   }
 }

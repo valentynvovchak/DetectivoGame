@@ -97,5 +97,19 @@ export const tasksData: Record<string, TaskItem> = {
             ru: "Поговорить с сестрой миссис Канагавы",
             en: "Talk to Mrs. Kanagawa`s sister",
         },
-    }
+    },
+    mr_kanagawa_access_to_gas: {
+        id: "mr_kanagawa_access_to_gas",
+        title: {
+            ru: "Выясните, имел ли господин Канагава вообще доступ к газу?",
+            en: "Find out whether Mr. Kanagawa even had access to gas?",
+        },
+    },
+    talk_to_mr_kanagawa_colleagues: {
+        id: "talk_to_mr_kanagawa_colleagues",
+        title: {
+            ru: "Поговорить с коллегами мистера Канагавы в больнице.",
+            en: "Talk to Mr. Kanagawa's colleagues in hospital.",
+        },
+    },
 };
