@@ -238,5 +238,37 @@
       "short_description": "Mr. Kanagawa claims he took the gas to poison rats in his garage.",
       "description": "During the second interrogation, Mr. Kanagawa admitted taking one carbon monoxide cylinder from the hospital. He claims he needed the gas to kill rats in his garage and says that he pumped some of it into a ball and left it there."
     }
+  },
+  "housekeeper_did_not_see_yoga_ball": {
+    "ru": {
+      "name": "Домработница не видела, чтобы мистер Канагава клал мяч для йоги в машину.",
+      "icon": "housekeeper_did_not_see_yoga_ball.svg",
+      "importance": "high",
+      "short_description": "Домработница не видела, чтобы мистер Канагава переносил большой мяч для йоги в автомобиль.",
+      "description": "Домработница утверждает, что не видела, как мистер Канагава клал большой мяч для йоги в автомобиль. По её словам, такой крупный предмет было бы трудно не заметить."
+    },
+    "en": {
+      "name": "The housekeeper did not see Mr. Kanagawa put the yoga ball in the car.",
+      "icon": "housekeeper_did_not_see_yoga_ball.svg",
+      "importance": "high",
+      "short_description": "The housekeeper did not see Mr. Kanagawa carrying the large yoga ball to the car.",
+      "description": "The housekeeper states that she did not see Mr. Kanagawa put the large yoga ball into the car. According to her, such a large object would have been difficult to miss."
+    }
+  },
+  "housekeeper_saw_kanagawa_enter_garage": {
+    "ru": {
+      "name": "В день происшествия домработница видела, как мистер Канагава вошёл в гараж через заднюю дверь.",
+      "icon": "housekeeper_saw_kanagawa_enter_garage.svg",
+      "importance": "high",
+      "short_description": "Перед отъездом на работу мистер Канагава вошёл в гараж через заднюю дверь.",
+      "description": "Домработница вспомнила, что в день происшествия незадолго до отъезда на работу мистер Канагава вошёл в гараж через заднюю дверь. Раньше она не придавала этому значения."
+    },
+    "en": {
+      "name": "The housekeeper saw Mr. Kanagawa enter the garage through the back door that day.",
+      "icon": "housekeeper_saw_kanagawa_enter_garage.svg",
+      "importance": "high",
+      "short_description": "Mr. Kanagawa entered the garage through the back door before leaving for work.",
+      "description": "The housekeeper remembered seeing Mr. Kanagawa enter the garage through the back door shortly before he left for work on the day of the incident. She had not considered it significant at the time."
+    }
   }
 }

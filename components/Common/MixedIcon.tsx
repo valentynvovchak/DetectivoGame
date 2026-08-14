@@ -64,13 +64,13 @@ const getSvgResource = (icon?: string) => {
 };
 
 export default function MixedIcon({
-                                      icon,
-                                      width,
-                                      height,
-                                      resizeMode = "cover",
-                                      imageStyle,
-                                      containerStyle,
-                                  }: Props) {
+          icon,
+          width,
+          height,
+          resizeMode = "cover",
+          imageStyle,
+          containerStyle,
+      }: Props) {
     if (!icon) {
         return null;
     }

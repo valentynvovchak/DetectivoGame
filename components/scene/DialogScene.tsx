@@ -38,6 +38,7 @@ import {
     paginateDialogText,
 } from "@/tools/paginateDialogText";
 import NextStepChoiceModal from "@/components/NextStepChoiceModal";
+import PrisonBarsAnimation from "@/components/animations/PrisonBarsAnimation";
 
 type FactAnimationState = {
     id: string;
@@ -123,6 +124,31 @@ export default function DialogScene({
     const [activeFactAnimation, setActiveFactAnimation] = useState<FactAnimationState | null>(null);
     const factAnimationResolveRef = useRef<(() => void) | null>(null);
     const [nextStepChoiceVisible, setNextStepChoiceVisible] = useState(false);
+
+    const isPrisonBarsEffect =
+        line?.sceneEffect === "prison_bars";
+
+    const [
+        prisonBarsFinished,
+        setPrisonBarsFinished,
+    ] = useState(true);
+
+    useEffect(() => {
+        /*
+         * На реплике с решёткой запрещаем дальнейшее
+         * переключение, пока она не упадёт.
+         */
+        if (isPrisonBarsEffect) {
+            setPrisonBarsFinished(false);
+            return;
+        }
+
+        setPrisonBarsFinished(true);
+    }, [
+        currentScene,
+        currentLine,
+        isPrisonBarsEffect,
+    ]);
 
     useEffect(() => {
         if (!scene?.background) return;
@@ -403,6 +429,9 @@ export default function DialogScene({
     const isNarrator =
         line?.speaker === "Narrator" ||
         line?.speaker === "Narrator2" ||
+        line?.speaker === "JudgeNarrator" ||
+        line?.speaker === "Narrator3" ||
+        line?.speaker === "NarratorWhite" ||
         line?.speaker === "SidePanel" ||
         line?.bubble_mode === "dark" ;
 
@@ -557,6 +586,13 @@ export default function DialogScene({
                         }
 
                         if (activeFactAnimation) {
+                            return;
+                        }
+
+                        if (
+                            isPrisonBarsEffect &&
+                            !prisonBarsFinished
+                        ) {
                             return;
                         }
 
@@ -811,6 +847,7 @@ export default function DialogScene({
                                     Sprite={getSprite(char.sprite)}
                                     isSpeaking={char.id === line.speaker}
                                     heightModifier={char?.height_modifier}
+                                    yModifier={char?.y_modifier ?? 0}
                                     proofResult={line?.proofResult}
                                 />
                             ))}
@@ -1390,6 +1427,17 @@ export default function DialogScene({
                                 line,
                                 fadeToScene,
                             })}
+
+                            {isPrisonBarsEffect && (
+                                <PrisonBarsAnimation
+                                    key={`${currentScene}_${line?.id}`}
+                                    startDelayMs={250}
+                                    fallDurationMs={620}
+                                    onFinished={() => {
+                                        setPrisonBarsFinished(true);
+                                    }}
+                                />
+                            )}
                         </View>
                     </ImageBackground>
                 </Pressable>

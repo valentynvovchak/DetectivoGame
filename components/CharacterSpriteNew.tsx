@@ -1,4 +1,272 @@
 import React from "react";
+import {
+    View,
+    StyleSheet,
+    Platform,
+    useWindowDimensions,
+} from "react-native";
+
+import {
+    isSmallScreen,
+    isTablet,
+} from "@/styles/global";
+
+interface CharacterSpriteProps {
+    side: "left" | "right" | "center";
+
+    Sprite: any;
+
+    isSpeaking?: boolean;
+
+    mode?:
+        | "full"
+        | "cut"
+        | "zoom"
+        | "zoom2"
+        | "zoom3"
+        | "bottom";
+
+    /*
+     * Изменяет общий размер персонажа.
+     *
+     * 1 — обычный размер
+     * 1.1 — увеличить на 10%
+     * 0.9 — уменьшить на 10%
+     */
+    heightModifier?: number;
+
+    /*
+     * Смещение персонажа по вертикали.
+     *
+     * Положительное значение опускает вниз:
+     * 0.05 = вниз на 5% высоты экрана.
+     *
+     * Отрицательное значение поднимает:
+     * -0.05 = вверх на 5% высоты экрана.
+     */
+    yModifier?: number;
+
+    proofResult?: boolean;
+}
+
+export default function CharacterSpriteNew({
+                                               side,
+                                               Sprite,
+                                               isSpeaking = false,
+                                               mode = "full",
+                                               heightModifier = 1,
+                                               yModifier = 0,
+                                               proofResult = false,
+                                           }: CharacterSpriteProps) {
+    const { width, height } =
+        useWindowDimensions();
+
+    const resolvedMode =
+        proofResult &&
+        !isSmallScreen &&
+        (mode === "cut" || mode === "zoom")
+            ? "zoom2"
+            : mode;
+
+    /*
+     * Положительное значение должно опускать
+     * персонажа вниз, поэтому уменьшаем bottom.
+     */
+    const yOffset = height * yModifier;
+
+    if (resolvedMode === "bottom") {
+        const bottomSpriteWidth =
+            width * 0.72 * heightModifier;
+
+        const bottomSpriteHeight =
+            height * 0.68 * heightModifier;
+
+        const horizontalPosition =
+            side === "left"
+                ? {
+                    left: -width * 0.055,
+                }
+                : side === "right"
+                    ? {
+                        right: -width * 0.055,
+                    }
+                    : {
+                        left:
+                            (width -
+                                bottomSpriteWidth) /
+                            2,
+                    };
+
+        return (
+            <View
+                pointerEvents="none"
+                style={[
+                    styles.container,
+                    horizontalPosition,
+                    {
+                        /*
+                         * Базовое положение:
+                         * -height * 0.34
+                         *
+                         * yModifier дополнительно
+                         * опускает или поднимает спрайт.
+                         */
+                        bottom:
+                            -height * 0.34 -
+                            yOffset,
+
+                        width: bottomSpriteWidth,
+                        height: bottomSpriteHeight,
+
+                        zIndex: 40,
+                        elevation: 40,
+                    },
+                ]}
+            >
+                <Sprite
+                    width={bottomSpriteWidth}
+                    height={bottomSpriteHeight}
+                    style={[
+                        !isSpeaking &&
+                        styles.dimmed,
+                    ]}
+                />
+            </View>
+        );
+    }
+
+    const scale =
+        resolvedMode === "zoom"
+            ? 1.25
+            : resolvedMode === "cut"
+                ? 0.81
+                : resolvedMode === "zoom2"
+                    ? 1.15
+                    : resolvedMode === "zoom3"
+                        ? 1.25
+                        : 1;
+
+    const spriteWidth =
+        1.1 *
+        width *
+        heightModifier *
+        (resolvedMode === "cut"
+            ? 0.9
+            : resolvedMode !== "zoom"
+                ? 0.54
+                : 0.59) *
+        scale;
+
+    const spriteHeight =
+        1.1 *
+        height *
+        heightModifier *
+        (resolvedMode === "cut"
+            ? height > 900
+                ? 0.85
+                : 0.9
+            : height > 900
+                ? 0.75
+                : 0.79) *
+        scale;
+
+    const horizontalPosition =
+        side === "left"
+            ? {
+                left:
+                    width *
+                    (resolvedMode !== "zoom"
+                        ? 0
+                        : isTablet
+                            ? -0.01
+                            : -0.02),
+            }
+            : side === "right"
+                ? {
+                    right:
+                        width *
+                        (resolvedMode !== "zoom"
+                            ? 0
+                            : isTablet
+                                ? -0.01
+                                : -0.02),
+                }
+                : {
+                    left: "50%" as const,
+
+                    /*
+                     * Вместо translateX: "-45%".
+                     * Числовое значение стабильнее
+                     * работает на Android.
+                     */
+                    transform: [
+                        {
+                            translateX:
+                                -spriteWidth * 0.45,
+                        },
+                    ],
+                };
+
+    const baseBottom =
+        Platform.OS === "web"
+            ? height *
+            (resolvedMode !== "zoom"
+                ? resolvedMode === "zoom2"
+                    ? 6.2 * -0.05
+                    : resolvedMode === "zoom3"
+                        ? 6.8 * -0.05
+                        : -0.09
+                : -0.29)
+            : height *
+            (resolvedMode !== "zoom"
+                ? resolvedMode === "zoom2"
+                    ? 7.4 * -0.04
+                    : resolvedMode === "zoom3"
+                        ? 7.8 * -0.04
+                        : -0.08
+                : -0.28);
+
+    return (
+        <View
+            pointerEvents="none"
+            style={[
+                styles.container,
+                horizontalPosition,
+                {
+                    /*
+                     * Положительный yModifier
+                     * опускает персонажа.
+                     */
+                    bottom:
+                        baseBottom - yOffset,
+                },
+            ]}
+        >
+            <Sprite
+                width={spriteWidth}
+                height={spriteHeight}
+                style={[
+                    !isSpeaking &&
+                    styles.dimmed,
+                ]}
+            />
+        </View>
+    );
+}
+
+const styles = StyleSheet.create({
+    container: {
+        position: "absolute",
+        justifyContent: "flex-end",
+    },
+
+    dimmed: {
+        opacity: 1,
+    },
+});
+
+/*
+import React from "react";
 import { View, StyleSheet, Dimensions, Platform } from "react-native";
 import {isSmallScreen, isTablet} from "@/styles/global";
 
@@ -25,11 +293,11 @@ export default function CharacterSpriteNew({
     }
 
     if (mode === "bottom") {
-        /*
+        /!*
          * Большой персонаж.
          * Нижняя часть специально уходит за границу экрана.
          * Экран сам её обрежет.
-         */
+         *!/
 
         const bottomSpriteWidth =
             width * 0.72 * heightModifier;
@@ -58,11 +326,11 @@ export default function CharacterSpriteNew({
                     styles.container,
                     horizontalPosition,
                     {
-                        /*
+                        /!*
                          * Вот это и создаёт crop снизу.
                          *
                          * НЕ используем overflow:hidden.
-                         */
+                         *!/
                         bottom: -height * 0.34,
 
                         width: bottomSpriteWidth,
@@ -132,3 +400,4 @@ const styles = StyleSheet.create({
         opacity: 1,
     }
 });
+*/

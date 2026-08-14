@@ -106,6 +106,22 @@
       "short_description": "Laboratory conclusion:\nThe tests show that carbon monoxide was actually in yoga ball",
       "description": "During the laboratory examination, residual traces of carbon monoxide were found inside the yoga ball. This confirms that the ball may have been used as a container for the gas before it was released into the vehicle cabin."
     }
+  },
+  "yoga_ball_plug": {
+    "ru": {
+      "name": "Заглушка мяча для йоги",
+      "icon": "yoga_ball_plug.svg",
+      "importance": "high",
+      "short_description": "Заглушка от мяча для йоги была найдена в комнате младшего сына.",
+      "description": "В комнате младшего сына была обнаружена заглушка, подходящая к клапану найденного в машине мяча для йоги. Её нахождение отдельно от мяча указывает на то, что мяч могли намеренно сдуть после наполнения угарным газом."
+    },
+    "en": {
+      "name": "Yoga ball plug",
+      "icon": "yoga_ball_plug.svg",
+      "importance": "high",
+      "short_description": "The yoga ball plug was found in the youngest son's room.",
+      "description": "A plug matching the valve of the yoga ball found in the car was discovered in the youngest son's room. Its separation from the ball suggests that the ball may have been deliberately deflated after being filled with carbon monoxide."
+    }
   }
 }
 

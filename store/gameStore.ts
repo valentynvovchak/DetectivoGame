@@ -188,6 +188,20 @@ type DialogHistoryEntry = {
     sceneResizeMode: "cover" | "contain";
 };
 
+export type ChangeSceneOptions = {
+    /*
+     * Индекс элемента в массиве dialog.
+     *
+     * Не значение поля id.
+     *
+     * Для строки с id: 70 при последовательных id
+     * индекс будет равен 69.
+     */
+    lineIndex?: number;
+    background?: string | null;
+    resizeMode?: "cover" | "contain";
+};
+
 export interface GameState {
     currentScene: string;
     previousScene: string | null;
@@ -217,11 +231,15 @@ export interface GameState {
     dialogHistory: DialogHistoryEntry[];
     hp: number;
 
+
     setScene: (scene: string) => void;
     fadeAnim: Animated.Value;
     nextLine: () => void;
     goToLine: (id) => void;
-    changeScene: (scene: string, line?: number) => Promise<void>;
+    changeScene: (
+        scene: string,
+        options?: number | ChangeSceneOptions
+    ) => Promise<void>;
     goBackFromMap: () => void;
     setLang: (lang: "ru" | "en") => void;
     setVolume: (v: number) => void;
@@ -305,7 +323,7 @@ export const useGameStore = create<GameState>((set, get) => ({
         await get().saveProgress(); // сохраняем только сцену и начальную строку
     },
 
-    changeScene: async (scene, line = 0) => {
+    /*changeScene: async (scene, line = 0) => {
         const { currentScene } = get();
 
         set({
@@ -315,6 +333,62 @@ export const useGameStore = create<GameState>((set, get) => ({
             currentLine: line,
             sceneBackground: null,
             sceneResizeMode: "cover",
+        });
+
+        router.replace(`/${scene}`);
+    },*/
+    changeScene: async (
+        scene,
+        lineOrOptions = {}
+    ) => {
+        const {
+            currentScene,
+        } = get();
+
+        /*
+         * Поддерживаем два формата:
+         *
+         * changeScene("scene", 5)
+         *
+         * changeScene("scene", {
+         *     lineIndex: 5,
+         *     background: "some_background",
+         * })
+         */
+        const options: ChangeSceneOptions =
+            typeof lineOrOptions === "number"
+                ? {
+                    lineIndex:
+                    lineOrOptions,
+                }
+                : lineOrOptions;
+
+        set({
+            dialogHistory: [],
+
+            previousScene:
+            currentScene,
+
+            currentScene:
+            scene,
+
+            currentLine:
+                Math.max(
+                    0,
+                    options.lineIndex ?? 0
+                ),
+
+            /*
+             * Сцена, строка и фон меняются
+             * одним вызовом set().
+             */
+            sceneBackground:
+                options.background ??
+                null,
+
+            sceneResizeMode:
+                options.resizeMode ??
+                "cover",
         });
 
         router.replace(`/${scene}`);

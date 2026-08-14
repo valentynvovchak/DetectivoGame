@@ -8632,6 +8632,2100 @@
 					"en": "Now that he is a suspect, it looks suspicious."
 				},
 				"bubble_mode": "large"
+			},
+			{
+				"id": 15,
+				"characters": [
+					{
+						"id": "Daniel",
+						"side": "center",
+						"sprite": "daniel_thinking",
+						"mode": "zoom"
+					}
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "О чём ещё мы можем спросить?",
+					"en": "What else can we ask?"
+				},
+				"bubble_mode": "zip",
+				"tapToContinue": false,
+				"logicChoice": {
+					"buttonText": {
+						"ru": "Выбрать",
+						"en": "Choose"
+					},
+					"title": {
+						"ru": "Выберите вопрос",
+						"en": "Choose a question"
+					},
+					"description": {
+						"ru": "О чём ещё мы можем спросить?",
+						"en": "What else can we ask?"
+					},
+					"confirmText": {
+						"ru": "Подтвердить выбор?",
+						"en": "Confirm choice?"
+					},
+					"options": [
+						{
+							"id": "ask_when_victims_left",
+							"text": {
+								"ru": "Когда миссис Канагава и её дочь ушли из дома?",
+								"en": "When did Mrs. Kanagawa and her daughter leave home?"
+							},
+							"correct": false,
+							"hpPenalty": 1,
+							"resultLine": 17
+						},
+						{
+							"id": "ask_when_kanagawa_left",
+							"text": {
+								"ru": "Во сколько мистер Канагава уехал на работу?",
+								"en": "What time did Mr. Kanagawa leave for work?"
+							},
+							"correct": false,
+							"hpPenalty": 1,
+							"resultLine": 18
+						},
+						{
+							"id": "ask_about_family_relationships",
+							"text": {
+								"ru": "Расскажите об отношениях в семье Канагава.",
+								"en": "Tell us about the Kanagawa family's relationship."
+							},
+							"correct": false,
+							"hpPenalty": 1,
+							"resultLine": 19
+						},
+						{
+							"id": "ask_about_yoga_ball",
+							"text": {
+								"ru": "Вы видели, как мистер Канагава положил мяч для йоги в машину?",
+								"en": "Did you see Mr. Kanagawa putting a yoga ball into the car?"
+							},
+							"correct": true,
+							"resultLine": 16
+						}
+					]
+				},
+				"actions": [
+					{
+						"type": "save_checkpoint"
+					}
+				],
+				"allowBack": false
+			},
+			{
+				"id": 16,
+				"characters": [
+					{
+						"id": "Daniel",
+						"side": "center",
+						"sprite": "daniel_finger_up",
+						"mode": "cut"
+					}
+				],
+				"logicResult": {
+					"type": "correct",
+					"message": {
+						"ru": "Правильный выбор!",
+						"en": "Right choice!"
+					},
+					"continueLine": 20
+				},
+				"actions": [
+					{
+						"type": "save_checkpoint"
+					}
+				],
+				"allowBack": false
+			},
+			{
+				"id": 17,
+				"characters": [
+					{
+						"id": "Daniel",
+						"side": "center",
+						"sprite": "daniel_shocked",
+						"mode": "cut"
+					}
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "Мы уже знаем, когда миссис Канагава и её дочь покинули дом.",
+					"en": "We already know when Mrs. Kanagawa and her daughter left home."
+				},
+				"bubble_mode": "explanation",
+				"choiceResult": {
+					"type": "wrong",
+					"message": {
+						"ru": "Неверно! Подумай ещё раз.",
+						"en": "Wrong! Think again."
+					},
+					"retryLine": 15
+				},
+				"actions": [
+					{
+						"type": "save_checkpoint"
+					}
+				],
+				"allowBack": false
+			},
+			{
+				"id": 18,
+				"characters": [
+					{
+						"id": "Daniel",
+						"side": "center",
+						"sprite": "daniel_shocked",
+						"mode": "cut"
+					}
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "Время его ухода на работу не поможет выяснить, как мяч оказался в машине.",
+					"en": "The time he left for work will not help us determine how the ball ended up in the car."
+				},
+				"bubble_mode": "explanation",
+				"choiceResult": {
+					"type": "wrong",
+					"message": {
+						"ru": "Неверно! Подумай ещё раз.",
+						"en": "Wrong! Think again."
+					},
+					"retryLine": 15
+				},
+				"actions": [
+					{
+						"type": "save_checkpoint"
+					}
+				],
+				"allowBack": false
+			},
+			{
+				"id": 19,
+				"characters": [
+					{
+						"id": "Daniel",
+						"side": "center",
+						"sprite": "daniel_shocked",
+						"mode": "cut"
+					}
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "Мы уже достаточно узнали об отношениях в семье Канагава.",
+					"en": "We already know enough about the Kanagawa family's relationships."
+				},
+				"bubble_mode": "explanation",
+				"choiceResult": {
+					"type": "wrong",
+					"message": {
+						"ru": "Неверно! Подумай ещё раз.",
+						"en": "Wrong! Think again."
+					},
+					"retryLine": 15
+				},
+				"actions": [
+					{
+						"type": "save_checkpoint"
+					}
+				],
+				"allowBack": false
+			},
+			{
+				"id": 20,
+				"characters": [
+					{
+						"id": "Daniel",
+						"side": "right",
+						"sprite": "daniel_serious",
+						"mode": "zoom"
+					}
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "Нас также интересует большой серый мяч для йоги.",
+					"en": "We're also interested in a large gray yoga ball."
+				},
+				"bubble_mode": "large",
+				"allowBack": false
+			},
+			{
+				"id": 21,
+				"characters": [
+					{
+						"id": "Daniel",
+						"side": "right",
+						"sprite": "daniel_serious",
+						"mode": "zoom"
+					}
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "Мы обнаружили его в автомобиле.",
+					"en": "We found it in the car."
+				},
+				"bubble_mode": "medium",
+				"allowBack": false
+			},
+			{
+				"id": 22,
+				"characters": [
+					{
+						"id": "Daniel",
+						"side": "right",
+						"sprite": "daniel_serious",
+						"mode": "zoom"
+					}
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "Вы раньше видели этот мяч в доме?",
+					"en": "Have you seen it in the house before?"
+				},
+				"bubble_mode": "medium",
+				"allowBack": false
+			},
+
+			{
+				"id": 23,
+				"characters": [
+					{
+						"id": "Housekeeper",
+						"side": "left",
+						"sprite": "housekeeper",
+						"mode": "cut"
+					}
+				],
+				"speaker": "Housekeeper",
+				"text": {
+					"ru": "Да, но он всегда находился в комнате младшего сына..",
+					"en": "Yes, but it was always in the younger son's room.."
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 24,
+				"characters": [
+					{
+						"id": "Housekeeper",
+						"side": "left",
+						"sprite": "housekeeper",
+						"mode": "cut"
+					}
+				],
+				"speaker": "Housekeeper",
+				"text": {
+					"ru": "Я не знаю, как он оказался в машине.",
+					"en": "I don't know how it ended up in the car."
+				},
+				"bubble_mode": "medium"
+			},
+			{
+				"id": 25,
+				"characters": [
+					{
+						"id": "Daniel",
+						"side": "right",
+						"sprite": "daniel_thinking",
+						"mode": "zoom"
+					}
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "Вы видели, как мистер Канагава клал мяч для йоги в машину?",
+					"en": "Did you see Mr. Kanagawa putting a yoga ball into the car?"
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 26,
+				"characters": [
+					{
+						"id": "Housekeeper",
+						"side": "left",
+						"sprite": "housekeeper",
+						"mode": "cut"
+					}
+				],
+				"speaker": "Housekeeper",
+				"text": {
+					"ru": "Нет. Я бы точно это запомнила.",
+					"en": "No, I'd definitely remember that."
+				},
+				"bubble_mode": "medium"
+			},
+			{
+				"id": 27,
+				"characters": [
+					{
+						"id": "Daniel",
+						"side": "right",
+						"sprite": "daniel_thinking",
+						"mode": "zoom"
+					}
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "Мисс... Это очень важный вопрос. Хорошо подумайте...",
+					"en": "Miss... This is a very important question. Think carefully..."
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 28,
+				"characters": [
+					{
+						"id": "Daniel",
+						"side": "right",
+						"sprite": "daniel_thinking",
+						"mode": "zoom"
+					}
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "Вы абсолютно уверены, что не видели, как мистер Канагава клал мяч в машину?",
+					"en": "Are you absolutely sure you didn't see Mr. Kanagawa putting the ball into the car?"
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 29,
+				"backgroundChange": "didnt_see_it"
+			},
+			{
+				"id": 30,
+				"characters": [
+					{
+						"id": "Housekeeper",
+						"side": "left",
+						"sprite": "housekeeper_worried",
+						"image": "housekeeper_avatar.svg",
+						"position": "top",
+						"bg": "white"
+					}
+				],
+				"speaker": "Housekeeper",
+				"text": {
+					"ru": "Да, я уверена. Я этого не видела.",
+					"en": "Yes, I'm sure. I didn't see it."
+				},
+				"bubble_mode": "avatar"
+			},
+			{
+				"id": 31,
+				"characters": [
+					{
+						"id": "Housekeeper",
+						"side": "left",
+						"sprite": "housekeeper_worried",
+						"image": "housekeeper_avatar.svg",
+						"position": "top",
+						"bg": "white"
+					}
+				],
+				"speaker": "Housekeeper",
+				"text": {
+					"ru": "Это огромный мяч для йоги. Я бы обязательно заметила что-то подобное.",
+					"en": "It's a huge yoga ball. I would have noticed something like that."
+				},
+				"bubble_mode": "avatar",
+				"actions": [
+					{
+						"type": "add_item",
+						"category": "facts",
+						"id": "housekeeper_did_not_see_yoga_ball"
+					},
+					{
+						"type": "save_checkpoint"
+					}
+				]
+			},
+			{
+				"id": 32,
+				"backgroundNoAnimationChange": "kanagawa_house_indoor",
+				"characters": [
+					{
+						"id": "Di",
+						"side": "right",
+						"sprite": "di_serious",
+						"mode": "zoom"
+					}
+				],
+				"speaker": "Di",
+				"text": {
+					"ru": "Вернёмся к мистеру Канагаве...",
+					"en": "Let's get back to Mr. Kanagawa..."
+				},
+				"bubble_mode": "medium"
+			},
+			{
+				"id": 33,
+				"characters": [
+					{
+						"id": "Di",
+						"side": "right",
+						"sprite": "di_serious",
+						"mode": "zoom"
+					}
+				],
+				"speaker": "Di",
+				"text": {
+					"ru": "Вы можете вспомнить, чем ещё он занимался в тот день?",
+					"en": "Can you remember what else he was doing that day?"
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 34,
+				"characters": [
+					{
+						"id": "Di",
+						"side": "right",
+						"sprite": "di_serious",
+						"mode": "zoom"
+					}
+				],
+				"speaker": "Di",
+				"text": {
+					"ru": "Особенно непосредственно перед тем, как он уехал на работу.",
+					"en": "Especially just before he left for work."
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 35,
+				"backgroundChange": "kanagawa_entering_garage"
+			},
+			{
+				"id": 36,
+				"characters": [
+					{
+						"id": "Housekeeper",
+						"side": "left",
+						"sprite": "housekeeper_worried",
+						"mode": "zoom",
+						"image": "housekeeper_worried_avatar.svg",
+						"position": "top",
+						"bg": "white"
+					}
+				],
+				"speaker": "Housekeeper",
+				"text": {
+					"ru": "Кажется, ничего особенного. Но подождите...",
+					"en": "Nothing special, I guess. But hold on..."
+				},
+				"bubble_mode": "avatar"
+			},
+			{
+				"id": 37,
+				"characters": [
+					{
+						"id": "Housekeeper",
+						"side": "left",
+						"sprite": "housekeeper_worried",
+						"mode": "zoom",
+						"image": "housekeeper_worried_avatar.svg",
+						"position": "top",
+						"bg": "white"
+					}
+				],
+				"speaker": "Housekeeper",
+				"text": {
+					"ru": "Раньше я никогда не обращала на это внимания.",
+					"en": "I'd never noticed that before, though."
+				},
+				"bubble_mode": "avatar"
+			},
+			{
+				"id": 38,
+				"characters": [
+					{
+						"id": "Housekeeper",
+						"side": "left",
+						"sprite": "housekeeper_worried",
+						"mode": "zoom",
+						"image": "housekeeper_worried_avatar.svg",
+						"position": "top",
+						"bg": "white"
+					}
+				],
+				"speaker": "Housekeeper",
+				"text": {
+					"ru": "В тот день я видела, как он вошёл в гараж через заднюю дверь.",
+					"en": "I remember him entering the garage through the back exit that day."
+				},
+				"bubble_mode": "avatar",
+				"actions": [
+					{
+						"type": "add_item",
+						"category": "facts",
+						"id": "housekeeper_saw_kanagawa_enter_garage"
+					},
+					{
+						"type": "save_checkpoint"
+					}
+				]
+			},
+			{
+				"id": 39,
+				"backgroundNoAnimationChange": "kanagawa_house_indoor",
+				"characters": [
+					{
+						"id": "Di",
+						"side": "right",
+						"sprite": "di_serious",
+						"mode": "zoom"
+					}
+				],
+				"speaker": "Di",
+				"text": {
+					"ru": "Спасибо, мисс. Ваши показания очень помогли.",
+					"en": "Thank you, miss. Your testimony is very helpful."
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 40,
+				"characters": [
+					{
+						"id": "Di",
+						"side": "right",
+						"sprite": "di_serious",
+						"mode": "zoom"
+					}
+				],
+				"speaker": "Di",
+				"text": {
+					"ru": "А теперь нам нужно провести обыск в доме.",
+					"en": "Now, we need to conduct a search of the house."
+				},
+				"bubble_mode": "large",
+				"actions": [
+					{
+						"type": "save_checkpoint"
+					}
+				]
+			},
+			{
+				"id": 41,
+				"characters": [
+					{
+						"id": "Daniel",
+						"side": "left",
+						"sprite": "daniel_smile",
+						"mode": "zoom"
+					}
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "Мисс Ди, давайте решим, в какой комнате лучше всего искать улики.",
+					"en": "Miss Dee, let's decide which room is best to look for clues in."
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 42,
+				"characters": [
+					{
+						"id": "Daniel",
+						"side": "center",
+						"sprite": "daniel_thinking",
+						"mode": "zoom"
+					}
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "В какой комнате лучше всего искать доказательства?",
+					"en": "Which room is best for searching for evidence?"
+				},
+				"bubble_mode": "zip",
+				"tapToContinue": false,
+				"logicChoice": {
+					"buttonText": {
+						"ru": "Выбрать",
+						"en": "Choose"
+					},
+					"title": {
+						"ru": "Выберите комнату",
+						"en": "Choose a room"
+					},
+					"description": {
+						"ru": "Какое помещение лучше всего подходит для поиска улик?",
+						"en": "Which room is best for searching for evidence?"
+					},
+					"confirmText": {
+						"ru": "Подтвердить выбор?",
+						"en": "Confirm choice?"
+					},
+					"options": [
+						{
+							"id": "search_backyard",
+							"text": {
+								"ru": "Задний двор",
+								"en": "Backyard"
+							},
+							"correct": false,
+							"hpPenalty": 1,
+							"resultLine": 44
+						},
+						{
+							"id": "search_kitchen",
+							"text": {
+								"ru": "Кухня",
+								"en": "Kitchen"
+							},
+							"correct": false,
+							"hpPenalty": 1,
+							"resultLine": 45
+						},
+						{
+							"id": "search_youngest_son_room",
+							"text": {
+								"ru": "Комната младшего сына",
+								"en": "The youngest son's room"
+							},
+							"correct": true,
+							"resultLine": 43
+						},
+						{
+							"id": "search_daughter_room",
+							"text": {
+								"ru": "Комната дочери",
+								"en": "The daughter's room"
+							},
+							"correct": false,
+							"hpPenalty": 1,
+							"resultLine": 46
+						}
+					]
+				},
+				"actions": [
+					{
+						"type": "save_checkpoint"
+					}
+				]
+			},
+			{
+				"id": 43,
+				"characters": [
+					{
+						"id": "Daniel",
+						"side": "center",
+						"sprite": "daniel_finger_up",
+						"mode": "cut"
+					}
+				],
+				"logicResult": {
+					"type": "correct",
+					"message": {
+						"ru": "Правильный выбор!",
+						"en": "Right choice!"
+					},
+					"continueLine": 47
+				},
+				"actions": [
+					{
+						"type": "save_checkpoint"
+					}
+				]
+			},
+			{
+				"id": 44,
+				"characters": [
+					{
+						"id": "Daniel",
+						"side": "center",
+						"sprite": "daniel_shocked",
+						"mode": "cut"
+					}
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "У нас нет оснований считать, что мяч находился на заднем дворе.",
+					"en": "We have no reason to believe the ball was kept in the backyard."
+				},
+				"bubble_mode": "explanation",
+				"choiceResult": {
+					"type": "wrong",
+					"message": {
+						"ru": "Неверно! Подумай ещё раз.",
+						"en": "Wrong! Think again."
+					},
+					"retryLine": 42
+				},
+				"actions": [
+					{
+						"type": "save_checkpoint"
+					}
+				]
+			},
+			{
+				"id": 45,
+				"characters": [
+					{
+						"id": "Daniel",
+						"side": "center",
+						"sprite": "daniel_shocked",
+						"mode": "cut"
+					}
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "Домработница не говорила, что мяч когда-либо находился на кухне.",
+					"en": "The housekeeper never said the ball had been kept in the kitchen."
+				},
+				"bubble_mode": "explanation",
+				"choiceResult": {
+					"type": "wrong",
+					"message": {
+						"ru": "Неверно! Подумай ещё раз.",
+						"en": "Wrong! Think again."
+					},
+					"retryLine": 42
+				},
+				"actions": [
+					{
+						"type": "save_checkpoint"
+					}
+				]
+			},
+			{
+				"id": 46,
+				"characters": [
+					{
+						"id": "Daniel",
+						"side": "center",
+						"sprite": "daniel_shocked",
+						"mode": "cut"
+					}
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "Мяч принадлежал младшему сыну, а не дочери мистера Канагавы.",
+					"en": "The ball belonged to the youngest son, not Mr. Kanagawa's daughter."
+				},
+				"bubble_mode": "explanation",
+				"choiceResult": {
+					"type": "wrong",
+					"message": {
+						"ru": "Неверно! Подумай ещё раз.",
+						"en": "Wrong! Think again."
+					},
+					"retryLine": 42
+				},
+				"actions": [
+					{
+						"type": "save_checkpoint"
+					}
+				]
+			},
+			{
+				"id": 47,
+				"characters": [
+					{
+						"id": "Daniel",
+						"side": "center",
+						"sprite": "daniel_finger_up",
+						"mode": "cut"
+					}
+				],
+				"speaker": "NarratorWhite",
+				"text": {
+					"ru": "Потому что мяч находился именно в этой комнате.",
+					"en": "Because the ball was in this room."
+				}
+			},
+			{
+				"id": 48,
+				"backgroundChange": "youngest_son_room",
+				"backgroundHoldMs": 1500
+			},
+			{
+				"id": 49,
+				"characters": [
+					{
+						"id": "Daniel",
+						"side": "right",
+						"sprite": "daniel_smile",
+						"mode": "zoom"
+					}
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "Хорошо, осмотрим комнату младшего сына.",
+					"en": "Alright, let's check out the youngest son's bedroom."
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 50,
+				"characters": [
+					{
+						"id": "Daniel",
+						"side": "right",
+						"sprite": "daniel_smile",
+						"mode": "zoom"
+					}
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "Домработница сказала, что раньше мяч находился здесь.",
+					"en": "The housekeeper said the ball used to be in here."
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 51,
+				"characters": [
+					{
+						"id": "Di",
+						"side": "left",
+						"sprite": "di_serious",
+						"mode": "zoom"
+					}
+				],
+				"speaker": "Di",
+				"text": {
+					"ru": "Итак, что именно мы ищем?",
+					"en": "So, what are we actually looking for?"
+				},
+				"bubble_mode": "medium"
+			},
+			{
+				"id": 52,
+				"characters": [
+					{
+						"id": "Daniel",
+						"side": "right",
+						"sprite": "daniel_serious",
+						"mode": "zoom"
+					}
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "Нам нужны доказательства того, что мистер Канагава...",
+					"en": "We need proof that Mr. Kanagawa..."
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 53,
+				"characters": [
+					{
+						"id": "Daniel",
+						"side": "right",
+						"sprite": "daniel_serious",
+						"mode": "zoom"
+					}
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "Не только наполнил мяч угарным газом, но и намеренно выпустил из него воздух.",
+					"en": "Not only filled the yoga ball with carbon monoxide, but also deflated it on purpose."
+				},
+				"bubble_mode": "large",
+				"actions": [
+					{
+						"type": "save_checkpoint"
+					}
+				]
+			},
+			{
+				"id": 54,
+				"speaker": "Narrator3",
+				"text": {
+					"ru": "Давайте осмотрим всё внимательнее.",
+					"en": "Let's take a closer look at everything."
+				},
+				"menu": false,
+				"tapToContinue": false,
+				"hotspots": [
+					{
+						"id": "inspect_toy_shelf",
+						"type": "inspect",
+						"x": 0.32,
+						"y": 0.43,
+						"width": 0.12,
+						"height": 0.1,
+						"icon": "eye.png"
+					},
+					{
+						"id": "inspect_computer",
+						"type": "inspect",
+						"x": 0.84,
+						"y": 0.46,
+						"width": 0.12,
+						"height": 0.1,
+						"icon": "eye.png"
+					},
+					{
+						"id": "inspect_left_floor",
+						"type": "inspect",
+						"x": 0.09,
+						"y": 0.77,
+						"width": 0.1,
+						"height": 0.12,
+						"icon": "eye.png"
+					},
+					{
+						"id": "inspect_center_floor",
+						"type": "inspect",
+						"x": 0.62,
+						"y": 0.68,
+						"width": 0.18,
+						"height": 0.18,
+						"icon": "pointer.png"
+					},
+					{
+						"id": "inspect_right_floor",
+						"type": "inspect",
+						"x": 0.87,
+						"y": 0.76,
+						"width": 0.1,
+						"height": 0.14,
+						"icon": "eye.png"
+					}
+				]
+			},
+			{
+				"id": 55,
+				"backgroundNoAnimationChange": "youngest_son_room_shelf",
+				"speaker": "Narrator3",
+				"text": {
+					"ru": "Хм, похоже, это именно то, что нам нужно.",
+					"en": "Hmm, this seems to be what we need."
+				},
+				"tapToContinue": false,
+				"menu": false,
+				"hotspots": [
+					{
+						"id": "yoga_ball_plug",
+						"type": "inspect",
+						"x": 0.79,
+						"y": 0.67,
+						"width": 0.14,
+						"height": 0.14,
+						"icon": "eye.png",
+						"name": {
+							"ru": "Заглушка мяча для йоги",
+							"en": "Yoga ball plug"
+						},
+						"modal": {
+							"x": 0.13,
+							"y": 0.59,
+							"width": 0.54,
+							"height": 0.23
+						}
+					}
+				]
+			},
+			{
+				"id": 56,
+				"backgroundNoAnimationChange": "youngest_son_room_left_floor",
+				"speaker": "Narrator3",
+				"text": {
+					"ru": "Здесь ничего нет.",
+					"en": "There's nothing here."
+				},
+				"menu": false
+			},
+			{
+				"id": 57,
+				"backgroundNoAnimationChange": "youngest_son_room_center_floor",
+				"speaker": "Narrator3",
+				"text": {
+					"ru": "Посмотрим в другом месте.",
+					"en": "Let's look somewhere else."
+				},
+				"menu": false
+			},
+			{
+				"id": 58,
+				"backgroundNoAnimationChange": "youngest_son_room_computer",
+				"speaker": "Narrator3",
+				"text": {
+					"ru": "Здесь, похоже, нет ничего интересного.",
+					"en": "There seems to be nothing interesting here."
+				},
+				"menu": false
+			},
+			{
+				"id": 59,
+				"backgroundNoAnimationChange": "youngest_son_room_right_floor",
+				"speaker": "Narrator3",
+				"text": {
+					"ru": "Посмотрим в другом месте.",
+					"en": "Let's look somewhere else."
+				},
+				"menu": false
+			},
+			{
+				"id": 60,
+				"backgroundNoAnimationChange": "youngest_son_room",
+				"characters": [
+					{
+						"id": "Di",
+						"side": "center",
+						"sprite": "di_ok",
+						"mode": "zoom"
+					}
+				],
+				"choiceResult": {
+					"type": "correct",
+					"message": {
+						"ru": "Правильный выбор!",
+						"en": "Right choice!"
+					},
+					"showBadge": true,
+					"continueLine": 61
+				},
+				"actions": [
+					{
+						"type": "save_checkpoint"
+					}
+				],
+				"allowBack": false
+			},
+			{
+				"id": 61,
+				"backgroundNoAnimationChange": "youngest_son_room",
+				"characters": [
+					{
+						"id": "Di",
+						"side": "center",
+						"sprite": "di_thinking",
+						"mode": "zoom"
+					}
+				],
+				"speaker": "Di",
+				"text": {
+					"ru": "Какой вывод можно сделать из этой находки?",
+					"en": "What conclusion can we draw from this discovery?"
+				},
+				"bubble_mode": "zip",
+				"tapToContinue": false,
+				"logicChoice": {
+					"buttonText": {
+						"ru": "Выбрать",
+						"en": "Choose"
+					},
+					"title": {
+						"ru": "Выберите гипотезу",
+						"en": "Select a hypothesis"
+					},
+					"description": {
+						"ru": "Выберите одну правильную гипотезу.",
+						"en": "Select 1 correct hypothesis!"
+					},
+					"confirmText": {
+						"ru": "Подтвердить выбор?",
+						"en": "Confirm choice?"
+					},
+					"options": [
+						{
+							"id": "plug_removed_deliberately",
+							"text": {
+								"ru": "Кто-то намеренно вытащил заглушку из мяча. Значит, это было убийство, а не несчастный случай.",
+								"en": "Someone pulled the plug out of the ball. So it was definitely murder, not an accident."
+							},
+							"correct": true,
+							"resultLine": 62
+						},
+						{
+							"id": "plug_fell_out_accidentally",
+							"text": {
+								"ru": "Заглушка случайно выпала из мяча.",
+								"en": "The plug accidentally fell out of the ball."
+							},
+							"correct": false,
+							"hpPenalty": 1,
+							"resultLine": 63
+						},
+						{
+							"id": "plug_from_another_ball",
+							"text": {
+								"ru": "Эта заглушка принадлежит другому мячу.",
+								"en": "This plug is from a different ball."
+							},
+							"correct": false,
+							"hpPenalty": 1,
+							"resultLine": 64
+						},
+						{
+							"id": "not_a_ball_plug",
+							"text": {
+								"ru": "Это не заглушка, а деталь от другого предмета.",
+								"en": "This is not a plug, but a part from another object."
+							},
+							"correct": false,
+							"hpPenalty": 1,
+							"resultLine": 65
+						}
+					]
+				},
+				"actions": [
+					{
+						"type": "save_checkpoint"
+					}
+				]
+			},
+			{
+				"id": 62,
+				"backgroundNoAnimationChange": "youngest_son_room",
+				"characters": [
+					{
+						"id": "Di",
+						"side": "center",
+						"sprite": "di_ok",
+						"mode": "zoom"
+					}
+				],
+				"speaker": "NarratorWhite",
+				"text": {
+					"ru": "Кто-то намеренно вытащил заглушку из мяча. Значит, это было убийство, а не несчастный случай.",
+					"en": "Someone pulled the plug out of the ball. So it was definitely murder, not an accident."
+				},
+				"choiceResult": {
+					"type": "correct",
+					"message": {
+						"ru": "Правильный выбор!",
+						"en": "Right choice!"
+					},
+					"showBadge": true,
+					"continueLine": 66
+				},
+				"actions": [
+					{
+						"type": "complete_task",
+						"id": "search_kanagawa_house"
+					},
+					{
+						"type": "save_checkpoint"
+					}
+				],
+				"allowBack": false
+			},
+			{
+				"id": 63,
+				"characters": [
+					{
+						"id": "Di",
+						"side": "center",
+						"sprite": "di_shocked",
+						"mode": "zoom2"
+					}
+				],
+				"speaker": "Di",
+				"text": {
+					"ru": "Заглушка находилась отдельно от мяча и была спрятана в комнате. Маловероятно, что она выпала случайно.",
+					"en": "The plug was separated from the ball and hidden in the room. It is unlikely that it fell out accidentally."
+				},
+				"bubble_mode": "explanation",
+				"choiceResult": {
+					"type": "wrong",
+					"message": {
+						"ru": "Неверно! Подумай ещё раз.",
+						"en": "Wrong! Think again."
+					},
+					"retryLine": 61
+				},
+				"actions": [
+					{
+						"type": "save_checkpoint"
+					}
+				]
+			},
+			{
+				"id": 64,
+				"characters": [
+					{
+						"id": "Di",
+						"side": "center",
+						"sprite": "di_shocked",
+						"mode": "zoom2"
+					}
+				],
+				"speaker": "Di",
+				"text": {
+					"ru": "Размер и форма заглушки соответствуют найденному в машине мячу для йоги.",
+					"en": "The size and shape of the plug match the yoga ball found in the car."
+				},
+				"bubble_mode": "explanation",
+				"choiceResult": {
+					"type": "wrong",
+					"message": {
+						"ru": "Неверно! Подумай ещё раз.",
+						"en": "Wrong! Think again."
+					},
+					"retryLine": 61
+				},
+				"actions": [
+					{
+						"type": "save_checkpoint"
+					}
+				],
+				"allowBack": false
+			},
+			{
+				"id": 65,
+				"characters": [
+					{
+						"id": "Di",
+						"side": "center",
+						"sprite": "di_shocked",
+						"mode": "zoom2"
+					}
+				],
+				"speaker": "Di",
+				"text": {
+					"ru": "Это именно заглушка для клапана мяча. Её назначение не вызывает сомнений.",
+					"en": "This is clearly a plug for the ball's valve. Its purpose is not in doubt."
+				},
+				"bubble_mode": "explanation",
+				"choiceResult": {
+					"type": "wrong",
+					"message": {
+						"ru": "Неверно! Подумай ещё раз.",
+						"en": "Wrong! Think again."
+					},
+					"retryLine": 61
+				},
+				"actions": [
+					{
+						"type": "save_checkpoint"
+					}
+				],
+				"allowBack": false
+			},
+			{
+				"id": 66,
+				"backgroundChange": "kanagawa_house_outdoor",
+				"backgroundHoldMs": 1500
+			},
+			{
+				"id": 67,
+				"characters": [
+					{
+						"id": "Daniel",
+						"side": "right",
+						"sprite": "daniel_smile",
+						"mode": "zoom"
+					}
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "Мисс Ди, вы готовы?",
+					"en": "Miss Dee, are you ready?"
+				},
+				"bubble_mode": "medium",
+				"actions": [
+					{
+						"type": "save_checkpoint"
+					}
+				]
+			},
+			{
+				"id": 68,
+				"characters": [
+					{
+						"id": "Daniel",
+						"side": "right",
+						"sprite": "daniel_smile",
+						"mode": "zoom"
+					}
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "Думаю, мы собрали достаточно доказательств, чтобы передать дело в суд.",
+					"en": "I think we have collected enough evidence to send the case to court."
+				},
+				"bubble_mode": "medium"
+			},
+			{
+				"id": 69,
+				"characters": [
+					{
+						"id": "Daniel",
+						"side": "center",
+						"sprite": "daniel_thinking",
+						"mode": "zoom"
+					}
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "Нужно очень внимательно выбрать материалы. Ошибка может позволить преступнику уйти.",
+					"en": "We need to choose the evidence very carefully. A mistake could allow the criminal to walk free."
+				},
+				"bubble_mode": "zip",
+				"allowBack": false
+			},
+			{
+				"id": 70,
+				"courtSelection": true,
+				"tapToContinue": false,
+				"menu": false,
+				"allowBack": false,
+				"actions": [
+					{
+						"type": "save_checkpoint"
+					}
+				]
+			}
+		]
+	},
+
+	"15_court_bad": {
+		"background": "courtroom",
+		"dialog": [
+			{
+				"id": 1,
+				"speaker": "NarratorCourt",
+				"text": {
+					"ru": "Дело передано в суд. Ожидаем решения судьи...",
+					"en": "The case has been submitted to the court. Waiting for the judge's decision..."
+				},
+				"menu": false,
+				"actions": [
+					{
+						"type": "save_checkpoint"
+					}
+				]
+			},
+			{
+				"id": 2,
+				"speaker": "Judge",
+				"text": {
+					"ru": "Суд готов огласить приговор.",
+					"en": "The court is now ready to pronounce the sentence."
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 3,
+				"speaker": "Judge",
+				"text": {
+					"ru": "Подсудимый, встаньте.",
+					"en": "The defendant will please rise."
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 4,
+				"characters": [
+					{
+						"id": "Judge",
+						"side": "left",
+						"sprite": "judge",
+						"mode": "zoom"
+					}
+				],
+				"speaker": "Judge",
+				"text": {
+					"ru": "Суд тщательно изучил материалы дела...",
+					"en": "The court has thoroughly reviewed the case materials..."
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 5,
+				"characters": [
+					{
+						"id": "Judge",
+						"side": "left",
+						"sprite": "judge",
+						"mode": "zoom"
+					}
+				],
+				"speaker": "Judge",
+				"text": {
+					"ru": "На основании фактов и доказательств, представленных обвинением и следователями.",
+					"en": "Based on the facts and evidence presented by the prosecution and the detectives"
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 6,
+				"characters": [
+					{
+						"id": "Judge",
+						"side": "left",
+						"sprite": "judge_sad",
+						"mode": "zoom",
+						"height_modifier": 1.56,
+						"y_modifier": 0.24
+					}
+				],
+				"speaker": "Judge",
+				"text": {
+					"ru": "Суд признает подсудимого НЕВИНОВНЫМ.",
+					"en": "The Court finds the defendant... NOT GUILTY."
+				},
+				"bubble_mode": "medium"
+			},
+			{
+				"id": 7,
+				"characters": [
+					{
+						"id": "Judge",
+						"side": "left",
+						"sprite": "judge_sad",
+						"mode": "zoom",
+						"height_modifier": 1.56,
+						"y_modifier": 0.24
+					}
+				],
+				"speaker": "Judge",
+				"text": {
+					"ru": "Мистер Канагава, вы свободны.",
+					"en": "Mr. Kanagawa, you are free to go."
+				},
+				"bubble_mode": "medium"
+			},
+			{
+				"id": 8,
+				"characters": [
+					{
+						"id": "Daniel",
+						"side": "center",
+						"sprite": "daniel_shocked",
+						"mode": "cut",
+						"height_modifier": 1.2,
+						"y_modifier": 0.15
+					}
+				],
+				"speaker": "Daniel",
+				"text": {
+					"ru": "Мы выбрали неправильные материалы!",
+					"en": "We chose the wrong evidence!"
+				},
+				"bubble_mode": "explanation",
+				"choiceResult": {
+					"type": "wrong",
+					"message": {
+						"ru": "Неверно! Попробуйте ещё раз.",
+						"en": "Wrong! Try again."
+					}
+				},
+				"actions": [
+					{
+						"type": "save_checkpoint"
+					}
+				],
+				"menu": false,
+				"allowBack": false
+			}
+		]
+	},
+
+	"15_court_good": {
+		"background": "courtroom",
+		"dialog": [
+			{
+				"id": 1,
+				"speaker": "NarratorCourt",
+				"text": {
+					"ru": "Дело передано в суд. Ожидаем решения судьи...",
+					"en": "The case has been submitted to the court. Waiting for the judge's decision..."
+				},
+				"menu": false,
+				"actions": [
+					{
+						"type": "save_checkpoint"
+					}
+				]
+			},
+			{
+				"id": 2,
+				"speaker": "Judge",
+				"text": {
+					"ru": "Суд готов огласить приговор.",
+					"en": "The court is now ready to pronounce the sentence."
+				},
+				"bubble_mode": "large",
+				"menu": false
+			},
+			{
+				"id": 3,
+				"speaker": "Judge",
+				"text": {
+					"ru": "Подсудимый, встаньте.",
+					"en": "The defendant will please rise."
+				},
+				"bubble_mode": "large",
+				"menu": false
+			},
+			{
+				"id": 4,
+				"characters": [
+					{
+						"id": "Judge",
+						"side": "left",
+						"sprite": "judge",
+						"mode": "zoom"
+					}
+				],
+				"speaker": "Judge",
+				"text": {
+					"ru": "Суд тщательно изучил материалы дела...",
+					"en": "The court has thoroughly reviewed the case materials..."
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 5,
+				"characters": [
+					{
+						"id": "Judge",
+						"side": "left",
+						"sprite": "judge",
+						"mode": "zoom"
+					}
+				],
+				"speaker": "Judge",
+				"text": {
+					"ru": "На основании фактов и доказательств, представленных обвинением и следователями.",
+					"en": "Based on the facts and evidence presented by the prosecution and the detectives"
+				},
+				"bubble_mode": "large"
+			},
+			{
+				"id": 6,
+				"backgroundChange": "courtroom_guilty",
+				"backgroundHoldMs": 1200
+			},
+			{
+				"id": 7,
+				"speaker": "Narrator",
+				"text": {
+					"ru": "Суд признаёт подсудимого... ВИНОВНЫМ по предъявленному обвинению.",
+					"en": "The Court finds the defendant... GUILTY as charged."
+				},
+				"bubble_mode": "large",
+				"menu": false
+			},
+			{
+				"id": 8,
+				"speaker": "Narrator",
+				"text": {
+					"ru": "Факты и доказательства полностью подтверждают вашу вину вне разумных сомнений.",
+					"en": "The facts and evidence fully establish your guilt beyond a reasonable doubt."
+				},
+				"bubble_mode": "large",
+				"menu": false,
+				"actions": [
+					{
+						"type": "save_checkpoint"
+					}
+				]
+			},
+			{
+				"id": 9,
+				"backgroundChange": "crime_reconstruction_intro",
+				"backgroundHoldMs": 1200
+			},
+			{
+				"id": 10,
+				"speaker": "JudgeNarrator",
+				"text": {
+					"ru": "На основе материалов дела — вот какая была картина произошедшего.",
+					"en": "Based on the case materials, this is what happened."
+				},
+				"menu": false
+			},
+			{
+				"id": 11,
+				"backgroundChange": "kanagawa_family_abuse",
+				"backgroundHoldMs": 900
+			},
+			{
+				"id": 12,
+				"speaker": "JudgeNarrator",
+				"text": {
+					"ru": "Для окружающих вы были образцовым семьянином.",
+					"en": "To outsiders, you were a model family man."
+				},
+				"menu": false
+			},
+			{
+				"id": 13,
+				"speaker": "JudgeNarrator",
+				"text": {
+					"ru": "Но в семье вы были тираном и изменяли своей жене.",
+					"en": "But within the family, you were an abuser and cheated on your wife."
+				},
+				"menu": false
+			},
+			{
+				"id": 14,
+				"backgroundChange": "kanagawa_wife_discovers_affair",
+				"backgroundHoldMs": 900
+			},
+			{
+				"id": 15,
+				"speaker": "JudgeNarrator",
+				"text": {
+					"ru": "Ваше предательство стало началом...",
+					"en": "Your betrayal was the beginning.."
+				},
+				"menu": false
+			},
+			{
+				"id": 16,
+				"speaker": "JudgeNarrator",
+				"text": {
+					"ru": "Ваша жена узнала о вашем романе с коллегой.",
+					"en": "Your wife found out about your affair with coworker."
+				},
+				"menu": false
+			},
+			{
+				"id": 17,
+				"backgroundChange": "kanagawa_divorce_lawyer",
+				"backgroundHoldMs": 900
+			},
+			{
+				"id": 18,
+				"speaker": "JudgeNarrator",
+				"text": {
+					"ru": "Вы поговорили со своим адвокатом и осознали неприятную картину:",
+					"en": "You've spoken to your lawyer and realized the unpleasant picture:"
+				},
+				"menu": false
+			},
+			{
+				"id": 19,
+				"speaker": "JudgeNarrator",
+				"text": {
+					"ru": "В случае развода вы потеряете половину имущества и опеку над детьми.",
+					"en": "In the event of a divorce, you will lose half of your property and custody of your children."
+				},
+				"menu": false
+			},
+			{
+				"id": 20,
+				"speaker": "JudgeNarrator",
+				"text": {
+					"ru": "Такое положение дел вас совершенно не устраивало.",
+					"en": "This arrangement did not suit you at all."
+				},
+				"menu": false
+			},
+			{
+				"id": 21,
+				"backgroundChange": "kanagawa_wife_leaving",
+				"backgroundHoldMs": 900
+			},
+			{
+				"id": 22,
+				"speaker": "JudgeNarrator",
+				"text": {
+					"ru": "Сначала вы пытались убедить жену не разводиться ради детей...",
+					"en": "At first, you tried to persuade your wife not to get a divorce for the sake of the children..."
+				},
+				"menu": false
+			},
+			{
+				"id": 23,
+				"speaker": "JudgeNarrator",
+				"text": {
+					"ru": "Оставить всё как есть.",
+					"en": "Leave everything as is."
+				},
+				"menu": false
+			},
+			{
+				"id": 24,
+				"speaker": "JudgeNarrator",
+				"text": {
+					"ru": "Сначала она согласилась. Но затем всё-таки решила подать на развод.",
+					"en": "At first, she agreed. But then she finally decided to file for divorce."
+				},
+				"menu": false
+			},
+			{
+				"id": 25,
+				"backgroundChange": "kanagawa_creates_plan",
+				"backgroundHoldMs": 900
+			},
+			{
+				"id": 26,
+				"speaker": "JudgeNarrator",
+				"text": {
+					"ru": "Примерно в этот момент у вас появился план:",
+					"en": "Somewhere around this point, you came up with a plan:"
+				},
+				"menu": false
+			},
+			{
+				"id": 27,
+				"speaker": "JudgeNarrator",
+				"text": {
+					"ru": "Если бы с вашей женой произошёл несчастный случай, дети остались бы с вами.",
+					"en": "If your wife had an accident, the children would stay with you."
+				},
+				"menu": false
+			},
+			{
+				"id": 28,
+				"speaker": "JudgeNarrator",
+				"text": {
+					"ru": "А в будущем вы могли бы начать жить со своей любовницей.",
+					"en": "And in the future, you could start living with your mistress."
+				},
+				"menu": false
+			},
+			{
+				"id": 29,
+				"backgroundChange": "kanagawa_carbon_monoxide_plan",
+				"backgroundHoldMs": 900
+			},
+			{
+				"id": 30,
+				"speaker": "JudgeNarrator",
+				"text": {
+					"ru": "Вы придумали изощрённый план...",
+					"en": "You came up with a sophisticated plan.."
+				},
+				"menu": false
+			},
+			{
+				"id": 31,
+				"speaker": "JudgeNarrator",
+				"text": {
+					"ru": "Чтобы всё выглядело так, будто автомобиль был неисправен и произошла утечка угарного газа.",
+					"en": "To make it look like the car had a malfunction and a carbon monoxide leak."
+				},
+				"menu": false
+			},
+			{
+				"id": 32,
+				"backgroundChange": "kanagawa_hospital_lab",
+				"backgroundHoldMs": 900
+			},
+			{
+				"id": 33,
+				"speaker": "JudgeNarrator",
+				"text": {
+					"ru": "Вы поняли, что можете получить доступ к угарному газу в лаборатории вашей больницы.",
+					"en": "You realized you could access carbon monoxide in your hospital lab."
+				},
+				"menu": false
+			},
+			{
+				"id": 34,
+				"speaker": "JudgeNarrator",
+				"text": {
+					"ru": "Вы заказали его якобы для проведения экспериментов.",
+					"en": "You ordered it, supposedly for experiments."
+				},
+				"menu": false
+			},
+			{
+				"id": 35,
+				"backgroundChange": "kanagawa_takes_cylinder_home",
+				"backgroundHoldMs": 900
+			},
+			{
+				"id": 36,
+				"speaker": "JudgeNarrator",
+				"text": {
+					"ru": "Затем вы забрали один баллон домой.",
+					"en": "Next, you took one cylinder to your home."
+				},
+				"menu": false,
+				"actions": [
+					{
+						"type": "save_checkpoint"
+					}
+				]
+			},
+			{
+				"id": 37,
+				"backgroundChange": "kanagawa_canister_near_car",
+				"backgroundHoldMs": 900
+			},
+			{
+				"id": 38,
+				"speaker": "JudgeNarrator",
+				"text": {
+					"ru": "Но вы не могли просто положить баллон в автомобиль.",
+					"en": "But you couldn't just put the canister in the car."
+				},
+				"menu": false
+			},
+			{
+				"id": 39,
+				"speaker": "JudgeNarrator",
+				"text": {
+					"ru": "Полиция сразу бы поняла...",
+					"en": "The police would have immediately realized"
+				},
+				"menu": false
+			},
+			{
+				"id": 40,
+				"speaker": "JudgeNarrator",
+				"text": {
+					"ru": "Что кто-то намеренно выпустил газ в автомобиль.",
+					"en": "That someone had intentionally released gas into the car."
+				},
+				"menu": false
+			},
+			{
+				"id": 41,
+				"backgroundChange": "kanagawa_fills_yoga_ball",
+				"backgroundHoldMs": 900
+			},
+			{
+				"id": 42,
+				"speaker": "JudgeNarrator",
+				"text": {
+					"ru": "Поэтому вы наполнили мяч для йоги угарным газом.",
+					"en": "So you filled a yoga ball with carbon monoxide."
+				},
+				"menu": false
+			},
+			{
+				"id": 43,
+				"backgroundChange": "kanagawa_puts_ball_in_car",
+				"backgroundHoldMs": 900
+			},
+			{
+				"id": 44,
+				"speaker": "JudgeNarrator",
+				"text": {
+					"ru": "А в день убийства вы положили мяч в автомобиль своей жены и уехали на работу.",
+					"en": "And on the day of the murder, you put the ball in your wife's car and drove to work."
+				},
+				"menu": false
+			},
+			{
+				"id": 45,
+				"backgroundChange": "kanagawa_daughter_room",
+				"backgroundHoldMs": 900
+			},
+			{
+				"id": 46,
+				"speaker": "JudgeNarrator",
+				"text": {
+					"ru": "Перед уходом вы зашли в комнату своей дочери.",
+					"en": "Before leaving, you went into your daughter's room."
+				},
+				"menu": false
+			},
+			{
+				"id": 47,
+				"speaker": "JudgeNarrator",
+				"text": {
+					"ru": "И несколько раз приказали ей оставаться дома и никуда не выходить.",
+					"en": "And ordered her several times to stay home and not go anywhere."
+				},
+				"menu": false
+			},
+			{
+				"id": 48,
+				"speaker": "JudgeNarrator",
+				"text": {
+					"ru": "Вы сказали, что ей нужно готовиться к экзаменам.",
+					"en": "You said the reason was so she could study for her exams."
+				},
+				"menu": false
+			},
+			{
+				"id": 49,
+				"speaker": "JudgeNarrator",
+				"text": {
+					"ru": "Но настоящая причина заключалась в том, чтобы она случайно не села в автомобиль своей матери!",
+					"en": "But the real reason was to prevent her from accidentally getting into her mother's car!"
+				},
+				"menu": false
+			},
+			{
+				"id": 50,
+				"backgroundChange": "mother_takes_daughter_with_her",
+				"backgroundHoldMs": 900
+			},
+			{
+				"id": 51,
+				"speaker": "JudgeNarrator",
+				"text": {
+					"ru": "Но, к сожалению, мать позвала дочь...",
+					"en": "But unfortunately, the mother called her daughter"
+				},
+				"menu": false
+			},
+			{
+				"id": 52,
+				"speaker": "JudgeNarrator",
+				"text": {
+					"ru": "И они уехали вместе.",
+					"en": "With her and they left together."
+				},
+				"menu": false
+			},
+			{
+				"id": 53,
+				"backgroundChange": "victims_poisoned_in_car",
+				"backgroundHoldMs": 900
+			},
+			{
+				"id": 54,
+				"speaker": "JudgeNarrator",
+				"text": {
+					"ru": "Они успели проехать всего 1500 футов, прежде чем почувствовали себя плохо.",
+					"en": "They barely made it 1500 feet before they became ill."
+				},
+				"menu": false
+			},
+			{
+				"id": 55,
+				"speaker": "JudgeNarrator",
+				"text": {
+					"ru": "Они так быстро потеряли сознание...",
+					"en": "They lost consciousness so quickly"
+				},
+				"menu": false
+			},
+			{
+				"id": 56,
+				"speaker": "JudgeNarrator",
+				"text": {
+					"ru": "Что даже не успели выбраться из автомобиля.",
+					"en": "That they didn't even have time to get out of the car."
+				},
+				"menu": false
+			},
+			{
+				"id": 57,
+				"backgroundChange": "victims_at_bus_stop",
+				"backgroundHoldMs": 900
+			},
+			{
+				"id": 58,
+				"speaker": "JudgeNarrator",
+				"text": {
+					"ru": "В результате они получили отравление угарным газом...",
+					"en": "As a result, they suffered carbon monoxide poisoning.."
+				},
+				"menu": false
+			},
+			{
+				"id": 59,
+				"speaker": "JudgeNarrator",
+				"text": {
+					"ru": "И умерли в течение нескольких часов.",
+					"en": "And died within a few hours."
+				},
+				"menu": false,
+				"actions": [
+					{
+						"type": "save_checkpoint"
+					}
+				]
+			},
+			{
+				"id": 60,
+				"backgroundChange": "courtroom",
+				"backgroundHoldMs": 1200
+			},
+			{
+				"id": 61,
+				"characters": [
+					{
+						"id": "Judge",
+						"side": "left",
+						"sprite": "judge",
+						"mode": "zoom"
+					}
+				],
+				"speaker": "Judge",
+				"text": {
+					"ru": "Детективы, мистер Дэниел и мисс Ди, проделали фантастическую работу!",
+					"en": "Detectives Mr. Daniel and Ms. Dee did a fantastic job!"
+				},
+				"bubble_mode": "large",
+				"menu": false
+			},
+			{
+				"id": 62,
+				"characters": [
+					{
+						"id": "Judge",
+						"side": "left",
+						"sprite": "judge",
+						"mode": "zoom"
+					}
+				],
+				"speaker": "Judge",
+				"text": {
+					"ru": "Благодаря им мы нашли настоящего преступника!",
+					"en": "Thanks to them, we found the real culprit!"
+				},
+				"bubble_mode": "large",
+				"menu": false
+			},
+			{
+				"id": 63,
+				"backgroundChange": "courtroom_guilty",
+				"backgroundHoldMs": 1000
+			},
+			{
+				"id": 64,
+				"speaker": "Narrator",
+				"text": {
+					"ru": "Суд приговаривает вас к пожизненному заключению.",
+					"en": "The court sentences you to life imprisonment."
+				},
+				"bubble_mode": "large",
+				"menu": false
+			},
+			{
+				"id": 65,
+				"speaker": "Narrator",
+				"text": {
+					"ru": "На этом заседание суда объявляется закрытым. Дело закрыто!",
+					"en": "With that, the court is adjourned. Case closed!"
+				},
+				"bubble_mode": "large",
+				"menu": false,
+				"actions": [
+					{
+						"type": "save_checkpoint"
+					}
+				]
+			},
+			{
+				"id": 66,
+				"backgroundChange": "courtroom",
+				"backgroundHoldMs": 700
+			},
+			{
+				"id": 67,
+				"characters": [
+					{
+						"id": "Mr. Kanagawa",
+						"side": "center",
+						"sprite": "mr_kanagava_scared",
+						"mode": "zoom"
+					}
+				],
+				"speaker": "Mr. Kanagawa",
+				"text": {
+					"ru": "Нееет!",
+					"en": "Nooo!"
+				},
+				"bubble_mode": "zip",
+				"sceneEffect": "prison_bars",
+				"menu": false,
+				"allowBack": false,
+				"actions": [
+					{
+						"type": "save_checkpoint"
+					}
+				]
 			}
 		]
 	}

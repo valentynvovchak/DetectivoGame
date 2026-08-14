@@ -9,7 +9,7 @@ import {
     ImageSourcePropType,
     ViewStyle,
     TextStyle,
-    Text,
+    Text, useWindowDimensions,
 } from "react-native";
 
 import { isSmallScreen, isTablet } from "@/styles/global";
@@ -20,6 +20,7 @@ import { LinearGradient } from "expo-linear-gradient";
 import { RESOURCES } from "@/assets/resources";
 import SVGImage from "@/components/small/SVGImage";
 import {getSprite} from "@/tools/utils";
+import MixedIcon from "@/components/Common/MixedIcon";
 
 const { width, height } = Dimensions.get("window");
 const SCALE = baseScale * 3;
@@ -84,6 +85,38 @@ export default function SpeechBubble({
          avatarPosition = "bottom"
     }: SpeechBubbleProps) {
 
+    const {
+        width: screenWidth,
+        height: screenHeight,
+    } = useWindowDimensions();
+
+    const clamp = (
+        value: number,
+        min: number,
+        max: number
+    ) => Math.min(Math.max(value, min), max);
+
+    const narratorWhiteWidth = clamp(
+        screenWidth * 0.78,
+        270,
+        560
+    );
+
+    const narratorWhiteIconSize = clamp(
+        screenWidth * 0.085,
+        30,
+        44
+    );
+
+    const narratorWhiteFontSize = clamp(
+        screenWidth * 0.031,
+        11,
+        17
+    );
+
+    const narratorWhiteLineHeight =
+        narratorWhiteFontSize * 1.35;
+
     const [darkTextHeight, setDarkTextHeight] = useState(0);
 
     const AVATAR_DIALOG_BOTTOM = avatarPosition === "top" ?
@@ -98,22 +131,197 @@ export default function SpeechBubble({
         }
     }
 
-    if (speaker === "Narrator" || speaker === "Narrator2" ) {
+    /*if (speaker === "NarratorWhite") {
+        return (
+            <View
+                pointerEvents="none"
+                style={styles.narratorWhiteRoot}
+            >
+                <View style={styles.narratorWhiteContainer}>
+                    <Image
+                        source={require("../assets/ui/logic_icon.png")}
+                        style={styles.narratorWhiteIcon}
+                        resizeMode="contain"
+                    />
+
+                    <AppText style={styles.narratorWhiteText}>
+                        {text}
+                    </AppText>
+                </View>
+            </View>
+        );
+    }*/
+
+    if (speaker === "NarratorCourt") {
+        const courtWidth = Math.min(
+            width * 0.82,
+            560
+        );
+
+        return (
+            <View
+                pointerEvents="none"
+                style={[
+                    styles.courtNarratorRoot,
+                    {
+                        width: courtWidth,
+                        left:
+                            (width - courtWidth) / 2,
+                        bottom: height * 0.055,
+                    },
+                ]}
+            >
+                <AppText
+                    style={
+                        styles.courtNarratorText
+                    }
+                >
+                    {text}
+                </AppText>
+            </View>
+        );
+    }
+
+    if (speaker === "NarratorWhite") {
+        return (
+            <View
+                pointerEvents="none"
+                style={[
+                    styles.narratorWhiteRoot,
+                    {
+                        top: screenHeight * 0.25,
+                        width: narratorWhiteWidth,
+                        left:
+                            (screenWidth -
+                                narratorWhiteWidth) /
+                            2,
+                    },
+                ]}
+            >
+                <View
+                    style={[
+                        styles.narratorWhiteContainer,
+                        {
+                            paddingHorizontal: clamp(
+                                screenWidth * 0.025,
+                                8,
+                                16
+                            ),
+                            paddingVertical: clamp(
+                                screenHeight * 0.009,
+                                6,
+                                11
+                            ),
+                        },
+                    ]}
+                >
+                    <Image
+                        source={require(
+                            "../assets/ui/logic_icon.png"
+                        )}
+                        style={{
+                            width: narratorWhiteIconSize,
+                            height: narratorWhiteIconSize,
+                            marginRight: clamp(
+                                screenWidth * 0.018,
+                                6,
+                                12
+                            ),
+                            flexShrink: 0,
+                        }}
+                        resizeMode="contain"
+                    />
+
+                    <AppText
+                        style={[
+                            styles.narratorWhiteText,
+                            {
+                                fontSize:
+                                narratorWhiteFontSize,
+                                lineHeight:
+                                narratorWhiteLineHeight,
+                            },
+                        ]}
+                    >
+                        {text}
+                    </AppText>
+                </View>
+            </View>
+        );
+    }
+
+    const narrator3Width = Math.min(width * 0.92, 560);
+    const narrator3AvatarSize = speaker === "JudgeNarrator" ? Math.min(width * 0.26, 152): Math.min(width * 0.19, 92);
+
+    if (speaker === "Narrator3" || speaker === "JudgeNarrator") {
         return (
             <LinearGradient
                 colors={["#CCCCCC", "#CACA99"]}
                 start={{ x: 0, y: 0 }}
-                end={{ x: 0, y: 1 }} // сверху вниз
-                style={[styles.narratorContainer, {bottom: height * (speaker === "Narrator2" ? 0.4 : 0.15)}]}
-                // style={{
-                    // alignSelf: "flex-start",
-                    // borderRadius: 10,
-                    // padding: 6 * SCALE, // ← толщина рамки
-                    // marginBottom: 600 * SCALE,
-                // }}
+                end={{ x: 0, y: 1 }}
+                style={[
+                    styles.narrator3Container,
+                    {
+                        width: narrator3Width,
+                        left: (width - narrator3Width) / 2,
+                        bottom: height * 0.06,
+                    },
+                ]}
             >
-                <View style={{backgroundColor: "#385253",paddingVertical: 17, paddingHorizontal: 20, borderRadius: 10}}>
-                    <AppText style={styles.narratorText}>{text}</AppText>
+                <View
+                    style={[
+                        styles.narrator3Inner,
+                        {
+                            minHeight: narrator3AvatarSize,
+                        },
+                    ]}
+                >
+                    <Image
+                        source={speaker === "JudgeNarrator" ?
+                            require("../assets/ui/narrator_judge.png") :
+                            require("../assets/ui/narrator_di.png")}
+                        style={[
+                            styles.narrator3Avatar,
+                            {
+                                marginRight: speaker === "JudgeNarrator" ? 20 : 10,
+                            },
+                            {
+                                width: narrator3AvatarSize,
+                                height: narrator3AvatarSize,
+                            },
+                        ]}
+                        resizeMode="contain"
+                    />
+
+                    <AppText style={styles.narrator3Text}>
+                        {text}
+                    </AppText>
+                </View>
+            </LinearGradient>
+        );
+    }
+
+    if (speaker === "Narrator" || speaker === "Narrator2") {
+        return (
+            <LinearGradient
+                colors={["#CCCCCC", "#CACA99"]}
+                start={{ x: 0, y: 0 }}
+                end={{ x: 0, y: 1 }}
+                style={[
+                    styles.narratorContainer,
+                    {
+                        bottom:
+                            height *
+                            (speaker === "Narrator2"
+                                ? 0.4
+                                : 0.15),
+                    },
+                ]}
+            >
+                <View style={styles.narratorInner}>
+                    <AppText style={styles.narratorText}>
+                        {text}
+                    </AppText>
                 </View>
             </LinearGradient>
         );
@@ -612,7 +820,7 @@ export default function SpeechBubble({
         );
     }
 
-    if (mode === "avatar") {
+    /*if (mode === "avatar") {
         const pngSource =
             avatarImage
                 ? (RESOURCES as Record<string, ImageSourcePropType>)[avatarImage]
@@ -628,14 +836,14 @@ export default function SpeechBubble({
                         },
                     ]}
                 >
-                    {/* ✅ Сначала пробуем PNG */}
+                    {/!* ✅ Сначала пробуем PNG *!/}
                     {pngSource ? (
                         <Image
                             source={pngSource}
                             style={styles.avatarPng}
                         />
                     ) : avatarSprite ? (
-                        /* ✅ Если PNG нет — используем SVG */
+                        /!* ✅ Если PNG нет — используем SVG *!/
                         <View
                             style={styles.avatarSpriteWrap}
                             pointerEvents="none"
@@ -654,6 +862,85 @@ export default function SpeechBubble({
 
                 <ImageBackground
                     source={require("../assets/ui/bubble_avatar.png")}
+                    style={styles.avatarBubble}
+                    imageStyle={styles.avatarBubbleImage}
+                    resizeMode="stretch"
+                >
+                    <AppText style={styles.avatarBubbleText}>
+                        {text}
+                    </AppText>
+                </ImageBackground>
+            </View>
+        );
+    }*/
+
+    if (mode === "avatar") {
+        const hasDedicatedAvatar =
+            typeof avatarImage === "string" &&
+            avatarImage.trim().length > 0;
+
+        return (
+            <View
+                style={[
+                    styles.avatarDialogRoot,
+                    {
+                        bottom: AVATAR_DIALOG_BOTTOM,
+                    },
+                ]}
+            >
+                <View
+                    style={[
+                        styles.avatarBox,
+                        {
+                            backgroundColor:
+                                avatarBg || "#D8423E",
+                        },
+                    ]}
+                >
+                    {/*
+                 * avatarImage может быть:
+                 * housekeeper_avatar.svg
+                 * housekeeper_avatar.png
+                 *
+                 * MixedIcon сам выберет правильный способ отображения.
+                 */}
+                    {hasDedicatedAvatar ? (
+                        <View
+                            style={styles.avatarAssetWrap}
+                            pointerEvents="none"
+                        >
+                            <MixedIcon
+                                icon={avatarImage}
+                                width={AVATAR_SIZE - 4}
+                                height={AVATAR_SIZE - 4}
+                                resizeMode="cover"
+                            />
+                        </View>
+                    ) : avatarSprite ? (
+                        /*
+                         * Полный спрайт используем только тогда,
+                         * когда отдельный avatarImage вообще не указан.
+                         */
+                        <View
+                            style={styles.avatarSpriteWrap}
+                            pointerEvents="none"
+                        >
+                            <SVGImage
+                                Image={getSprite(avatarSprite)}
+                                style={styles.avatarSprite}
+                                width={180 * SCALE}
+                                height={550 * SCALE}
+                            />
+                        </View>
+                    ) : (
+                        <View style={styles.avatarFallback} />
+                    )}
+                </View>
+
+                <ImageBackground
+                    source={require(
+                        "../assets/ui/bubble_avatar.png"
+                    )}
                     style={styles.avatarBubble}
                     imageStyle={styles.avatarBubbleImage}
                     resizeMode="stretch"
@@ -1242,5 +1529,241 @@ const styles = StyleSheet.create({
         textAlign: "left",
 
         flexShrink: 1,
+    },
+
+    avatarAssetWrap: {
+        width: "100%",
+        height: "100%",
+
+        alignItems: "center",
+        justifyContent: "center",
+
+        overflow: "hidden",
+    },
+
+
+    narrator3Container: {
+        position: "absolute",
+
+        padding: 2,
+
+        borderRadius: 8,
+
+        zIndex: 130,
+        elevation: 130,
+
+        overflow: "hidden",
+    },
+
+    narrator3Inner: {
+        width: "100%",
+
+        flexDirection: "row",
+        alignItems: "center",
+
+        /*
+         * Вертикальных отступов нет.
+         */
+        paddingVertical: 0,
+
+        /*
+         * Слева небольшой отступ для портрета,
+         * справа — чтобы текст не касался края.
+         */
+        paddingLeft: 5,
+        paddingRight: 14,
+
+        backgroundColor: "#385253",
+
+        borderRadius: 7,
+
+        overflow: "hidden",
+    },
+
+    narrator3Avatar: {
+        flexShrink: 0,
+
+        alignSelf: "flex-end",
+
+        /*
+         * Небольшое смещение вниз, чтобы портрет
+         * визуально упирался в нижнюю границу.
+         */
+        marginBottom: -1,
+        marginRight: 10,
+    },
+
+    narrator3Text: {
+        flex: 1,
+        flexShrink: 1,
+
+        color: "#FFFFFF",
+
+        fontFamily: "IBMPlexMono-Regular",
+
+        fontSize: isTablet
+            ? 19
+            : isSmallScreen
+                ? 15
+                : 17,
+
+        lineHeight: isTablet
+            ? 25
+            : isSmallScreen
+                ? 20
+                : 23,
+
+        textAlign: "left",
+    },
+
+    narratorInner: {
+        backgroundColor: "#385253",
+
+        paddingVertical: 17,
+        paddingHorizontal: 20,
+
+        borderRadius: 10,
+    },
+
+    /*narratorWhiteRoot: {
+        position: "absolute",
+
+        top: height * 0.3,
+        left: width * 0.07,
+        right: width * 0.07,
+
+        alignItems: "center",
+
+        zIndex: 150,
+        elevation: 150,
+    },*/
+
+    /*narratorWhiteContainer: {
+        width: "100%",
+
+        minHeight: 54,
+
+        flexDirection: "row",
+        alignItems: "center",
+
+        backgroundColor: "rgba(248, 248, 248, 0.98)",
+
+        borderRadius: 7,
+
+        paddingHorizontal: 10,
+        paddingVertical: 8,
+
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 2,
+        },
+        shadowOpacity: 0.18,
+        shadowRadius: 4,
+
+        elevation: 8,
+    },*/
+
+    narratorWhiteIcon: {
+        width: 34,
+        height: 34,
+
+        marginRight: 8,
+
+        flexShrink: 0,
+    },
+
+    /*narratorWhiteText: {
+        flex: 1,
+
+        color: "#454545",
+
+        fontFamily: "IBMPlexMono-Regular",
+
+        fontSize: isTablet
+            ? 19
+            : isSmallScreen
+                ? 13
+                : 15,
+
+        lineHeight: isTablet
+            ? 24
+            : isSmallScreen
+                ? 17
+                : 20,
+
+        textAlign: "left",
+    },*/
+
+    narratorWhiteRoot: {
+        position: "absolute",
+
+        alignItems: "center",
+
+        zIndex: 150,
+        elevation: 150,
+    },
+
+    narratorWhiteContainer: {
+        width: "100%",
+
+        flexDirection: "row",
+        alignItems: "center",
+
+        backgroundColor: "rgba(248, 248, 248, 0.98)",
+
+        borderWidth: 1,
+        borderColor: "#E1E1E1",
+        borderRadius: 8,
+
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 2,
+        },
+        shadowOpacity: 0.18,
+        shadowRadius: 4,
+
+        elevation: 8,
+    },
+
+    narratorWhiteText: {
+        flex: 1,
+        flexShrink: 1,
+
+        color: "#454545",
+
+        fontFamily: "IBMPlexMono-Regular",
+
+        textAlign: "left",
+    },
+
+    courtNarratorRoot: {
+        position: "absolute",
+
+        paddingHorizontal: 18,
+        paddingVertical: 13,
+
+        backgroundColor:
+            "rgba(40, 65, 66, 0.97)",
+
+        borderWidth: 1.5,
+        borderColor: "#CACA99",
+        borderRadius: 5,
+
+        zIndex: 180,
+        elevation: 180,
+    },
+
+    courtNarratorText: {
+        color: "#F7EFE4",
+
+        fontFamily:
+            "IBMPlexMono-Regular",
+
+        fontSize: 15,
+        lineHeight: 21,
+
+        textAlign: "left",
     },
 });

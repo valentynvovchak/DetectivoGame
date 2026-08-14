@@ -31,6 +31,11 @@ import arrest_kanagawa_border from "@/assets/resources/arrest_kanagawa_border.sv
 import mr_kanagawa_asked_daughter_to_stay_home from "@/assets/resources/mr_kanagawa_asked_daughter_to_stay_home.svg";
 import stay_at_home from "@/assets/resources/stay_at_home.svg";
 import mr_kanagawa_claims_gas_for_rats from "@/assets/resources/mr_kanagawa_claims_gas_for_rats.svg";
+import housekeeper_did_not_see_yoga_ball from "@/assets/resources/housekeeper_did_not_see_yoga_ball.svg";
+import housekeeper_avatar from "@/assets/resources/housekeeper_avatar.svg";
+import housekeeper_saw_kanagawa_enter_garage from "@/assets/resources/housekeeper_saw_kanagawa_enter_garage.svg";
+import housekeeper_worried_avatar from "@/assets/resources/housekeeper_worried_avatar.svg";
+import yoga_ball_plug from "@/assets/resources/yoga_ball_plug.svg";
 
 
 export const SVG_RESOURCES: Record<string, any> = {
@@ -67,4 +72,9 @@ export const SVG_RESOURCES: Record<string, any> = {
     "mr_kanagawa_asked_daughter_to_stay_home.svg": mr_kanagawa_asked_daughter_to_stay_home,
     "stay_at_home.svg": stay_at_home,
     "mr_kanagawa_claims_gas_for_rats.svg": mr_kanagawa_claims_gas_for_rats,
+    "housekeeper_did_not_see_yoga_ball.svg": housekeeper_did_not_see_yoga_ball,
+    "housekeeper_avatar.svg": housekeeper_avatar,
+    "housekeeper_saw_kanagawa_enter_garage.svg": housekeeper_saw_kanagawa_enter_garage,
+    "housekeeper_worried_avatar.svg": housekeeper_worried_avatar,
+    "yoga_ball_plug.svg": yoga_ball_plug,
 };

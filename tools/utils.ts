@@ -28,6 +28,8 @@ import Colleague from "../assets/sprites/Colleague/colleague-2.svg";
 import ColleagueThinking from "../assets/sprites/Colleague/colleague_thinking-2.svg";
 import ColleagueHandUp from "../assets/sprites/Colleague/colleague_hand_up.svg";
 import ColleagueShocked from "../assets/sprites/Colleague/colleague_shocked.svg";
+import Judge from "../assets/sprites/Judge/judge.svg";
+import JudgeSad from "../assets/sprites/Judge/judge_sad.svg";
 
 export const BACKGROUNDS: Record<string, any> = {
     inventory_bg: require("../assets/backgrounds/inventory_bg.jpg"),
@@ -75,6 +77,33 @@ export const BACKGROUNDS: Record<string, any> = {
     storage_box: require("../assets/backgrounds/storage_box.jpg"),
     storage_box_open: require("../assets/backgrounds/storage_box_open.jpg"),
     kanagawa_rats_garage: require("../assets/backgrounds/kanagawa_rats_garage.jpg"),
+    didnt_see_it: require("../assets/backgrounds/didnt_see_it.jpg"),
+    kanagawa_entering_garage: require("../assets/backgrounds/kanagawa_entering_garage.jpg"),
+    youngest_son_room: require("../assets/backgrounds/youngest_son_room.jpg"),
+    youngest_son_room_shelf: require("../assets/backgrounds/youngest_son_room_shelf.jpg"),
+    youngest_son_room_center_floor: require("../assets/backgrounds/youngest_son_room_center_floor.jpg"),
+    youngest_son_room_computer: require("../assets/backgrounds/youngest_son_room_computer.jpg"),
+    youngest_son_room_left_floor: require("../assets/backgrounds/youngest_son_room_left_floor.jpg"),
+    youngest_son_room_right_floor: require("../assets/backgrounds/youngest_son_room_right_floor.jpg"),
+    courtroom: require("../assets/backgrounds/courtroom.jpg"),
+
+    kanagawa_takes_cylinder_home: require("../assets/backgrounds/kanagawa_takes_cylinder_home.jpg"),
+    kanagawa_hospital_lab: require("../assets/backgrounds/kanagawa_hospital_lab.jpg"),
+    kanagawa_carbon_monoxide_plan: require("../assets/backgrounds/kanagawa_carbon_monoxide_plan.jpg"),
+    kanagawa_creates_plan: require("../assets/backgrounds/kanagawa_creates_plan.jpg"),
+    kanagawa_wife_leaving: require("../assets/backgrounds/kanagawa_wife_leaving.jpg"),
+    kanagawa_divorce_lawyer: require("../assets/backgrounds/kanagawa_divorce_lawyer.jpg"),
+    kanagawa_wife_discovers_affair: require("../assets/backgrounds/kanagawa_wife_discovers_affair.jpg"),
+    kanagawa_family_abuse: require("../assets/backgrounds/kanagawa_family_abuse.jpg"),
+    crime_reconstruction_intro: require("../assets/backgrounds/crime_reconstruction_intro.jpg"),
+    courtroom_guilty: require("../assets/backgrounds/courtroom_guilty.jpg"),
+    victims_at_bus_stop: require("../assets/backgrounds/victims_at_bus_stop.jpg"),
+    victims_poisoned_in_car: require("../assets/backgrounds/victims_poisoned_in_car.jpg"),
+    mother_takes_daughter_with_her: require("../assets/backgrounds/mother_takes_daughter_with_her.jpg"),
+    kanagawa_daughter_room: require("../assets/backgrounds/kanagawa_daughter_room.jpg"),
+    kanagawa_puts_ball_in_car: require("../assets/backgrounds/kanagawa_puts_ball_in_car.jpg"),
+    kanagawa_fills_yoga_ball: require("../assets/backgrounds/kanagawa_fills_yoga_ball.jpg"),
+    kanagawa_canister_near_car: require("../assets/backgrounds/kanagawa_canister_near_car.jpg"),
 
 };
 
@@ -144,7 +173,10 @@ export const getSprite = (name: string) => {
             return ColleagueHandUp;
         case "colleague_shocked":
             return ColleagueShocked;
-
+        case "judge":
+            return Judge;
+        case "judge_sad":
+            return JudgeSad;
         default:
             return DanielSmile;
     }

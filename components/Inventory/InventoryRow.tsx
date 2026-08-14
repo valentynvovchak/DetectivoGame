@@ -1,6 +1,5 @@
 import React from "react";
 import { View, TouchableOpacity, Image, StyleSheet } from "react-native";
-import { RESOURCES } from "@/assets/resources";
 import { SCALE } from "@/tools/constants";
 import AppText from "@/components/Common/AppText";
 import {LinearGradient} from "expo-linear-gradient";
@@ -9,9 +8,11 @@ import {getSprite} from "@/tools/utils";
 import MixedIcon from "@/components/Common/MixedIcon";
 
 type Props = {
-    index: number;
+    index?: number;
     title: string;
     icon?: string;
+    sprite?: string;
+    bg?: string;
     onPress: () => void;
     active?: boolean;
 };
