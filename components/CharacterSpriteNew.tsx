@@ -1,4 +1,245 @@
 import React from "react";
+
+import {
+    StyleSheet,
+    View,
+} from "react-native";
+
+interface CharacterSpriteProps {
+    side: "left" | "right" | "center";
+
+    Sprite: any;
+
+    isSpeaking?: boolean;
+
+    mode?:
+        | "full"
+        | "cut"
+        | "zoom"
+        | "zoom2"
+        | "zoom3"
+        | "bottom";
+
+    heightModifier?: number;
+
+    yModifier?: number;
+
+    proofResult?: boolean;
+
+    stageWidth: number;
+    stageHeight: number;
+}
+
+type CharacterMode =
+    NonNullable<CharacterSpriteProps["mode"]>;
+
+type ModeConfig = {
+    /**
+     * Высота персонажа в нашей
+     * виртуальной системе координат.
+     */
+    height: number;
+
+    /**
+     * Положение относительно нижней
+     * границы сцены.
+     */
+    bottom: number;
+
+    /**
+     * Выход за бок сцены.
+     */
+    sideOffset: number;
+};
+
+/**
+ * Виртуальный дизайн-холст.
+ *
+ * Не конкретный телефон.
+ * Просто единая система координат игры.
+ */
+const DESIGN_WIDTH = 390;
+const DESIGN_HEIGHT = 844;
+
+const MODE_CONFIG: Record<
+    CharacterMode,
+    ModeConfig
+    > = {
+    full: {
+        height: 650,
+        bottom: 0,
+        sideOffset: -20,
+    },
+
+    cut: {
+        height: 760,
+        bottom: -80,
+        sideOffset: -25,
+    },
+
+    zoom: {
+        height: 820,
+        bottom: -120,
+        sideOffset: -30,
+    },
+
+    zoom2: {
+        height: 760,
+        bottom: -100,
+        sideOffset: -25,
+    },
+
+    zoom3: {
+        height: 820,
+        bottom: -120,
+        sideOffset: -30,
+    },
+
+    bottom: {
+        height: 620,
+        bottom: -260,
+        sideOffset: -20,
+    },
+};
+
+export default function CharacterSpriteNew({
+                                               side,
+                                               Sprite,
+                                               isSpeaking = false,
+                                               mode = "full",
+                                               heightModifier = 1,
+                                               yModifier = 0,
+                                               proofResult = false,
+                                               stageWidth,
+                                               stageHeight,
+                                           }: CharacterSpriteProps) {
+    /**
+     * До первого layout ничего не рисуем.
+     *
+     * После первого кадра DialogScene
+     * передаст реальные размеры слоя.
+     */
+    if (
+        stageWidth <= 0 ||
+        stageHeight <= 0
+    ) {
+        return null;
+    }
+
+    const resolvedMode: CharacterMode =
+        proofResult &&
+        (
+            mode === "cut" ||
+            mode === "zoom"
+        )
+            ? "zoom2"
+            : mode;
+
+    const config =
+        MODE_CONFIG[resolvedMode];
+
+    /**
+     * Единственный scale.
+     *
+     * И телефон, и iPhone, и планшет
+     * используют абсолютно одну формулу.
+     */
+    const scale = Math.min(
+        stageWidth / DESIGN_WIDTH,
+        stageHeight / DESIGN_HEIGHT
+    );
+
+    const characterHeight =
+        config.height *
+        scale *
+        heightModifier;
+
+    /**
+     * Старые индивидуальные корректировки
+     * пока поддерживаем.
+     *
+     * Позже ненужные y_modifier удалим
+     * из dialogs.json.
+     */
+    const yOffset =
+        stageHeight * yModifier;
+
+    const bottom =
+        config.bottom * scale -
+        yOffset;
+
+    const sideOffset =
+        config.sideOffset * scale;
+
+    /**
+     * SVG сам сохраняет свою настоящую
+     * пропорцию из viewBox.
+     *
+     * Поэтому width персонажа нам вообще
+     * не нужно вычислять.
+     */
+    const preserveAspectRatio =
+        side === "left"
+            ? "xMinYMax meet"
+            : side === "right"
+                ? "xMaxYMax meet"
+                : "xMidYMax meet";
+
+    const horizontalPosition =
+        side === "left"
+            ? {
+                left: sideOffset,
+                right: 0,
+            }
+            : side === "right"
+                ? {
+                    left: 0,
+                    right: sideOffset,
+                }
+                : {
+                    left: 0,
+                    right: 0,
+                };
+
+    return (
+        <View
+            pointerEvents="none"
+            style={[
+                styles.container,
+                horizontalPosition,
+                {
+                    height:
+                    characterHeight,
+
+                    bottom,
+                },
+            ]}
+        >
+            <Sprite
+                width="100%"
+                height="100%"
+
+                preserveAspectRatio={
+                    preserveAspectRatio
+                }
+            />
+        </View>
+    );
+}
+
+const styles = StyleSheet.create({
+    container: {
+        position: "absolute",
+
+        overflow: "visible",
+
+        zIndex: 40,
+        elevation: 40,
+    },
+});
+
+/*
+import React from "react";
 import {
     View,
     StyleSheet,
@@ -26,16 +267,16 @@ interface CharacterSpriteProps {
         | "zoom3"
         | "bottom";
 
-    /*
+    /!*
      * Изменяет общий размер персонажа.
      *
      * 1 — обычный размер
      * 1.1 — увеличить на 10%
      * 0.9 — уменьшить на 10%
-     */
+     *!/
     heightModifier?: number;
 
-    /*
+    /!*
      * Смещение персонажа по вертикали.
      *
      * Положительное значение опускает вниз:
@@ -43,7 +284,7 @@ interface CharacterSpriteProps {
      *
      * Отрицательное значение поднимает:
      * -0.05 = вверх на 5% высоты экрана.
-     */
+     *!/
     yModifier?: number;
 
     proofResult?: boolean;
@@ -68,10 +309,10 @@ export default function CharacterSpriteNew({
             ? "zoom2"
             : mode;
 
-    /*
+    /!*
      * Положительное значение должно опускать
      * персонажа вниз, поэтому уменьшаем bottom.
-     */
+     *!/
     const yOffset = height * yModifier;
 
     if (resolvedMode === "bottom") {
@@ -104,13 +345,13 @@ export default function CharacterSpriteNew({
                     styles.container,
                     horizontalPosition,
                     {
-                        /*
+                        /!*
                          * Базовое положение:
                          * -height * 0.34
                          *
                          * yModifier дополнительно
                          * опускает или поднимает спрайт.
-                         */
+                         *!/
                         bottom:
                             -height * 0.34 -
                             yOffset,
@@ -194,11 +435,11 @@ export default function CharacterSpriteNew({
                 : {
                     left: "50%" as const,
 
-                    /*
+                    /!*
                      * Вместо translateX: "-45%".
                      * Числовое значение стабильнее
                      * работает на Android.
-                     */
+                     *!/
                     transform: [
                         {
                             translateX:
@@ -233,10 +474,10 @@ export default function CharacterSpriteNew({
                 styles.container,
                 horizontalPosition,
                 {
-                    /*
+                    /!*
                      * Положительный yModifier
                      * опускает персонажа.
-                     */
+                     *!/
                     bottom:
                         baseBottom - yOffset,
                 },
@@ -265,7 +506,7 @@ const styles = StyleSheet.create({
     },
 });
 
-/*
+/!*
 import React from "react";
 import { View, StyleSheet, Dimensions, Platform } from "react-native";
 import {isSmallScreen, isTablet} from "@/styles/global";
@@ -400,4 +641,5 @@ const styles = StyleSheet.create({
         opacity: 1,
     }
 });
+*!/
 */
