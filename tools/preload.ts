@@ -1,5 +1,5 @@
 import { Asset } from "expo-asset";
-import { Audio } from "expo-av";
+import { preload } from "expo-audio";
 
 type ProgressCb = (p: number) => void;
 
@@ -13,21 +13,33 @@ export async function preloadAssetsWithProgress(
 
     const tick = () => {
         done += 1;
-        onProgress?.(total === 0 ? 1 : done / total);
+        onProgress?.(
+            total === 0 ? 1 : done / total
+        );
     };
 
-    // картинки
-    const imagePromises = images.map(async (img) => {
-        await Asset.fromModule(img).downloadAsync();
-        tick();
-    });
+    // Картинки
+    const imagePromises = images.map(
+        async (img) => {
+            await Asset.fromModule(
+                img
+            ).downloadAsync();
 
-    // аудио (создать+unload, чтобы файл попал в cache)
-    const soundPromises = sounds.map(async (s) => {
-        const { sound } = await Audio.Sound.createAsync(s, { shouldPlay: false });
-        await sound.unloadAsync();
-        tick();
-    });
+            tick();
+        }
+    );
 
-    await Promise.all([...imagePromises, ...soundPromises]);
+    // Аудіо
+    const soundPromises = sounds.map(
+        async (sound) => {
+            await preload(sound);
+
+            tick();
+        }
+    );
+
+    await Promise.all([
+        ...imagePromises,
+        ...soundPromises,
+    ]);
 }

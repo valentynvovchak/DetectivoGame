@@ -2,7 +2,7 @@ import { Stack } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
 import { useFonts } from "expo-font";
 import { useEffect } from "react";
-import { Audio } from "expo-av";
+import { setAudioModeAsync } from "expo-audio";
 import {AppState, Platform} from "react-native";
 
 SplashScreen.preventAutoHideAsync();
@@ -30,12 +30,13 @@ export default function RootLayout() {
     });
 
     useEffect(() => {
-        // ✅ МИНИМАЛЬНАЯ и СТАБИЛЬНАЯ конфигурация
         if (Platform.OS !== "web") {
-            Audio.setAudioModeAsync({
-                allowsRecordingIOS: false,
-                playsInSilentModeIOS: true,
-                shouldDuckAndroid: true,
+            void setAudioModeAsync({
+                allowsRecording: false,
+                playsInSilentMode: true,
+                interruptionMode: "duckOthers",
+            }).catch((error) => {
+                console.warn("Audio mode error:", error);
             });
         }
 

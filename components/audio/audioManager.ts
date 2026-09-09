@@ -1,149 +1,100 @@
-import { Audio } from "expo-av";
+import { createAudioPlayer } from "expo-audio";
 
-let currentSound: Audio.Sound | null = null;
+type Player = ReturnType<typeof createAudioPlayer>;
+
+let currentPlayer: Player | null = null;
 let currentTrack: any = null;
 
-// 🔒 токен последнего запроса
+// Токен останнього запиту.
+// Потрібен, щоб старий playMusic не переміг новіший.
 let playRequestId = 0;
+
+function disposePlayer(player: Player | null) {
+    if (!player) return;
+
+    try {
+        player.pause();
+    } catch {}
+
+    try {
+        player.remove();
+    } catch {}
+}
 
 export async function playMusic(source: any, volume: number) {
     const requestId = ++playRequestId;
 
     try {
-        // Если уже играет тот же трек — просто обновим громкость
-        if (currentTrack === source && currentSound) {
-            await currentSound.setVolumeAsync(volume);
+        // Якщо вже грає той самий трек —
+        // просто змінюємо гучність.
+        if (currentTrack === source && currentPlayer) {
+            currentPlayer.volume = volume;
             return;
         }
 
-        // Останавливаем предыдущий звук (если был)
-        // ⚠️ важно: после await может прийти новый запрос
-        if (currentSound) {
-            try {
-                await currentSound.stopAsync();
-            } catch {}
-            try {
-                await currentSound.unloadAsync();
-            } catch {}
-            currentSound = null;
+        // Прибираємо попередній трек.
+        if (currentPlayer) {
+            const oldPlayer = currentPlayer;
+
+            currentPlayer = null;
             currentTrack = null;
+
+            disposePlayer(oldPlayer);
         }
 
-        // Если за время stop/unload пришёл новый запрос — выходим
-        if (requestId !== playRequestId) return;
-
-        const { sound } = await Audio.Sound.createAsync(source, {
-            isLooping: true,
-            volume,
-            shouldPlay: false, // сами решим когда стартовать
-        });
-
-        // Если пришёл новый запрос — не стартуем, а аккуратно выгружаем
+        // За цей час міг прийти новіший запит.
         if (requestId !== playRequestId) {
-            try {
-                await sound.unloadAsync();
-            } catch {}
             return;
         }
 
-        currentSound = sound;
+        const player = createAudioPlayer(source);
+
+        player.loop = true;
+        player.volume = volume;
+
+        // Перевіряємо ще раз перед запуском.
+        if (requestId !== playRequestId) {
+            disposePlayer(player);
+            return;
+        }
+
+        currentPlayer = player;
         currentTrack = source;
 
-        await sound.playAsync();
+        player.play();
 
-        // Если после play пришёл новый запрос — выключаем этот звук
+        // Якщо одразу після запуску прийшов новий запит.
         if (requestId !== playRequestId) {
-            try {
-                await sound.stopAsync();
-            } catch {}
-            try {
-                await sound.unloadAsync();
-            } catch {}
-            if (currentSound === sound) {
-                currentSound = null;
+            disposePlayer(player);
+
+            if (currentPlayer === player) {
+                currentPlayer = null;
                 currentTrack = null;
             }
         }
-    } catch (e) {
-        console.warn("Audio error:", e);
+    } catch (error) {
+        console.warn("Audio error:", error);
     }
 }
 
 export async function stopMusic() {
-    // ✅ тоже увеличиваем токен, чтобы отменить любой playMusic “в полёте”
+    // Скасовуємо будь-який playMusic, який ще виконується.
     playRequestId++;
 
-    if (currentSound) {
-        try {
-            await currentSound.stopAsync();
-        } catch {}
-        try {
-            await currentSound.unloadAsync();
-        } catch {}
-        currentSound = null;
+    if (currentPlayer) {
+        const player = currentPlayer;
+
+        currentPlayer = null;
         currentTrack = null;
+
+        disposePlayer(player);
     }
 }
 
 export async function setMusicVolume(volume: number) {
-    if (currentSound) {
+    if (currentPlayer) {
         try {
-            await currentSound.setVolumeAsync(volume);
+            currentPlayer.volume = volume;
         } catch {}
     }
 }
-
-
-/*
-import { Audio } from "expo-av";
-
-let currentSound: Audio.Sound | null = null;
-let currentTrack: string | null = null;
-
-export async function playMusic(
-    source: any,
-    volume: number
-) {
-    try {
-        // если уже играет тот же трек — не перезапускаем
-        if (currentTrack === source) {
-            if (currentSound) {
-                await currentSound.setVolumeAsync(volume);
-            }
-            return;
-        }
-
-        await stopMusic();
-
-        const { sound } = await Audio.Sound.createAsync(
-            source,
-            {
-                isLooping: true,
-                volume,
-            }
-        );
-
-        currentSound = sound;
-        currentTrack = source;
-
-        await sound.playAsync();
-    } catch (e) {
-        console.warn("Audio error:", e);
-    }
-}
-
-export async function stopMusic() {
-    if (currentSound) {
-        await currentSound.stopAsync();
-        await currentSound.unloadAsync();
-        currentSound = null;
-        currentTrack = null;
-    }
-}
-
-export async function setMusicVolume(volume: number) {
-    if (currentSound) {
-        await currentSound.setVolumeAsync(volume);
-    }
-}
-*/

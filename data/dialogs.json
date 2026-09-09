@@ -122,7 +122,6 @@
 			},
 			{
 				"id": 13,
-				"animatedCharacterTest": true,
 				"characters": [
 					{ "id": "Di", "side": "left", "sprite": "di_serious", "mode": "zoom" }
 				],
