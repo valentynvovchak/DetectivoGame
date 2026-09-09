@@ -11,7 +11,12 @@ export default function CourtGoodScene() {
     return (
         <DialogScene
             onEnd={async (fadeToScene) => {
-                await router.replace('/');
+                await fadeToScene(
+                    "16_crime_reconstruction",
+                    {
+                        holdMs: 1600,
+                    }
+                );
             }}
         />
     );

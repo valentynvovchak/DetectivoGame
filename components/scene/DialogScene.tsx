@@ -39,6 +39,7 @@ import {
 } from "@/tools/paginateDialogText";
 import NextStepChoiceModal from "@/components/NextStepChoiceModal";
 import PrisonBarsAnimation from "@/components/animations/PrisonBarsAnimation";
+import AnimatedCharacterTest from "@/assets/animations/AnimatedCharacterTest";
 
 type FactAnimationState = {
     id: string;
@@ -835,7 +836,7 @@ export default function DialogScene({
                         </View>
 
                         {/* characters */}
-                        <View
+                        {/*<View
                             // pointerEvents="none"
                             style={styles.charactersLayer}
                         >
@@ -851,6 +852,44 @@ export default function DialogScene({
                                     proofResult={line?.proofResult}
                                 />
                             ))}
+                        </View>*/}
+
+                        {/* characters */}
+                        <View style={styles.charactersLayer}>
+                            {line?.bubble_mode !== "avatar" && (
+                                <>
+                                    {line?.animatedCharacterTest ? (
+                                        <AnimatedCharacterTest />
+                                    ) : (
+                                        line?.characters?.map(
+                                            (char: any) => (
+                                                <CharacterSpriteNew
+                                                    key={char.id}
+                                                    mode={char.mode}
+                                                    side={char.side}
+                                                    Sprite={getSprite(
+                                                        char.sprite
+                                                    )}
+                                                    isSpeaking={
+                                                        char.id ===
+                                                        line.speaker
+                                                    }
+                                                    heightModifier={
+                                                        char?.height_modifier
+                                                    }
+                                                    yModifier={
+                                                        char?.y_modifier ??
+                                                        0
+                                                    }
+                                                    proofResult={
+                                                        line?.proofResult
+                                                    }
+                                                />
+                                            )
+                                        )
+                                    )}
+                                </>
+                            )}
                         </View>
 
                         {/* speech */}

@@ -8,12 +8,6 @@ import { height, width } from "@/styles/global";
 import { useGameStore } from "@/store/gameStore";
 
 export default function StreetScene() {
-    const {
-        lang,
-        addToData,
-        hasItem,
-    } = useGameStore();
-
     useSceneMusic(MUSIC.exploration);
 
     return (

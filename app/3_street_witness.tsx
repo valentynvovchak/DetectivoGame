@@ -5,6 +5,7 @@ import { MUSIC } from "@/components/audio/musicMap";
 import { height, width } from "@/styles/global";
 import ClueFlyAnimation from "@/components/animations/ClueFlyAnimation";
 import {useGameStore} from "@/store/gameStore";
+// import WebpCharacterTest from "@/assets/animations/WebpCharacterTest";
 
 export default function WitnessScene() {
     const { lang, addToData, hasItem, currentScene, currentLine, nextLine } = useGameStore();
@@ -17,6 +18,9 @@ export default function WitnessScene() {
 
     return (
         <DialogScene
+            // renderTopOverlays={() => (
+            //     <WebpCharacterTest />
+            // )}
             hotspotsDisabled={clicked}
             // renderOverlays={({ line }) => (
             //     <>
