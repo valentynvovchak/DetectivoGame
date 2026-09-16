@@ -3,6 +3,7 @@ import React from "react";
 import {
     StyleSheet,
     View,
+    useWindowDimensions,
 } from "react-native";
 
 interface CharacterSpriteProps {
@@ -25,79 +26,64 @@ interface CharacterSpriteProps {
     yModifier?: number;
 
     proofResult?: boolean;
-
-    stageWidth: number;
-    stageHeight: number;
 }
 
 type CharacterMode =
     NonNullable<CharacterSpriteProps["mode"]>;
 
 type ModeConfig = {
-    /**
-     * Высота персонажа в нашей
-     * виртуальной системе координат.
-     */
     height: number;
-
-    /**
-     * Положение относительно нижней
-     * границы сцены.
-     */
     bottom: number;
-
-    /**
-     * Выход за бок сцены.
-     */
     sideOffset: number;
 };
 
-/**
- * Виртуальный дизайн-холст.
- *
- * Не конкретный телефон.
- * Просто единая система координат игры.
- */
 const DESIGN_WIDTH = 390;
 const DESIGN_HEIGHT = 844;
 
+/**
+ * Все числа здесь относятся к одному
+ * виртуальному макету 390x844.
+ *
+ * Никаких отдельных настроек
+ * Android / iOS / tablet.
+ */
 const MODE_CONFIG: Record<
     CharacterMode,
     ModeConfig
     > = {
     full: {
-        height: 650,
+        height: 600,
         bottom: 0,
-        sideOffset: -20,
+        sideOffset: -18,
     },
 
     cut: {
-        height: 760,
-        bottom: -80,
-        sideOffset: -25,
+        height: 690,
+        bottom: -55,
+        sideOffset: -24,
     },
 
     zoom: {
-        height: 820,
-        bottom: -120,
+        height: 760,
+        bottom: -90,
         sideOffset: -30,
     },
 
     zoom2: {
-        height: 760,
-        bottom: -100,
-        sideOffset: -25,
+        height: 720,
+        bottom: -75,
+        sideOffset: -26,
     },
 
     zoom3: {
-        height: 820,
-        bottom: -120,
+        height: 780,
+        bottom: -100,
         sideOffset: -30,
     },
 
     bottom: {
         height: 620,
-        bottom: -260,
+        bottom: -220,
         sideOffset: -20,
     },
 };
@@ -110,21 +96,11 @@ export default function CharacterSpriteNew({
                                                heightModifier = 1,
                                                yModifier = 0,
                                                proofResult = false,
-                                               stageWidth,
-                                               stageHeight,
                                            }: CharacterSpriteProps) {
-    /**
-     * До первого layout ничего не рисуем.
-     *
-     * После первого кадра DialogScene
-     * передаст реальные размеры слоя.
-     */
-    if (
-        stageWidth <= 0 ||
-        stageHeight <= 0
-    ) {
-        return null;
-    }
+    const {
+        width: screenWidth,
+        height: screenHeight,
+    } = useWindowDimensions();
 
     const resolvedMode: CharacterMode =
         proofResult &&
@@ -139,14 +115,16 @@ export default function CharacterSpriteNew({
         MODE_CONFIG[resolvedMode];
 
     /**
-     * Единственный scale.
+     * Главное:
      *
-     * И телефон, и iPhone, и планшет
-     * используют абсолютно одну формулу.
+     * один scale для всей геометрии.
+     *
+     * На планшете ширина сама по себе
+     * не сделает персонажа огромным.
      */
     const scale = Math.min(
-        stageWidth / DESIGN_WIDTH,
-        stageHeight / DESIGN_HEIGHT
+        screenWidth / DESIGN_WIDTH,
+        screenHeight / DESIGN_HEIGHT
     );
 
     const characterHeight =
@@ -155,14 +133,15 @@ export default function CharacterSpriteNew({
         heightModifier;
 
     /**
-     * Старые индивидуальные корректировки
-     * пока поддерживаем.
-     *
-     * Позже ненужные y_modifier удалим
-     * из dialogs.json.
+     * View занимает ширину сцены.
+     * Сам SVG внутри сохраняет
+     * свою настоящую пропорцию.
      */
+    const characterViewportWidth =
+        screenWidth;
+
     const yOffset =
-        stageHeight * yModifier;
+        screenHeight * yModifier;
 
     const bottom =
         config.bottom * scale -
@@ -171,13 +150,6 @@ export default function CharacterSpriteNew({
     const sideOffset =
         config.sideOffset * scale;
 
-    /**
-     * SVG сам сохраняет свою настоящую
-     * пропорцию из viewBox.
-     *
-     * Поэтому width персонажа нам вообще
-     * не нужно вычислять.
-     */
     const preserveAspectRatio =
         side === "left"
             ? "xMinYMax meet"
@@ -185,20 +157,17 @@ export default function CharacterSpriteNew({
                 ? "xMaxYMax meet"
                 : "xMidYMax meet";
 
-    const horizontalPosition =
+    const horizontalStyle =
         side === "left"
             ? {
                 left: sideOffset,
-                right: 0,
             }
             : side === "right"
                 ? {
-                    left: 0,
                     right: sideOffset,
                 }
                 : {
                     left: 0,
-                    right: 0,
                 };
 
     return (
@@ -206,8 +175,13 @@ export default function CharacterSpriteNew({
             pointerEvents="none"
             style={[
                 styles.container,
-                horizontalPosition,
+
+                horizontalStyle,
+
                 {
+                    width:
+                    characterViewportWidth,
+
                     height:
                     characterHeight,
 
@@ -216,9 +190,12 @@ export default function CharacterSpriteNew({
             ]}
         >
             <Sprite
-                width="100%"
-                height="100%"
-
+                width={
+                    characterViewportWidth
+                }
+                height={
+                    characterHeight
+                }
                 preserveAspectRatio={
                     preserveAspectRatio
                 }

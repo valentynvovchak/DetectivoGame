@@ -134,11 +134,6 @@ export default function DialogScene({
         setPrisonBarsFinished,
     ] = useState(true);
 
-    const [characterStage, setCharacterStage] = useState({
-        width: 0,
-        height: 0,
-    });
-
     useEffect(() => {
         /*
          * На реплике с решёткой запрещаем дальнейшее
@@ -860,27 +855,7 @@ export default function DialogScene({
                         </View>*/}
 
                         {/* characters */}
-                        <View
-                            style={styles.charactersLayer}
-                            onLayout={(event) => {
-                                const { width, height } =
-                                    event.nativeEvent.layout;
-
-                                setCharacterStage((previous) => {
-                                    if (
-                                        previous.width === width &&
-                                        previous.height === height
-                                    ) {
-                                        return previous;
-                                    }
-
-                                    return {
-                                        width,
-                                        height,
-                                    };
-                                });
-                            }}
-                        >
+                        <View style={styles.charactersLayer}>
                             {line?.bubble_mode !== "avatar" && (
                                 <>
                                     {line?.animatedCharacterTest ? (
@@ -890,7 +865,7 @@ export default function DialogScene({
                                             (char: any) => (
                                                 <CharacterSpriteNew
                                                     key={char.id}
-                                       z             mode={char.mode}
+                                                    mode={char.mode}
                                                     side={char.side}
                                                     Sprite={getSprite(
                                                         char.sprite
@@ -908,12 +883,6 @@ export default function DialogScene({
                                                     }
                                                     proofResult={
                                                         line?.proofResult
-                                                    }
-                                                    stageWidth={
-                                                        characterStage.width
-                                                    }
-                                                    stageHeight={
-                                                        characterStage.height
                                                     }
                                                 />
                                             )
