@@ -771,7 +771,7 @@ export default function DialogScene({
                                                 colors={["#CCCCCC", "#CACA99"]}
                                                 start={{ x: 0, y: 0 }}
                                                 end={{ x: 0, y: 1 }}
-                                                style={StyleSheet.absoluteFillObject}
+                                                style={StyleSheet.absoluteFill}
                                             />
 
                                             <View style={styles.hotspotButtonInner}>
@@ -855,7 +855,7 @@ export default function DialogScene({
                         </View>*/}
 
                         {/* characters */}
-                        <View style={styles.charactersLayer}>
+                        <View pointerEvents="none" style={styles.charactersLayer}>
                             {line?.bubble_mode !== "avatar" && (
                                 <>
                                     {line?.animatedCharacterTest ? (
@@ -1976,7 +1976,7 @@ const styles = StyleSheet.create({
     },
 
     topAnimationLayer: {
-        ...StyleSheet.absoluteFillObject,
+        ...StyleSheet.absoluteFill,
 
         zIndex: 999999,
         elevation: 999999,
@@ -2069,7 +2069,7 @@ const styles = StyleSheet.create({
     },
 
     hotspotsLayer: {
-        ...StyleSheet.absoluteFillObject,
+        ...StyleSheet.absoluteFill,
 
         // zIndex: 30,
         // elevation: 30,
@@ -2078,7 +2078,7 @@ const styles = StyleSheet.create({
     },
     // ***IMPORTANT***
     charactersLayer: {
-        ...StyleSheet.absoluteFillObject,
+        ...StyleSheet.absoluteFill,
 
         // zIndex: 60,
         // elevation: 60,

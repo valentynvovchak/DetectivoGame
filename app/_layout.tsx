@@ -62,7 +62,12 @@ export default function RootLayout() {
         <>
             <GameHydrator />
 
-            <Stack screenOptions={{ headerShown: false }}>
+            <Stack screenOptions={{
+                headerShown: false,
+                // Полноэкранная игра. На Android свайп от края временно показывает кнопки.
+                navigationBarHidden: true,
+                statusBarHidden: true,
+            }}>
                 {/* твои сцены */}
                 <Stack.Screen name="index" />
                 <Stack.Screen name="2_street_intro" />
