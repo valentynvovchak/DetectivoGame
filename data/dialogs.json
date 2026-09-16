@@ -68,7 +68,7 @@
 			{
 				"id": 9,
 				"characters": [
-					{ "id": "Di", "side": "right", "sprite": "di_serious", "mode": "full", "height_modifier": 0.95 }
+					{ "id": "Di", "side": "right", "sprite": "di_serious", "mode": "full" }
 				],
 				"speaker": "SidePanel",
 				"text": {
@@ -897,7 +897,7 @@
 			{
 				"id": 8,
 				"characters": [
-					{ "id": "Mr. Kanagawa", "side": "left", "sprite": "mr_kanagava_thinking", "mode": "cut", "height_modifier": 1.06 }
+					{ "id": "Mr. Kanagawa", "side": "left", "sprite": "mr_kanagava_thinking", "mode": "cut" }
 				],
 				"speaker": "Mr. Kanagawa",
 				"text": {
@@ -909,7 +909,7 @@
 			{
 				"id": 9,
 				"characters": [
-					{ "id": "Mr. Kanagawa", "side": "left", "sprite": "mr_kanagava_thinking", "mode": "cut", "height_modifier": 1.06 }
+					{ "id": "Mr. Kanagawa", "side": "left", "sprite": "mr_kanagava_thinking", "mode": "cut" }
 				],
 				"speaker": "Mr. Kanagawa",
 				"text": {
@@ -921,7 +921,7 @@
 			{
 				"id": 10,
 				"characters": [
-					{ "id": "Mr. Kanagawa", "side": "left", "sprite": "mr_kanagava_thinking", "mode": "cut", "height_modifier": 1.06 }
+					{ "id": "Mr. Kanagawa", "side": "left", "sprite": "mr_kanagava_thinking", "mode": "cut" }
 				],
 				"speaker": "Mr. Kanagawa",
 				"text": {
@@ -970,7 +970,7 @@
 			{
 				"id": 14,
 				"characters": [
-					{ "id": "Daniel", "side": "center", "sprite": "daniel_finger_up", "mode": "cut", "height_modifier": 1.1
+					{ "id": "Daniel", "side": "center", "sprite": "daniel_finger_up", "mode": "cut"
 					}
 				],
 				"speaker": "Narrator",
@@ -2044,7 +2044,7 @@
 			{
 				"id": 56,
 				"characters": [
-					{"id": "Di", "side": "center", "sprite": "di_shocked", "mode": "zoom2", "height_modifier":  1.1}
+					{"id": "Di", "side": "center", "sprite": "di_shocked", "mode": "zoom2"}
 				],
 				"logicResult": {
 					"type": "wrong",
@@ -2720,7 +2720,7 @@
 			{
 				"id": 28,
 				"characters": [
-					{"id": "Mr. Kanagawa", "side": "left", "sprite": "mr_kanagava_serious", "mode": "zoom", "height_modifier": 0.96}
+					{"id": "Mr. Kanagawa", "side": "left", "sprite": "mr_kanagava_serious", "mode": "zoom"}
 				],
 				"hotspots": [
 					{
@@ -2754,7 +2754,7 @@
 			{
 				"id": 30,
 				"characters": [
-					{"id": "Mr. Kanagawa", "side": "left", "sprite": "mr_kanagava_serious", "mode": "zoom", "height_modifier": 0.96}
+					{"id": "Mr. Kanagawa", "side": "left", "sprite": "mr_kanagava_serious", "mode": "zoom"}
 				],
 				"speaker": "Mr. Kanagawa",
 				"text": {
@@ -2800,7 +2800,7 @@
 			{
 				"id": 33,
 				"characters": [
-					{"id": "Mr. Kanagawa", "side": "left", "sprite": "mr_kanagava_serious", "mode": "zoom", "height_modifier": 0.96}
+					{"id": "Mr. Kanagawa", "side": "left", "sprite": "mr_kanagava_serious", "mode": "zoom"}
 				],
 				"speaker": "Mr. Kanagawa",
 				"text": {
@@ -2812,7 +2812,7 @@
 			{
 				"id": 34,
 				"characters": [
-					{"id": "Mr. Kanagawa", "side": "left", "sprite": "mr_kanagava_serious", "mode": "zoom", "height_modifier": 0.96}
+					{"id": "Mr. Kanagawa", "side": "left", "sprite": "mr_kanagava_serious", "mode": "zoom"}
 				],
 				"speaker": "Mr. Kanagawa",
 				"text": {
@@ -2858,7 +2858,7 @@
 			{
 				"id": 37,
 				"characters": [
-					{"id": "Mr. Kanagawa", "side": "left", "sprite": "mr_kanagava_serious", "mode": "zoom", "height_modifier": 0.96}
+					{"id": "Mr. Kanagawa", "side": "left", "sprite": "mr_kanagava_serious", "mode": "zoom"}
 				],
 				"speaker": "Mr. Kanagawa",
 				"text": {
@@ -2870,7 +2870,7 @@
 			{
 				"id": 38,
 				"characters": [
-					{"id": "Mr. Kanagawa", "side": "left", "sprite": "mr_kanagava_serious", "mode": "zoom", "height_modifier": 0.96}
+					{"id": "Mr. Kanagawa", "side": "left", "sprite": "mr_kanagava_serious", "mode": "zoom"}
 				],
 				"speaker": "Mr. Kanagawa",
 				"text": {
@@ -2916,7 +2916,7 @@
 			{
 				"id": 41,
 				"characters": [
-					{"id": "Mr. Kanagawa", "side": "left", "sprite": "mr_kanagava_serious", "mode": "zoom", "height_modifier": 0.96}
+					{"id": "Mr. Kanagawa", "side": "left", "sprite": "mr_kanagava_serious", "mode": "zoom"}
 				],
 				"speaker": "Mr. Kanagawa",
 				"text": {
@@ -2928,7 +2928,7 @@
 			{
 				"id": 42,
 				"characters": [
-					{"id": "Mr. Kanagawa", "side": "left", "sprite": "mr_kanagava_serious", "mode": "zoom", "height_modifier": 0.96}
+					{"id": "Mr. Kanagawa", "side": "left", "sprite": "mr_kanagava_serious", "mode": "zoom"}
 				],
 				"speaker": "Mr. Kanagawa",
 				"text": {
@@ -3015,7 +3015,7 @@
 			{
 				"id": 48,
 				"characters": [
-					{"id": "Mr. Kanagawa", "side": "left", "sprite": "mr_kanagava_serious", "mode": "zoom", "height_modifier": 0.96}
+					{"id": "Mr. Kanagawa", "side": "left", "sprite": "mr_kanagava_serious", "mode": "zoom"}
 				],
 				"speaker": "Mr. Kanagawa",
 				"text": {
@@ -3440,7 +3440,7 @@
 			{
 				"id": 21,
 				"characters": [
-					{ "id": "Mrs. Kanagawa sister", "side": "left", "sprite": "mrs_kanagawa_sister_angry", "mode": "zoom", "height_modifier": 1.06 }
+					{ "id": "Mrs. Kanagawa sister", "side": "left", "sprite": "mrs_kanagawa_sister_angry", "mode": "zoom" }
 				],
 				"speaker": "Mrs. Kanagawa sister",
 				"text": {
@@ -3579,7 +3579,7 @@
 			{
 				"id": 35,
 				"characters": [
-					{ "id": "Mrs. Kanagawa sister", "side": "left", "sprite": "mrs_kanagawa_sister_angry", "mode": "zoom", "height_modifier": 1.06 }
+					{ "id": "Mrs. Kanagawa sister", "side": "left", "sprite": "mrs_kanagawa_sister_angry", "mode": "zoom" }
 				],
 				"speaker": "Mrs. Kanagawa sister",
 				"text": {
@@ -3808,7 +3808,7 @@
 			{
 				"id": 55,
 				"characters": [
-					{ "id": "Daniel", "side": "center", "sprite": "daniel_finger_up", "mode": "cut", "height_modifier": 1.1 }
+					{ "id": "Daniel", "side": "center", "sprite": "daniel_finger_up", "mode": "cut" }
 				],
 				"speaker": "Narrator",
 				"text": {
@@ -7157,7 +7157,7 @@
 					{
 						"id": "Mr. Kanagawa",
 						"side": "left",
-						"sprite": "mr_kanagawa_thinking",
+						"sprite": "mr_kanagava_thinking",
 						"mode": "zoom",
 						"image": "mr_kanagawa_thinking.png",
 						"bg": "white"
@@ -7438,7 +7438,7 @@
 					{
 						"id": "Mr. Kanagawa",
 						"side": "left",
-						"sprite": "mr_kanagawa_thinking",
+						"sprite": "mr_kanagava_thinking",
 						"mode": "zoom",
 						"image": "mr_kanagawa_thinking.png",
 						"bg": "white"
@@ -10053,9 +10053,7 @@
 						"id": "Judge",
 						"side": "left",
 						"sprite": "judge_sad",
-						"mode": "zoom",
-						"height_modifier": 1.56,
-						"y_modifier": 0.24
+						"mode": "zoom"
 					}
 				],
 				"speaker": "Judge",
@@ -10072,9 +10070,7 @@
 						"id": "Judge",
 						"side": "left",
 						"sprite": "judge_sad",
-						"mode": "zoom",
-						"height_modifier": 1.56,
-						"y_modifier": 0.24
+						"mode": "zoom"
 					}
 				],
 				"speaker": "Judge",
@@ -10091,9 +10087,7 @@
 						"id": "Daniel",
 						"side": "center",
 						"sprite": "daniel_shocked",
-						"mode": "cut",
-						"height_modifier": 1.2,
-						"y_modifier": 0.15
+						"mode": "cut"
 					}
 				],
 				"speaker": "Daniel",
