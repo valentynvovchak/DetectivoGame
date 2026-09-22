@@ -1868,6 +1868,7 @@
 			},
 			{
 				"id": 48,
+				"backgroundVideoChange": "walk_to_car",
 				"characters": [
 					{ "id": "Di", "side": "left", "sprite": "di_serious", "mode": "zoom" }
 				],

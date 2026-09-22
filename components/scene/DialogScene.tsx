@@ -40,6 +40,12 @@ import {
 import NextStepChoiceModal from "@/components/NextStepChoiceModal";
 import PrisonBarsAnimation from "@/components/animations/PrisonBarsAnimation";
 import AnimatedCharacterTest from "@/assets/animations/AnimatedCharacterTest";
+import SceneVideoBackground
+    from "@/components/scene/SceneVideoBackground";
+
+import {
+    VIDEO_BACKGROUNDS,
+} from "@/assets/videoBackgrounds";
 
 type FactAnimationState = {
     id: string;
@@ -125,6 +131,64 @@ export default function DialogScene({
     const [activeFactAnimation, setActiveFactAnimation] = useState<FactAnimationState | null>(null);
     const factAnimationResolveRef = useRef<(() => void) | null>(null);
     const [nextStepChoiceVisible, setNextStepChoiceVisible] = useState(false);
+
+    const activeVideoBackground =
+        useMemo(() => {
+            if (!scene?.dialog) {
+                return null;
+            }
+
+            let videoKey: string | null =
+                null;
+
+            /*
+             * Восстанавливаем текущий видеофон
+             * по истории реплик.
+             *
+             * Поэтому даже после загрузки
+             * checkpoint на id 54 система поймёт,
+             * что видео было включено на id 48.
+             */
+            for (
+                let index = 0;
+                index <= currentLine;
+                index++
+            ) {
+                const dialogLine =
+                    scene.dialog[index];
+
+                /*
+                 * Обычная смена картинки
+                 * выключает предыдущий видеофон.
+                 */
+                if (
+                    dialogLine
+                        ?.backgroundChange ||
+                    dialogLine
+                        ?.backgroundNoAnimationChange
+                ) {
+                    videoKey = null;
+                }
+
+                /*
+                 * Видео включается и остаётся
+                 * активным до следующей смены фона.
+                 */
+                if (
+                    dialogLine
+                        ?.backgroundVideoChange
+                ) {
+                    videoKey =
+                        dialogLine
+                            .backgroundVideoChange;
+                }
+            }
+
+            return videoKey;
+        }, [
+            scene,
+            currentLine,
+        ]);
 
     const isPrisonBarsEffect =
         line?.sceneEffect === "prison_bars";
@@ -699,6 +763,23 @@ export default function DialogScene({
                         resizeMode={activeResizeMode}
                         style={globalStyles.screen}
                     >
+                        {activeVideoBackground &&
+                            VIDEO_BACKGROUNDS[
+                                activeVideoBackground as keyof typeof VIDEO_BACKGROUNDS
+                                ] && (
+                                <SceneVideoBackground
+                                    key={
+                                        activeVideoBackground
+                                    }
+                                    source={
+                                        VIDEO_BACKGROUNDS[
+                                            activeVideoBackground as keyof typeof VIDEO_BACKGROUNDS
+                                            ]
+                                    }
+                                />
+                            )
+                        }
+
                         <View
                             pointerEvents="box-none"
                             style={styles.hotspotsLayer}
