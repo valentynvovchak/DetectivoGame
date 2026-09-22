@@ -29,16 +29,33 @@ export default function SceneVideoBackground({
         <VideoView
             pointerEvents="none"
             player={player}
-            style={StyleSheet.absoluteFillObject}
+            style={styles.video}
             contentFit="cover"
             nativeControls={false}
 
             /*
-             * На Android это надёжнее,
-             * когда поверх видео находятся
-             * персонажи, баблы и UI.
+             * ВАЖНО:
+             *
+             * textureView у нас:
+             * player = playing,
+             * но изображение не выводится.
+             *
+             * Поэтому используем стандартный
+             * Android SurfaceView.
              */
-            surfaceType="textureView"
+            surfaceType="surfaceView"
+
+            /*
+             * Не показываем системную заглушку
+             * ExoPlayer перед первым кадром.
+             */
+            useExoShutter={false}
         />
     );
 }
+
+const styles = StyleSheet.create({
+    video: {
+        ...StyleSheet.absoluteFillObject,
+    },
+});
