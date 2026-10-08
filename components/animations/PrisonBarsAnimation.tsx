@@ -457,7 +457,7 @@ export default function PrisonBarsAnimation({
 
 const styles = StyleSheet.create({
     root: {
-        ...StyleSheet.absoluteFillObject,
+        ...StyleSheet.absoluteFill,
 
         zIndex: 2_000_000,
         elevation: 2_000_000,
@@ -1030,7 +1030,7 @@ export default function PrisonBarsAnimation({
 
 const styles = StyleSheet.create({
     root: {
-        ...StyleSheet.absoluteFillObject,
+        ...StyleSheet.absoluteFill,
 
         zIndex: 2_000_000,
         elevation: 2_000_000,

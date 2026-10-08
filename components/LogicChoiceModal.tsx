@@ -452,7 +452,7 @@ const styles = StyleSheet.create({
     },
 
     confirmOverlay: {
-        ...StyleSheet.absoluteFillObject,
+        ...StyleSheet.absoluteFill,
 
         backgroundColor: "rgba(0,0,0,0.35)",
 

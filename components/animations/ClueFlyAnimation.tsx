@@ -520,7 +520,7 @@ const styles = StyleSheet.create({
     },
 
     fullscreenOverlay: {
-        ...StyleSheet.absoluteFillObject,
+        ...StyleSheet.absoluteFill,
 
         zIndex: 999999,
         elevation: 999999,
@@ -528,7 +528,7 @@ const styles = StyleSheet.create({
         overflow: "visible",
     },
     animationRoot: {
-        ...StyleSheet.absoluteFillObject,
+        ...StyleSheet.absoluteFill,
 
         zIndex: 999999,
         elevation: 999999,

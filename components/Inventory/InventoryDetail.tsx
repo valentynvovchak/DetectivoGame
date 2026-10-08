@@ -218,7 +218,7 @@ const styles = StyleSheet.create({
 
 
     // paperLines: {
-    //     ...StyleSheet.absoluteFillObject,
+    //     ...StyleSheet.absoluteFill,
     //     paddingHorizontal: 14 * K,
     //     paddingTop: 20 * K,
     // },
@@ -374,7 +374,7 @@ const styles = StyleSheet.create({
     },
 
     paperLines: {
-        ...StyleSheet.absoluteFillObject,
+        ...StyleSheet.absoluteFill,
         paddingHorizontal: 14 * K,
         paddingTop: 27 * K,
     },

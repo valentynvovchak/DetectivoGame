@@ -12,6 +12,7 @@ import {preloadAssetsWithProgress} from "@/tools/preload";
 import {PRELOAD_IMAGES, PRELOAD_SOUNDS} from "@/assets/preloadList";
 import AppText from "@/components/Common/AppText";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import {router} from "expo-router";
 
 export default function Index() {
     const { lang, loadProgress, resetProgress, hasSave, checkHasSave, } = useGameStore();
@@ -57,6 +58,16 @@ export default function Index() {
                 resizeMode="cover"
             >
                 <View style={globalStyles.menu}>
+                    <Pressable
+                        onPress={() =>
+                            router.push(
+                                "/video-test"
+                            )
+                        }
+                    >
+                        <Text>VIDEO TEST</Text>
+                    </Pressable>
+
                     <AppText style={styles.title}>{lang === "ru" ? "Детектив D." : "Detective D."}</AppText>
                     {/*<View style={styles.btn}>*/}
                     {/*    <Link style={styles.btnText} href="street_intro">{lang === "ru" ? "Начать" : "Start"}</Link>*/}

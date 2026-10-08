@@ -1625,7 +1625,7 @@ const styles = StyleSheet.create({
     },
 
     pickerOverlay: {
-        ...StyleSheet.absoluteFillObject,
+        ...StyleSheet.absoluteFill,
 
         paddingHorizontal: 12,
 

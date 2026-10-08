@@ -22,7 +22,7 @@ export default function WebpCharacterTest() {
 
 const styles = StyleSheet.create({
     container: {
-        ...StyleSheet.absoluteFillObject,
+        ...StyleSheet.absoluteFill,
         overflow: "hidden",
     },
 
@@ -45,6 +45,6 @@ const styles = StyleSheet.create({
     },
 
     animation: {
-        ...StyleSheet.absoluteFillObject,
+        ...StyleSheet.absoluteFill,
     },
 });

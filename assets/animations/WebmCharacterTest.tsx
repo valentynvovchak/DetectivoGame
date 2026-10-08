@@ -62,7 +62,7 @@ export default function WebmCharacterTest() {
 
 const styles = StyleSheet.create({
     container: {
-        ...StyleSheet.absoluteFillObject,
+        ...StyleSheet.absoluteFill,
 
         overflow: "hidden",
 
@@ -95,7 +95,7 @@ const styles = StyleSheet.create({
     },
 
     video: {
-        ...StyleSheet.absoluteFillObject,
+        ...StyleSheet.absoluteFill,
 
         backgroundColor: "transparent",
     },
